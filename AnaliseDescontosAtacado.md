@@ -39,19 +39,55 @@ Inicialmente faremos uma solução similar ao que já temos mas que possa dar de
 
 #Tarefas
 
- ## Tarefa 1: Corrigir label na tela Pack Virtual
- Ao dar um novo e selecionar o modelo 
-`Pague x porcento a menos a partir de x unidades (atacado)`
 
-Alterar o label da regra substituindo
-`% de desconto nestes outros produtos` 
-por 
-`% de desconto por unidade nestes produtos`
 
-o _"outros"_ deve ser usado apenas nos packs que tem 2 grids
 
-## Tarefa 2: Criar branch no git
+
+
+## Tarefa 1: Criar branch no git
 Criar novo branch feature/EpicoDescontosParaAtacado
+
+
+ ## Tarefa 2: Corrigir layout na tela Pack Virtual
+
+1. Corrigir Label
+    Ao dar um novo e selecionar o modelo 
+    `Pague x porcento a menos a partir de x unidades (atacado)`
+
+    Alterar o label da regra substituindo
+    `% de desconto nestes outros produtos` 
+    por 
+    `% de desconto por unidade nestes produtos`
+
+    o _"outros"_ deve ser usado apenas nos packs que tem 2 grids
+1. Corrigir tamanho do combo
+    Aumentar o combo de modelo, pois está cortando algumas descrições no pack virtual
+1. Corrigir o tamanho da fonte do label lblMensagemPrecoDiferente para 8 pts
+
+
+ ## Tarefa 3: Alterar posição dos frames de configuração do Pack Virtual
+Objetivo: Foram criados alguns frames de configuração que estão ocupando espaço na tela e também poluindo. Vamos criar uma aba de configuração
+
+1. Alterar a posição do frame gbxLimitePack
+Nos dois Packs abaixo ele deve ser colocado na nova aba criada no groupBoxValores. O caption da aba deverá estar como "Configuração de Limites da Regra"
+`Leve X pague Y`
+`Pague menos por unidade`
+
+1. Alterar a posição do frame gbAjustarQuebra
+No Pack abaixo ele deve ser colocado na nova aba criada no groupBoxValores. O caption da aba deverá estar como "Configuração de quebra (Arredondamento)"
+ `Pague x porcento a menos a partir de x unidades (atacado)`
+
+
+## Tarefa 4: Possibilitar maximizar a tela Pack Virtual
+Objetivo: Poder maximizar a tela para aumentar a grade de produtos, o cliente irá inserir mais de mil produtos nesta grade e atualmente ela é pequena.
+1. Abilitar o botão de maximizar a tela
+1. Ao maximizar a tela ancorar o label lblMensagemPrecoDiferente e os botões de imprimir etiqueta, cancelar e salvar na parte inferior do formulário.
+1. Ajustar os dois grid de produto de forma que fiquem ancorados na parte inferior do formulário.
+
+## Tarefa 5: Colocar um contador de registros para o grid de produtos
+1. Colocar um label contador de registros para o grid dgvGrupo1. Ao lado do label lblMensagemPrecoDiferente com o mesmo padrão de funcionamento do label lblTotalRegistros. Controlá lo nos diversos estados da tela. 
+
+
 
 
 ## Tarefa 3: Criar módulo para Gerenciar o recurso Descontos para Atacado
@@ -69,7 +105,7 @@ Descrição das variáveis:
 
 `sGrupo = "PRODUTOS"`
 `sDescrição = "Descontos para Atacado`
-`sPalavraChave = FrmDescontosParaAtacado`
+`sPalavraChave = FrmDescontosAtacado`
 
 1. Tratar em mdlGestao.sCarregaModulos
 
@@ -79,8 +115,20 @@ Descrição das variáveis:
 
 ## Tarefa 4: Criar formulário C# FrmDescontosParaAtacado
 
-1. Criar diretório e formulario no gestão c#
-2. A tela deverá herdar a tela pack virtual, a ideía é reaproveitar o código que já tem na tela do pack, encartes, lojas, grupo de clientes, formas de pagamento, configurações de arredondamento entre outros. E criar uma personalização da tela mas sem alterar a tela de pack virtual. 
+Objetivo: A nova tela deverá herdar a tela pack virtual, a ideía é reaproveitar o código que já tem na tela do pack, encartes, lojas, grupo de clientes, formas de pagamento, configurações de arredondamento entre outros. E criar uma personalização da tela mas sem alterar a tela de pack virtual. 
+1. Criar diretório e formulario no gestão c#.
+1. Adicionar todas as diretivas que estão no form FrmPackVirtual (using) 
+1. Adicionar a diretiva `using System.ComponentModel.Design.Serialization;`
+1. Adicionar o código abaixo em todos os eventos do form FrmPackVirtual (load, close,keypress) 
+`if (this.DesignMode) { return; }`
+1. Adicionar no FrmDescontosAtacado a Herança para o form FrmPackVirtual assim como fazermos para utilizar o formulário de pesquisa FrmPesquisa
+1. Fechar o Visual Studio ir no diretorio do projeto, excluir a pasta bin e obj. Abrir novamente o visual studio, dar um clear na solution e um rebuild. Nesse momento o Design do pack já deve estar funcionando no Desconto Atacado
+1. Corrigir eventuais erros que podem aparecer. 
+1. Se alterarmos a tela do pack, podemos ter que repetir alguns dos passos acima. 
+
+
+
+
 
 
 
