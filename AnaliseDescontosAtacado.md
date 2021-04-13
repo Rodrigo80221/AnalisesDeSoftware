@@ -65,17 +65,9 @@ Criar novo branch feature/EpicoDescontosParaAtacado
 1. Corrigir o tamanho da fonte do label lblMensagemPrecoDiferente para 8 pts
 
 
- ## Tarefa 3: Alterar posição dos frames de configuração do Pack Virtual
-Objetivo: Foram criados alguns frames de configuração que estão ocupando espaço na tela e também poluindo. Vamos criar uma aba de configuração
+ ## Tarefa 3: Alterar posição do frame de Limite da Regra do Pack Virtual
 
-1. Alterar a posição do frame gbxLimitePack
-Nos dois Packs abaixo ele deve ser colocado na nova aba criada no groupBoxValores. O caption da aba deverá estar como "Configuração de Limites da Regra"
-`Leve X pague Y`
-`Pague menos por unidade`
-
-1. Alterar a posição do frame gbAjustarQuebra
-No Pack abaixo ele deve ser colocado na nova aba criada no groupBoxValores. O caption da aba deverá estar como "Configuração de quebra (Arredondamento)"
- `Pague x porcento a menos a partir de x unidades (atacado)`
+1. Alterar a posição do frame gbxLimitePack, colocar ele para a direita assim como o frame de arredondamentos, tentar colocar ele acima do frame da direita para não ficar por cima e para caber os dois.
 
 
 ## Tarefa 4: Possibilitar maximizar a tela Pack Virtual
@@ -88,9 +80,7 @@ Objetivo: Poder maximizar a tela para aumentar a grade de produtos, o cliente ir
 1. Colocar um label contador de registros para o grid dgvGrupo1. Ao lado do label lblMensagemPrecoDiferente com o mesmo padrão de funcionamento do label lblTotalRegistros. Controlá lo nos diversos estados da tela. 
 
 
-
-
-## Tarefa 3: Criar módulo para Gerenciar o recurso Descontos para Atacado
+## Tarefa 6: Criar módulo para Gerenciar o recurso Descontos para Atacado
 
 1. Criar verifica banco para inserir módulo. Se o cliente não utiliza PDV o módulo não deve ser verificado. 
 
@@ -113,10 +103,10 @@ Descrição das variáveis:
 
 1. Tratar no frmModulos.cmdRestaurar_Click conforme padrão do procedimento
 
-## Tarefa 4: Criar formulário C# FrmDescontosParaAtacado
+## Tarefa 7: Criar formulário C# FrmDescontosParaAtacado
 
 Objetivo: A nova tela deverá herdar a tela pack virtual, a ideía é reaproveitar o código que já tem na tela do pack, encartes, lojas, grupo de clientes, formas de pagamento, configurações de arredondamento entre outros. E criar uma personalização da tela mas sem alterar a tela de pack virtual. 
-1. Criar diretório e formulario no gestão c#.
+1. Criar diretório e formulário no gestão c#.
 1. Adicionar todas as diretivas que estão no form FrmPackVirtual (using) 
 1. Adicionar a diretiva `using System.ComponentModel.Design.Serialization;`
 1. Adicionar o código abaixo em todos os eventos do form FrmPackVirtual (load, close,keypress) 
@@ -126,10 +116,37 @@ Objetivo: A nova tela deverá herdar a tela pack virtual, a ideía é reaproveit
 1. Corrigir eventuais erros que podem aparecer. 
 1. Se alterarmos a tela do pack, podemos ter que repetir alguns dos passos acima. 
 
+## Tarefa 8 Personalizar a tela Descontos para Atacado
+1. Ao abrir o formulário FrmDescontosParaAtacado realizar as alterações abaixo editando a tela do Pack Virtual
+1. Mudar o caption do form para “Descontos para atacado”
+1. Mudar o label “Cód. Pack” para “Cód. Desconto” e “Descrição do Pack” para “Descrição do Desconto” (nas 2 abas)
+1. Mudar o label “Modelo do Pack” para “Modelo de Desconto” (nas 2 abas)
+1. Deixar invisível os check boxes Encerrados, Em andamento e Próximos. Deixar sempre marcado o checkbox “Em andamento”
+1. Deixar invisível o botão “Prorrogar”
+1. Na aba de cadastro deixar todos os campos e labels referentes a encarte invisíveis 
+1. Na aba Cadastro deixar a data início e a data fim invisíveis, setar a data fim com a data '06/06/2079' data limite do campo smalldatetime
 
+## Tarefa 9: Carregar o modelo de Desconto no combo
 
+Passar para public virtual o método no FrmPackVitual conforme abaixo
+`public virtual void CarregarComboModeloPack`
+No FrmDescontosParaAtacado criar o método abaixo para sobrescrever ele
+`public override void CarregarComboModeloPack`
+Nesse método carregar o combo de modelos apenas com a opção 
+`A partir de X unidades ganhe X % de desconto`
+Utilizar override para modificar as próximas alterações necessárias.
 
+## Tarefa 10: Carregar o layout de acordo com o modelo de desconto 
+No combo do Pack Virtual ao selecionarmos um modelo os objetos são posicionados, vamos realizar algumas alterações no ReposicionarObjetos para poder sobrescrever o método
 
+1. Criar o método `public virtual ReposicionarObjetos` no FrmPackVirtual, colocar nele todo o código que tem após o switch do método  cboModeloPack_SelectedIndexChanged
+1. Chamar o método `ReposicionarObjetos` no cboModeloPack_SelectedIndexChanged, no local do código retirado.
+1. No FrmDescontosParaAtacado criar o método `override ReposicionarObjetos`para sobrescrever com ReposicionarObjetos colocando apenas um tratamento para o novo modelo no switch, carregar os objetos da mesma forma que no pack `Pague x porcento a menos a partir de x unidades (atacado)`
 
+## Tarefa 11: Adicionar produto no grid de produtos
+1. Criar o método `btnAddGrupo1_Click` em FrmDescontosParaAtacado para sobrescrever o método `FrmPackVirtual.btnAddGrupo1_Click`
+Copiar código o método  `FrmPackVirtual.btnAddGrupo1_Click` retirando a variável `valorDiferente` e a pergunta `"O produto informado tem valor diferente dos demais produtos da lista.`
+1. Criar o método `CarregarDgvGrupo1` em FrmDescontosParaAtacado para sobrescrever o método `FrmPackVirtual.CarregarDgvGrupo1`. Copiar o mesmo código mas trocar `"Pague x porcento a menos a partir de x unidades (atacado)"`
+por `A partir de X unidades ganhe X % de desconto`
 
-
+##Tarefa 12: Salvar
