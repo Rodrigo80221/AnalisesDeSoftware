@@ -1,7 +1,7 @@
-#Épico: Descontos para Atacado
+# Épico: Descontos para Atacado
 Abril/2021
 
-##Problema a ser resolvido
+## Problema a ser resolvido
 
 Relato do cliente:
 *"No sistema Telecon não tem o pack virtual? então você vai criando varios packs,não é isso,  no sistema softcom eu tenho o gestão de promoções e aqui tem os grupos , então você criava, grupo do feijão, o grupo do feijão todo o feijão a partir de 5 unidades  dá um desconto de tantos porcento, então para você não criar um grupo, pra você não ir colocando de 1 por 1, você criava um grupo e dizia “Feijão” aí esses códigos de barras que estiverem nesse grupo a partir de 5 unidades vai ter 5% de desconto. A diferença desse para o Telecon é que se eu for pegar um de cada feijão e conseguir os 5 ele vai dar desconto no 5 , só que na verdade é para dar o desconto apenas em 1 , só vai dar o desconto se eu levar 5 de 1 código de barras"*
@@ -22,13 +22,14 @@ Se o cliente vender 1 coca cola e 6 tangs ganhará 10% de desconto. Isso causou 
 
 Inicialmente faremos uma solução similar ao que já temos mas que possa dar desconto para os produtos separadamente. 
 
-##Pontos chave da história
+## Pontos chave da história
 
 1. Criar uma forma ágil de configurar uma % de desconto para os produtos. O cliente quer poder configurar o desconto para um conjunto de produtos, inclusive adicionar um grupo inteiro.
 1. Facilitar a impressão de etiquetas. Atualmente o cliente tem que mudar o modelo de etiqueta para cada tipo de produto, um modelo para preço normal outro para o preço de atacado. No processo atual o cliente abre a tela de preços alterados e imprime as etiquetas, estas etiquetas devem ser impressas com layout de Atacado para os produtos com desconto percentual ou layout de varejo para os produtos sem preço de atacado.
 1. Alterar o cupom para mostrar os descontos de atacado assim como no seu concorrente principal.
+1. Após a implementação validar com a Gabriela. Ela está acompanhando as dificuldades do cliente.
 
-##Impacto
+## Impacto
 
 1. Na etapa 1 iremos programar de forma para termos o menor impacto possível. A nova tela irá especializar a tela de Pack Virtual e poderemos ter impacto nesta funcionalidade.
 1. Os arredondamentos para a Nova funcionalidade devem funcionar da mesma maneira que no modelo de pack abaixo.
@@ -37,7 +38,7 @@ Inicialmente faremos uma solução similar ao que já temos mas que possa dar de
 1. Ao adicionar um produto em um cadastro do Descontos de Atacado e esse produto fizer parte de um pack ou de uma outra regra de Descontos de Atacado deve mostrar uma mensagem se o usuário deseja excluir do outro grupo e adicionar neste. 
 1. Iremos alterar a central de impressão, é algo crítico no processo do cliente, não deve desconfigurar a etiqueta ao abrir esta tela em outros momentos. 
 
-#Tarefas
+# Tarefas
 
 
 
@@ -141,7 +142,7 @@ No combo do Pack Virtual ao selecionarmos um modelo os objetos são posicionados
 
 1. Criar o método `public virtual ReposicionarObjetos` no FrmPackVirtual, colocar nele todo o código que tem após o switch do método  cboModeloPack_SelectedIndexChanged
 1. Chamar o método `ReposicionarObjetos` no cboModeloPack_SelectedIndexChanged, no local do código retirado.
-1. No FrmDescontosParaAtacado criar o método `override ReposicionarObjetos`para sobrescrever com ReposicionarObjetos colocando apenas um tratamento para o novo modelo no switch, carregar os objetos da mesma forma que no pack `Pague x porcento a menos a partir de x unidades (atacado)`
+1. No FrmDescontosParaAtacado criar o método `override ReposicionarObjetos`para sobrescrever o ReposicionarObjetos colocando apenas um tratamento para o novo modelo no switch, carregar os objetos da mesma forma que no pack `Pague x porcento a menos a partir de x unidades (atacado)`
 
 ## Tarefa 11: Adicionar produto no grid de produtos
 1. Criar o método `btnAddGrupo1_Click` em FrmDescontosParaAtacado para sobrescrever o método `FrmPackVirtual.btnAddGrupo1_Click`
@@ -149,4 +150,36 @@ Copiar código o método  `FrmPackVirtual.btnAddGrupo1_Click` retirando a variá
 1. Criar o método `CarregarDgvGrupo1` em FrmDescontosParaAtacado para sobrescrever o método `FrmPackVirtual.CarregarDgvGrupo1`. Copiar o mesmo código mas trocar `"Pague x porcento a menos a partir de x unidades (atacado)"`
 por `A partir de X unidades ganhe X % de desconto`
 
-##Tarefa 12: Salvar
+## Tarefa 12: Alterar mensagens para não falar em pack virtual
+1. Ao salvar alterar as mensagens abaixo
+`Msg.Informar("Pack Virtual cadastrado com sucesso!");`
+`Msg.Informar("Pack Virtual alterado com sucesso!");`
+para 
+`Msg.Informar("Registro cadastrado com sucesso!");`
+`Msg.Informar("Registro alterado com sucesso!");`
+1. Sobrescrever o método FrmPackVirtual.ptbFormaPagamento_Click substituindo a mensagem. Trocar `Para formar um Pack Virtual por forma de pagamento` por `Para formar um Desconto Para Atacado por forma de pagamento`
+1. Sobrescrever o `FrmPackVirtual.ptbQuestao_Click`, colocar um if apenas para o nosso modelo com o texto 
+`Modelo utilizado para preços de atacado. Comprando a partir de x unidades de determinado código de barras o valor do item terá desconto conforme o cofigurado.
+“Exemplo: Compre mais de 11 unidades de 1 (um) dos produtos cadastrados e receba 10% de desconto em cada unidade (apenas neste item). ”`
+
+## Tarefa 13: Salvar Modelo de desconto. 
+1. Alterar o FrmPackVirtual.btnSalvar_Click. Criar um procedimento para validar os campos, e colocar todas as validações que estão antes do salvar nesse procedimento. No FrmDescontosParaAtacado criar um método para sobreescrever esse método criado, Nele colocar apenas as validações necessárias que são as mesmas usadas no pack `"Pague x porcento a menos a partir de x unidades (atacado)"` e para os campos de arredondamento. 
+1. Sobrescrever o método `private Pack.PackVirtual RetornarPackVirtual()` Retirar o código referente ao tischer, referente ao chkLimitarQntPack e referente ao txtCodEncarte. Setar o packVirtual.ModeloPack = 13
+1. Verificar se com estes passos já está salvando, corrigir enventuais problemas restantes para obter o resultado abaixo.
+##### Resultado:
+* após gravar um modelo de desconto, devemos ter o cabeçalho na tabela Pack Virtual com o modelo 13.
+* os campos `TipoAjusteValor` e `AjusteUltimaCasaDecimal` salvos corretamente
+* os produtos salvos na tabela PackVirtualGrupo1 
+* `PackVirtualFormasPgto`, `PackVirtualGrupoClientes` e `PackVirtualLojas` refletindo as configurações selecionadas
+
+## Tarefa 14: Atualizar Grade de pesquisa
+1. Sobrescrever o método FrmPackVirtual.FormatarDataGridViewPackFiltro, deixar oculto ou com Width = 0 as colunas `DtFinal` e `QuantidadeLimite`
+1. Sobrescrever o método FrmPackVirtual.CarregarDgvGrupo1 tirando os 2 últimos ifs, pois os elses não serão necessários, somente o código referente ao modelo `"Pague x porcento a menos a partir de x unidades (atacado)"`
+
+## Tratar inserção de produtos que já fazem parte de outro modelo de desconto ou pack vitual
+
+1. Sobrescrever o método VerificarProdutoPackVirtualExistentePassado, retirar o trecho referente ao dgvGrupo2.
+
+txtCodProdGrupo1_KeyDown
+txtCodProdutoDiferenciado_KeyDown
+VerificarProdutoPackVirtualExistentePassado
