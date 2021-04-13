@@ -176,10 +176,40 @@ para
 1. Sobrescrever o método FrmPackVirtual.FormatarDataGridViewPackFiltro, deixar oculto ou com Width = 0 as colunas `DtFinal` e `QuantidadeLimite`
 1. Sobrescrever o método FrmPackVirtual.CarregarDgvGrupo1 tirando os 2 últimos ifs, pois os elses não serão necessários, somente o código referente ao modelo `"Pague x porcento a menos a partir de x unidades (atacado)"`
 
-## Tratar inserção de produtos que já fazem parte de outro modelo de desconto ou pack vitual
+## Tarefa 15: Tratar inserção de produtos que já fazem parte de outro modelo de desconto ou pack vitual
 
-1. Sobrescrever o método VerificarProdutoPackVirtualExistentePassado, retirar o trecho referente ao dgvGrupo2.
+1. Nos métodos `VerificarProdutoPackVirtualExistentePassado` e `txtCodProdGrupo1_KeyDown` possuem uma mensagem que impede a inserção de um produto caso ele já faça parte de outra promoção.
 
-txtCodProdGrupo1_KeyDown
-txtCodProdutoDiferenciado_KeyDown
-VerificarProdutoPackVirtualExistentePassado
+``` C
+Msg.Criticar("O produto código " + dgvGrupo1[i, (int)ColunasDgvGrupo.Codigo] +
+" não pode ser " + status + ", pois já encontra-se vinculado ao Pack código " +
+```                                         
+Criar em FrmPackVirtual o procedimento CriticarProdutoJaUtilizado passando o objeto packvirtual por parâmetro e com essa mensagem e substituir no lugar destas mensagens.
+
+No FrmDescontosAtacado Sobrescrever o método CriticarProdutoJaUtilizado. Montar uma mensagem como na descrita abaixo e tratar para mostrar os botões sim/não com foco default no não. 
+Caso o cliente selecione sim, tratar para excluir o produto do outro pack e adicionar neste. 
+
+```O produto código XXXX já encontra-se vinculado ao modelo de desconto abaixo.
+
+Código XXX
+Descrição: XXXXXXXXXXX
+Modelo: Pack Virtual: (NomeDoPack) ou Desconto Para Atacado: (NomeDoModelo)
+Dt. Inicio (Caso pack virtual)
+Dt. Fim (Caso pack virtual)
+
+Deseja excluir este produto do outro Pack Virtual/Desconto Para Atacado e inserir neste modelo?
+
+Atenção: Esta ação não poderá ser desfeita!
+```
+
+Tratar a exclusão do produto caso o usuário concorde.
+
+## Tarefa 16: Impedir adicionar produtos associados
+
+
+
+
+
+
+
+
