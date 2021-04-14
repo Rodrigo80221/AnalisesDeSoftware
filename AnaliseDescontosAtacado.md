@@ -7,7 +7,7 @@ Relato do cliente:
 *"No sistema Telecon não tem o pack virtual? então você vai criando varios packs,não é isso,  no sistema softcom eu tenho o gestão de promoções e aqui tem os grupos , então você criava, grupo do feijão, o grupo do feijão todo o feijão a partir de 5 unidades  dá um desconto de tantos porcento, então para você não criar um grupo, pra você não ir colocando de 1 por 1, você criava um grupo e dizia “Feijão” aí esses códigos de barras que estiverem nesse grupo a partir de 5 unidades vai ter 5% de desconto. A diferença desse para o Telecon é que se eu for pegar um de cada feijão e conseguir os 5 ele vai dar desconto no 5 , só que na verdade é para dar o desconto apenas em 1 , só vai dar o desconto se eu levar 5 de 1 código de barras"*
 
 Atualmente o cliente Novo Preço possui muitos produtos no formato de atacado. Ex:
-Se levar mais de 6 coca colas 2l ganhe 10% de desconto
+Se levar mais de 6 produtos ganhe 10% de desconto
 
 Para utilizar esse processo no nosso sistema o cliente precisa adicionar um pack com essa regra. 
 
@@ -15,10 +15,10 @@ Mas no nosso sitema se adicionar mais de um produto no pack ele agrupa todos os 
 Se criar a regra
 `Leve 6 produtos e ganhe 10% de desconto`
 e adicionar no pack 
-`coca cola 2l`
-`suco tang 50g`
+`COCA COLA ZERO PET 2 LT UND`
+`COCA COLA ZERO LATA 350ML UND`
 
-Se o cliente vender 1 coca cola e 6 tangs ganhará 10% de desconto. Isso causou prejuízo para o cliente inicialmente. Então ele teve que fazer um pack para cada produto e já tem mais de 3 mil packs cadastrados
+Se o cliente vender 1 coca cola e 5 tangs ganhará 10% de desconto. Isso causou prejuízo para o cliente inicialmente. Então ele teve que fazer um pack para cada produto e já tem mais de 3 mil packs cadastrados
 
 Inicialmente faremos uma solução similar ao que já temos mas que possa dar desconto para os produtos separadamente. 
 
@@ -39,11 +39,6 @@ Inicialmente faremos uma solução similar ao que já temos mas que possa dar de
 1. Iremos alterar a central de impressão, é algo crítico no processo do cliente, não deve desconfigurar a etiqueta ao abrir esta tela em outros momentos. 
 
 # Tarefas
-
-
-
-
-
 
 ## Tarefa 1: Criar branch no git
 Criar novo branch feature/EpicoDescontosParaAtacado
@@ -69,6 +64,9 @@ Criar novo branch feature/EpicoDescontosParaAtacado
  ## Tarefa 3: Alterar posição do frame de Limite da Regra do Pack Virtual
 
 1. Alterar a posição do frame gbxLimitePack, colocar ele para a direita assim como o frame de arredondamentos, tentar colocar ele acima do frame da direita para não ficar por cima e para caber os dois.
+Colocar o text e o label ao lado direito do checkbox.
+O label `Limitar a quantidade de` pode ser excluído
+O label `produtos desse Pack Virtual por venda.` por `Limite deste Pack Virtual por Venda`
 
 
 ## Tarefa 4: Possibilitar maximizar a tela Pack Virtual
@@ -107,7 +105,7 @@ Descrição das variáveis:
 ## Tarefa 7: Criar formulário C# FrmDescontosParaAtacado
 
 Objetivo: A nova tela deverá herdar a tela pack virtual, a ideía é reaproveitar o código que já tem na tela do pack, encartes, lojas, grupo de clientes, formas de pagamento, configurações de arredondamento entre outros. E criar uma personalização da tela mas sem alterar a tela de pack virtual. 
-1. Criar diretório e formulário no gestão c#.
+1. Criar diretório e formulário no gestão c#. `DescontosAtacado > FrmDescontosParaAtacado`
 1. Adicionar todas as diretivas que estão no form FrmPackVirtual (using) 
 1. Adicionar a diretiva `using System.ComponentModel.Design.Serialization;`
 1. Adicionar o código abaixo em todos os eventos do form FrmPackVirtual (load, close,keypress) 
@@ -163,7 +161,7 @@ para
 “Exemplo: Compre mais de 11 unidades de 1 (um) dos produtos cadastrados e receba 10% de desconto em cada unidade (apenas neste item). ”`
 
 ## Tarefa 13: Salvar Modelo de desconto. 
-1. Alterar o FrmPackVirtual.btnSalvar_Click. Criar um procedimento para validar os campos, e colocar todas as validações que estão antes do salvar nesse procedimento. No FrmDescontosParaAtacado criar um método para sobreescrever esse método criado, Nele colocar apenas as validações necessárias que são as mesmas usadas no pack `"Pague x porcento a menos a partir de x unidades (atacado)"` e para os campos de arredondamento. 
+1. Alterar o FrmPackVirtual.btnSalvar_Click. Criar o método ValidarModelosDePacks, e colocar nele todas as validações de packs que estão  neste procedimento. No FrmDescontosParaAtacado criar um método para sobreescrever esse método criado, Nele colocar apenas as validações necessárias para o novo modelo que são as mesmas usadas no pack `"Pague x porcento a menos a partir de x unidades (atacado)"` e para os campos de arredondamento. 
 1. Sobrescrever o método `private Pack.PackVirtual RetornarPackVirtual()` Retirar o código referente ao tischer, referente ao chkLimitarQntPack e referente ao txtCodEncarte. Setar o packVirtual.ModeloPack = 13
 1. Verificar se com estes passos já está salvando, corrigir enventuais problemas restantes para obter o resultado abaixo.
 ##### Resultado:
@@ -184,9 +182,9 @@ para
 Msg.Criticar("O produto código " + dgvGrupo1[i, (int)ColunasDgvGrupo.Codigo] +
 " não pode ser " + status + ", pois já encontra-se vinculado ao Pack código " +
 ```                                         
-Criar em FrmPackVirtual o procedimento CriticarProdutoJaUtilizado passando o objeto packvirtual por parâmetro e com essa mensagem e substituir no lugar destas mensagens.
+Criar em FrmPackVirtual o procedimento `CriticarProdutoJaUtilizado` passando o objeto packvirtual por parâmetro e com essa mensagem e substituir no lugar destas mensagens.
 
-No FrmDescontosAtacado Sobrescrever o método CriticarProdutoJaUtilizado. Montar uma mensagem como na descrita abaixo e tratar para mostrar os botões sim/não com foco default no não. 
+No FrmDescontosAtacado Sobrescrever o método `CriticarProdutoJaUtilizado`. Montar uma mensagem como na descrita abaixo e tratar para mostrar os botões sim/não com foco default no não. 
 Caso o cliente selecione sim, tratar para excluir o produto do outro pack e adicionar neste. 
 
 ```O produto código XXXX já encontra-se vinculado ao modelo de desconto abaixo.
@@ -205,10 +203,45 @@ Atenção: Esta ação não poderá ser desfeita!
 Tratar a exclusão do produto caso o usuário concorde.
 
 ## Tarefa 16: Impedir adicionar produtos associados
+Objetivo: Neste primeiro momento a nova funcionalidade não terá tratamento para produtos associados, então teremos que avisar o usuário e dar a ele outra alternativa.
+1. Criar no método `CriticarProdutoJaUtilizado` do FrmDescontoAtacado um tratamento para verificar se o produto adicionado possui produtos associados cadastrados.
+Caso haja teremos que informar o usuário com a mensagem abaixo. 
+
+```
+Atenção! O produto XXXXX possui produtos associados.
+Os produtos associados a este item não serão inseridos automaticamente.
+
+Neste modelo de Desconto Para Atacado não é possível adicionar os produtos
+associados a este item, pois neste modelo cada código de barras é vendido separadamente.
+
+Se desejar crie uma promoção Pack Virtual com o modelo 
+"Pague x porcento a menos a partir de x unidades (atacado)" e adicione
+este conjunto de produtos associados.
+```
+1. Quando o usuário cancelar o produto não é adicionado.
+
+## Tarefa 17: Buscar Produto por grupo e inserir em massa 
+Objetivo: Um dos requisitos da tela é uma forma de adicionar produtos em massa, e també poder selecionar por grupos.
+
+1. Adicionar um botão acima do btnAddGrupo1 e do txtDesProdGrupo1 alinhado a direita
+No texto dele colocar `Buscar Produtos por Grupo`. Se Necessário diminuir um pouco o grid.
+1. Ao clicar neste botão iremos iniciar uma busca em 2 etapas, primeiro iremos abrir uma busca para selecionar o grupo, depois uma busca para selecionar os produtos.
+1. Copiar o formulário de busca `FrmAnaliseMensaVendas>BuscaGrupo` para o diretório `DescontosAtacado`
+1. Copiar o formulário de busca `FrmCadCompradoresExcecoesProdutos>BuscaProdutos` para o diretório `DescontosAtacado`
+1. Implementar para mostrar os grupos como na tela abaixo
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/FrmAnaliseMensaVendas_BuscaGrupo.png?raw=true)
+1. Após implementar para selecionar os produtos do grupo selecionado e inserir em massa
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/FrmCadCompradoresExcecoesProdutos_BuscaProdutos.png?raw=true)
+1. Ao selecionar um grupo pai deverá carregar os produtos de todos os subgrupos
+1. Ao inserir em massa deve adicionar os produtos no grid, o tratamento de associados deve permanacer bem como outros relevantes do adicionar. 
 
 
-
-
+## Tarefa 19: Teste de integração
+1. Testar a funcionalidade por completo incluindo a funcionalidade no PDV VB e no PDV Torus (Ver teste com o Fabrício). Corrigir eventuais falhas.
+1. Testar com diversos tipos de produtos, associados, inativos, que já possem outro desconto para atacado, que já possuem outro pack virtual em vigência e fora de vigência
+1. Testar o item anterior com outros packs em outras lojas
+1. Testar o Desconto Para Atacado por grupos de clientes e formas de pagamento. 
+1. Testar as configurações de arredondamento
 
 
 
