@@ -280,3 +280,6 @@ O cliente comentou que o seu concorrente Bonanza possui algumas informações no
 1. Os produtos que recebem desconto ganham uma observação abaixo do item com o preço fora da promoção.
 1. No final do cupom tem o totalizador Desconto Atacado.
 
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CupomBonanza1.jpeg?raw=true)
+
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CupomBonanza2.jpeg?raw=true)
