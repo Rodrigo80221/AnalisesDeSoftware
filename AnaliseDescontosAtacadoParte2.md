@@ -56,6 +56,8 @@ A etiqueta que está sendo utilizada deve ficar com a fonte em vermelho e em neg
 
 1. Adequar o `sCarregarConfigEtiquetas` para carregar o arquivo do banco de dados. 
 
+1. Ao dar um duplo clique na listview carregar a etiqueta e deixar o label em vermelho, configurar para não selecionar a linha, para não ficar azul a linha podendo assim ver o vermelho do label.
+
 ## Tarefa 7: Tratar o fechamento da tela para avisar que a etiqueta foi modificada. 
 
 1. Chamar o `fMontarEtiqueta` para a etiqueta que está selecionada e compará-la com ela mesmo no banco de dados, se for difente mostrar a mensagem abaixo
@@ -79,22 +81,33 @@ A etiqueta que está sendo utilizada deve ficar com a fonte em vermelho e em neg
 4. Colocar o Tooltip = "Crie uma nova etiqueta com o layout atual mostrado na tela"
 
 
-## Tarefa 9: Criar o botão Novo
+## Tarefa 9: Criar o botão Novo (validar etiquetas)
 
 1. Substituir o botão `cmdCarregar` pelo `cmdNovo` com caption `&Novo` manter o mesmo tabindex
 
-2. Ao clicar no botão mostrar uma mensagem com as opções abaixo
-
-    `Etiqueta Padrão` 
-    `Etiqueta Atacado`
-    `Etiqueta Pack Virtual`
-    `Cancelar`
-
-3. Após Exibir a tela de input box da telecon com o texto abaixo, adicionar ele no list view e salvar o novo arquivo no banco de dados.
-
+1.  Ao clicar no botão exibir um input box da telecon com o texto abaixo, validar uma descrição válida
     `Insira um nome para a nova etiqueta:`
 
-4. 
+1. Criar um form frmAbrirEtiquetas colocar um list com uma imagem e abaixo listar algumas etiquetas padrões, algo semelhante com a imagem abaixo
+    * No novo form manter as configurações padrões da Telecon, fechar com esc, enter como tab, ícone na janela, abrir com vbmodal, não deve ter os botões de minimizar e maximizar, o fechar cancela a operação, não deve permitir resize na tela, deve abrir centralizado. 
+    * Abaixo colocar 2 botões (&Abrir e &Cancelar)
+    * Na imagem colocar um print da imagem para cada arquivo
+    * Listar nesse formato
+    ```
+        Etiqueta Básica
+        Etiqueta Grande
+        Etiqueta com referência a unidade básica 
+        Etiqueta Atacado
+        Etiqueta Atacado com referencia a unidade básica
+    ```
+    * Criar um procedimento para cada etiqueta retornando uma string
+    * Abaixo o link para as etiquetas, testar com a argox da telecon, se necessário ajustar os objetos 
+    * após abrir salvar no banco de dados com o nome definido pelo usuário
+
+
+
+  
+1. 
 
 
 
