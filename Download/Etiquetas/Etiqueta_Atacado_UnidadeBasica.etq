@@ -1,6 +1,6 @@
 picEtiqueta.Height = 1600
 picEtiqueta.Width = 5423
-chkLogo.Value = 1
+chkLogo.Value = 0
 imgLogo.Top = 4
 imgLogo.Left = 224
 imgLogo.Tag = \\SERVIDOR\c\Telecon_Sistemas\Gestao\Dados\..\Etiquetas\timbre_pedido.bmp
