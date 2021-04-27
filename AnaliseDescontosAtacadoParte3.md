@@ -41,7 +41,20 @@ Utilizar essa estrutura nas próximas validações
 `"Valor Diferenciado (Preço 2)"`
 
 ## tarefa 3: Acertar CarregarComboModeloPack
-1. No CarregarComboModeloPack acertar o if para utilizar a propriedade _modelo.xxx.DescricaoComercial
+1. Carregar o combo atravez do list _modelos.RetornarListaComboParaPackVirtual 
+utilizar o código abaixo para carregar os modelos
+``` C#
+    foreach(ModeloPack.Modelo modelo in ModeloPack.RetornarListaComboParaPackVirtual(true))
+    {
+        comboBox1.Items.Add(modelo);
+    }
+```
+1. No combo da primeira aba a primeira opção é `Todos`
+1. No combo da Segunda aba a primeira opção é `Selecione um exemplo de promoção` 
+1. Alterar o caption do lblModeloDoPack para `Exemplos de Pack` 
+
+
+
 
 
 ## tarefa 4: Substituir o switch case do procedimento cboModeloPack_SelectedIndexChanged
@@ -96,6 +109,47 @@ por
 
 ## tarefa 14: Remover procedimento ConverterPackVirtualParaSimplificado
  1. Remover procedimento que parece não esta sendo usado. `public static PackVirtualSimplificado ConverterPackVirtualParaSimplificado(PackVirtual packVirtual, string grupoCliente)`
+
+## tarefa 15: Acertar pesquisas 
+
+1. Na Telas Pack Virtual e DescontosParaAtacado temos uma query que carrega a pesquisa inicial da tela. Na tela pack virtual tirar o código CodPack <> 13. Na tela DescontosParaAtacado tirar o CodPack = 13. Não iremos tratar pelo código porque quando criarmos novos códigos teremos que adicionar na query. Para corrigir:
+* Na tela pack virtual alterar o procedimento RetornarPackVirtualSimplificado deve retornar só se o TipoDePack = PackVirtual
+* Na tela Descontos Para atacado criar um override para este procedimento retornarndo só o pack que TipoDePack = DescontoParaAtacado
+
+1. No procedimento CarregarPacks 
+substituir
+``` C#
+     if (cboModeloPackPesquisa.SelectedIndex >= 8 && !_moduloKw)
+        complemetoSQL.AppendLine(" And PV.ModeloPack = " + (cboModeloPackPesquisa.SelectedIndex + 1));
+    else if (cboModeloPackPesquisa.SelectedIndex != 0)
+        complemetoSQL.AppendLine(" And PV.ModeloPack = " + cboModeloPackPesquisa.SelectedIndex);
+```
+por 
+``` C#
+        complemetoSQL.AppendLine(" And PV.ModeloPack = " + _modelos.RetornarModeloPelaDescricao(cboModeloPackPesquisa.Text).CodPack);
+```
+
+1. Igualmente No procedimento CarregarPacks
+
+carregaPack
+``` C#
+                if (packVirtual.ModeloPack >= 8 && _moduloKw)
+                    cboModeloPack.SelectedIndex = packVirtual.ModeloPack + 1;
+                else
+                    cboModeloPack.SelectedIndex = packVirtual.ModeloPack;
+```
+
+1. Igualmente No procedimento CarregarPacks
+
+dgvPackFiltro_CellMouseDoubleClick
+``` C#
+                if (packVirtual.ModeloPack >= 8 && !_moduloKw)
+                    cboModeloPack.SelectedIndex = packVirtual.ModeloPack - 1; //Devido ao pack do Tischler visível apenas para eles
+                else
+                    cboModeloPack.SelectedIndex = packVirtual.ModeloPack;
+```
+
+
 
  ## tarefa 15: Ajustes finais e testes de integração
 
