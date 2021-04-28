@@ -2,24 +2,36 @@
 criar classe de packs virtuais 
 colocar uma propriedade para saber se é pack ou modelo de desconto
 nas telas listas de acordo com essa propriedade
-devemos ter uma relação com o modelo de etiqueta
-
 alterar nomenclaturas
-
 criar desconto para atacado para os associados 
+Arrumar help dos packs mais novos para ajudar o usuário
+
+--------------------------
+
+devemos ter uma relação com o modelo de etiqueta
 
 colocar associação da etiqueta na tela de desconto para atacado
 
+fazer o frm impressão imprimir de acordo com o pack
+revisar a tela de impressão na questão do pack virtual
+
 Colocar pack virtual ou desconto para atacado no cadastro de produtos 
 
-Arrumar help dos packs mais novos para ajudar o usuário
+
 Verificar a coluna Pack nos grids e o pack nas mensagens
-Sigan > frmBusca > coluna grid  (Pack/Atacado)
+
 Importa cupom fiscal > coluna grid
 FrmImpressão > Coluna grid (na etiqueta e no cartaz) no cartaz está cortando a descrição
-Encarte > 2 mensagens 
 
 
+colocar observação nos packs de compra em mercadorias
+** Observação: Para fechar o valor da compra não pode conter os produtos que irão receber desconto.
+
+colocar observação nos packs virtuais de formato atacado
+** Observação: Cada produto informado na grade será contado individualmente por código de barras.
+
+
+criar os relatórios 
 
 
 
@@ -156,7 +168,7 @@ dgvPackFiltro_CellMouseDoubleClick
 1. Criar a propriedade _modelos, utilizar a propriedade _modelos nos ifs, no carrega tela, no salvar, e ao carregar os combos, da mesma forma que na tela pack virtual. 
 1. Ao carregar os combos na segunda aba não precisamos colocar a primeira opção `Selecione um exemplo de pack`. Ja deverá abrir na opção `A partir de X unidades ganhe desconto (%)`. Carregar da mesma forma que na tarefa 3. Deverão ser carregados 2 modelos no combo. Utilizar o `_modelo.RetornarListaComboParaDescontoParaAtacado`
 
-## Tarefa 17: Implementar a opção de produtos associados no form FrmDescontoParaAtacado.
+## Tarefa 17: Implementar a opção de produtos associados no form FrmDescontoParaAtacado e no PDV
 1. Na aba de pesquisa o modelo de produtos associados já deve estar sendo listado e o filtro funcionando, testar. 
 1. Na aba cadastro ao selecionar esse modelo montar a tela de acordo com a classe _modelos.ApartirDeXGanheDescontoProdutosAssociadosAtacado
 1. Implementar o salvar. O salvar deverá ter o mesmo comportamento do pack
@@ -164,11 +176,63 @@ _modelos.ApartirDe6PagueMenosPORCENTAGEM, deverá salvar da mesma forma nas tabe
 1. Ao adicionar um produto que possua produtos associados no grid deverá ter o mesmo tratamento que no pack virtual _modelos.ApartirDe6PagueMenosPORCENTAGEM, deverá perguntar se deseja adicionar os produtos associados a ele na grade. 
 1. Implementar o botão `Buscar Produtos por Grupo` no modelo de produtos associados. Trocar o text do botão para `Buscar Produtos associados`. A funcionalidade deverá ser a mesma mas em vez de buscar nos grupos deverá buscar nos produtos associados. Se necessário duplicar o form de busca por gupos.
 1. Implementar o Modelo de Desconto no Telecon PDV 3. Ele terá o mesmo funcionamento que no pack virtual _modelos.ApartirDe6PagueMenosPORCENTAGEM. Modelo = 9 no banco de dados. A única coisa que faremos no pdv é que ele fará o mesmo tratamento que fazia para o modelo 9 para o modelo 14 igualmente.
+* No pdv na função mdlValidarRegras.fValidarPack no case 9 adicionar também o 13, deixando os dois funcionando da mesma forma (9,14)
+1. Testar cadastro e funcionamento do novo Desconto para Atacado no PDV
 
 
 ## Tarefa 17: Alterar o caption do label lblProdutoGratis
 1. substiuir o text `Os valores 0,00 ou 0,01 indicam que o produto será gratis.`
 por `R$0,00 indica que o produto será gratis.` 
+
+
+## Tarefa 18: Adicionar informação sobre Desconto Pack/Atacado no Cadastro de Produtos
+
+1. Criar um label no frame de promoções do cadastro de produto
+* Criar a função abaixo no c# no classe PackVirtualVB6.cd
+``` c#
+        public int RetornarTipoDePack(int CodModeloPack)
+        {
+            var modelo = new Telecon.GestaoComercial.Biblioteca.PackVirtual.ModeloPack();
+            var tipoPack = modelo.RetornarModeloPeloCodModeloPack(CodModeloPack).Tipo;
+
+            return (int)tipoPack;
+        }
+```
+* Instanciar a classe Telecon_GestaoComercial_Biblioteca.PackVirtualVB6 no VB no cadastro de produtos
+* No form frmCadProdutos no procedimento sAtualizaCamposPromocao consultar na tabela packvirtual e nas tabelas relacionadas (similar ao frmImpressao.fAbreRecordSet) buscando um pack virtual vigente para a loja que está logada, e para o produto em questão. Essa consultado deve retornar o campo PackVirtual.ModeloPack que deverá ser passado por parâmetro para a função c# `RetornarTipoDePack`, se for pack virtual ou desconto atacado mostrar o label abaixo adequado ao tipo que retornou 
+
+
+
+
+
+
+
+
+Na aba dados gerais no frame de promoções colocar um aviso?
+
+Detalhar na aba dados complementares
+
+
+ "frmCadProdutos", Err, "fValidaProdutoPackVirtualVigente", Erl, True
+MsgBox "Não é permitido inativar um produto que esteja em um pack virtual vigente!", vbInformation, "Aviso"
+
+
+
+
+
+
+
+
+
+
+
+
+"frmImportaCupomSaidas", Err, "cmdAdicionar_Click"
+MsgBox "Alguns produtos contidos neste cupom possui Pack Virtual."
+
+
+ver "frmCadGruposClientes", Err, "cadGruposClientes_AtualizaTela"
+chkNaoAplicarDescontoProdutoPack
 
 
 
