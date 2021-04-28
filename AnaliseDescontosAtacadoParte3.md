@@ -53,6 +53,8 @@ utilizar o código abaixo para carregar os modelos
 1. No combo da Segunda aba a primeira opção é `Selecione um exemplo de promoção` 
 1. Alterar o caption do lblModeloDoPack para `Exemplos de Pack` 
 
+algo similar a imagem abaixo
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/ComboBoxPackVirtual.jpg?raw=true)
 
 
 
@@ -148,6 +150,25 @@ dgvPackFiltro_CellMouseDoubleClick
                 else
                     cboModeloPack.SelectedIndex = packVirtual.ModeloPack;
 ```
+
+## Tarefa 16: Adicionar classe no formulário FrmDescontoParaAtacado
+1. Foram criados alguns procedimentos nesse formulário que sobreescrevem os procedimentos que alteramos nas tarefas anteriores, acertálos no mesmo formato.
+1. Criar a propriedade _modelos, utilizar a propriedade _modelos nos ifs, no carrega tela, no salvar, e ao carregar os combos, da mesma forma que na tela pack virtual. 
+1. Ao carregar os combos na segunda aba não precisamos colocar a primeira opção `Selecione um exemplo de pack`. Ja deverá abrir na opção `A partir de X unidades ganhe desconto (%)`. Carregar da mesma forma que na tarefa 3. Deverão ser carregados 2 modelos no combo. Utilizar o `_modelo.RetornarListaComboParaDescontoParaAtacado`
+
+## Tarefa 17: Implementar a opção de produtos associados no form FrmDescontoParaAtacado.
+1. Na aba de pesquisa o modelo de produtos associados já deve estar sendo listado e o filtro funcionando, testar. 
+1. Na aba cadastro ao selecionar esse modelo montar a tela de acordo com a classe _modelos.ApartirDeXGanheDescontoProdutosAssociadosAtacado
+1. Implementar o salvar. O salvar deverá ter o mesmo comportamento do pack
+_modelos.ApartirDe6PagueMenosPORCENTAGEM, deverá salvar da mesma forma nas tabelas.
+1. Ao adicionar um produto que possua produtos associados no grid deverá ter o mesmo tratamento que no pack virtual _modelos.ApartirDe6PagueMenosPORCENTAGEM, deverá perguntar se deseja adicionar os produtos associados a ele na grade. 
+1. Implementar o botão `Buscar Produtos por Grupo` no modelo de produtos associados. Trocar o text do botão para `Buscar Produtos associados`. A funcionalidade deverá ser a mesma mas em vez de buscar nos grupos deverá buscar nos produtos associados. Se necessário duplicar o form de busca por gupos.
+1. Implementar o Modelo de Desconto no Telecon PDV 3. Ele terá o mesmo funcionamento que no pack virtual _modelos.ApartirDe6PagueMenosPORCENTAGEM. Modelo = 9 no banco de dados. A única coisa que faremos no pdv é que ele fará o mesmo tratamento que fazia para o modelo 9 para o modelo 14 igualmente.
+
+
+## Tarefa 17: Alterar o caption do label lblProdutoGratis
+1. substiuir o text `Os valores 0,00 ou 0,01 indicam que o produto será gratis.`
+por `R$0,00 indica que o produto será gratis.` 
 
 
 
