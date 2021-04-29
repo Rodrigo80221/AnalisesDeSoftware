@@ -1,12 +1,4 @@
 
-criar classe de packs virtuais 
-colocar uma propriedade para saber se é pack ou modelo de desconto
-nas telas listas de acordo com essa propriedade
-alterar nomenclaturas
-criar desconto para atacado para os associados 
-Arrumar help dos packs mais novos para ajudar o usuário
-
---------------------------
 
 devemos ter uma relação com o modelo de etiqueta
 
@@ -15,20 +7,9 @@ colocar associação da etiqueta na tela de desconto para atacado
 fazer o frm impressão imprimir de acordo com o pack
 revisar a tela de impressão na questão do pack virtual
 
-Colocar pack virtual ou desconto para atacado no cadastro de produtos 
 
-
-Verificar a coluna Pack nos grids e o pack nas mensagens
-
-Importa cupom fiscal > coluna grid
 FrmImpressão > Coluna grid (na etiqueta e no cartaz) no cartaz está cortando a descrição
 
-
-colocar observação nos packs de compra em mercadorias
-** Observação: Para fechar o valor da compra não pode conter os produtos que irão receber desconto.
-
-colocar observação nos packs virtuais de formato atacado
-** Observação: Cada produto informado na grade será contado individualmente por código de barras.
 
 
 criar os relatórios 
@@ -76,7 +57,7 @@ utilizar o código abaixo para carregar os modelos no combo
 1. Adicionar um option button para selecionar Porcentagem ou Valor Monetário
 * Deixar como na imagem abaixo
 ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/PackVirtual_RadioButton.jpg?raw=true)
-
+1. acertar o tabindex dos componentes
 
 ## tarefa 4: Substituir o switch case do procedimento cboModeloPack_SelectedIndexChanged
 
@@ -92,9 +73,14 @@ utilizar o código abaixo para carregar os modelos no combo
         exibirGroupBoxValores (modelo.ExibirGroupBoxValores)
         exibirObjetosRegras (modelo.ExibirObjetosRegras)
         exibir_gbAjustarQuebra (modelo.Exibir_gbAjustarQuebra)
-        exibir_gbxLimitePack (modelo.Exibir_gbxLimitePack)
-        exibir lblProdutoGratis.visible = modelo.Exibir_lblProdutoGratis
+        exibir_gbxLimitePack (modelo.Exibir_gbxLimitePack)       
     ```
+1. Temos a propriedade modelo.observação que teremos que fazer algumas alterações
+    * remover o lblProdutoGratis e adicionar o lblObservacao com a fonte no padrão normal.
+    * colocar após os objetos de descrição conforme a imagem abaixo
+
+    
+
     * Além dos controles acima implementar os radion buttons no controle da tela 
     * O radio button terá o comportamento dependendo do enum FormatoDoTxtValorRegra
         * Caso Oculto,UnitárioSemOpcional ou MoedaSemOpcional os 2 radion buttons deverão ficar invisíveis
