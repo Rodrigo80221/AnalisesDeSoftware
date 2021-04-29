@@ -37,10 +37,10 @@ criar os relatórios
 
 ## Tarefa 1: Criar propriedade _modelos para acessar 
 1. Ativar o módulo da KW, pode ser pelo config da tabela módulos no banco de dados. Realizar um pack de cada modelo, anotar todos, esses dados serão utilizados na última tarefa.
-1. Adicionar no projeto Telecon.GestaoComercial.Biblioteca.PackVirtual os arquivos 
-Modelo.cs
-ModelosPack.cs
-TipoDePack.cs
+1. Adicionar no projeto `Telecon.GestaoComercial.Biblioteca.PackVirtual` os arquivos 
+[Modelo.cs](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Classes/Modelo.cs)
+[ModelosPack.cs](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Classes/ModelosPack.cs)
+[TipoDePack.cs](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Classes/TipoDePack.cs)
 
 1. criar propriedade local no formulário
 ``` c#
@@ -259,9 +259,14 @@ por
 
 
  ## tarefa 15: Ajustes finais e testes de integração
-
+1. Refazer os packs que foram feitos na tarefa 1 e comparar todos para ver se ficaram iguais no banco de dados.
+1. Ajustar possíveis diferenças ou erros
 
 
  ver procedimentos que foram substuídos na tela desconto atacado e também o código lá da tela, 
 
  para listar no combo, listar apenas os de pack virtual, ou desconto atacado, listar , verificar a pesquisa 
+
+
+ CRIAR O OPCIONAL E GRAVAR
+

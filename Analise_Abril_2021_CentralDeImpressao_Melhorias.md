@@ -1,4 +1,4 @@
-# Épico: Descontos para Atacado
+# Épico: Descontos para Atacado - Melhorias central de impressão
 Data: 04/2021 
 ## Problema a ser resolvido
 1. Salvar as etiquetas no banco de dados para poder finalizar o épico `Descontos para Atacado`
@@ -10,9 +10,9 @@ Data: 04/2021
 ## Impactos
 1. Os impactos são todos na central de impressão ao imprimir as etiquetas, deverá ser testado por completo todas as funcionalidades.
 
+## Resultado Final
 
-
-## Parte 1 Tarefa 1: Criar tabela no verifica banco
+## Tarefa 1: Criar tabela no verifica banco
 1. Criar verifica banco para inserir a tabela abaixo
 
 ``` sql
@@ -24,14 +24,14 @@ CREATE TABLE Etiquetas
 )            
 ```
 
-## Parte 1 Tarefa 2: Criar verifica banco para migrar etiquetas para o sql server
+## Tarefa 2: Criar verifica banco para migrar etiquetas para o sql server
 **Objetivo:** Atualmente salvamos as etiquetas da central de impressão na pasta `C:\Telecon_Sistemas\Gestao\Etiquetas`, e isso tem gerados alguns problemas de perda de arquivos, problemas de acesso nas pastas e substituição dos arquivos nas atualizações do sistema. Iremos a partir deste momento salvar as etiquetas no banco de dados. 
 
 Na atualização do sistema iremos migrar as etiquetas para o banco de dados.
 1. Criar atualiza banco para fazer backup das etiquetas. Caso na pasta das etiquetas que está no bd rede, exemplo `\\Servidor\Telecon_Sistemas\Gestao\Etiquetas` possua arquivos de etiquetas salvar essas etiquetas no banco do gestão comercial na tabela Etiquetas. O arquivo deve ser salvo literalmente, uma linha abaixo da outra.    
 obs: não salvar o .etq na descrição do arquivo.
 
-## Parte 1 Tarefa 3: Substituir o fileListBox por um ListBox no FrmImpressao
+## Tarefa 3: Substituir o fileListBox por um ListBox no FrmImpressao
 
 1. No frame fraArquivo trocar o caption Arquivo por Etiquetas
 
@@ -45,7 +45,7 @@ A etiqueta que está sendo utilizada deve ficar com a fonte em vermelho e em neg
 
 1. Manter o mesmo tamanho do list e o tabindex = 87
 
-## Parte 1 Tarefa 4: Excluir etiquetas
+## Tarefa 4: Excluir etiquetas
 
 1. Substituir o cmdDeletar do FrmImpressao from um cmdSalvarComo, manter o tabindex. Remover o código de exclusão. Esse botão será implementado mais adiante.
 
@@ -55,7 +55,7 @@ A etiqueta que está sendo utilizada deve ficar com a fonte em vermelho e em neg
 A etiqueta será excluída. A ação não poderá ser desfeita. Deseja continuar? (sim/não) O foco inicial deve ficar em cima do botão não.
 ```
 
-## Parte 1 Tarefa 5: Salvar, Retirar o txtArquivo e carregar etiqueta
+## Tarefa 5: Salvar, Retirar o txtArquivo e carregar etiqueta
 
 1. Remover o componete txtArquivo do FrmImpressao
 
@@ -70,7 +70,7 @@ A etiqueta será excluída. A ação não poderá ser desfeita. Deseja continuar
 
 1. Ao dar um duplo clique na listview carregar a etiqueta e deixar o label em vermelho, configurar para não selecionar a linha, para não ficar azul a linha podendo assim ver o vermelho do label. Caso não dê após o duplo clique tirar o foco do componente.
 
-## Parte 1 Tarefa 6: Tratar o fechamento da tela para avisar que a etiqueta foi modificada. 
+## Tarefa 6: Tratar o fechamento da tela para avisar que a etiqueta foi modificada. 
 
 1. Criar a função fValidarEtiquetaAlterada e chama-la no form_unload
 
@@ -81,7 +81,7 @@ A etiqueta será excluída. A ação não poderá ser desfeita. Deseja continuar
     ```
 1. Caso sim fechar a tela, caso não voltar para a tela da central de impressão
 
-## Parte 1 Tarefa 7: Criar o botão salvar como...
+## Tarefa 7: Criar o botão salvar como...
 
 1. No local onde tínhamos o botão Deletar, implementar o botão `cmdSalvarComo` com o Text `S&alvar como...`
 
@@ -92,7 +92,7 @@ A etiqueta será excluída. A ação não poderá ser desfeita. Deseja continuar
 1. Colocar o Tooltip = "Salve a etiqueta atual com um novo nome"
 
 
-## Parte 1 Tarefa 8: Criar o botão Novo (validar etiquetas)
+## Tarefa 8: Criar o botão Novo (validar etiquetas)
 
 1. Substituir o botão `cmdCarregar` pelo `cmdNovo` com caption `&Novo` manter o mesmo tabindex
 
@@ -124,7 +124,7 @@ No novo form manter as configurações padrões da Telecon
 ** Não coloquei as imagens das etiquetas porque ainda podem sofrer alterações.
 
 
-## Parte 1 Tarefa 9: Teste de integração
+## Tarefa 9: Teste de integração
 1. Ajustar algum código antigo que possa ter ficado para trás
 1. Testar as opções criadas e a integração com o banco de dados, novo, salvar como, deletar e salvar. Criar e selecionar diversas etiquetas e imprimir verificando o comportamento da tela. 
 1. Ajustar possíves erros. 
