@@ -9,6 +9,8 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
 
     public partial class ModeloPack
     {
+
+        
         public Modelo Leve3Pague2 { get; }
         public Modelo Leve3Ganhe1 { get; }
         public Modelo Leve3Ganhe1ProdutoDiferente { get; }
@@ -52,7 +54,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
             ApartirDeXGanheDescontoAtacado = ConstruirApartirDeXGanheDescontoAtacado();
             ApartirDeXGanheDescontoProdutosAssociadosAtacado = ConstruirApartirDeXGanheDescontoProdutosAssociadosAtacado();
         }
-
+        
 
         private Modelo ConstruirLeve3Pague2()
         {
@@ -76,10 +78,10 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirObjetosRegras
                 false,//exibir_gbAjustarQuebra
                 true,//exibir_gbxLimitePack
-                "Compre ",
-                "unidade(s) deste(s) produto(s) ",
-                "Pague apenas ",
-                "  unidade(s)",
+                "Leve ",// "Compre ",
+                "unidade(s) ",//"unidade(s) deste(s) produto(s) "
+                "Pague ",//"Pague apenas "
+                "  unidade(s)",//"  unidade(s)"
                 0,
                 0,
                 CaixaTexto.TipoFormato.Inteiro,
@@ -117,10 +119,10 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirObjetosRegras
                 false,//exibir_gbAjustarQuebra
                 false,//exibir_gbxLimitePack                
-                "A cada ",
-                "unidade(s) deste(s) produto(s) ",
-                "Pague R$",
-                " na próxima unidade do(s) mesmo(s) produto(s)",
+                "Leve ",//"A cada "
+                "unidade(s) ",//"unidade(s) deste(s) produto(s) "
+                "Pague R$",//"Pague R$"
+                " na próxima unidade",//" na próxima unidade do(s) mesmo(s) produto(s)"
                 0,
                 0,
                 CaixaTexto.TipoFormato.Inteiro,
@@ -161,10 +163,10 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirObjetosRegras
                 false,//exibir_gbAjustarQuebra
                 false,//exibir_gbxLimitePack
-                "Compre ",
-                "unidade(s) deste(s) produto(s) ",
-                "Pague apenas R$",
-                "  nestes outros produtos",
+                "Compre ",//"Compre "
+                "unidade(s) ",//"unidade(s) deste(s) produto(s) "
+                "Pague R$",//"Pague apenas R$"
+                "  nestes outros produtos",//  nestes outros produtos
                 0,
                 0,
                 CaixaTexto.TipoFormato.Inteiro,
@@ -191,7 +193,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 ajuda += "Compre 2 Pizzas XXX e ganhe desconto de R$ 3,00 no refrigerante YYY." + Environment.NewLine + Environment.NewLine;
                 ajuda += "Obs:No exemplo acima você pode adicionar vários sabores de pizzas no quadro da esquerda ou vários sabores de refrigerante no quadro da direita" + Environment.NewLine + Environment.NewLine;
 
-                Modelo modelo = new Modelo("Leve 3 e receba desconto em outro produto diferente (R$ ou %)",
+                Modelo modelo = new Modelo("Leve 3 e receba desconto em outro produto diferente (R$)",
                     TipoDePack.PackVirtual,
                     7,
                     FormatoDoTxtValorRegra.MoedaComOpcional,
@@ -205,10 +207,10 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
-                    "Compre ",
-                    " unidade(s) deste(s) produto(s)",
-                    "Receba R$ ",
-                    " de desconto por unidade nestes outros produtos",
+                    "Compre ",//"Compre "
+                    " unidade(s) ",//" unidade(s) deste(s) produto(s)"
+                    "Ganhe R$",//"Receba R$ "
+                    " de desconto nestes outros produtos",//" de desconto nestes outros produtos"
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -222,7 +224,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 ajuda += "Compre 2 Pizzas XXX e ganhe desconto 10% no refrigerante YYY." + Environment.NewLine + Environment.NewLine;
                 ajuda += "Obs:No exemplo acima você pode adicionar vários sabores de pizzas no quadro da esquerda ou vários sabores de refrigerante no quadro da direita" + Environment.NewLine + Environment.NewLine;
 
-                Modelo modelo = new Modelo("Leve 3 e receba desconto em outro produto diferente (R$ ou %)",
+                Modelo modelo = new Modelo("Leve 3 e receba desconto em outro produto diferente (%)",
                     TipoDePack.PackVirtual,
                     6,
                     FormatoDoTxtValorRegra.PorcentagemComOpcional,
@@ -236,10 +238,10 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibir_gbAjustarQuebra
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
-                    "Compre ",
-                    " unidade(s) deste(s) produto(s)",
-                    "Receba R$ ",
-                    "% de desconto nestes outros produtos",
+                    "Compre ",//"Compre "
+                    " unidade(s) ",//" unidade(s) deste(s) produto(s)"
+                    "Receba ",//"Receba "
+                    "% de desconto nestes outros produtos",//"% de desconto nestes outros produtos"
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -273,7 +275,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 ajuda += "Compre 12 caixas de leite da marca XXX e pague R$ 1,00 cada caixa." + Environment.NewLine + Environment.NewLine;
                 ajuda += "Observação: A 13ª caixa de leite custará o preço original." + Environment.NewLine + Environment.NewLine;
 
-                Modelo modelo = new Modelo("Leve 6 e pague menos em cada Unid. (R$ ou %)",
+                Modelo modelo = new Modelo("Leve 6 e pague menos em cada Unid. (R$)",
                     TipoDePack.PackVirtual,
                     4,
                     FormatoDoTxtValorRegra.MoedaComOpcional,
@@ -287,10 +289,10 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     true,//exibir_gbxLimitePack
-                    "Compre ",
-                    "unidade(s) deste(s) produto(s) ",
-                    "Pague apenas R$",
-                    " por unidade(s)",
+                    "Leve ",//"Compre "
+                    " unidade(s) ",//"unidade(s) deste(s) produto(s) "
+                    "Pague R$",//"Pague apenas R$"
+                    " por unidade(s)",//" por unidade(s)"
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -303,7 +305,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 ajuda += "Compre 12 caixas de leite da marca XXX receba 10% de desconto em cada caixa." + Environment.NewLine + Environment.NewLine;
                 ajuda += "Observação: A 13ª caixa de leite custará o preço original." + Environment.NewLine + Environment.NewLine;
 
-                Modelo modelo = new Modelo("Leve 6 e pague menos em cada Unid. (R$ ou %)",
+                Modelo modelo = new Modelo("Leve 6 e pague menos em cada Unid. (%)",
                     TipoDePack.PackVirtual,
                     12,
                     FormatoDoTxtValorRegra.PorcentagemComOpcional,
@@ -317,10 +319,10 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     true,//exibir_gbxLimitePack
-                    "Compre ",
-                    "unidade(s) deste(s) produto(s) ",
-                    "Receba ",
-                    "% de desconto nestes produtos",
+                    "Compre ",//"Compre "
+                    " unidade(s) ",//"unidade(s) deste(s) produto(s) "
+                    "Receba ",//"Receba "
+                    "% de desconto nestes produtos",//"% de desconto nestes produtos"
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -347,7 +349,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 ajuda += "A partir de 12 latas de Refri pague 1 real em cada unidade." + Environment.NewLine + Environment.NewLine;
                 ajuda += "Observação: Você pode colocar vários tipos ou sabores na grade, eles serão somados na contagem." + Environment.NewLine + Environment.NewLine;
 
-                Modelo modelo = new Modelo("A partir de 6 pague menos (R$ ou %)",
+                Modelo modelo = new Modelo("A partir de 6 pague menos (R$)",
                     TipoDePack.PackVirtual,
                     3,
                     FormatoDoTxtValorRegra.MoedaComOpcional,
@@ -361,10 +363,10 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
-                    "Compre ",
-                    "unidade(s) deste(s) produto(s) ",
-                    "Pague apenas R$",
-                    " por unidade(s)",
+                    "Compre ",//"Compre "
+                    "unidade(s) ",//"unidade(s) deste(s) produto(s) "
+                    "Pague R$",//"Pague apenas R$"
+                    " por unidade(s)",//" por unidade(s)"
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -377,7 +379,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 ajuda += "A partir de 12 latas de Refri ganhe 10% de desconto em cada unidade." + Environment.NewLine + Environment.NewLine;
                 ajuda += "Observação: Você pode colocar vários tipos ou sabores na grade, eles serão somados na contagem." + Environment.NewLine + Environment.NewLine;
 
-                Modelo modelo = new Modelo("A partir de 6 pague menos (R$ ou %)",
+                Modelo modelo = new Modelo("A partir de 6 pague menos (%)",
                     TipoDePack.PackVirtual,
                     9,
                     FormatoDoTxtValorRegra.PorcentagemComOpcional,
@@ -391,10 +393,10 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     true,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
-                    "Compre a partir de ",
-                    "unidade(s) deste(s) produto(s) ",
-                    "Receba",
-                    " % de desconto por unidade(s).",
+                    "Compre a partir de ",//"Compre a partir de "
+                    " unidade(s) ",//"unidade(s) deste(s) produto(s) "
+                    "Ganhe ",//"Receba"
+                    "% de desconto por unidade(s).",//" % de desconto por unidade(s)."
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -425,7 +427,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 ajuda += "Compre R$ 50,00 em produtos e ganhe R$ 10,00 de desconto nos produtos da lista/grupo/marca" + Environment.NewLine + Environment.NewLine;
                 ajuda += "Observação: No exemplo acima as compras de R$ 50,00 não podem conter os produtos que irão ganhar desconto." + Environment.NewLine + Environment.NewLine;
 
-                Modelo modelo = new Modelo("Nas compras acima de R$ 50, 00 ganhe desconto nestes produtos(R$ ou %)",
+                Modelo modelo = new Modelo("Nas compras acima de R$ 50,00 ganhe desconto nestes produtos (R$)",
                     TipoDePack.PackVirtual,
                     10,
                     FormatoDoTxtValorRegra.MoedaComOpcional,
@@ -439,10 +441,10 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
-                    "Compre R$ ",
-                    " em mercadorias (fora deste pack) ",
-                    "Receba R$ ",
-                    " de desconto por unidade nestes produtos",
+                    "Compre R$",//"Compre R$ "
+                    " na loja ",//" em mercadorias (fora deste pack) "
+                    "e receba R$",//"Receba R$ "
+                    " de desconto nestes produtos",//" de desconto por unidade nestes produtos"
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -457,7 +459,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 ajuda += "Compre R$ 50,00 em produtos e ganhe 10 % de desconto nos produtos da lista/grupo/marca" + Environment.NewLine + Environment.NewLine;
                 ajuda += "Observação: No exemplo acima as compras de R$ 50,00 não podem conter os produtos que irão ganhar desconto." + Environment.NewLine + Environment.NewLine;
 
-                Modelo modelo = new Modelo("Nas compras acima de R$ 50,00 ganhe desconto nestes produtos (R$ ou %)",
+                Modelo modelo = new Modelo("Nas compras acima de R$ 50,00 ganhe desconto nestes produtos (%)",
                     TipoDePack.PackVirtual,
                     11,
                     FormatoDoTxtValorRegra.PorcentagemComOpcional,
@@ -471,10 +473,10 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
-                    "Compre R$ ",
-                    " em mercadorias (fora deste pack) ",
-                    "Receba ",
-                    "% de desconto nestes produtos",
+                    "Compre R$ ",// "Compre R$ 
+                    " na loja ",// " em mercadorias (fora deste pack) "
+                    "e receba ",//"Receba "
+                    "% de desconto nestes produtos",//"% de desconto nestes produtos"
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -542,11 +544,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
             ajuda += "Observação: Cada produto informado na grade será contado individualmente por código de barras." + Environment.NewLine + Environment.NewLine;
 
 
-            Modelo modelo = new Modelo("A partir de X unidades ganhe desconto %",
+            Modelo modelo = new Modelo("A partir de X unidades ganhe desconto (%)",
                 TipoDePack.PackVirtual,
                 13,
                 FormatoDoTxtValorRegra.PorcentagemComOpcional,
-                "A partir de X unidades ganhe X % de desconto",
+                "",
                 ajuda,//exemplosDePromocao
                 false,//exibirObjetosPreco2
                 false,//exibirPanelGrupo2
@@ -556,10 +558,10 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirObjetosRegras
                 true,//exibir_gbAjustarQuebra
                 false,//exibir_gbxLimitePack
-                "Compre a partir de ",
-                "unidade(s) de 1 destes produtos ",
-                "Receba",
-                " % de desconto por unidade(s).",
+                "A partir de ",//"Compre a partir de "
+                " unidade(s)",//"unidade(s) de 1 destes produtos "
+                " Ganhe ",//"Receba"
+                "% de desconto por unidade(s).",//" % de desconto por unidade(s)."
                 0,
                 0,
                 CaixaTexto.TipoFormato.Inteiro,
@@ -581,7 +583,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
             ajuda += "A partir de 6 refrescos (qualquer sabor) ganhe 10% de desconto em cada unidade." + Environment.NewLine + Environment.NewLine;
             ajuda += "Observação: Você pode colocar vários tipos ou sabores na grade, eles serão somados na contagem." + Environment.NewLine + Environment.NewLine;
 
-            Modelo modelo = new Modelo("A partir de X unidades ganhe desconto % (Produtos Associados)",
+            Modelo modelo = new Modelo("A partir de X unidades ganhe desconto (%) (Produtos Associados)",
                 TipoDePack.PackVirtual,
                 14,
                 FormatoDoTxtValorRegra.PorcentagemComOpcional,
@@ -595,10 +597,10 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirObjetosRegras
                 true,//exibir_gbAjustarQuebra
                 false,//exibir_gbxLimitePack
-                "Compre a partir de ",
-                "unidade(s) entre este(s) produto(s) ",
-                "Receba",
-                " % de desconto por unidade.",
+                "Leve ",//"Compre a partir de "
+                "unidade(s) ",//"unidade(s) entre este(s) produto(s) "
+                "Receba ",//"Receba"
+                "% de desconto por unidade(s).",//" % de desconto por unidade."
                 0,
                 0,
                 CaixaTexto.TipoFormato.Inteiro,
@@ -610,7 +612,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
 
         }
 
-        public static List<Modelo> RetornarListaCombo() 
+        private List<Modelo> RetornarListaComboParaPackVirtual(bool UsaKW) 
         {
             var modelos = new ModeloPack();
 
@@ -621,49 +623,69 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
             lista.Add(modelos.Leve3RecebaDescontoEmOutroProdutoDiferentePORCENTAGEM);
             lista.Add(modelos.Leve6PagueMenosEmCadaUnidPORCENTAGEM);
             lista.Add(modelos.ApartirDe6PagueMenosPORCENTAGEM);
-            lista.Add(modelos.NasComprasAcimaDe50GanheDescontoNestesProdutosPORCENTAGEM);
-
+            lista.Add(modelos.NasComprasAcimaDe50GanheDescontoNestesProdutosPORCENTAGEM);            
+            if (UsaKW) { lista.Add(modelos.NasComprasAcimaDe50GanheDescontoNestesProdutosPORCENTAGEM); }
 
             return lista;
         }
 
-        public static Modelo RetornarModelo(int codModelo)
+        public List<Modelo> RetornarListaComboParaDescontoParaAtacado()
         {
             var modelos = new ModeloPack();
 
-            switch (codModelo)
+            List<Modelo> lista = new List<Modelo>();
+            lista.Add(modelos.ApartirDeXGanheDescontoAtacado);
+            lista.Add(modelos.ApartirDeXGanheDescontoProdutosAssociadosAtacado);
+
+            return lista;
+        }
+
+        public List<Modelo> RetornarListaModelosDePack()
+        {
+            var modelos = new ModeloPack();
+
+            List<Modelo> lista = new List<Modelo>();
+
+            lista.Add(modelos.Leve3Pague2);
+            lista.Add(modelos.Leve3Ganhe1);
+            lista.Add(modelos.Leve3Ganhe1ProdutoDiferente);
+            // ================
+            lista.Add(modelos.Leve3RecebaDescontoEmOutroProdutoDiferenteMONETARIO);
+            lista.Add(modelos.Leve3RecebaDescontoEmOutroProdutoDiferentePORCENTAGEM);
+            // ================
+            lista.Add(modelos.Leve6PagueMenosEmCadaUnidMONETARIO);
+            lista.Add(modelos.Leve6PagueMenosEmCadaUnidPORCENTAGEM);
+            // ================
+            lista.Add(modelos.ApartirDe6PagueMenosMONETARIO);
+            lista.Add(modelos.ApartirDe6PagueMenosPORCENTAGEM);
+            // ================
+            lista.Add(modelos.NasComprasAcimaDe50GanheDescontoNestesProdutosMONETARIO);
+            lista.Add(modelos.NasComprasAcimaDe50GanheDescontoNestesProdutosPORCENTAGEM);
+            // ================
+            lista.Add(modelos.ValorDiferenciadoPreco2);
+            lista.Add(modelos.ApartirDeXGanheDescontoAtacado);
+            lista.Add(modelos.ApartirDeXGanheDescontoProdutosAssociadosAtacado);
+
+            return lista;
+        }
+
+        public Modelo RetornarModeloPeloCodModeloPack(int codModeloPack)
+        {
+            foreach (Modelo modelo in RetornarListaModelosDePack())
             {
-                case(1):
-                    return modelos.Leve3Pague2;
-                case (2):
-                    return modelos.Leve3Ganhe1ProdutoDiferente;
-                case (3):
-                    return modelos.ApartirDe6PagueMenosMONETARIO;
-                case (4):
-                    return modelos.Leve6PagueMenosEmCadaUnidMONETARIO;
-                case (5):
-                    return modelos.Leve3Ganhe1;
-                case (6):
-                    return modelos.Leve3RecebaDescontoEmOutroProdutoDiferentePORCENTAGEM;
-                case (7):
-                    return modelos.Leve3RecebaDescontoEmOutroProdutoDiferenteMONETARIO;
-                case (8):
-                    return modelos.ValorDiferenciadoPreco2;
-                case (9):
-                    return modelos.ApartirDe6PagueMenosPORCENTAGEM;
-                case (10):
-                    return modelos.NasComprasAcimaDe50GanheDescontoNestesProdutosMONETARIO;
-                case (11):
-                    return modelos.NasComprasAcimaDe50GanheDescontoNestesProdutosPORCENTAGEM;
-                case (12):
-                    return modelos.Leve6PagueMenosEmCadaUnidPORCENTAGEM;
-                case (13):
-                    return modelos.ApartirDeXGanheDescontoAtacado;
-                case (14):
-                    return modelos.ApartirDeXGanheDescontoProdutosAssociadosAtacado;
+                if (modelo.CodModeloPack == codModeloPack)
+                    return modelo;
             }
+            return null;
+        }
 
-
+        public Modelo RetornarModeloPelaDescricao(string descricaoModelo)
+        {
+            foreach (Modelo modelo in RetornarListaModelosDePack())
+            {
+                if (modelo.DescricaoComercial == descricaoModelo)
+                    return modelo;
+            }
             return null;
         }
 

@@ -7,11 +7,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
     {
         public class Modelo
         {
-            public Modelo(string descricaoComercial, TipoDePack tipo, int codPack, FormatoDoTxtValorRegra formatoDoOpcional, string descricaoAntiga, string exemplosDePromocao, bool exibirObjetosPreco2, bool exibirPanelGrupo2, bool exibirObjetosGruposClientes, bool exibirObjetosEncarte, bool exibirGroupBoxValores, bool exibirObjetosRegras, bool exibir_gbAjustarQuebra, bool exibir_gbxLimitePack, string descricaoLabel1, string descricaoLabel2, string descricaoLabel3, string descricaoLabel4, int valorDefault_txtQtdRegra, int valorDefault_txtValorRegra, CaixaTexto.TipoFormato formato_txtQtdRegra, CaixaTexto.TipoFormato formato_txtValorRegra)
+            public Modelo(string descricaoComercial, TipoDePack tipo, int codModeloPack, FormatoDoTxtValorRegra formatoDoOpcional, string descricaoAntiga, string exemplosDePromocao, bool exibirObjetosPreco2, bool exibirPanelGrupo2, bool exibirObjetosGruposClientes, bool exibirObjetosEncarte, bool exibirGroupBoxValores, bool exibirObjetosRegras, bool exibir_gbAjustarQuebra, bool exibir_gbxLimitePack, string descricaoLabel1, string descricaoLabel2, string descricaoLabel3, string descricaoLabel4, int valorDefault_txtQtdRegra, int valorDefault_txtValorRegra, CaixaTexto.TipoFormato formato_txtQtdRegra, CaixaTexto.TipoFormato formato_txtValorRegra)
             {
                 DescricaoComercial = descricaoComercial;
                 Tipo = tipo;
-                CodPack = codPack;
+                CodModeloPack = codModeloPack;
                 FormatoDoOpcional = formatoDoOpcional;
                 DescricaoAntiga = descricaoAntiga;
                 ExemplosDePromocao = exemplosDePromocao;
@@ -31,13 +31,13 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 ValorDefault_txtValorRegra = valorDefault_txtValorRegra;
                 Formato_txtQtdRegra = formato_txtQtdRegra;
                 Formato_txtValorRegra = formato_txtValorRegra;
-            }
+            }            
 
             public string DescricaoComercial { get; set; }
             //--------
             public TipoDePack Tipo { get; set; }
             //--------
-            public int CodPack { get; set; }
+            public int CodModeloPack { get; set; }
             public FormatoDoTxtValorRegra FormatoDoOpcional{ get; set; }
             //--------
              public string DescricaoAntiga { get; set; }
@@ -77,6 +77,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
             #endregion
 
             //--------
+
+            public override string ToString()
+            {
+                return this.DescricaoComercial;
+            }
 
         }
 
