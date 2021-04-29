@@ -36,43 +36,45 @@ criar os relatórios
 
 
 ## Tarefa 1: Criar propriedade _modelos para acessar 
-1. Ativar o módulo da KW, pode ser pelo config da tabela módulos no banco de dados. Realizar um pack de cada modelo, anotar todos, esses dados serão utilizados na última tarefa.
+1. Ativar o módulo da KW, cadastrar um pack de cada modelo, anotar todos, esses dados serão utilizados na última tarefa.
 1. Adicionar no projeto `Telecon.GestaoComercial.Biblioteca.PackVirtual` os arquivos 
 [Modelo.cs](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Classes/Modelo.cs)
 [ModelosPack.cs](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Classes/ModelosPack.cs)
 [TipoDePack.cs](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Classes/TipoDePack.cs)
 
-1. criar propriedade local no formulário
+1. criar a propriedade local no formulário FrmPackVirtual
 ``` c#
 private Telecon.GestaoComercial.Biblioteca.PackVirtual.ModeloPack _modelos = new Pack.ModeloPack();
 ``` 
 
-## tarefa 2: Acertar CarregarDgvGrupo1
+## tarefa 2: Atualizar o CarregarDgvGrupo1 utilizando a nova classe
 1. No CarregarDgvGrupo1 trocar o texto no 1º if para utilizar a propriedade _modelo 
+trocar
 `"Pague x porcento a menos a partir de x unidades (atacado)"`
-por _modelos.ApartirDe6PagueMenosPORCENTAGEM.DescricaoComercial
-Utilizar essa estrutura nas próximas validações
+por 
+`_modelos.ApartirDe6PagueMenosPORCENTAGEM.DescricaoComercial`
+Utilizar essa estrutura nas próximas validações, mudando somente o modelo de pack, se ficar com dúvidas na classe ModeloPack temos a propriedade DescricaoAntiga onde temos a antiga descrição que era exibida no combo.
 1.  No CarregarDgvGrupo1 trocar o 2º if para utilizar a propriedade _modelo.xxx.DescricaoComercial 
-`cboModeloPack.Text.Equals("Pague x porcento a menos a partir de x unidades (atacado)"))`
 1.  No CarregarDgvGrupo1 trocar o 3º if para utilizar a propriedade _modelo.xxx.DescricaoComercial 
-`"Valor Diferenciado (Preço 2)"`
 
-## tarefa 3: Acertar CarregarComboModeloPack
+
+## tarefa 3: Atualizar o CarregarComboModeloPack utilizando a nova classe
 1. Carregar o combo atravez do list _modelos.RetornarListaComboParaPackVirtual 
-utilizar o código abaixo para carregar os modelos
+utilizar o código abaixo para carregar os modelos no combo
 ``` C#
-    foreach(ModeloPack.Modelo modelo in ModeloPack.RetornarListaComboParaPackVirtual(true))
+    comboBox1.Items.Add("Selecione um exemplo de promoção");
+    foreach (ModeloPack.Modelo modelo in _modelos.RetornarListaComboParaPackVirtual(VerModuloKW))
     {
         comboBox1.Items.Add(modelo);
     }
 ```
-1. No combo da primeira aba a primeira opção é `Todos`
-1. No combo da Segunda aba a primeira opção é `Selecione um exemplo de promoção` 
-1. Alterar o caption do lblModeloDoPack para `Exemplos de Pack` 
-
-algo similar a imagem abaixo
+2. No combo da primeira aba a primeira opção é `Todos`
+3. No combo da Segunda aba a primeira opção é `Selecione um exemplo de promoção` 
+4. Alterar o caption do lblModeloDoPack para `Exemplos de Pack` 
+* Deixar como na imagem abaixo
 ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/ComboBoxPackVirtual.jpg?raw=true)
-
+1. Adicionar um option button para selecionar Porcentagem ou Valor Monetário
+* Deixar como na imagem abaixo
 
 
 
