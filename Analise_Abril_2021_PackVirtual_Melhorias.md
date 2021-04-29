@@ -103,11 +103,25 @@ utilizar o código abaixo para carregar os modelos no combo
         * Caso PorcentagemComOpcional marcar o opcional `Porcentagem (%)`    
         * criar um procedimento com essa regra
                     
+1. O txtQtdRegra e o txtValorRegra deverão receber a formatação também de acordo com a propriedade
+`modelo.Formato_txtQtdRegra` e `modelo.Formato_txtValorRegra` 
+
 1. Recriar o procedimento de posicionar os labels e os texts. tendo como base apenas o primeiro label, depois alterar a propriedade `.left` dos outros labels e texts para ficarem alinhados. Criar o pocedimento PosicionarObjetosDeRegras, ele deve ser chamado após o `DefinirValoresLabels` programar para poder substuir o procedimento PosicionarLayoutLabel e o PosicionarLayoutTextBox. Os procedimentos atuais além de difícil manutenção não estão funcionando muito bem. E as descrições irão mudar totalmente.
 1. Alterar o caption do label lblProdutoGratis
-    * substiuir o text `Os valores 0,00 ou 0,01 indicam que o produto será gratis.` por ` * R$0,00 indica que o produto será gratis.` 
+    * substiuir o text `Os valores 0,00 ou 0,01 indicam que o produto será gratis.` por `* R$0,00 indica que o produto será gratis.` 
     * Inserir ele na programação do DefinirValoresLabels, para ele ficar após todos os labels como no exemplo abaixo
 
+    ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/PackVirtual_lblProdutoGratis.jpg?raw=true)
+
+1. Existe um procedimento igual na tela FrmDescontoAtacado, realizar a mesma alteração nesse formulário, atualizando-o.
+
+## Tarefa 5: Implementar o radio button Monetário/ Porcentagem
+
+1. Ao alterar o radio button verficar a descrição e alterar a descrição entre (%) ou (R$)
+exemplo: 
+Se for selecionado no combo 
+`A partir de 6 pague menos (%)`
+ao mudar o radion buton para monetário (R$) substituir na string `(%)` por `(R$)`
 
 
 ## tarefa 5: Acertar txtValorRegra_Leave
@@ -118,7 +132,6 @@ utilizar o código abaixo para carregar os modelos no combo
 
 ## tarefa 7: Acertar dgvGrupo1_CellMouseClick
 1. No dgvGrupo1_CellMouseClick acertar o if para utilizar a propriedade _modelo.xxx.DescricaoComercial
-
 
 ## tarefa 8: Acertar dgvGrupo1_CellMouseClick
 1. No TestarCampos acertar os ifs para utilizar a propriedade _modelo.xxx.DescricaoComercial
@@ -137,13 +150,14 @@ utilizar o código abaixo para carregar os modelos no combo
 ```
 por 
 ``` C#
- packVirtual.ModeloPack = _modelo.RetornarModeloPelaDescricao(descricaoQueEstaNocombo).codPack`
+ packVirtual.ModeloPack = _modelo.RetornarModeloPelaDescricao(descricaoQueEstaNocombo).codModeloPack`
  ```
 1. Acertar o último if para utilizar a propriedade _modelo.xxx.DescricaoComercial
 
-
 ## tarefa 10: Acertar o btnSalvar_Click
 1. No btnSalvar_Click acertar os ifs para utilizar a propriedade _modelo.xxx.DescricaoComercial
+
+
 
 ## tarefa 11: Acertar o ptbQuestao_Click
 1. No ptbQuestao_Click remover o switch case e exibir a propriedade _modelos.xxx.ExemplosDePromocao. Realizar um foreach assim como nos métodos do ModelosPack, buscando em todos da lista
@@ -173,7 +187,7 @@ substituir
 ```
 por 
 ``` C#
-        complemetoSQL.AppendLine(" And PV.ModeloPack = " + _modelos.RetornarModeloPelaDescricao(cboModeloPackPesquisa.Text).CodPack);
+        complemetoSQL.AppendLine(" And PV.ModeloPack = " + _modelos.RetornarModeloPelaDescricao(cboModeloPackPesquisa.Text).CodModeloPack);
 ```
 
 1. Igualmente No procedimento CarregarPacks
@@ -196,25 +210,24 @@ dgvPackFiltro_CellMouseDoubleClick
                     cboModeloPack.SelectedIndex = packVirtual.ModeloPack;
 ```
 
-## Tarefa 16: Adicionar classe no formulário FrmDescontoParaAtacado
-1. Foram criados alguns procedimentos nesse formulário que sobreescrevem os procedimentos que alteramos nas tarefas anteriores, acertálos no mesmo formato.
-1. Criar a propriedade _modelos, utilizar a propriedade _modelos nos ifs, no carrega tela, no salvar, e ao carregar os combos, da mesma forma que na tela pack virtual. 
+## Tarefa 17: Percorrer tela do pack virtual em busca de código obsoleto
+1. Verificar na tela se ficou alguma descrição antiga dos packs em algum if. Corrigir se ocorrer
+
+## Tarefa 16: Atualizar o formulário FrmDescontoParaAtacado para utilizar a classe _modelo 
+1. Foram criados alguns procedimentos nesse formulário que sobreescrevem os procedimentos que alteramos nas tarefas anteriores. Acerta-los no mesmo formato.
+1. utilizar a propriedade _modelos nos ifs, no carrega tela, no salvar, e ao carregar os combos, da mesma forma que na tela pack virtual. 
 1. Ao carregar os combos na segunda aba não precisamos colocar a primeira opção `Selecione um exemplo de pack`. Ja deverá abrir na opção `A partir de X unidades ganhe desconto (%)`. Carregar da mesma forma que na tarefa 3. Deverão ser carregados 2 modelos no combo. Utilizar o `_modelo.RetornarListaComboParaDescontoParaAtacado`
 
 ## Tarefa 17: Implementar a opção de produtos associados no form FrmDescontoParaAtacado e no PDV
 1. Na aba de pesquisa o modelo de produtos associados já deve estar sendo listado e o filtro funcionando, testar. 
 1. Na aba cadastro ao selecionar esse modelo montar a tela de acordo com a classe _modelos.ApartirDeXGanheDescontoProdutosAssociadosAtacado
-1. Implementar o salvar. O salvar deverá ter o mesmo comportamento do pack
+1. Verificar o salvar. O salvar deverá ter o mesmo comportamento do pack
 _modelos.ApartirDe6PagueMenosPORCENTAGEM, deverá salvar da mesma forma nas tabelas.
 1. Ao adicionar um produto que possua produtos associados no grid deverá ter o mesmo tratamento que no pack virtual _modelos.ApartirDe6PagueMenosPORCENTAGEM, deverá perguntar se deseja adicionar os produtos associados a ele na grade. 
 1. Implementar o botão `Buscar Produtos por Grupo` no modelo de produtos associados. Trocar o text do botão para `Buscar Produtos associados`. A funcionalidade deverá ser a mesma mas em vez de buscar nos grupos deverá buscar nos produtos associados. Se necessário duplicar o form de busca por gupos.
 1. Implementar o Modelo de Desconto no Telecon PDV 3. Ele terá o mesmo funcionamento que no pack virtual _modelos.ApartirDe6PagueMenosPORCENTAGEM. Modelo = 9 no banco de dados. A única coisa que faremos no pdv é que ele fará o mesmo tratamento que fazia para o modelo 9 para o modelo 14 igualmente.
 * No pdv na função mdlValidarRegras.fValidarPack no case 9 adicionar também o 13, deixando os dois funcionando da mesma forma (9,14)
 1. Testar cadastro e funcionamento do novo Desconto para Atacado no PDV
-
-
-
-
 
 ## Tarefa 18: Adicionar informação sobre Desconto Pack/Atacado no Cadastro de Produtos parte 1
 
@@ -245,7 +258,7 @@ _modelos.ApartirDe6PagueMenosPORCENTAGEM, deverá salvar da mesma forma nas tabe
 * Instanciar a classe Telecon_GestaoComercial_Biblioteca.PackVirtualVB6 no VB no cadastro de produtos
 
 * No form frmCadProdutos criar a função fRetornarPackVirtualVigente que retorne o código da tabela pack virtual. A função deve ser semelhante a fValidaProdutoPackVirtualVigente mas deve levar em consideração a loja logada.
-* No procedimento sAtualizaCamposPromocao, utilizar a função  fRetornarPackVirtualVigente e RetornarTipoDePack para montar uma descrição e implementar 1 label de acordo com as imagens abaixo.
+* No procedimento sAtualizaCamposPromocao, utilizar a função  fRetornarPackVirtualVigente e RetornarTipoDePack para montar uma descrição. Adicionar e implementar um label de acordo com as imagens abaixo.
 ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CadProdutosPromocao.jpg?raw=true)
 ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CadProdutosPromocao2.jpg?raw=true)
 * O label deve ficar por padrão invisível, deverá ficar visível caso o produto possua um pack virtual ou desconto para atacado com data vigente para a loja logada.
@@ -262,7 +275,7 @@ _modelos.ApartirDe6PagueMenosPORCENTAGEM, deverá salvar da mesma forma nas tabe
 * Veja que no desconto para atacado não possui datas
 * Na descrição da promoção temos uma frase semelhante, corrigir crase no "à"
 * Ao clicar no label deverá abrir a tela do pack virtual ou desconto para atacado na aba de pesquisa exibindo somente o respectivo registro.
-* Testar as programações realizadas no cadastro de produtos com packs que possuam 1 e 2 grades. Testar também com os dois tipos de desconto para atacado.
+* Testar as programações realizadas no cadastro de produtos com packs que possuam 1 e 2 grades no cadastro. Testar também com os dois tipos de desconto para atacado.
 1. Alterar a mensagem abaixo no `frmCadProdutos.fValidaProdutoPackVirtualVigente` 
 substituir
 ``` 
@@ -287,12 +300,5 @@ por
  ## tarefa 15: Ajustes finais e testes de integração
 1. Refazer os packs que foram feitos na tarefa 1 e comparar todos para ver se ficaram iguais no banco de dados.
 1. Ajustar possíveis diferenças ou erros
-
-
- ver procedimentos que foram substuídos na tela desconto atacado e também o código lá da tela, 
-
- para listar no combo, listar apenas os de pack virtual, ou desconto atacado, listar , verificar a pesquisa 
-
-
- CRIAR O OPCIONAL E GRAVAR
+1. Verificar se os packs estão funcionando no pdv de acordo com os exemplos dados no ponto de interrogação da tela.
 
