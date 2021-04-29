@@ -7,7 +7,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
     {
         public class Modelo
         {
-            public Modelo(string descricaoComercial, TipoDePack tipo, int codModeloPack, FormatoDoTxtValorRegra formatoDoOpcional, string descricaoAntiga, string exemplosDePromocao, bool exibirObjetosPreco2, bool exibirPanelGrupo2, bool exibirObjetosGruposClientes, bool exibirObjetosEncarte, bool exibirGroupBoxValores, bool exibirObjetosRegras, bool exibir_gbAjustarQuebra, bool exibir_gbxLimitePack, string descricaoLabel1, string descricaoLabel2, string descricaoLabel3, string descricaoLabel4, int valorDefault_txtQtdRegra, int valorDefault_txtValorRegra, CaixaTexto.TipoFormato formato_txtQtdRegra, CaixaTexto.TipoFormato formato_txtValorRegra)
+            public Modelo(string descricaoComercial, TipoDePack tipo, int codModeloPack, FormatoDoTxtValorRegra formatoDoOpcional, string descricaoAntiga, string exemplosDePromocao, bool exibirObjetosPreco2, bool exibirPanelGrupo2, bool exibirObjetosGruposClientes, bool exibirObjetosEncarte, bool exibirGroupBoxValores, bool exibirObjetosRegras, bool exibir_gbAjustarQuebra, bool exibir_gbxLimitePack, bool exibir_lblProdutoGratis, string descricaoLabel1, string descricaoLabel2, string descricaoLabel3, string descricaoLabel4, int valorDefault_txtQtdRegra, int valorDefault_txtValorRegra, CaixaTexto.TipoFormato formato_txtQtdRegra, CaixaTexto.TipoFormato formato_txtValorRegra)
             {
                 DescricaoComercial = descricaoComercial;
                 Tipo = tipo;
@@ -23,6 +23,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 ExibirObjetosRegras = exibirObjetosRegras;
                 Exibir_gbxLimitePack = exibir_gbxLimitePack;
                 Exibir_gbAjustarQuebra = exibir_gbAjustarQuebra;
+                Exibir_lblProdutoGratis = exibir_lblProdutoGratis;
                 DescricaoLabel1 = descricaoLabel1;
                 DescricaoLabel2 = descricaoLabel2;
                 DescricaoLabel3 = descricaoLabel3;
@@ -56,6 +57,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
             public bool ExibirObjetosRegras { get; set; } //  ExibirObjetosRegras(!VALOR);
             public bool Exibir_gbxLimitePack { get; set; } // gbxLimitePack
             public bool Exibir_gbAjustarQuebra { get; set; } // gbAjustarQuebra
+            public bool Exibir_lblProdutoGratis { get; set; } // lblProdutoGratis
 
             #endregion
 

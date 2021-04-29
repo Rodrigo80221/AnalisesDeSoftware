@@ -78,6 +78,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirObjetosRegras
                 false,//exibir_gbAjustarQuebra
                 true,//exibir_gbxLimitePack
+                false,//exibir lblProdutoGratis
                 "Leve ",// "Compre ",
                 "unidade(s) ",//"unidade(s) deste(s) produto(s) "
                 "Pague ",//"Pague apenas "
@@ -118,7 +119,8 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirGroupBoxValores
                 true,//exibirObjetosRegras
                 false,//exibir_gbAjustarQuebra
-                false,//exibir_gbxLimitePack                
+                false,//exibir_gbxLimitePack 
+                true,//exibir lblProdutoGratis                
                 "Leve ",//"A cada "
                 "unidade(s) ",//"unidade(s) deste(s) produto(s) "
                 "Pague R$",//"Pague R$"
@@ -163,6 +165,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirObjetosRegras
                 false,//exibir_gbAjustarQuebra
                 false,//exibir_gbxLimitePack
+                true,//exibir lblProdutoGratis                
                 "Compre ",//"Compre "
                 "unidade(s) ",//"unidade(s) deste(s) produto(s) "
                 "Pague R$",//"Pague apenas R$"
@@ -207,6 +210,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
+                    false,//exibir lblProdutoGratis 
                     "Compre ",//"Compre "
                     " unidade(s) ",//" unidade(s) deste(s) produto(s)"
                     "Ganhe R$",//"Receba R$ "
@@ -238,6 +242,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibir_gbAjustarQuebra
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
+                    false,//exibir lblProdutoGratis 
                     "Compre ",//"Compre "
                     " unidade(s) ",//" unidade(s) deste(s) produto(s)"
                     "Receba ",//"Receba "
@@ -289,6 +294,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     true,//exibir_gbxLimitePack
+                    false,//exibir lblProdutoGratis 
                     "Leve ",//"Compre "
                     " unidade(s) ",//"unidade(s) deste(s) produto(s) "
                     "Pague R$",//"Pague apenas R$"
@@ -319,6 +325,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     true,//exibir_gbxLimitePack
+                    false,//exibir lblProdutoGratis 
                     "Compre ",//"Compre "
                     " unidade(s) ",//"unidade(s) deste(s) produto(s) "
                     "Receba ",//"Receba "
@@ -363,6 +370,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
+                    false,//exibir lblProdutoGratis 
                     "Compre ",//"Compre "
                     "unidade(s) ",//"unidade(s) deste(s) produto(s) "
                     "Pague R$",//"Pague apenas R$"
@@ -393,6 +401,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     true,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
+                    false,//exibir lblProdutoGratis 
                     "Compre a partir de ",//"Compre a partir de "
                     " unidade(s) ",//"unidade(s) deste(s) produto(s) "
                     "Ganhe ",//"Receba"
@@ -441,6 +450,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
+                    false,//exibir lblProdutoGratis 
                     "Compre R$",//"Compre R$ "
                     " na loja ",//" em mercadorias (fora deste pack) "
                     "e receba R$",//"Receba R$ "
@@ -473,6 +483,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
+                    false,//exibir lblProdutoGratis 
                     "Compre R$ ",// "Compre R$ 
                     " na loja ",// " em mercadorias (fora deste pack) "
                     "e receba ",//"Receba "
@@ -515,6 +526,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 false,//exibirObjetosRegras
                 false,//exibir_gbAjustarQuebra
                 false,//exibir_gbxLimitePack
+                false,//exibir lblProdutoGratis 
                 "Valor Diferenciado (Preço 2)",
                 "",
                 "",
@@ -558,6 +570,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirObjetosRegras
                 true,//exibir_gbAjustarQuebra
                 false,//exibir_gbxLimitePack
+                false,//exibir lblProdutoGratis 
                 "A partir de ",//"Compre a partir de "
                 " unidade(s)",//"unidade(s) de 1 destes produtos "
                 " Ganhe ",//"Receba"
@@ -597,6 +610,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirObjetosRegras
                 true,//exibir_gbAjustarQuebra
                 false,//exibir_gbxLimitePack
+                false,//exibir lblProdutoGratis 
                 "Leve ",//"Compre a partir de "
                 "unidade(s) ",//"unidade(s) entre este(s) produto(s) "
                 "Receba ",//"Receba"
@@ -612,7 +626,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
 
         }
 
-        private List<Modelo> RetornarListaComboParaPackVirtual(bool UsaKW) 
+        public List<Modelo> RetornarListaComboParaPackVirtual(bool UsaKW) 
         {
             var modelos = new ModeloPack();
 
@@ -624,7 +638,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
             lista.Add(modelos.Leve6PagueMenosEmCadaUnidPORCENTAGEM);
             lista.Add(modelos.ApartirDe6PagueMenosPORCENTAGEM);
             lista.Add(modelos.NasComprasAcimaDe50GanheDescontoNestesProdutosPORCENTAGEM);            
-            if (UsaKW) { lista.Add(modelos.NasComprasAcimaDe50GanheDescontoNestesProdutosPORCENTAGEM); }
+            if (UsaKW) { lista.Add(modelos.ValorDiferenciadoPreco2); }
 
             return lista;
         }
