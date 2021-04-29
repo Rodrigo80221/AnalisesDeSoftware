@@ -185,38 +185,60 @@ _modelos.ApartirDe6PagueMenosPORCENTAGEM, deverá salvar da mesma forma nas tabe
 por `R$0,00 indica que o produto será gratis.` 
 
 
-## Tarefa 18: Adicionar informação sobre Desconto Pack/Atacado no Cadastro de Produtos
+## Tarefa 18: Adicionar informação sobre Desconto Pack/Atacado no Cadastro de Produtos parte 1
 
 1. Criar um label no frame de promoções do cadastro de produto
-* Criar a função abaixo no c# no classe PackVirtualVB6.cd
-``` c#
-        public int RetornarTipoDePack(int CodModeloPack)
-        {
-            var modelo = new Telecon.GestaoComercial.Biblioteca.PackVirtual.ModeloPack();
-            var tipoPack = modelo.RetornarModeloPeloCodModeloPack(CodModeloPack).Tipo;
+* Criar as funções abaixo no c# no classe PackVirtualVB6.cd
+``` Csharp
+    public int RetornarTipoDePack(int CodModeloPack)
+    {
+        var modelo = new Telecon.GestaoComercial.Biblioteca.PackVirtual.ModeloPack();
+        var tipoPack = modelo.RetornarModeloPeloCodModeloPack(CodModeloPack).Tipo;
 
-            return (int)tipoPack;
-        }
+        return (int)tipoPack;
+    }
+```
+
+``` Csharp
+    public string RetornarDescricaoModeloPack(float qtdRegra, float valorRegra, int CodModeloPack)
+    {
+        var modelo = new Telecon.GestaoComercial.Biblioteca.PackVirtual.ModeloPack();
+
+        var m = modelo.RetornarModeloPeloCodModeloPack(CodModeloPack);
+
+        string texto = m.DescricaoLabel1 + System.Convert.ToString(valorRegra) + m.DescricaoLabel2 + m.DescricaoLabel3 + System.Convert.ToString(valorRegra) + m.DescricaoLabel4;
+
+        return texto;
+    }
 ```
 * Instanciar a classe Telecon_GestaoComercial_Biblioteca.PackVirtualVB6 no VB no cadastro de produtos
-* No form frmCadProdutos no procedimento sAtualizaCamposPromocao consultar na tabela packvirtual e nas tabelas relacionadas (similar ao frmImpressao.fAbreRecordSet) buscando um pack virtual vigente para a loja que está logada, e para o produto em questão. Essa consultado deve retornar o campo PackVirtual.ModeloPack que deverá ser passado por parâmetro para a função c# `RetornarTipoDePack`, se for pack virtual ou desconto atacado mostrar o label abaixo adequado ao tipo que retornou 
 
+* No form frmCadProdutos criar a função fRetornarPackVirtualVigente que retorne o código da tabela pack virtual. A função deve ser semelhante a fValidaProdutoPackVirtualVigente mas deve levar em consideração a loja logada.
+* No procedimento sAtualizaCamposPromocao, utilizar a função  fRetornarPackVirtualVigente e RetornarTipoDePack para montar uma descrição e implementar 1 label de acordo com as imagens abaixo.
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CadProdutosPromocao.jpg?raw=true)
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CadProdutosPromocao2.jpg?raw=true)
+* O label deve ficar por padrão invisível, deverá ficar visível caso o produto possua um pack virtual ou desconto para atacado com data vigente para a loja logada.
+* O `RetornarTipoDePack` deverá ser utilizado para saber se é um pack virtual ou um desconto para atacado.
 
-
-
-
-
-
-
-Na aba dados gerais no frame de promoções colocar um aviso?
-
-Detalhar na aba dados complementares
-
-
- "frmCadProdutos", Err, "fValidaProdutoPackVirtualVigente", Erl, True
+## Tarefa 18: Adicionar informação sobre Desconto Pack/Atacado no Cadastro de Produtos parte 2
+1. No cadastro de produto na aba de lojas, criar uma descrição semelhante a que já temos para as promoções. 
+* Carregar as descrições no grid, e ao passar o mouse exibir a descrição
+* Utilizar a função do c# RetornarDescricaoModeloPack, realizar nela as alterações necessárias para formatar corretamente os campos, não testei a função apenas criei para manter o modelo. 
+* Programar de acordo com a imagem abaixo
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CadProdutosPromocao4.jpg?raw=true)
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CadProdutosPromocao3.jpg?raw=true)
+* Veja que no desconto para atacado não possui datas
+* Na descrição da promoção temos uma frase semelhante, corrigir crase no "à"
+* Testar as programações realizadas no cadastro de produtos com packs que possuam 1 e 2 grades. Testar também com os dois tipos de desconto para atacado.
+1. Alterar a mensagem abaixo no `frmCadProdutos.fValidaProdutoPackVirtualVigente` 
+substituir
+``` 
 MsgBox "Não é permitido inativar um produto que esteja em um pack virtual vigente!", vbInformation, "Aviso"
-
-
+```
+por 
+``` 
+MsgBox "Não é permitido inativar um produto que esteja em um pack virtual vigente ou tenha um desconto para atacado!", vbInformation, "Aviso"
+```
 
 
 
