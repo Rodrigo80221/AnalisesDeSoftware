@@ -75,14 +75,40 @@ utilizar o código abaixo para carregar os modelos no combo
 ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/ComboBoxPackVirtual.jpg?raw=true)
 1. Adicionar um option button para selecionar Porcentagem ou Valor Monetário
 * Deixar como na imagem abaixo
-
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/PackVirtual_RadioButton.jpg?raw=true)
 
 
 ## tarefa 4: Substituir o switch case do procedimento cboModeloPack_SelectedIndexChanged
 
 1. Criar código para substituir o switch case. Buscar o modelo utilizando `_modelo.RetornarModeloPelaDescricao`, setar todos os procedimentos e objetos utilizando as propriedades do objeto modelo.
+    * Todo swith deverá ser substituindo ficando semelhante ao exemplo abaixo
+    ```  
+        var modelo = _modelo.RetornarModeloPelaDescricao(text_combobox)            
 
-1. Recriar o procedimento de posicionar os labels e os texts. tendo como base apenas o primeiro label, depois alterar a propriedade `.left` dos outros labels e texts para ficarem alinhados. Criar o pocedimento PosicionarObjetosDeRegras, ele deve ser chamado após o `DefinirValoresLabels` programar para poder substuir o procedimento PosicionarLayoutLabel e o PosicionarLayoutTextBox.
+        exibirObjetosPreco2 (modelo.ExibirObjetosPreco2)
+        exibirPanelGrupo2 (modelo.ExibirPanelGrupo2)
+        exibirObjetosGruposClientes (modelo.ExibirObjetosGruposClientes)
+        exibirObjetosEncarte (modelo.ExibirObjetosEncarte)
+        exibirGroupBoxValores (modelo.ExibirGroupBoxValores)
+        exibirObjetosRegras (modelo.ExibirObjetosRegras)
+        exibir_gbAjustarQuebra (modelo.Exibir_gbAjustarQuebra)
+        exibir_gbxLimitePack (modelo.Exibir_gbxLimitePack)
+        exibir lblProdutoGratis.visible = modelo.Exibir_lblProdutoGratis
+    ```
+    * Além dos controles acima implementar os radion buttons no controle da tela 
+    * O radio button terá o comportamento dependendo do enum FormatoDoTxtValorRegra
+        * Caso Oculto,UnitárioSemOpcional ou MoedaSemOpcional os 2 radion buttons deverão ficar invisíveis
+        * Caso MoedaComOpcional ou PorcentagemComOpcional deixar os 2 radion buttons deverão ficar visíveis
+        * Caso MoedaComOpcional marcar o opcional `Monetário (R$)`
+        * Caso PorcentagemComOpcional marcar o opcional `Porcentagem (%)`    
+        * criar um procedimento com essa regra
+                    
+1. Recriar o procedimento de posicionar os labels e os texts. tendo como base apenas o primeiro label, depois alterar a propriedade `.left` dos outros labels e texts para ficarem alinhados. Criar o pocedimento PosicionarObjetosDeRegras, ele deve ser chamado após o `DefinirValoresLabels` programar para poder substuir o procedimento PosicionarLayoutLabel e o PosicionarLayoutTextBox. Os procedimentos atuais além de difícil manutenção não estão funcionando muito bem. E as descrições irão mudar totalmente.
+1. Alterar o caption do label lblProdutoGratis
+    * substiuir o text `Os valores 0,00 ou 0,01 indicam que o produto será gratis.` por ` * R$0,00 indica que o produto será gratis.` 
+    * Inserir ele na programação do DefinirValoresLabels, para ele ficar após todos os labels como no exemplo abaixo
+
+
 
 ## tarefa 5: Acertar txtValorRegra_Leave
 1. No txtValorRegra_Leave acertar o if para utilizar a propriedade _modelo.xxx.DescricaoComercial
@@ -187,9 +213,7 @@ _modelos.ApartirDe6PagueMenosPORCENTAGEM, deverá salvar da mesma forma nas tabe
 1. Testar cadastro e funcionamento do novo Desconto para Atacado no PDV
 
 
-## Tarefa 17: Alterar o caption do label lblProdutoGratis
-1. substiuir o text `Os valores 0,00 ou 0,01 indicam que o produto será gratis.`
-por `R$0,00 indica que o produto será gratis.` 
+
 
 
 ## Tarefa 18: Adicionar informação sobre Desconto Pack/Atacado no Cadastro de Produtos parte 1
