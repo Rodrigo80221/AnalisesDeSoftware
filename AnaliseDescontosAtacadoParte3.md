@@ -36,7 +36,12 @@ criar os relatórios
 
 
 ## Tarefa 1: Criar propriedade _modelos para acessar 
-1. Ativar o módulo da KW, pode ser pelo config da tabela módulos no banco de dados. Realizar um pack de cada modelo, anotar todos para comparar com a tela no final da alteração, devem ser mantidos o codmodelo.
+1. Ativar o módulo da KW, pode ser pelo config da tabela módulos no banco de dados. Realizar um pack de cada modelo, anotar todos, esses dados serão utilizados na última tarefa.
+1. Adicionar no projeto Telecon.GestaoComercial.Biblioteca.PackVirtual os arquivos 
+Modelo.cs
+ModelosPack.cs
+TipoDePack.cs
+
 1. criar propriedade local no formulário
 ``` c#
 private Telecon.GestaoComercial.Biblioteca.PackVirtual.ModeloPack _modelos = new Pack.ModeloPack();
@@ -219,6 +224,7 @@ por `R$0,00 indica que o produto será gratis.`
 ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CadProdutosPromocao2.jpg?raw=true)
 * O label deve ficar por padrão invisível, deverá ficar visível caso o produto possua um pack virtual ou desconto para atacado com data vigente para a loja logada.
 * O `RetornarTipoDePack` deverá ser utilizado para saber se é um pack virtual ou um desconto para atacado.
+* Ao clicar no label deverá abrir a tela do pack virtual ou desconto para atacado na aba de pesquisa exibindo somente o respectivo registro.
 
 ## Tarefa 18: Adicionar informação sobre Desconto Pack/Atacado no Cadastro de Produtos parte 2
 1. No cadastro de produto na aba de lojas, criar uma descrição semelhante a que já temos para as promoções. 
@@ -229,6 +235,7 @@ por `R$0,00 indica que o produto será gratis.`
 ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CadProdutosPromocao3.jpg?raw=true)
 * Veja que no desconto para atacado não possui datas
 * Na descrição da promoção temos uma frase semelhante, corrigir crase no "à"
+* Ao clicar no label deverá abrir a tela do pack virtual ou desconto para atacado na aba de pesquisa exibindo somente o respectivo registro.
 * Testar as programações realizadas no cadastro de produtos com packs que possuam 1 e 2 grades. Testar também com os dois tipos de desconto para atacado.
 1. Alterar a mensagem abaixo no `frmCadProdutos.fValidaProdutoPackVirtualVigente` 
 substituir
@@ -240,25 +247,20 @@ por
 MsgBox "Não é permitido inativar um produto que esteja em um pack virtual vigente ou tenha um desconto para atacado!", vbInformation, "Aviso"
 ```
 
+## Tarefa 19: Corrigir detalhes de mensagebox
 
+1. No procedimento `frmImportaCupomSaidas.cmdAdicionar_Click` substituir a mensagem
+`MsgBox "Alguns produtos contidos neste cupom possui Pack Virtual."`
+por 
+`MsgBox "Alguns produtos contidos neste cupom possuem Pack Virtual ou Desconto Atacado"`
 
-
-
-
-
-
-
-
-"frmImportaCupomSaidas", Err, "cmdAdicionar_Click"
-MsgBox "Alguns produtos contidos neste cupom possui Pack Virtual."
-
-
-ver "frmCadGruposClientes", Err, "cadGruposClientes_AtualizaTela"
-chkNaoAplicarDescontoProdutoPack
-
+1. No formulário `frmCadGruposClientes` alterar o caption do controle `chkNaoAplicarDescontoProdutoPack`, substituir por 
+`Não aplicar o desconto no Pack Virtual ou Desconto Atacado`
 
 
  ## tarefa 15: Ajustes finais e testes de integração
+
+
 
  ver procedimentos que foram substuídos na tela desconto atacado e também o código lá da tela, 
 
