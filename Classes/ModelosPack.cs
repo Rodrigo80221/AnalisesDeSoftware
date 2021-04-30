@@ -78,11 +78,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirObjetosRegras
                 false,//exibir_gbAjustarQuebra
                 true,//exibir_gbxLimitePack
-                false,//exibir lblProdutoGratis
                 "Leve ",// "Compre ",
                 "unidade(s) ",//"unidade(s) deste(s) produto(s) "
                 "Pague ",//"Pague apenas "
                 "  unidade(s)",//"  unidade(s)"
+                "",
                 0,
                 0,
                 CaixaTexto.TipoFormato.Inteiro,
@@ -119,12 +119,12 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirGroupBoxValores
                 true,//exibirObjetosRegras
                 false,//exibir_gbAjustarQuebra
-                false,//exibir_gbxLimitePack 
-                true,//exibir lblProdutoGratis                
+                false,//exibir_gbxLimitePack            
                 "Leve ",//"A cada "
                 "unidade(s) ",//"unidade(s) deste(s) produto(s) "
                 "Pague R$",//"Pague R$"
                 " na próxima unidade",//" na próxima unidade do(s) mesmo(s) produto(s)"
+                "Observação: R$ 0,00 indica que o produto será gratis.", // Observacao
                 0,
                 0,
                 CaixaTexto.TipoFormato.Inteiro,
@@ -164,12 +164,12 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirGroupBoxValores
                 true,//exibirObjetosRegras
                 false,//exibir_gbAjustarQuebra
-                false,//exibir_gbxLimitePack
-                true,//exibir lblProdutoGratis                
+                false,//exibir_gbxLimitePack              
                 "Compre ",//"Compre "
                 "unidade(s) ",//"unidade(s) deste(s) produto(s) "
                 "Pague R$",//"Pague apenas R$"
                 "  nestes outros produtos",//  nestes outros produtos
+                "Observação: R$ 0,00 indica que o produto será gratis.", // Observacao
                 0,
                 0,
                 CaixaTexto.TipoFormato.Inteiro,
@@ -210,11 +210,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
-                    false,//exibir lblProdutoGratis 
                     "Compre ",//"Compre "
                     " unidade(s) ",//" unidade(s) deste(s) produto(s)"
                     "Ganhe R$",//"Receba R$ "
                     " de desconto nestes outros produtos",//" de desconto nestes outros produtos"
+                    "", // Observacao
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -242,11 +242,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibir_gbAjustarQuebra
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
-                    false,//exibir lblProdutoGratis 
                     "Compre ",//"Compre "
                     " unidade(s) ",//" unidade(s) deste(s) produto(s)"
                     "Receba ",//"Receba "
                     "% de desconto nestes outros produtos",//"% de desconto nestes outros produtos"
+                    "", // Observacao
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -294,11 +294,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     true,//exibir_gbxLimitePack
-                    false,//exibir lblProdutoGratis 
                     "Leve ",//"Compre "
                     " unidade(s) ",//"unidade(s) deste(s) produto(s) "
                     "Pague R$",//"Pague apenas R$"
                     " por unidade(s)",//" por unidade(s)"
+                    "", // Observacao
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -325,11 +325,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     true,//exibir_gbxLimitePack
-                    false,//exibir lblProdutoGratis 
                     "Compre ",//"Compre "
                     " unidade(s) ",//"unidade(s) deste(s) produto(s) "
                     "Receba ",//"Receba "
                     "% de desconto nestes produtos",//"% de desconto nestes produtos"
+                    "", // Observacao
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -370,11 +370,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
-                    false,//exibir lblProdutoGratis 
                     "Compre ",//"Compre "
                     "unidade(s) ",//"unidade(s) deste(s) produto(s) "
                     "Pague R$",//"Pague apenas R$"
                     " por unidade(s)",//" por unidade(s)"
+                    "", // Observacao
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -401,11 +401,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     true,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
-                    false,//exibir lblProdutoGratis 
                     "Compre a partir de ",//"Compre a partir de "
                     " unidade(s) ",//"unidade(s) deste(s) produto(s) "
                     "Ganhe ",//"Receba"
                     "% de desconto por unidade(s).",//" % de desconto por unidade(s)."
+                    "", // Observacao
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -450,11 +450,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
-                    false,//exibir lblProdutoGratis 
                     "Compre R$",//"Compre R$ "
                     " na loja ",//" em mercadorias (fora deste pack) "
                     "e receba R$",//"Receba R$ "
                     " de desconto nestes produtos",//" de desconto por unidade nestes produtos"
+                    "Observação: O valor total da compra não poderá conter os produtos que irão receber desconto.", // Observacao
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -483,11 +483,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                     true,//exibirObjetosRegras
                     false,//exibir_gbAjustarQuebra
                     false,//exibir_gbxLimitePack
-                    false,//exibir lblProdutoGratis 
                     "Compre R$ ",// "Compre R$ 
                     " na loja ",// " em mercadorias (fora deste pack) "
                     "e receba ",//"Receba "
                     "% de desconto nestes produtos",//"% de desconto nestes produtos"
+                    "Observação: O valor total da compra não poderá conter os produtos que irão receber desconto.", // Observacao
                     0,
                     0,
                     CaixaTexto.TipoFormato.Inteiro,
@@ -526,11 +526,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 false,//exibirObjetosRegras
                 false,//exibir_gbAjustarQuebra
                 false,//exibir_gbxLimitePack
-                false,//exibir lblProdutoGratis 
                 "Valor Diferenciado (Preço 2)",
                 "",
                 "",
                 "",
+                "", // Observacao
                 0,
                 0,
                 CaixaTexto.TipoFormato.Inteiro,
@@ -570,11 +570,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirObjetosRegras
                 true,//exibir_gbAjustarQuebra
                 false,//exibir_gbxLimitePack
-                false,//exibir lblProdutoGratis 
                 "A partir de ",//"Compre a partir de "
                 " unidade(s)",//"unidade(s) de 1 destes produtos "
                 " Ganhe ",//"Receba"
                 "% de desconto por unidade(s).",//" % de desconto por unidade(s)."
+                "Observação: Cada produto informado na grade será contado individualmente por código de barras.", // Observacao
                 0,
                 0,
                 CaixaTexto.TipoFormato.Inteiro,
@@ -610,11 +610,11 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 true,//exibirObjetosRegras
                 true,//exibir_gbAjustarQuebra
                 false,//exibir_gbxLimitePack
-                false,//exibir lblProdutoGratis 
                 "Leve ",//"Compre a partir de "
                 "unidade(s) ",//"unidade(s) entre este(s) produto(s) "
                 "Receba ",//"Receba"
                 "% de desconto por unidade(s).",//" % de desconto por unidade."
+                "Observação: Você pode adicionar diversas variedades na grade, elas serão somadas na contagem.", // Observacao
                 0,
                 0,
                 CaixaTexto.TipoFormato.Inteiro,
