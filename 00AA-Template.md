@@ -1,12 +1,10 @@
 # Épico: XXXX
 Data de início da análise: 
-
 ## Problema a ser resolvido
-
-## Pontos chave da história
 
 ## Impactos
 
-## Resultado Final
+## Pré Requisitos
+## Solução
 
 ## Tarefa 1: 

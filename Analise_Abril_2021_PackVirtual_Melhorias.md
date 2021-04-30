@@ -1,20 +1,32 @@
-
-
-devemos ter uma relação com o modelo de etiqueta
-
-colocar associação da etiqueta na tela de desconto para atacado
-
-fazer o frm impressão imprimir de acordo com o pack
-revisar a tela de impressão na questão do pack virtual
-
-
-FrmImpressão > Coluna grid (na etiqueta e no cartaz) no cartaz está cortando a descrição
-
-
-
-criar os relatórios 
-
-
+# Épico: Melhorias no Pack Virtual
+Data de início da análise: Abril de 2021
+## Problema a ser resolvido
+1. Com a criação da tela Desconto para Atacado não faz mais sentido ter packs de atacado na tela do Pack Virtual
+1. Nos modelos da tela Pack Virtual temos descrições citando `1 centavo`, texto necessário devidos as impressoras fiscais que cairam em desuso. Ajustar. 
+1. Corrigir descrições do help de modelos novos criados. 
+1. Adicionar informações de pack virtual e modelo de desconto no cadastro de produtos. 
+1. Corrigir mensagens em diversos locais do sistema incluindo informações sobre o módulo Desconto para Atacado
+1. Criar o modelo de desconto para produtos associados na tela Descontos Para Atacado
+1. Criar relatórios de Pack Virtual e Desconto para atacado
+## Impactos
+1. Módulo Descontos Para Atacado
+1. Módulo Pack Virtual
+1. Cadastro de Produtos 
+## Pré Requisitos
+O épico Descontos Para Atacado deverá estar concluído
+## Solução
+1. A tela será refatorada para possibilitar a alteração das descrições dos packs e criação de novos tipos promocionais no futuro. Será criada a classe ModeloPack que terá todas as informações de cada pack virtual ou modelo de desconto.
+1. O modelos de pack terão a descrição alterada para facilitar a identificação das promoções
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/ComboBoxPackVirtual.jpg?raw=true)
+    * Será adicionado o radio button Porcentagem (%)/ Monetário (R$)
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/PackVirtual_RadioButton.jpg?raw=true)
+1. O help será alterado melhorando os exemplos e observações. 
+1. Serão feitas alterações no cadastro de produtos para melhorar a visualização das promoções 
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CadProdutosPromocao.jpg?raw=true)
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CadProdutosPromocao2.jpg?raw=true)
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CadProdutosPromocao4.jpg?raw=true)
+![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CadProdutosPromocao3.jpg?raw=true)
+1. Será criado o novo modelo de desconto para atacado `A partir de X unidades ganhe desconto (%) (Produtos Associados)`
 
 ## Tarefa 1: Criar propriedade _modelos para acessar 
 1. Ativar o módulo da KW, cadastrar um pack de cada modelo, anotar todos, esses dados serão utilizados na última tarefa.
@@ -27,8 +39,7 @@ criar os relatórios
 ``` c#
 private Telecon.GestaoComercial.Biblioteca.PackVirtual.ModeloPack _modelos = new Pack.ModeloPack();
 ``` 
-
-## tarefa 2: Atualizar o CarregarDgvGrupo1 utilizando a nova classe
+## Tarefa 2: Atualizar o CarregarDgvGrupo1 utilizando a nova classe
 1. No CarregarDgvGrupo1 trocar o texto no 1º if para utilizar a propriedade _modelo 
 trocar
 `"Pague x porcento a menos a partir de x unidades (atacado)"`
@@ -38,8 +49,7 @@ Utilizar essa estrutura nas próximas validações, mudando somente o modelo de 
 1.  No CarregarDgvGrupo1 trocar o 2º if para utilizar a propriedade _modelo.xxx.DescricaoComercial 
 1.  No CarregarDgvGrupo1 trocar o 3º if para utilizar a propriedade _modelo.xxx.DescricaoComercial 
 
-
-## tarefa 3: Atualizar o CarregarComboModeloPack utilizando a nova classe
+## Tarefa 3: Atualizar o CarregarComboModeloPack utilizando a nova classe
 1. Carregar o combo atravez do list _modelos.RetornarListaComboParaPackVirtual 
 utilizar o código abaixo para carregar os modelos no combo
 ``` C#
@@ -59,7 +69,7 @@ utilizar o código abaixo para carregar os modelos no combo
 ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/PackVirtual_RadioButton.jpg?raw=true)
 1. acertar o tabindex dos componentes
 
-## tarefa 4: Substituir o switch case do procedimento cboModeloPack_SelectedIndexChanged
+## Tarefa 4: Substituir o switch case do procedimento cboModeloPack_SelectedIndexChanged
 
 1. Criar código para substituir o switch case. Buscar o modelo utilizando `_modelo.RetornarModeloPelaDescricao`, setar todos os procedimentos e objetos utilizando as propriedades do objeto modelo.
     * Todo swith deverá ser substituindo ficando semelhante ao exemplo abaixo
@@ -78,10 +88,11 @@ utilizar o código abaixo para carregar os modelos no combo
 1. Temos a propriedade modelo.observação que teremos que fazer algumas alterações
     * remover o lblProdutoGratis e adicionar o lblObservacao com a fonte no padrão normal.
     * colocar após os objetos de descrição conforme a imagem abaixo
+    ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/PackVirtual_lblProdutoGratis2.jpg?raw=true)
+    * Configurar para o texto nele poder ficar em duas linhas
+    * se a propriedade modelo.observação retornar algum text deixar o lblObservação visível e adicionar o texto da propriedade, do contrário deixar invisível.
 
-    
-
-    * Além dos controles acima implementar os radion buttons no controle da tela 
+1. Além dos controles acima implementar os radion buttons no controle da tela 
     * O radio button terá o comportamento dependendo do enum FormatoDoTxtValorRegra
         * Caso Oculto,UnitárioSemOpcional ou MoedaSemOpcional os 2 radion buttons deverão ficar invisíveis
         * Caso MoedaComOpcional ou PorcentagemComOpcional deixar os 2 radion buttons deverão ficar visíveis
@@ -97,7 +108,7 @@ utilizar o código abaixo para carregar os modelos no combo
     * substiuir o text `Os valores 0,00 ou 0,01 indicam que o produto será gratis.` por `* R$0,00 indica que o produto será gratis.` 
     * Inserir ele na programação do DefinirValoresLabels, para ele ficar após todos os labels como no exemplo abaixo
 
-    ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/PackVirtual_lblProdutoGratis.jpg?raw=true)
+    ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/PackVirtual_lblProdutoGratis2.jpg?raw=true)
 
 1. Existe um procedimento igual na tela FrmDescontoAtacado, realizar a mesma alteração nesse formulário, atualizando-o.
 
@@ -107,22 +118,21 @@ utilizar o código abaixo para carregar os modelos no combo
 exemplo: 
 Se for selecionado no combo 
 `A partir de 6 pague menos (%)`
-ao mudar o radion buton para monetário (R$) substituir na string `(%)` por `(R$)`
+ao mudar o radion buton para monetário (R$) substituir na string `(%)` por `(R$)
 
-
-## tarefa 5: Acertar txtValorRegra_Leave
+## Tarefa 6: Acertar txtValorRegra_Leave
 1. No txtValorRegra_Leave acertar o if para utilizar a propriedade _modelo.xxx.DescricaoComercial
 
-## tarefa 6: alterar o procedimento RetornarPackVirtualSimplificado
+## Tarefa 7: alterar o procedimento RetornarPackVirtualSimplificado
 1. Remover o Swith e no lugar chamar o `_modelo.RetornarModeloPeloCodPack`
 
-## tarefa 7: Acertar dgvGrupo1_CellMouseClick
+## Tarefa 8: Acertar dgvGrupo1_CellMouseClick
 1. No dgvGrupo1_CellMouseClick acertar o if para utilizar a propriedade _modelo.xxx.DescricaoComercial
 
-## tarefa 8: Acertar dgvGrupo1_CellMouseClick
+## Tarefa 9: Acertar dgvGrupo1_CellMouseClick
 1. No TestarCampos acertar os ifs para utilizar a propriedade _modelo.xxx.DescricaoComercial
 
-## tarefa 9: Acertar RetornarPackVirtual
+## Tarefa 10: Acertar RetornarPackVirtual
 1. substituir o código abaixo 
 ```c#
     if (cboModeloPack.SelectedIndex >= 8 && !_moduloKw)
@@ -140,24 +150,21 @@ por
  ```
 1. Acertar o último if para utilizar a propriedade _modelo.xxx.DescricaoComercial
 
-## tarefa 10: Acertar o btnSalvar_Click
+## Tarefa 11: Acertar o btnSalvar_Click
 1. No btnSalvar_Click acertar os ifs para utilizar a propriedade _modelo.xxx.DescricaoComercial
-
-
-
-## tarefa 11: Acertar o ptbQuestao_Click
+## Tarefa 12: Acertar o ptbQuestao_Click
 1. No ptbQuestao_Click remover o switch case e exibir a propriedade _modelos.xxx.ExemplosDePromocao. Realizar um foreach assim como nos métodos do ModelosPack, buscando em todos da lista
 
-## tarefa 12: Acertar o txtValorRegra_TextChanged
+## Tarefa 13: Acertar o txtValorRegra_TextChanged
 1. No txtValorRegra_TextChanged acertar os ifs para utilizar a propriedade _modelo.xxx.DescricaoComercial
 
-## tarefa 13: Acertar o txtQtdRegra_Leave
+## Tarefa 14: Acertar o txtQtdRegra_Leave
 1. No txtQtdRegra_Leave acertar os ifs para utilizar a propriedade _modelo.xxx.DescricaoComercial
 
-## tarefa 14: Remover procedimento ConverterPackVirtualParaSimplificado
+## Tarefa 15: Remover procedimento ConverterPackVirtualParaSimplificado
  1. Remover procedimento que parece não esta sendo usado. `public static PackVirtualSimplificado ConverterPackVirtualParaSimplificado(PackVirtual packVirtual, string grupoCliente)`
 
-## tarefa 15: Acertar pesquisas 
+## Tarefa 16: Acertar pesquisas 
 
 1. Na Telas Pack Virtual e DescontosParaAtacado temos uma query que carrega a pesquisa inicial da tela. Na tela pack virtual tirar o código CodPack <> 13. Na tela DescontosParaAtacado tirar o CodPack = 13. Não iremos tratar pelo código porque quando criarmos novos códigos teremos que adicionar na query. Para corrigir:
 * Na tela pack virtual alterar o procedimento RetornarPackVirtualSimplificado deve retornar só se o TipoDePack = PackVirtual
@@ -199,12 +206,12 @@ dgvPackFiltro_CellMouseDoubleClick
 ## Tarefa 17: Percorrer tela do pack virtual em busca de código obsoleto
 1. Verificar na tela se ficou alguma descrição antiga dos packs em algum if. Corrigir se ocorrer
 
-## Tarefa 16: Atualizar o formulário FrmDescontoParaAtacado para utilizar a classe _modelo 
+## Tarefa 18: Atualizar o formulário FrmDescontoParaAtacado para utilizar a classe _modelo 
 1. Foram criados alguns procedimentos nesse formulário que sobreescrevem os procedimentos que alteramos nas tarefas anteriores. Acerta-los no mesmo formato.
 1. utilizar a propriedade _modelos nos ifs, no carrega tela, no salvar, e ao carregar os combos, da mesma forma que na tela pack virtual. 
 1. Ao carregar os combos na segunda aba não precisamos colocar a primeira opção `Selecione um exemplo de pack`. Ja deverá abrir na opção `A partir de X unidades ganhe desconto (%)`. Carregar da mesma forma que na tarefa 3. Deverão ser carregados 2 modelos no combo. Utilizar o `_modelo.RetornarListaComboParaDescontoParaAtacado`
 
-## Tarefa 17: Implementar a opção de produtos associados no form FrmDescontoParaAtacado e no PDV
+## Tarefa 19: Implementar a opção de produtos associados no form FrmDescontoParaAtacado e no PDV
 1. Na aba de pesquisa o modelo de produtos associados já deve estar sendo listado e o filtro funcionando, testar. 
 1. Na aba cadastro ao selecionar esse modelo montar a tela de acordo com a classe _modelos.ApartirDeXGanheDescontoProdutosAssociadosAtacado
 1. Verificar o salvar. O salvar deverá ter o mesmo comportamento do pack
@@ -215,7 +222,7 @@ _modelos.ApartirDe6PagueMenosPORCENTAGEM, deverá salvar da mesma forma nas tabe
 * No pdv na função mdlValidarRegras.fValidarPack no case 9 adicionar também o 13, deixando os dois funcionando da mesma forma (9,14)
 1. Testar cadastro e funcionamento do novo Desconto para Atacado no PDV
 
-## Tarefa 18: Adicionar informação sobre Desconto Pack/Atacado no Cadastro de Produtos parte 1
+## Tarefa 20: Adicionar informação sobre Desconto Pack/Atacado no Cadastro de Produtos parte 1
 
 1. Criar um label no frame de promoções do cadastro de produto
 * Criar as funções abaixo no c# no classe PackVirtualVB6.cd
@@ -251,7 +258,7 @@ _modelos.ApartirDe6PagueMenosPORCENTAGEM, deverá salvar da mesma forma nas tabe
 * O `RetornarTipoDePack` deverá ser utilizado para saber se é um pack virtual ou um desconto para atacado.
 * Ao clicar no label deverá abrir a tela do pack virtual ou desconto para atacado na aba de pesquisa exibindo somente o respectivo registro.
 
-## Tarefa 18: Adicionar informação sobre Desconto Pack/Atacado no Cadastro de Produtos parte 2
+## Tarefa 21: Adicionar informação sobre Desconto Pack/Atacado no Cadastro de Produtos parte 2
 1. No cadastro de produto na aba de lojas, criar uma descrição semelhante a que já temos para as promoções. 
 * Carregar as descrições no grid, e ao passar o mouse exibir a descrição
 * Utilizar a função do c# RetornarDescricaoModeloPack, realizar nela as alterações necessárias para formatar corretamente os campos, não testei a função apenas criei para manter o modelo. 
@@ -271,8 +278,7 @@ por
 ``` 
 MsgBox "Não é permitido inativar um produto que esteja em um pack virtual vigente ou tenha um desconto para atacado!", vbInformation, "Aviso"
 ```
-
-## Tarefa 19: Corrigir detalhes de mensagebox
+## Tarefa 22: Corrigir detalhes de mensagebox
 
 1. No procedimento `frmImportaCupomSaidas.cmdAdicionar_Click` substituir a mensagem
 `MsgBox "Alguns produtos contidos neste cupom possui Pack Virtual."`
@@ -282,8 +288,7 @@ por
 1. No formulário `frmCadGruposClientes` alterar o caption do controle `chkNaoAplicarDescontoProdutoPack`, substituir por 
 `Não aplicar o desconto no Pack Virtual ou Desconto Atacado`
 
-
- ## tarefa 15: Ajustes finais e testes de integração
+ ## Tarefa 23: Ajustes finais e testes de integração
 1. Refazer os packs que foram feitos na tarefa 1 e comparar todos para ver se ficaram iguais no banco de dados.
 1. Ajustar possíveis diferenças ou erros
 1. Verificar se os packs estão funcionando no pdv de acordo com os exemplos dados no ponto de interrogação da tela.
