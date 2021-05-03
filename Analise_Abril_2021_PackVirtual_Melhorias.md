@@ -7,7 +7,14 @@ Data de início da análise: Abril de 2021
 1. Adicionar informações de pack virtual e modelo de desconto no cadastro de produtos. 
 1. Corrigir mensagens em diversos locais do sistema incluindo informações sobre o módulo Desconto para Atacado
 1. Criar o modelo de desconto para produtos associados na tela Descontos Para Atacado
+
 1. Criar relatórios de Pack Virtual e Desconto para atacado
+    * Quantas vendas tiveram para cada modelo de pack?
+    * Quantas vendas tiveram para cada modelo de pack para determinado produto?
+    * Imprimir grade 
+
+
+
 ## Impactos
 1. Módulo Descontos Para Atacado
 1. Módulo Pack Virtual
@@ -292,4 +299,6 @@ por
 1. Refazer os packs que foram feitos na tarefa 1 e comparar todos para ver se ficaram iguais no banco de dados.
 1. Ajustar possíveis diferenças ou erros
 1. Verificar se os packs estão funcionando no pdv de acordo com os exemplos dados no ponto de interrogação da tela.
+
+
 
