@@ -18,7 +18,7 @@ Data: 04/2021
 ``` sql
 CREATE TABLE Etiquetas
 (
-    Codigo int Identity Primary Key,
+    Codigo tinyint Identity Primary Key,
     Descricao varchar(50) not null,
     Arquivo nvarchar(max) not null
 )            

@@ -2,19 +2,12 @@
 Data de início da análise: Abril de 2021
 ## Problema a ser resolvido
 1. Com a criação da tela Desconto para Atacado não faz mais sentido ter packs de atacado na tela do Pack Virtual
-1. Nos modelos da tela Pack Virtual temos descrições citando `1 centavo`, texto necessário devidos as impressoras fiscais que cairam em desuso. Ajustar. 
+1. Nos modelos da tela Pack Virtual temos descrições citando `1 centavo`, texto necessário devidos as impressoras fiscais que cairam em desuso. 
 1. Corrigir descrições do help de modelos novos criados. 
 1. Adicionar informações de pack virtual e modelo de desconto no cadastro de produtos. 
 1. Corrigir mensagens em diversos locais do sistema incluindo informações sobre o módulo Desconto para Atacado
 1. Criar o modelo de desconto para produtos associados na tela Descontos Para Atacado
-
 1. Criar relatórios de Pack Virtual e Desconto para atacado
-    * Quantas vendas tiveram para cada modelo de pack?
-    * Quantas vendas tiveram para cada modelo de pack para determinado produto?
-    * Imprimir grade 
-
-
-
 ## Impactos
 1. Módulo Descontos Para Atacado
 1. Módulo Pack Virtual
@@ -22,10 +15,10 @@ Data de início da análise: Abril de 2021
 ## Pré Requisitos
 O épico Descontos Para Atacado deverá estar concluído
 ## Solução
-1. A tela será refatorada para possibilitar a alteração das descrições dos packs e criação de novos tipos promocionais no futuro. Será criada a classe ModeloPack que terá todas as informações de cada pack virtual ou modelo de desconto.
+1. A tela será refatorada para possibilitar a alteração das descrições dos packs, criação de relatórios, criação da aba _Relacionar Etiquetas_ na central de impressão e criação de novos tipos promocionais no futuro. Para isso criada a classe ModeloPack que terá todas as informações de cada pack virtual ou modelo de desconto.
 1. O modelos de pack terão a descrição alterada para facilitar a identificação das promoções
 ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/ComboBoxPackVirtual.jpg?raw=true)
-    * Será adicionado o radio button Porcentagem (%)/ Monetário (R$)
+    * Será adicionado o radio button `Porcentagem (%)`/ `Monetário (R$)`
 ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/PackVirtual_RadioButton.jpg?raw=true)
 1. O help será alterado melhorando os exemplos e observações. 
 1. Serão feitas alterações no cadastro de produtos para melhorar a visualização das promoções 
