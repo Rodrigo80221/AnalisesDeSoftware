@@ -8,3 +8,4 @@ Como seria uma gambiarra das brabas para resolver esse problema?
 
 O cliente consegue ver o que ele precisa ou precisará de um relatório?
 
+O nome do recurso e o menor possível para um bom entendimento?

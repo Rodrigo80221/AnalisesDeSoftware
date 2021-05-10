@@ -47,6 +47,8 @@ order by count(pv.ModeloPack) desc
 
 
 
+update modulos set config = 2 where codigo <> 265 and codigo <> 1036
+select * from modulos where DESCRICAO like '%sistema%R%'
 
 	select *
 	from VendasProdutos vp
@@ -56,3 +58,6 @@ order by count(pv.ModeloPack) desc
 			and vp.DsDataHora <= '2021/01/01'
 			and Vp.CodigoProduto in (select codigo from produtos where descricao like '%coca%cola%')
 
+
+
+select * from [dbo].[AbcMercadoriasProcessandoTemp]
