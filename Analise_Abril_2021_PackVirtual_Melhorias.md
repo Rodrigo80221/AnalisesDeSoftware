@@ -359,3 +359,27 @@ por
 * O label deve ficar por padrão invisível, deverá ficar visível caso o produto possua um pack virtual ou desconto para atacado com data vigente para a loja logada.
 * O `RetornarTipoDePack` deverá ser utilizado para saber se é um pack virtual ou um desconto para atacado.
 * Ao clicar no label deverá abrir a tela do pack virtual ou desconto para atacado na aba de pesquisa exibindo somente o respectivo registro.
+
+
+
+
+
+
+
+
+
+
+## relatório
+
+pq está abrindo nessa data estranha? 
+não é mensal esse relatório?
+
+quando minimiza corta a primeira coluna , como abre em várias janelas a tendencia é de minimizarmos para comparar
+e a janela não permite ajuste, achei que as colunas poderiam permitir ajuste também 
+não listou as duas lojas?
+
+porque 3 formulários para listar as mesmas colunas?
+se arrumarmos 1 coluna ou mexer na impressão tem que alterar em todas
+
+
+não está separando os custos por produtos? não vamos ter como buscar por fornecedor
