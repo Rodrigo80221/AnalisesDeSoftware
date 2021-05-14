@@ -1,8 +1,8 @@
-![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/FrmRelatorioPack.png?raw=true)
 
 
-## Alterar Genericos DataGridViewPersonalizado
-1. Adicionar Classes
+
+# Alterar Genericos DataGridViewPersonalizado
+1. Adicionar Classes (no github salvar link como...)
     * Adicionar as classe abaixo em Genericos>Classes>Controles>Classes
     [DataGridViewCellExHelper.cs](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Classes/DataGridViewCellExHelper.cs)
     [DataGridViewHelper.cs](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Classes/DataGridViewHelper.cs)
@@ -62,7 +62,13 @@
     ```    
 
 ## Criar formulario FrmRelatorioPack
-1. Adicionar protótipo ao projeto
+>Criar formulário conforme o template abaixo
+
+![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/FrmRelatorioPack.png?raw=true)
+
+1. Adicionar protótipo ao projeto (no github salvar link como...)
+> Adicionar em GestaoComercial>Formularios>PackVirtual
+    [FrmRelatorioPack](https://github.com/Rodrigo80221/AnalisesDeSoftware/tree/main/Classes/FormRelatorioPack)
 1. No novo form implementar as configurações padrões da Telecon
     * Fechar com esc
     * Enter como tab
@@ -72,9 +78,16 @@
     * Não deve permitir resize na tela
     * Deve abrir centralizado. 
     * Deve estar correto quanto ao tab index ao finalizar a tela
-
 1. No filtro de data carregar padrão com a visualização mensal no mês atual.
-1. Carregar o combo de modelo utilizando 
+1. Carregar o grid de modelos de promoção utilizando `ModelosPack.RetornarListaComboParaPackVirtual` e `ModelosPack.RetornarListaComboParaDescontoParaAtacado`
+    * O combo deve ter o checkbox para escolher várias opções.
+1. Carregar o grid de lojas
+    * O combo deve ter o checkbox para escolher várias opções.
+1. Implementar a buscar por pack virtual, criar um formulário de pesquisa herdando o FrmPesquisa, listando os campos Código, Descricão, DtInicial, DtFinal, Encarte
+1. Implementar
+
+
+
 
 
 1. Realizar select e carregar os dados de loja e dos packs
