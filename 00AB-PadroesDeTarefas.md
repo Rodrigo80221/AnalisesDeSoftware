@@ -46,13 +46,13 @@ Reabilitar triggers e constraints no trata erro
 ## Tarefa X: Criar novo form
 
 Criar form XXXX
-No novo form manter as configurações padrões da Telecon
+No novo form implementar as configurações padrões da Telecon
 1. Fechar com esc
 1. Enter como tab
 1. Ícone na janela
 1. Abrir com vbmodal
-1. Não deve ter os botões de minimizar e maximizar
-1. O fechar cancela a operação
+1. Não deve ter os botões de maximizar
+1. O Fechar/Sair cancela a operação
 1. Não deve permitir resize na tela
 1. Deve abrir centralizado. 
 1. Deve estar correto quanto ao tab index ao finalizar a tela
