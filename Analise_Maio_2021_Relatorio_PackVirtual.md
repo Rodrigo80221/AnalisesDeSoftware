@@ -78,16 +78,27 @@
     * Não deve permitir resize na tela
     * Deve abrir centralizado. 
     * Deve estar correto quanto ao tab index ao finalizar a tela
+1. Verificar nome dos campos, acertar    
 1. No filtro de data carregar padrão com a visualização mensal no mês atual.
+    * No form unload salvar as configurações de data, no load ler
 1. Carregar o grid de modelos de promoção utilizando `ModelosPack.RetornarListaComboParaPackVirtual` e `ModelosPack.RetornarListaComboParaDescontoParaAtacado`
     * O combo deve ter o checkbox para escolher várias opções.
 1. Carregar o grid de lojas
     * O combo deve ter o checkbox para escolher várias opções.
 1. Implementar a buscar por pack virtual, criar um formulário de pesquisa herdando o FrmPesquisa, listando os campos Código, Descricão, DtInicial, DtFinal, Encarte
-1. Implementar
+    * Teclando F4 no campo código deve abrir a tela de busca
+1. Implementar a busca de encartes. Utilizar o mesmo padrão que no form FrmPackVirtual
+    * Teclando F4 no campo código deve abrir a tela de busca
+1. Finalizar grid de consulta, adicionar enum para as colunas
+1. Implementar contador de linhas
+1. Implementar o sair   
 
 
 
 
+## Implementar Consulta do FrmRelatorioPack
 
-1. Realizar select e carregar os dados de loja e dos packs
+1. Realizar select e carregar os dados de acordo com os filtros. Utilizar a classe ModelosPack ()
+
+
+## Implementar a impressão do FrmRelatorioPack

@@ -56,5 +56,6 @@ No novo form implementar as configurações padrões da Telecon
 1. Não deve permitir resize na tela
 1. Deve abrir centralizado. 
 1. Deve estar correto quanto ao tab index ao finalizar a tela
+1. F4 abre a busca 
 
 
