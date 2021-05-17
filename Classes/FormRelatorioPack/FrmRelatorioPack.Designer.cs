@@ -47,23 +47,20 @@
             this.labelCMV = new System.Windows.Forms.Label();
             this.labelCustoGmed = new System.Windows.Forms.Label();
             this.labelQtdVendida = new System.Windows.Forms.Label();
-            this.btnProcessar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lblModeloPack = new System.Windows.Forms.Label();
-            this.cboModeloPackPesquisa = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblMarcaLojas = new System.Windows.Forms.LinkLabel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dgvLojasCadastro = new Telecon.Genericos.Controles.DataGridViewPersonalizado();
-            this.caixaTexto1 = new Telecon.Genericos.Controles.CaixaTexto();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblEncarte = new System.Windows.Forms.Label();
+            this.lblTotalRegistros = new System.Windows.Forms.Label();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.dgvRel = new Telecon.Genericos.Controles.DataGridViewPersonalizado();
+            this.caixaTexto1 = new Telecon.Genericos.Controles.CaixaTexto();
             this.botaoProcurar1 = new Telecon.Genericos.Controles.BotaoProcurar();
             this.txtCodPack = new Telecon.Genericos.Controles.CaixaTexto();
             this.txtEncarte = new Telecon.Genericos.Controles.CaixaTexto();
-            this.lblEncarte = new System.Windows.Forms.Label();
             this.btnBuscaEncarte = new Telecon.Genericos.Controles.BotaoProcurar();
             this.txtCodEncarte = new Telecon.Genericos.Controles.CaixaTexto();
             this.navDatas = new Telecon.Genericos.Controles.NavegacaoDatas();
@@ -75,15 +72,16 @@
             this.dataHora4 = new Telecon.Genericos.Controles.DataHora(this.components);
             this.object_821736e8_f380_4f79_b057_35ff65ab8278 = new Telecon.Genericos.Controles.DataHora(this.components);
             this.object_c6be1a94_ea0a_4da0_bcb0_cb3cb2a8774b = new Telecon.Genericos.Controles.DataHora(this.components);
-            this.lblTotalRegistros = new System.Windows.Forms.Label();
-            this.btnSair = new System.Windows.Forms.Button();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.dgvRel = new Telecon.Genericos.Controles.DataGridViewPersonalizado();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cboModeloPackPesquisa = new System.Windows.Forms.ComboBox();
+            this.lblLojas = new System.Windows.Forms.Label();
+            this.cboLojas = new Telecon.Genericos.Controles.ComboBoxItemData();
+            this.btnProcessar = new System.Windows.Forms.Button();
             this.grbAnalIndividual.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLojasCadastro)).BeginInit();
-            this.navDatas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRel)).BeginInit();
+            this.navDatas.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbAnalIndividual
@@ -105,7 +103,7 @@
             this.grbAnalIndividual.Controls.Add(this.labelCustoGmed);
             this.grbAnalIndividual.Controls.Add(this.labelQtdVendida);
             this.grbAnalIndividual.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbAnalIndividual.Location = new System.Drawing.Point(4, 173);
+            this.grbAnalIndividual.Location = new System.Drawing.Point(4, 158);
             this.grbAnalIndividual.Name = "grbAnalIndividual";
             this.grbAnalIndividual.Size = new System.Drawing.Size(996, 75);
             this.grbAnalIndividual.TabIndex = 43;
@@ -281,30 +279,17 @@
             this.labelQtdVendida.TabIndex = 0;
             this.labelQtdVendida.Text = "Qtd. Vendida";
             // 
-            // btnProcessar
-            // 
-            this.btnProcessar.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnProcessar.Location = new System.Drawing.Point(887, 126);
-            this.btnProcessar.Name = "btnProcessar";
-            this.btnProcessar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnProcessar.Size = new System.Drawing.Size(98, 31);
-            this.btnProcessar.TabIndex = 42;
-            this.btnProcessar.Text = "&Consultar";
-            this.btnProcessar.UseVisualStyleBackColor = false;
-            this.btnProcessar.Click += new System.EventHandler(this.btnProcessar_Click);
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnProcessar);
+            this.groupBox1.Controls.Add(this.lblLojas);
+            this.groupBox1.Controls.Add(this.cboLojas);
             this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.lblModeloPack);
             this.groupBox1.Controls.Add(this.cboModeloPackPesquisa);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.lblMarcaLojas);
-            this.groupBox1.Controls.Add(this.btnProcessar);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.dgvLojasCadastro);
             this.groupBox1.Controls.Add(this.caixaTexto1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.botaoProcurar1);
@@ -316,35 +301,11 @@
             this.groupBox1.Controls.Add(this.navDatas);
             this.groupBox1.Location = new System.Drawing.Point(4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(996, 163);
+            this.groupBox1.Size = new System.Drawing.Size(996, 148);
             this.groupBox1.TabIndex = 64;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(111, 134);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(140, 17);
-            this.checkBox2.TabIndex = 88;
-            this.checkBox2.Text = "Desconto Para Atacado";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(12, 134);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(83, 17);
-            this.checkBox1.TabIndex = 87;
-            this.checkBox1.Text = "Pack Virtual";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // lblModeloPack
             // 
@@ -355,19 +316,10 @@
             this.lblModeloPack.TabIndex = 86;
             this.lblModeloPack.Text = "Modelo de Pack Virtual/ Desconto Para Atacado";
             // 
-            // cboModeloPackPesquisa
-            // 
-            this.cboModeloPackPesquisa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboModeloPackPesquisa.FormattingEnabled = true;
-            this.cboModeloPackPesquisa.Location = new System.Drawing.Point(460, 44);
-            this.cboModeloPackPesquisa.Name = "cboModeloPackPesquisa";
-            this.cboModeloPackPesquisa.Size = new System.Drawing.Size(361, 21);
-            this.cboModeloPackPesquisa.TabIndex = 83;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(457, 82);
+            this.label6.Location = new System.Drawing.Point(457, 75);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 13);
             this.label6.TabIndex = 82;
@@ -376,46 +328,74 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 82);
+            this.label4.Location = new System.Drawing.Point(9, 75);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 13);
             this.label4.TabIndex = 81;
             this.label4.Text = "Cód. Pack";
             // 
-            // lblMarcaLojas
+            // label3
             // 
-            this.lblMarcaLojas.AutoSize = true;
-            this.lblMarcaLojas.Location = new System.Drawing.Point(898, 11);
-            this.lblMarcaLojas.Name = "lblMarcaLojas";
-            this.lblMarcaLojas.Size = new System.Drawing.Size(87, 13);
-            this.lblMarcaLojas.TabIndex = 80;
-            this.lblMarcaLojas.TabStop = true;
-            this.lblMarcaLojas.Text = "Desmarcar todos";
-            this.lblMarcaLojas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(108, 75);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(161, 13);
+            this.label3.TabIndex = 71;
+            this.label3.Text = "Pack Virtual/ Desconto Atacado";
             // 
-            // label5
+            // lblEncarte
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(839, 11);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
-            this.label5.TabIndex = 73;
-            this.label5.Text = "Lojas";
+            this.lblEncarte.AutoSize = true;
+            this.lblEncarte.Location = new System.Drawing.Point(556, 75);
+            this.lblEncarte.Name = "lblEncarte";
+            this.lblEncarte.Size = new System.Drawing.Size(110, 13);
+            this.lblEncarte.TabIndex = 67;
+            this.lblEncarte.Text = "Descrição do Encarte";
             // 
-            // dgvLojasCadastro
+            // lblTotalRegistros
             // 
-            this.dgvLojasCadastro.AllowUserToAddRows = false;
-            this.dgvLojasCadastro.AllowUserToDeleteRows = false;
-            this.dgvLojasCadastro.AllowUserToResizeRows = false;
-            this.dgvLojasCadastro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLojasCadastro.Decimais = 2;
-            this.dgvLojasCadastro.Location = new System.Drawing.Point(842, 27);
-            this.dgvLojasCadastro.Logotipo = null;
-            this.dgvLojasCadastro.MarcarCelulasCliqueCabecalho = true;
-            this.dgvLojasCadastro.Name = "dgvLojasCadastro";
-            this.dgvLojasCadastro.RowHeadersVisible = false;
-            this.dgvLojasCadastro.Size = new System.Drawing.Size(143, 93);
-            this.dgvLojasCadastro.TabIndex = 75;
+            this.lblTotalRegistros.AutoSize = true;
+            this.lblTotalRegistros.Location = new System.Drawing.Point(441, 630);
+            this.lblTotalRegistros.Name = "lblTotalRegistros";
+            this.lblTotalRegistros.Size = new System.Drawing.Size(116, 13);
+            this.lblTotalRegistros.TabIndex = 66;
+            this.lblTotalRegistros.Text = "1000 Registros listados";
+            // 
+            // btnSair
+            // 
+            this.btnSair.Location = new System.Drawing.Point(925, 630);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnSair.Size = new System.Drawing.Size(75, 23);
+            this.btnSair.TabIndex = 68;
+            this.btnSair.Text = "&Sair";
+            this.btnSair.UseVisualStyleBackColor = true;
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(844, 630);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnImprimir.Size = new System.Drawing.Size(75, 23);
+            this.btnImprimir.TabIndex = 67;
+            this.btnImprimir.Text = "&Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            // 
+            // dgvRel
+            // 
+            this.dgvRel.AllowUserToAddRows = false;
+            this.dgvRel.AllowUserToDeleteRows = false;
+            this.dgvRel.AllowUserToResizeRows = false;
+            this.dgvRel.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvRel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRel.Decimais = 2;
+            this.dgvRel.Location = new System.Drawing.Point(14, 239);
+            this.dgvRel.Logotipo = null;
+            this.dgvRel.MarcarCelulasCliqueCabecalho = true;
+            this.dgvRel.Name = "dgvRel";
+            this.dgvRel.RowHeadersVisible = false;
+            this.dgvRel.Size = new System.Drawing.Size(986, 388);
+            this.dgvRel.TabIndex = 89;
             // 
             // caixaTexto1
             // 
@@ -423,7 +403,7 @@
             this.caixaTexto1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.caixaTexto1.Decimais = 0;
             this.caixaTexto1.Formato = Telecon.Genericos.Controles.CaixaTexto.TipoFormato.Maiusculo;
-            this.caixaTexto1.Location = new System.Drawing.Point(111, 100);
+            this.caixaTexto1.Location = new System.Drawing.Point(111, 92);
             this.caixaTexto1.MaxLength = 32;
             this.caixaTexto1.Name = "caixaTexto1";
             this.caixaTexto1.PermiteValorNegativo = false;
@@ -434,19 +414,10 @@
             this.caixaTexto1.TabIndex = 70;
             this.caixaTexto1.TabStop = false;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(108, 83);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(161, 13);
-            this.label3.TabIndex = 71;
-            this.label3.Text = "Pack Virtual/ Desconto Atacado";
-            // 
             // botaoProcurar1
             // 
             this.botaoProcurar1.Image = ((System.Drawing.Image)(resources.GetObject("botaoProcurar1.Image")));
-            this.botaoProcurar1.Location = new System.Drawing.Point(83, 98);
+            this.botaoProcurar1.Location = new System.Drawing.Point(83, 90);
             this.botaoProcurar1.Name = "botaoProcurar1";
             this.botaoProcurar1.Size = new System.Drawing.Size(24, 23);
             this.botaoProcurar1.TabIndex = 69;
@@ -456,7 +427,7 @@
             // 
             this.txtCodPack.Decimais = 0;
             this.txtCodPack.Formato = Telecon.Genericos.Controles.CaixaTexto.TipoFormato.Inteiro;
-            this.txtCodPack.Location = new System.Drawing.Point(12, 100);
+            this.txtCodPack.Location = new System.Drawing.Point(12, 92);
             this.txtCodPack.MaxLength = 13;
             this.txtCodPack.Name = "txtCodPack";
             this.txtCodPack.PermiteValorNegativo = false;
@@ -472,30 +443,21 @@
             this.txtEncarte.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEncarte.Decimais = 0;
             this.txtEncarte.Formato = Telecon.Genericos.Controles.CaixaTexto.TipoFormato.Maiusculo;
-            this.txtEncarte.Location = new System.Drawing.Point(559, 99);
+            this.txtEncarte.Location = new System.Drawing.Point(559, 92);
             this.txtEncarte.MaxLength = 32;
             this.txtEncarte.Name = "txtEncarte";
             this.txtEncarte.PermiteValorNegativo = false;
             this.txtEncarte.ReadOnly = true;
             this.txtEncarte.Senha = "";
             this.txtEncarte.SenhaCrypt = "";
-            this.txtEncarte.Size = new System.Drawing.Size(262, 20);
+            this.txtEncarte.Size = new System.Drawing.Size(299, 20);
             this.txtEncarte.TabIndex = 66;
             this.txtEncarte.TabStop = false;
-            // 
-            // lblEncarte
-            // 
-            this.lblEncarte.AutoSize = true;
-            this.lblEncarte.Location = new System.Drawing.Point(556, 82);
-            this.lblEncarte.Name = "lblEncarte";
-            this.lblEncarte.Size = new System.Drawing.Size(110, 13);
-            this.lblEncarte.TabIndex = 67;
-            this.lblEncarte.Text = "Descrição do Encarte";
             // 
             // btnBuscaEncarte
             // 
             this.btnBuscaEncarte.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscaEncarte.Image")));
-            this.btnBuscaEncarte.Location = new System.Drawing.Point(531, 97);
+            this.btnBuscaEncarte.Location = new System.Drawing.Point(531, 90);
             this.btnBuscaEncarte.Name = "btnBuscaEncarte";
             this.btnBuscaEncarte.Size = new System.Drawing.Size(24, 23);
             this.btnBuscaEncarte.TabIndex = 65;
@@ -505,7 +467,7 @@
             // 
             this.txtCodEncarte.Decimais = 0;
             this.txtCodEncarte.Formato = Telecon.Genericos.Controles.CaixaTexto.TipoFormato.Inteiro;
-            this.txtCodEncarte.Location = new System.Drawing.Point(460, 99);
+            this.txtCodEncarte.Location = new System.Drawing.Point(460, 92);
             this.txtCodEncarte.MaxLength = 13;
             this.txtCodEncarte.Name = "txtCodEncarte";
             this.txtCodEncarte.PermiteValorNegativo = false;
@@ -603,50 +565,67 @@
             this.object_c6be1a94_ea0a_4da0_bcb0_cb3cb2a8774b.TabIndex = 1;
             this.object_c6be1a94_ea0a_4da0_bcb0_cb3cb2a8774b.Value = new System.DateTime(2016, 8, 9, 19, 39, 10, 449);
             // 
-            // lblTotalRegistros
+            // checkBox2
             // 
-            this.lblTotalRegistros.AutoSize = true;
-            this.lblTotalRegistros.Location = new System.Drawing.Point(441, 630);
-            this.lblTotalRegistros.Name = "lblTotalRegistros";
-            this.lblTotalRegistros.Size = new System.Drawing.Size(116, 13);
-            this.lblTotalRegistros.TabIndex = 66;
-            this.lblTotalRegistros.Text = "1000 Registros listados";
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(111, 122);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(140, 17);
+            this.checkBox2.TabIndex = 88;
+            this.checkBox2.Text = "Desconto Para Atacado";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // btnSair
+            // checkBox1
             // 
-            this.btnSair.Location = new System.Drawing.Point(925, 630);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnSair.Size = new System.Drawing.Size(75, 23);
-            this.btnSair.TabIndex = 68;
-            this.btnSair.Text = "&Sair";
-            this.btnSair.UseVisualStyleBackColor = true;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(12, 122);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(83, 17);
+            this.checkBox1.TabIndex = 87;
+            this.checkBox1.Text = "Pack Virtual";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // btnImprimir
+            // cboModeloPackPesquisa
             // 
-            this.btnImprimir.Location = new System.Drawing.Point(844, 630);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnImprimir.Size = new System.Drawing.Size(75, 23);
-            this.btnImprimir.TabIndex = 67;
-            this.btnImprimir.Text = "&Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.cboModeloPackPesquisa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboModeloPackPesquisa.FormattingEnabled = true;
+            this.cboModeloPackPesquisa.Location = new System.Drawing.Point(460, 44);
+            this.cboModeloPackPesquisa.Name = "cboModeloPackPesquisa";
+            this.cboModeloPackPesquisa.Size = new System.Drawing.Size(398, 21);
+            this.cboModeloPackPesquisa.TabIndex = 83;
             // 
-            // dgvRel
+            // lblLojas
             // 
-            this.dgvRel.AllowUserToAddRows = false;
-            this.dgvRel.AllowUserToDeleteRows = false;
-            this.dgvRel.AllowUserToResizeRows = false;
-            this.dgvRel.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvRel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRel.Decimais = 2;
-            this.dgvRel.Location = new System.Drawing.Point(14, 254);
-            this.dgvRel.Logotipo = null;
-            this.dgvRel.MarcarCelulasCliqueCabecalho = true;
-            this.dgvRel.Name = "dgvRel";
-            this.dgvRel.RowHeadersVisible = false;
-            this.dgvRel.Size = new System.Drawing.Size(986, 373);
-            this.dgvRel.TabIndex = 89;
+            this.lblLojas.AutoSize = true;
+            this.lblLojas.Location = new System.Drawing.Point(861, 28);
+            this.lblLojas.Name = "lblLojas";
+            this.lblLojas.Size = new System.Drawing.Size(27, 13);
+            this.lblLojas.TabIndex = 89;
+            this.lblLojas.Text = "Loja";
+            // 
+            // cboLojas
+            // 
+            this.cboLojas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLojas.Location = new System.Drawing.Point(864, 44);
+            this.cboLojas.Name = "cboLojas";
+            this.cboLojas.Size = new System.Drawing.Size(121, 21);
+            this.cboLojas.TabIndex = 90;
+            // 
+            // btnProcessar
+            // 
+            this.btnProcessar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnProcessar.Location = new System.Drawing.Point(864, 83);
+            this.btnProcessar.Name = "btnProcessar";
+            this.btnProcessar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnProcessar.Size = new System.Drawing.Size(121, 30);
+            this.btnProcessar.TabIndex = 91;
+            this.btnProcessar.Text = "&Consultar";
+            this.btnProcessar.UseVisualStyleBackColor = false;
+            this.btnProcessar.Click += new System.EventHandler(this.btnProcessar_Click);
             // 
             // FrmRelatorioPack
             // 
@@ -666,10 +645,9 @@
             this.grbAnalIndividual.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLojasCadastro)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRel)).EndInit();
             this.navDatas.ResumeLayout(false);
             this.navDatas.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -691,15 +669,11 @@
         private System.Windows.Forms.Label labelCMV;
         private System.Windows.Forms.Label labelCustoGmed;
         private System.Windows.Forms.Label labelQtdVendida;
-        public System.Windows.Forms.Button btnProcessar;
         private System.Windows.Forms.Label labelTicketMedio;
         private System.Windows.Forms.Label labelFaturamentoCjto;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.LinkLabel lblMarcaLojas;
-        private System.Windows.Forms.Label label5;
-        private Telecon.Genericos.Controles.DataGridViewPersonalizado dgvLojasCadastro;
         private Telecon.Genericos.Controles.CaixaTexto caixaTexto1;
         private System.Windows.Forms.Label label3;
         private Telecon.Genericos.Controles.BotaoProcurar botaoProcurar1;
@@ -717,13 +691,16 @@
         private Telecon.Genericos.Controles.DataHora dataHora4;
         private Telecon.Genericos.Controles.DataHora object_821736e8_f380_4f79_b057_35ff65ab8278;
         private Telecon.Genericos.Controles.DataHora object_c6be1a94_ea0a_4da0_bcb0_cb3cb2a8774b;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label lblModeloPack;
-        private System.Windows.Forms.ComboBox cboModeloPackPesquisa;
         private System.Windows.Forms.Label lblTotalRegistros;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnImprimir;
         private Telecon.Genericos.Controles.DataGridViewPersonalizado dgvRel;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ComboBox cboModeloPackPesquisa;
+        private System.Windows.Forms.Label lblLojas;
+        private Telecon.Genericos.Controles.ComboBoxItemData cboLojas;
+        public System.Windows.Forms.Button btnProcessar;
     }
 }

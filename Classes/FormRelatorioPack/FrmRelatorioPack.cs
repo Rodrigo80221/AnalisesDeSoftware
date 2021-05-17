@@ -30,12 +30,12 @@ namespace GestaoComercial.Formularios.PackVirtual
 
         private void btnProcessar_Click(object sender, EventArgs e)
         {
-
+            /*
             dgvLojasCadastro.ExecutarFormatacaoPadrao(2);
             dgvLojasCadastro.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             dgvLojasCadastro.FormatarColuna(0, "", 25);
-            dgvLojasCadastro.FormatarColuna(1, "Lojas", 90);            
+            dgvLojasCadastro.FormatarColuna(1, "Lojas", 100);            
 
             dgvLojasCadastro.Columns.RemoveAt(0);
             dgvLojasCadastro.Columns.Insert(0, dgvLojasCadastro.RetornarColunaCheckBox());
@@ -45,11 +45,48 @@ namespace GestaoComercial.Formularios.PackVirtual
 
             for (int i = 0; i < 5; i++)
             {
-                var linha = dgvLojasCadastro.Rows.Add();
-                dgvLojasCadastro.MarcarCelula(linha, 0);
-                dgvLojasCadastro[linha, 1] = "Loja " + i.ToString();
+                var linha2 = dgvLojasCadastro.Rows.Add();
+                dgvLojasCadastro.MarcarCelula(linha2, 0);
+                dgvLojasCadastro[linha2, 1] = "Loja " + i.ToString();
             }
 
+
+            dgvLojasCadastro.ClearSelection();
+
+            /*
+            dataGridViewPersonalizado1.ExecutarFormatacaoPadrao(2);
+            dataGridViewPersonalizado1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            dataGridViewPersonalizado1.FormatarColuna(0, "", 25);
+            dataGridViewPersonalizado1.FormatarColuna(1, "Pack Virtual/ Desconto Atacado", 335);
+
+            dataGridViewPersonalizado1.Columns.RemoveAt(0);
+            dataGridViewPersonalizado1.Columns.Insert(0, dgvLojasCadastro.RetornarColunaCheckBox());
+
+            dataGridViewPersonalizado1.DefinirTipoColuna(0, ItemComboBusca.TipoDados.CheckBox);
+ 
+            var linha3 = dataGridViewPersonalizado1.Rows.Add();
+            dataGridViewPersonalizado1.MarcarCelula(linha3, 0);
+            dataGridViewPersonalizado1[linha3, 1] = "Leve 3 Pague 2";
+
+            linha3 = dataGridViewPersonalizado1.Rows.Add();
+            dataGridViewPersonalizado1.MarcarCelula(linha3, 0);
+            dataGridViewPersonalizado1[linha3, 1] = "Leve 3 Ganhe 1";
+
+            linha3 = dataGridViewPersonalizado1.Rows.Add();
+            dataGridViewPersonalizado1.MarcarCelula(linha3, 0);
+            dataGridViewPersonalizado1[linha3, 1] = "Leve 3 Ganhe 1 Produto Diferente";
+
+            linha3 = dataGridViewPersonalizado1.Rows.Add();
+            dataGridViewPersonalizado1.MarcarCelula(linha3, 0);
+            dataGridViewPersonalizado1[linha3, 1] = "Apartir De X Ganhe Desconto";
+
+            linha3 = dataGridViewPersonalizado1.Rows.Add();
+            dataGridViewPersonalizado1.MarcarCelula(linha3, 0);
+            dataGridViewPersonalizado1[linha3, 1] = "Apartir De X Ganhe Desconto Produtos Associados";
+
+            dataGridViewPersonalizado1.ClearSelection();
+            */
             //-----------------------------------------------------------------------------
 
             lblProdQtdVendida.Text = "267";
