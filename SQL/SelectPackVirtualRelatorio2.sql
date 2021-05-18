@@ -8,7 +8,7 @@ DECLARE @ModeloPack TABLE (CodModelos INT)
 -- INICIO CARREGANDO FILTROS -------------------------------------------------------------------------
 
 set @DataInicial = Convert(SmallDateTime, '20210101', 126) 
-set @DataFinal = Convert(SmallDateTime, '20210531', 126) 
+set @DataFinal = Convert(SmallDateTime, '20210131', 126) 
  
 -- TRATAMENTO PARA FILTRO DE MODELOS
 INSERT INTO @ModeloPack VALUES (1);
@@ -69,7 +69,7 @@ MARKUP DECIMAL(38,10)
      
 ---------------------------------------------------------------------------------------------------------------------------------      
  
--- INSERE AS VENDAS NA TABELA TEMPOR¡RIA      
+-- INSERE AS VENDAS NA TABELA TEMPOR√ÅRIA      
 ---------------------------------------------------------------------------------------------------------------------------------      
 INSERT INTO @TabRelTemp (CODPACK, CODIGOPRODUTO, DESCRICAO, QTD, VALORUNIT, TOTALITEM, CUSTOGERENCIAL, CMV, MARGEMRS)       
 SELECT      
@@ -245,7 +245,7 @@ MARGEM =  case TOTALITEM when 0 then 0 else ( MargemRS / TOTALITEM ) * 100 END
 , MARKUP =  ROUND(case CMV when 0 then 100 else (CAST(ROUND(VALORUNIT, 2) AS DECIMAL(10,4))  / ( CAST(ROUND(CUSTOGERENCIAL, 2)AS DECIMAL(10,4)) ) * 100 ) - 100 END, 2)   
  
 
--- INSERE O TOTALIZADOR DOS PACKS NA TABELA TEMPOR¡RIA
+-- INSERE O TOTALIZADOR DOS PACKS NA TABELA TEMPOR√ÅRIA
 
 DECLARE @TOTALREGISTROS AS BIGINT      
 SELECT @TOTALREGISTROS = COUNT(*) FROM @TabRelTemp      
