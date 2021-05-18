@@ -103,3 +103,13 @@ Existem várias formas para programar a tarefa, abaixo darei apenas um direciona
     * Imprimir, maximizar, minimizar e imprimir
 3. Corrigir eventuais falhas encontradas    
 
+
+
+
+
+
+melhorar checkboxes
+
+após a mensagem já adicionar o produto no inserir produtos em massa
+
+retirar mensagem dos associados, pensar em outra estratégia 

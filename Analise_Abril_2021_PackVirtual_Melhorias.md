@@ -2,7 +2,7 @@
 Data de início da análise: Abril de 2021
 
 ## Problema a ser resolvido
-1. Com a criação da tela Desconto para Atacado não faz mais sentido ter packs de atacado na tela do Pack Virtual
+1. Com a criação da tela Desconto para Atacado não faz mais sentido ter packs com descrição de atacado na tela do Pack Virtual
 1. Nos modelos da tela Pack Virtual temos descrições citando `1 centavo`, texto necessário devidos as impressoras fiscais que cairam em desuso. 
 1. Corrigir descrições do help de modelos novos criados. 
 1. Adicionar informações de pack virtual e modelo de desconto no cadastro de produtos. 
@@ -19,8 +19,15 @@ Data de início da análise: Abril de 2021
 O épico Descontos Para Atacado deverá estar concluído
 
 ## Solução
-1. A tela será refatorada para possibilitar a alteração das descrições dos packs, criação de relatórios, criação da aba _Relacionar Etiquetas_ na central de impressão e criação de novos tipos promocionais no futuro. Para isso será criada a classe ModeloPack que terá todas as informações de cada pack virtual ou modelo de desconto.
 
+### Parte 1
+
+1. A tela será refatorada para possibilitar:
+    * alteração das descrições dos packs
+    * criação de relatórios
+    * criação da aba _Relacionar Etiquetas_ 
+    * facilitar a criação de novos tipos promocionais no futuro. 
+    
 1. O modelos de pack terão a descrição alterada para facilitar a identificação das promoções
     ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/ComboBoxPackVirtual.jpg?raw=true)
     * Será adicionado o radio button `Porcentagem (%)`/ `Monetário (R$)`
@@ -34,6 +41,13 @@ O épico Descontos Para Atacado deverá estar concluído
     *As validações no combo serão as mesmas que estão na tela Desconto Para atacado
 
 1. Será criado o novo modelo de desconto para atacado `A partir de X unidades ganhe desconto (%) (Produtos Associados)`
+
+
+### Parte 2
+1. Será criado o relatório de Pack Virtual/ Desconto Para Atacado
+
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/FrmRelatorioPack4.png?raw=true)
+
 
 ## Tarefa 1: Criar registros para testes e criar classes C#
 1. Ativar o módulo da KW, cadastrar um pack de cada modelo, anotar todos, esses dados serão utilizados na última tarefa.

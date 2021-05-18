@@ -2,24 +2,32 @@
 Data: 04/2021 
 
 ## Problema a ser resolvido
-1. Salvar as etiquetas no banco de dados para poder finalizar o épico `Descontos para Atacado`
-* Facilitar a impressão de etiquetas. Atualmente o cliente tem que mudar o modelo de etiqueta para cada tipo de produto. Um modelo para preço normal outro para o preço de atacado. No processo atual o cliente abre a tela de preços alterados e imprime as etiquetas, estas etiquetas devem ser impressas com layout de Atacado para os produtos com desconto percentual ou layout de varejo para os produtos sem preço de atacado.
-1. Resolver problema da perda de configuração das etiquetas eventualmente e principalmente na atualização do sistema onde as vezes os arquivos são substituídos.
+
+1. Salvar as etiquetas no banco de dados para poder finalizar o épico `Descontos para Atacado` na questão de relacionar a etiqueta com um pack virtual ou desconto para atacado.
+
+1. Resolver problema da perda de configuração das etiquetas que ocorre eventualmente, principalmente na atualização do sistema onde as vezes os arquivos são substituídos.
 
 ## Pontos chave da história
-1. Criar uma configuração na tela Descontos Para Atacado para selecionar um layout de etiqueta quer será utilizada automaticamente na central de impressão
+1. Salvar as etiquetas no banco de dados
+1. Criar uma aba na central de impressão para relacionar uma etiqueta com um pack virtual ou desconto para atacado.
 
 ## Impactos
-1. Os impactos são todos na central de impressão ao imprimir as etiquetas, deverá ser testado por completo todas as funcionalidades.
+1. Os impactos são todos na central de impressão ao imprimir as etiquetas, deverá ser testado por completo todas as funcionalidades existentes.
 
 ## Resultado Final
 
+### Parte 1 
 1. Criar tabela Etiquetas no banco sql 
-1. Alterar a tela para salvar etiqueta no banco de dados
-1. Ao criar nova etiqueta sugerir alguns layout pré formatados
+1. Migrar etiquetas para o banco de dados
+1. Realizar alterações na tela para se adequar a nova estrutura
+1. Criar o botão novo que sugere alguns layouts pré formatados
     ![](https://raw.githubusercontent.com/Rodrigo80221/MARKDOWN/main/Imagens/SelecaoEtiqueta.png)
 
-
+### Parte 2 
+1. Criar a tabela EtiquetasRelacionamentos
+1. Criar a aba relacionar etiquetas
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/FrmImpresssao_Aba_RelacionarEtiquetas.jpg?raw=true)
+1. Imprimir as etiquetas de acordo com a relação    
 
 
 
