@@ -59,3 +59,9 @@ No novo form implementar as configurações padrões da Telecon
 1. F4 abre a busca 
 
 
+# Finalização/ Testes de Integração
+1. Verificar tratamentos da ampulheta do mouse, deve ficar em espera em consultas e procedimentos demorados, deverá retornar para a seta após o procedimento. Em caso de erro deverá retornar também para o padrão no trataerro ou try catch
+
+1. Bloquear campos de consulta/pesquisa em consultas e procedimentos demorados, deverá desbloquear após o procedimento finalizar. Em caso de erro deverá retornar também para o padrão no trataerro ou try catch
+
+1. Procedimentos demorados no C# devem ser executados em threads

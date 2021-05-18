@@ -4,7 +4,7 @@ O recurso será fácil para programar?
 
 Teria como fazer de uma forma bem fácil que agradaria o cliente?
 
-Como seria uma gambiarra das brabas para resolver esse problema?
+Como seria uma solução de improviso para resolver esse problema?
 
 O cliente consegue ver o que ele precisa ou precisará de um relatório?
 

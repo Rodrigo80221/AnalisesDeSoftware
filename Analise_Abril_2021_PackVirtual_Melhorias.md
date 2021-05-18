@@ -19,7 +19,7 @@ Data de início da análise: Abril de 2021
 O épico Descontos Para Atacado deverá estar concluído
 
 ## Solução
-1. A tela será refatorada para possibilitar a alteração das descrições dos packs, criação de relatórios, criação da aba _Relacionar Etiquetas_ na central de impressão e criação de novos tipos promocionais no futuro. Para isso criada a classe ModeloPack que terá todas as informações de cada pack virtual ou modelo de desconto.
+1. A tela será refatorada para possibilitar a alteração das descrições dos packs, criação de relatórios, criação da aba _Relacionar Etiquetas_ na central de impressão e criação de novos tipos promocionais no futuro. Para isso será criada a classe ModeloPack que terá todas as informações de cada pack virtual ou modelo de desconto.
 
 1. O modelos de pack terão a descrição alterada para facilitar a identificação das promoções
     ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/ComboBoxPackVirtual.jpg?raw=true)
@@ -365,7 +365,7 @@ por
 
 
 
-
+## Melhorar maximizar do formulário do pack virtual
 
 
 

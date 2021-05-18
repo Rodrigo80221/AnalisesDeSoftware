@@ -1,7 +1,7 @@
 
 
 
-# Alterar Genericos DataGridViewPersonalizado
+## Alterar Genericos DataGridViewPersonalizado
 1. Adicionar Classes (no github salvar link como...)
     * Adicionar as classe abaixo em Genericos>Classes>Controles>Classes
     [DataGridViewCellExHelper.cs](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Classes/DataGridViewCellExHelper.cs)
@@ -9,7 +9,7 @@
     [DataGridViewTextBoxCellEx.cs](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Classes/DataGridViewTextBoxCellEx.cs)
     [ISpannedCell.cs](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Classes/ISpannedCell.cs)
 1. Alterar método ExecutarFormatacaoPadrao da classe DataGridViewersonalizado.cs
-    * Altear o método ExecutarFormatacaoPadrao colocando o código abaixo
+    * Alterar o método ExecutarFormatacaoPadrao colocando o código abaixo
 
     ``` Csharp
         public void ExecutarFormatacaoPadrao(int nroColunas)
@@ -64,7 +64,7 @@
 ## Criar formulario FrmRelatorioPack
 >Criar formulário conforme o template abaixo
 
-![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/FrmRelatorioPack.png?raw=true)
+![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/FrmRelatorioPack4.png?raw=true)
 
 1. Adicionar protótipo ao projeto (no github salvar link como...)
 > Adicionar em GestaoComercial>Formularios>PackVirtual
@@ -73,14 +73,13 @@
     * Fechar com esc
     * Enter como tab
     * Ícone na janela
-    * Não deve ter os botões de maximizar
     * O Sair fecha e cancela a operação
     * Não deve permitir resize na tela
     * Deve abrir centralizado. 
     * Deve estar correto quanto ao tab index ao finalizar a tela
+    * Não deve ter os botões de maximizar    
 1. Verificar nome dos campos, acertar    
 1. No filtro de data carregar padrão com a visualização mensal no mês atual.
-    * No form unload salvar as configurações de data, no load ler
 1. Carregar o grid de modelos de promoção utilizando `ModelosPack.RetornarListaComboParaPackVirtual` e `ModelosPack.RetornarListaComboParaDescontoParaAtacado`
     * O combo deve ter o checkbox para escolher várias opções.
 1. Carregar o grid de lojas
@@ -89,16 +88,27 @@
     * Teclando F4 no campo código deve abrir a tela de busca
 1. Implementar a busca de encartes. Utilizar o mesmo padrão que no form FrmPackVirtual
     * Teclando F4 no campo código deve abrir a tela de busca
-1. Finalizar grid de consulta, adicionar enum para as colunas
+1. Finalizar o grid de consulta, adicionar enum para as colunas, realizar mais algum ajuste necessário.
 1. Implementar contador de linhas
-1. Implementar o sair   
-
-
-
+1. Implementar o sair para fechar o form
 
 ## Implementar Consulta do FrmRelatorioPack
 
 1. Realizar select e carregar os dados de acordo com os filtros. Utilizar a classe ModelosPack ()
 
 
+1. Ao  carregar o grid mostrar um gif de carregamento igual a tela FrmAnalVendaConjunta
+1. Executar a consulta em uma thread igual a tela FrmAnalVendaConjunta
+
+Ao selecionar um encarte desabilitar a consulta por datas??
 ## Implementar a impressão do FrmRelatorioPack
+
+
+
+
+melhorar checkboxes
+
+após a mensagem já adicionar o produto no inserir produtos em massa
+
+retirar mensagem dos associados, pensar em outra estratégia 
+
