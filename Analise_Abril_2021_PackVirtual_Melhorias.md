@@ -382,18 +382,16 @@ por
 ## Melhorar maximizar do formulário do pack virtual
 
 
+melhorar checkboxes
 
-## relatório
+após a mensagem já adicionar o produto no inserir produtos em massa
 
-pq está abrindo nessa data estranha? 
-não é mensal esse relatório?
-
-quando minimiza corta a primeira coluna , como abre em várias janelas a tendencia é de minimizarmos para comparar
-e a janela não permite ajuste, achei que as colunas poderiam permitir ajuste também 
-não listou as duas lojas?
-
-porque 3 formulários para listar as mesmas colunas?
-se arrumarmos 1 coluna ou mexer na impressão tem que alterar em todas
+retirar mensagem dos associados, pensar em outra estratégia 
 
 
-não está separando os custos por produtos? não vamos ter como buscar por fornecedor
+
+
+
+
+
+

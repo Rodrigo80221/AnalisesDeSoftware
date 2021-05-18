@@ -108,8 +108,3 @@ Existem várias formas para programar a tarefa, abaixo darei apenas um direciona
 
 
 
-melhorar checkboxes
-
-após a mensagem já adicionar o produto no inserir produtos em massa
-
-retirar mensagem dos associados, pensar em outra estratégia 
