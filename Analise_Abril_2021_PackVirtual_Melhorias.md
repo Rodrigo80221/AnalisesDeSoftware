@@ -115,7 +115,7 @@ utilizar o código abaixo para carregar os modelos no combo
     ![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/PackVirtual_lblProdutoGratis2.jpg?raw=true)
     * Configurar para o texto nele poder ficar em duas linhas
     * se a propriedade modelo.observação retornar algum text deixar o lblObservação visível e adicionar o texto da propriedade, do contrário deixar invisível.
-
+1. Acertar o frame Limites da Regra como na imagem acima. Alterar também o comportamento. Ao clicar no checkbox mostrar o textbox.
 1. Além dos controles acima implementar os radion buttons no controle da tela 
     * O radio button terá o comportamento dependendo do enum FormatoDoTxtValorRegra
         * Caso Oculto,UnitárioSemOpcional ou MoedaSemOpcional os 2 radion buttons deverão ficar invisíveis
@@ -379,39 +379,51 @@ por
 
 
 
-## Melhorar maximizar do formulário do pack virtual
+## Tarefa 0.1 Corrigir e melhorar o maximizar do formulário do pack virtual
+1. Ao maximizar, minimizar e maximizar novamente está ficando com um frame sobreposto conforme a imagem abaixo, corrigir.
+1. Verificar o funcionamento do recurso na tela do pack e desconto atacado.
 
+    > a imagem abaixo está desatualizada, é referente ao épico de criação da tela Desconto para Atacado
 
-melhorar checkboxes, talvez um do lado do outro
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/FrmPackVirtualErroMaximizar.jpg?raw=true)
 
-após a mensagem já adicionar o produto no inserir produtos em massa
+1. Deixar os grids de produtos mais altos proximos aos labels. Tanto o esquerdo quanto o direito, esta ficando um vazio entre os componentes. Arrumar também o botão de inserção em massa da tela Desconto Atacado.
+    * Mesmo que tenha que no designer o grid da direita fique por cima do limites da regra, os 2 não aparecem juntos, alinhar também o frame de configurações de arredondamento.
 
-retirar mensagem dos associados, pensar em outra estratégia 
+1. Colocar o ícone expandir/retrair no formulário Desconto para Atacado para aumentar o grid de produtos e implementar.
 
-ver para subir mais os grids
+##  Tarefa 0.2 Corrigir erro quando módulo da kw ativo
+1. No meu pc eu estava com o módulo da kw ativo e não abriu o formulário Desconto para Atacado. Corrigir 
 
-ver a questão do checkbox limites da regra
+    * no procedimento  CarregarComboModeloPack
+substituir 
 
-## erro kw
-protected override void CarregarComboModeloPack(ComboBox cboPack, bool usaTodos)
-retirar 
+``` Csharp
             if (Modulo.ConsultarChave(banco, 711).Permissao == Modulo.EnumPermissao.Habilitado)
                 cboPack.SelectedIndex = 8;
             else
                 cboPack.SelectedIndex = 0;
+```
+
+por 
+
+``` Csharp
+                cboPack.SelectedIndex = 0;
+```
+
+    * no procedimento  LimparCampos
+
+retirar 
+
+``` Csharp
+    cboModeloPack.SelectedIndex = moduloKw ? 8 : 0;
+```
+
+
+## Tarefa 0.3  Corrigir primeira abertura da tela Desconto Para Atacado
+1. Caso não haja nenhum registro de desconto para atacado a tela está abrindo com o grid invisível. Corrigir para abrir na tela do novo...
+> Deve funcionar igual a tela do pack virtual quando não possui registros.
 
 
 
-protected override void LimparCampos(bool limpaTelaPesquisa, bool moduloKw)
-retirar
-cboModeloPack.SelectedIndex = moduloKw ? 8 : 0;
 
-
-## corrigir para abrir no novo 
-
-
-## o maximizar no descontos para atacado está ficando com um frame sobreposto
-
-
-
-colocar mais para cima o grid de produtos
