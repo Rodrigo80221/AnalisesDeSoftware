@@ -382,16 +382,36 @@ por
 ## Melhorar maximizar do formulário do pack virtual
 
 
-melhorar checkboxes
+melhorar checkboxes, talvez um do lado do outro
 
 após a mensagem já adicionar o produto no inserir produtos em massa
 
 retirar mensagem dos associados, pensar em outra estratégia 
 
+ver para subir mais os grids
+
+ver a questão do checkbox limites da regra
+
+## erro kw
+protected override void CarregarComboModeloPack(ComboBox cboPack, bool usaTodos)
+retirar 
+            if (Modulo.ConsultarChave(banco, 711).Permissao == Modulo.EnumPermissao.Habilitado)
+                cboPack.SelectedIndex = 8;
+            else
+                cboPack.SelectedIndex = 0;
 
 
 
+protected override void LimparCampos(bool limpaTelaPesquisa, bool moduloKw)
+retirar
+cboModeloPack.SelectedIndex = moduloKw ? 8 : 0;
+
+
+## corrigir para abrir no novo 
+
+
+## o maximizar no descontos para atacado está ficando com um frame sobreposto
 
 
 
-
+colocar mais para cima o grid de produtos
