@@ -553,7 +553,9 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
             var ajuda = "Exemplo de promoção: " + Environment.NewLine;
             ajuda += "A partir de 12 latas de Refri ganhe 10% de desconto em cada unidade." + Environment.NewLine + Environment.NewLine;
 
-            ajuda += "Observação: Cada produto informado na grade será contado individualmente por código de barras." + Environment.NewLine + Environment.NewLine;
+            ajuda += "Observação 1: Cada produto informado na grade será contado individualmente por código de barras." + Environment.NewLine;
+            
+            ajuda += "Observação 2: Produtos associados serão contados individualmente." + Environment.NewLine + Environment.NewLine;
 
 
             Modelo modelo = new Modelo("A partir de X unidades ganhe desconto (%)",
@@ -574,7 +576,7 @@ namespace Telecon.GestaoComercial.Biblioteca.PackVirtual
                 " unidade(s)",//"unidade(s) de 1 destes produtos "
                 " Ganhe ",//"Receba"
                 "% de desconto por unidade(s).",//" % de desconto por unidade(s)."
-                "Observação: Cada produto informado na grade será contado individualmente por código de barras.", // Observacao
+                "", // Observacao
                 0,
                 0,
                 CaixaTexto.TipoFormato.Inteiro,
