@@ -51,18 +51,18 @@ Resumo: Criar função no c# para enviar ao vb uma lista para popular um combo d
 1. Ajustar o Tab index
 1. Utilizar o Grid padrão Telecon + Selecionar linha inteira + Colunas fixas
 1. Carregar o combo de etiquetas com os dados da tabela etiquetas
-1. Carregar o combo Tipo de Promoção utilizando as funções criadas no c#, Listar de acordo com o option button selecionado.
+1. Carregar o combo Tipo de Promoção utilizando as funções criadas no c#, classe modelosPack, Listar de acordo com o option button selecionado.
 1. Implementar o botão adicionar. No adicionar já adicionar na tabela EtiquetasRelacionamentos, para obter o CodigoModelo utilizar a função criada no C# passando a descrição selecionada no combo.
 1. Caso o usuário adicione um tipo de promoção que já esteja na grade mostrar a mensagem abaixo e impedir
     >O tipo de promoção já possui uma etiqueta relacionada!
-1. O remover deve mostrar a mensagem abaixo yes/no padrão "Não" e remover tda tabela EtiquetasRelacionamentos
+1. O remover deve mostrar a mensagem abaixo yes/no padrão "Não" e remover toda tabela EtiquetasRelacionamentos
     >A relação "NomeDaEtiqueta" -> "TipoDePromoção" será excluída deseja continuar?
 1. Tratar no sCorrigeBugTab para não dar o bug ao maximizar e minimizar novamente
-1. Tratar no maximizar para se ajustar a tela para ampliar as bordas do frame
+1. Tratar no maximizar para ajustar a tela para ampliar as bordas do frame, assim como nas outras abas
 1. Adicionar texto abaixo no ícone de ajuda 
 > Relacione uma etiqueta com um Pack Virtual ou com um Desconto para Atacado!
 >
-> Definindo uma etiqueta para um Pack Virtual ou um Desconto para Atacado, a tela imprimirá sempre a etiqueta de acordo com a configuração, ignorando a etiqueta configurada na aba  "Config. Etiqueta" 
+> Definindo uma etiqueta para um Pack Virtual ou um Desconto para Atacado, a tela imprimirá sempre a etiqueta de acordo com a configuração, ignorando a etiqueta selecionanda na aba  "Config. Etiqueta" 
 
 1. Cadastrar etiquetas e relacionar com diversos packs testando a estrutura, corrigir eventuais falhas
 
@@ -79,20 +79,16 @@ Tarefa:
 
 Existem várias formas para programar a tarefa, abaixo darei apenas um direcionamento que utilizei para testar se seria possível a alteração.
 
-1. A programação efetuada na tela deve ter comentário por linha de código adicionada para facilitar a manutenção e entendimento das alterações.
+1. Se possível adicionar comentários no código adicionado para facilitar a manutenção e entendimento das alterações.
 1. Antes de realizar qualquer alteração na tela realizar uma impressão para teste de performance, pode ser utilizando a impressora do windows
     * Carregar a grade com 40 produtos, 20 com pack e 20 sem pack, eles precisam ser adicionados intercalados, 1 produto com pack e outro sem pack, assim teremos um teste de stress com um cenário que exigirá muitas alterações nos objetos em tela. Marcar o tempo de impressão
-1. Criar a função `fRetornarEtiquetaPack` onde passamos o ModeloPack por parâmetro e a função retorna o código da etiqueta.
-1. Na grade de impressão temos o campo PackVirtual.Codigo, adicionar mais uma columa oculta (width=0) para guardar o campo PackVirtual.ModeloPack. Tratar para carregar na grade.
-1. Ao carregar uma etiqueta pelo list salvar a etiqueta selecionada no registro do windows em `SaveSetting "Gestao", "Impressao", "ArquivoEtq","XXXX"`
-    * O registro já está sendo usando no unload e no load
-1. No procedimento   `sUsaImpressoraWindows` temos um for dentro do outro. Dentro do 2º for programar:
-    * Se o produto possuir Pack Virtual (coluna da grade) buscar a etiqueta configurada para esse pack com a função `fRetornarEtiquetaPack`. Chamar o procedimento `fMontarEtiqueta` e carrega-la na tela
-    * Se o próximo produto não possuir pack teremos que carregar novamente o layout que foi salvo no registro do windows.
-    * Se para carregar as etiquetas vc utilizar o procedimento `sCarregarConfigEtiquetas` terá criar um parâmentro para não executar a configuração `picEtiqueta.ScaleMode = vbPoints` , ou terá que passar ela para outro local que chama essa função, ou fazer bkp da configuração, ou algo do tipo, caso contrário irá alterar essa configuração e implicará na alteração do layout do procedimento `sUsaImpressoraWindows`
-    * Tratar para não carregar sempre a etiqueta, caso o próximo produto use a mesma etiqueta não deveremos carrega-la para evitar problemas de performance.
-    * No final do for a etiqueta carregada deverá ser a etiqueta padrão
-1. Fazer um tratamento semelhante para a impressão da etiqueta argox no `sImprimeEtiqueta` 
+
+1. Na grade de impressão temos o campo PackVirtual.Codigo, adicionar mais uma columa oculta (width=0) para guardar o campo EtiquetasRelacionamentos.CodEtiqueta. Tratar para carregar na grade, assim não teremos que consultar no banco a todo momento. O melhor seria até gravar o conteúdo da etiqueta, verificar se é possível, e se teria limite.
+ 
+1. No procedimento  `sUsaImpressoraWindows` temos um for dentro do outro. Dentro do 2º for substituir o código que busca o nome da etiqueta de atacado na tabela de configurações, substituir pela etiqueta do grid.    
+    * Se o próximo produto não possuir pack teremos que enviar a etiqueta padrão que é a que esta salva no registro do windows.
+
+1. Fazer um tratamento semelhante para a impressão da etiqueta argox no `sImprimeEtiqueta`, já deve ter algo programado para a etiqueta de atacado
 
 ## Parte 2 Tarefa 6: Teste de integração 
 1. Pegar o tempo de impressão registrado na tarefa 5 e comparar com a tela após a alteração, se houver uma diferença de tempo considerável verificar com a análise. (Teremos que agrupar as impressões de alguma forma.)

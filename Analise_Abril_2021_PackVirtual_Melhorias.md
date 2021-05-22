@@ -309,90 +309,41 @@ por
 
 1. No formulário c# FrmDescontoParaAtacado, possui algumas mensagens novas criadas, torcar o "Pack Virtual" por "Desconto Atacado".
 
- ## Tarefa 23: Ajustes finais e testes de integração
-1. Refazer os packs que foram feitos na tarefa 1 e comparar todos para ver se ficaram iguais no banco de dados.
-1. Ajustar possíveis diferenças ou erros
-1. Verificar se os packs estão funcionando no pdv de acordo com os exemplos dados no ponto de interrogação da tela.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# tarefa retirada 
-
-
-* Criar as funções abaixo no c# no classe PackVirtualVB6.cd
-``` Csharp
-    public int RetornarTipoDePack(int CodModeloPack)
-    {
-        var modelo = new Telecon.GestaoComercial.Biblioteca.PackVirtual.ModeloPack();
-        var tipoPack = modelo.RetornarModeloPeloCodModeloPack(CodModeloPack).Tipo;
-
-        return (int)tipoPack;
-    }
-```
-
-``` Csharp
-    public string RetornarDescricaoModeloPack(float qtdRegra, float valorRegra, int CodModeloPack)
-    {
-        var modelo = new Telecon.GestaoComercial.Biblioteca.PackVirtual.ModeloPack();
-
-        var m = modelo.RetornarModeloPeloCodModeloPack(CodModeloPack);
-
-        string texto = m.DescricaoLabel1 + System.Convert.ToString(valorRegra) + m.DescricaoLabel2 + m.DescricaoLabel3 + System.Convert.ToString(valorRegra) + m.DescricaoLabel4;
-
-        return texto;
-    }
-```
-* Instanciar a classe Telecon_GestaoComercial_Biblioteca.PackVirtualVB6 no VB no cadastro de produtos
-
-* No form frmCadProdutos criar a função fRetornarPackVirtualVigente que retorne o código da tabela pack virtual. A função deve ser semelhante a fValidaProdutoPackVirtualVigente mas deve levar em consideração a loja logada.
-* No procedimento sAtualizaCamposPromocao, utilizar a função  fRetornarPackVirtualVigente e RetornarTipoDePack para montar uma descrição. Adicionar e implementar um label de acordo com as imagens abaixo.
-![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CadProdutosPromocao.jpg?raw=true)
-![](https://github.com/Rodrigo80221/MARKDOWN/blob/main/Imagens/CadProdutosPromocao2.jpg?raw=true)
-* O label deve ficar por padrão invisível, deverá ficar visível caso o produto possua um pack virtual ou desconto para atacado com data vigente para a loja logada.
-* O `RetornarTipoDePack` deverá ser utilizado para saber se é um pack virtual ou um desconto para atacado.
-* Ao clicar no label deverá abrir a tela do pack virtual ou desconto para atacado na aba de pesquisa exibindo somente o respectivo registro.
-
-
-
-
-
-
-## Tarefa 0.1 Corrigir e melhorar o maximizar do formulário do pack virtual
+## Tarefa 23 Corrigir e melhorar o maximizar do formulário do pack virtual
 1. Ao maximizar, minimizar e maximizar novamente está ficando com um frame sobreposto conforme a imagem abaixo, corrigir.
 1. Verificar o funcionamento do recurso na tela do pack e desconto atacado.
 
-    > a imagem abaixo está desatualizada, é referente ao épico de criação da tela Desconto para Atacado
+    > as imagems abaixo estão desatualizadas, são referentes ao épico de criação da tela Desconto para Atacado
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/FrmPackVirtualErroMaximizar.jpg?raw=true)
 
 1. Deixar os grids de produtos mais altos proximos aos labels. Tanto o esquerdo quanto o direito, esta ficando um vazio entre os componentes. Arrumar também o botão de inserção em massa da tela Desconto Atacado.
     * Mesmo que tenha que no designer o grid da direita fique por cima do limites da regra, os 2 não aparecem juntos, alinhar também o frame de configurações de arredondamento.
 
-1. Colocar o ícone expandir/retrair no formulário Desconto para Atacado para aumentar o grid de produtos e implementar.
+1. Colocar o ícone expandir/retrair no lado direito do frame de regras no formulário Desconto para Atacado para aumentar o grid de produtos e implementar. Implementar conforme as imagens abaixo
 
-##  Tarefa 0.2 Corrigir erro quando módulo da kw ativo
+![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/FrmPackVirtualExpandir.jpg?raw=true)
+
+![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/FrmPackVirtualRetrair.jpg?raw=true)
+
+a princípio o código abaixo resolveria, testar, se necessário programar de outra forma
+
+``` Csharp
+            if (groupBoxValores.Dock == DockStyle.None)
+                groupBoxValores.Dock = DockStyle.Fill;
+            else if (groupBoxValores.Dock == DockStyle.Fill)
+                groupBoxValores.Dock = DockStyle.None;
+```
+
+    * Tratar no maximizar e minimizar
+    * No savar deixar sempre retraído devido ao testa campos
+    * Testar funcionamento geral da tela
+
+
+
+
+
+##  Tarefa 24 Corrigir erro quando módulo da kw ativo
 1. No meu pc eu estava com o módulo da kw ativo e não abriu o formulário Desconto para Atacado. Corrigir 
 
     * no procedimento  CarregarComboModeloPack
@@ -411,7 +362,7 @@ por
                 cboPack.SelectedIndex = 0;
 ```
 
-    * no procedimento  LimparCampos
+* no procedimento  LimparCampos
 
 retirar 
 
@@ -420,10 +371,13 @@ retirar
 ```
 
 
-## Tarefa 0.3  Corrigir primeira abertura da tela Desconto Para Atacado
+## Tarefa 25  Corrigir primeira abertura da tela Desconto Para Atacado
 1. Caso não haja nenhum registro de desconto para atacado a tela está abrindo com o grid invisível. Corrigir para abrir na tela do novo...
 > Deve funcionar igual a tela do pack virtual quando não possui registros.
 
 
-
+ ## Tarefa 26: Ajustes finais e testes de integração
+1. Refazer os packs que foram feitos na tarefa 1 e comparar todos para ver se ficaram iguais no banco de dados.
+1. Ajustar possíveis diferenças ou erros
+1. Verificar se os packs estão funcionando no pdv de acordo com os exemplos dados no ponto de interrogação da tela.
 

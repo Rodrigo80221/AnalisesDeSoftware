@@ -42,63 +42,163 @@ CREATE TABLE Etiquetas
     Arquivo nvarchar(max) not null
 )            
 ```
+>Observações:
+>frmLogin.lblInicializando.Caption = "Criando tabela Etiquetas"
+>Utilizar o Funcoes.fExisteObjeto 
+
 
 ## Tarefa 2: Criar verifica banco para migrar etiquetas para o sql server
 **Objetivo:** Atualmente salvamos as etiquetas da central de impressão na pasta `C:\Telecon_Sistemas\Gestao\Etiquetas`, e isso tem gerados alguns problemas de perda de arquivos, problemas de acesso nas pastas e substituição dos arquivos nas atualizações do sistema. Iremos a partir deste momento salvar as etiquetas no banco de dados. 
 
 Na atualização do sistema iremos migrar as etiquetas para o banco de dados.
-1. Criar atualiza banco para fazer backup das etiquetas. Caso na pasta das etiquetas que está no bd rede, exemplo `\\Servidor\Telecon_Sistemas\Gestao\Etiquetas` possua arquivos de etiquetas salvar essas etiquetas no banco do gestão comercial na tabela Etiquetas. O arquivo deve ser salvo literalmente, uma linha abaixo da outra.    
-obs: não salvar o .etq na descrição do arquivo.
+1. Criar atualiza banco para fazer backup das etiquetas. 
+    * Buscar caminho do servidor no bd rede, exemplo `\\Servidor\Telecon_Sistemas\Gestao\Etiquetas` 
+    * Se possuir arquivos de etiquetas salvar essas etiquetas no banco do gestão comercial na tabela Etiquetas
+    * O arquivo deve ser salvo literalmente, uma linha abaixo da outra.    
+    * obs: não salvar o .etq na descrição do arquivo.
 
 ## Tarefa 3: Substituir o fileListBox por um ListBox no FrmImpressao
 
+1. Para teste deixar algumas etiquetas salvas na tabela Etiquetas
 1. No frame fraArquivo trocar o caption Arquivo por Etiquetas
+1. Substituir o fileListBox filArquivos por um listview lvwArquivos 
+    * Manter a mesma aparência, utilizar as configurações padrões da telecon. 
+1. Verificar se o procedimento `Form_Resize` continuará funcionando, se necessário ajustar    
+1. Manter o mesmo tamanho do list e o tabindex = 87
 
-1. Substituir o fileListBox filArquivos por um listview lvwArquivos manter a mesma aparência, utilizar as configurações padrões da telecon. Ao carregar, carregar a descrição da etiqueta e o código oculto para controle.
+## Tarefa 3: Carregar etiquetas no Form_Load
 
-1. Tratar no FrmImpressao.Form_Load para listar os arquivos de acordo com as informações do banco de dados. No final do Form_Load tratar para buscar a última etiqueta utilizada salva no registro do windows, neste caso tratar para caso não haja nenhuma etiqueta no banco de dados.
-A etiqueta que está sendo utilizada deve ficar com a fonte em vermelho e em negrito para ajudar o usuário a identificar qual a etiqueta que está selecionada. 
+1. Criar a função `fListarEtiquetas` para listar as etiquetas no listview, carregar a descrição das etiquetas
+    * Buscar a última etiqueta utilizada salva no registro do windows `GetSetting("Gestao", "Impressao", "ArquivoEtq", -1)`
+    * Posicionar o List na etiqueta que retornou no passo acima. A etiqueta que está sendo utilizada deve ficar no list com a fonte em negrito. 
+    * Caso não retorne nada, deixar o list sem posição
+    * A função deverá __retornar uma string__ com o conteúdo da etiqueta. Ou retornar em branco.    
+    
+1. Tratar no FrmImpressao.Form_Load para listar os arquivos de acordo com as informações do banco de dados. 
+    * Substituir o código abaixo pela chamada da função `fListarEtiquetas` para carregar o list
+    ``` vb
+        16  If Dir(strRede & "..\Etiquetas", vbDirectory) = "" Then MkDir strRede & "..\Etiquetas"
 
-1. Quando o usuário der um click em uma linha do listview deverá aparecer o tooltip
+        17  If Funcoes.fExistePasta(strRede & "..\Etiquetas") = False Then
+        18      Screen.MousePointer = vbDefault
+        19      MsgBox "Pasta com os arquivos de etiqueta não foi encontrada: " & App.Path & "\relatorios\cartazes\", vbInformation
+        20  Else
+        21      filArquivos.Path = strRede & "..\Etiquetas"
+
+        22  End If
+    ```
+    * exluir o código abaixo
+    ``` vb
+        filArquivos.Refresh
+    ```
+    * exluir o código abaixo
+    ``` vb
+        96  filArquivos.Refresh
+    ```    
+
+    * exluir o código abaixo, ele deve estar todo contemplado na função `fListarEtiquetas`
+    ``` vb
+    85  If filArquivos.ListCount > 0 Then
+    86      If Val(GetSetting("Gestao", "Impressao", "ArquivoEtq", -1)) <= filArquivos.ListCount _
+            And Val(GetSetting("Gestao", "Impressao", "ArquivoEtq", -1)) >= 0 Then
+    87          filArquivos.ListIndex = Val(GetSetting("Gestao", "Impressao", "ArquivoEtq", -1))
+    88      Else
+    89          filArquivos.ListIndex = 0
+    90      End If
+    91  End If
+    ```   
+
+1. No final do formload substituir o trecho abaixo 
+
+    ``` vb
+    93      cmdCarregar_Click
+    ``` 
+    
+    Por
+
+    ``` vb
+    sCarregarConfigEtiquetasParametro 
+    ``` 
+    * enviar por parâmentro uma variável com o retorno da função `fListarEtiquetas` chamada anteriormente.
+
+1. No procedimento sCarregarConfigEtiquetasParametro __alterar o nome do parâmetro__ `NomeEtiqueta As String` por `Etiqueta As String`. 
+
+1. Alterar o procedimento `fLerPropriedadeEtiquetaParametro` para receber o parâmentro `Etiqueta As String` e em vez de percorrer o arquivo da etiqueta, __percorrer esse parâmetro__
+
+1. Excluir os procedimentos abaixo
+`sCarregarConfigEtiquetas()`
+`cmdCarregar_Click`
+`fLerPropriedadeEtiqueta`
+`filArquivos_Click`
+
+1. Alterar o procedimento `sUsaImpressoraWindows` para buscar do registro do windows e não da configuração `UltimaEtiquetaSelecionada`. O código está logo no início.
+
+
+
+
+## Tarefa 3: Alterar procedimento filArquivos_DblClick
+
+1. Alterar o procedimento `filArquivos_DblClick` para carregar a etiqueta na tela
+    * Buscar a etiqueta no banco de dados
+    * Chamar o sCarregarConfigEtiquetasParametro
+    * Salvar a etiqueta selecionada no registro do windows.
+
+## Tarefa 3: Alterar procedimento Form_Unload
+1. Alterar o código abaixo no Form_Unload para salvar no registro do windows 
+    ``` vb
+    4   If filArquivos.filename <> "" Then
+    5       SaveSetting "Gestao", "Impressao", "ArquivoEtq", filArquivos.ListIndex
+    6   End If
+    ```
+
+
+## Tarefa 3: Ajustar alterações
+
+1. Devido a alteração do filelist e retirada das funções alguns códigos terão que ser adaptados.
+    * Dar ctrl + F5 e verificar demais pontos que devem ser alterados, ajustar.
+    Caso haja alterações relevantes verificar com a análise.
+
+1. Com o list carregado quando o usuário colocar o mouse em uma linha do listview colocar o tooltip
 "Dê duplo clique para selecionar a etiqueta"
 
-1. Manter o mesmo tamanho do list e o tabindex = 87
 
 ## Tarefa 4: Excluir etiquetas
 
-1. Substituir o cmdDeletar do FrmImpressao from um cmdSalvarComo, manter o tabindex. Remover o código de exclusão. Esse botão será implementado mais adiante.
+1. Substituir o cmdDeletar do FrmImpressao por um cmdSalvarComo, manter o tabindex. Remover o código de exclusão. Esse botão será implementado mais adiante.
 
 1. Colocar um ícone com um "x" do lado direito do list. Se o usuário clicar no item mostrar a mensagem abaixo, retirar do list e excluir do banco.
 
 ```
-A etiqueta será excluída. A ação não poderá ser desfeita. Deseja continuar? (sim/não) O foco inicial deve ficar em cima do botão não.
+A etiqueta será excluída. A ação não poderá ser desfeita! Deseja continuar? (sim/não) O foco inicial deve ficar em cima do botão não.
 ```
 
 ## Tarefa 5: Salvar, Retirar o txtArquivo e carregar etiqueta
 
 1. Remover o componete txtArquivo do FrmImpressao
+    * Retirar código do `Form_resize`
 
-1. Retirar código do `Form_resize`
+1. Alterar o `cmdSalvar_Click` para retirar o 1º e o 2º IF
 
-1. Excluir procedimento `filArquivos_Click`
+1. Criar a função `fRetornarPropriedadesEtiqueta`
+    * Ela deverá retornar um string com todas configurações da etiqueta, assim como era no arquivo `.etq` 
+    * Retirar o código que está no `cmdSalvar_Click` e utilizar na função `fRetornarPropriedadesEtiqueta`
+    * Remover a função `fSalvarPropriedadeEtiqueta` ou altera-la para salvar na string e dar um enter
 
-1. Alterar o `cmdSalvar_Click` para não utilizar mais o txtArquivo nem os arquivos texto, Criar a função `fMontarEtiqueta` que chame a função `fSalvarPropriedadeEtiqueta` para cada objeto da tela e retorne uma string com toda a formatação da etiqueta assim como era no arquivo. Utilizaremos essa string novamente em outra tarefa.
-    * Salvar a etiqueta no banco de dados.
+1. No procedimento `cmdSalvar_Click` chamar a função fRetornarPropriedadesEtiqueta e implementar para salvá-la no banco de dados, salvar de acordo com a etiqueta do list que está sendo alterada
 
-1. Adequar o `sCarregarConfigEtiquetas` para carregar o arquivo do banco de dados. 
-
-1. Ao dar um duplo clique na listview carregar a etiqueta e deixar o label em vermelho, configurar para não selecionar a linha, para não ficar azul a linha podendo assim ver o vermelho do label. Caso não dê após o duplo clique tirar o foco do componente.
+1. Ainda poderá restar trechos de códigos dos componentes que alteramos na tela, ir dando ctrl + F5 e corrigir
 
 ## Tarefa 6: Tratar o fechamento da tela para avisar que a etiqueta foi modificada. 
 
 1. Criar a função fValidarEtiquetaAlterada e chama-la no form_unload
 
-1. Nesta função Chamar o `fMontarEtiqueta` para a etiqueta que está selecionada e compará-la com ela mesmo no banco de dados, se for difente mostrar a mensagem abaixo
+1. Nesta função Chamar o `fRetornarPropriedadesEtiqueta` para a etiqueta que está selecionada e compará-la com ela mesmo no banco de dados, se for difente mostrar a mensagem abaixo
     ```
     A etiqueta XXXXX foi alterada, deseja fechar a tela e perder as alterações na etiqueta?
     (sim/não) padrão no não
     ```
 1. Caso sim fechar a tela, caso não voltar para a tela da central de impressão
+
 
 ## Tarefa 7: Criar o botão salvar como...
 
@@ -107,8 +207,9 @@ A etiqueta será excluída. A ação não poderá ser desfeita. Deseja continuar
 1. Implementar o botão, para quando o usuário clicar nele chamar a tela de input box com o texto abaixo, adicionar ele no list view e salvar o novo arquivo no banco de dados.
 
     `Informe uma nova descrição para a etiqueta:`
-1. validar uma descrição válida até 50 caracté
-1. Colocar o Tooltip = "Salve a etiqueta atual com um novo nome"
+1. validar uma descrição válida até 50 caracteres
+1. Validar para não inserir uma nomenclatura repetida
+1. Colocar o Tooltip no botão = "Salve a etiqueta atual com um novo nome"
 
 
 ## Tarefa 8: Criar o botão Novo (validar etiquetas)
@@ -121,7 +222,7 @@ A etiqueta será excluída. A ação não poderá ser desfeita. Deseja continuar
     `Insira um nome para a nova etiqueta:`
 1. validar uma descrição válida até 50 caractéres
 
-1. Criar um form frmAbrirEtiquetas colocar um list com uma imagem e abaixo listar algumas etiquetas padrões em um listview, algo semelhante com a imagem abaixo
+1. Criar um form frmImpressaoNovaEtq colocar um list com uma imagem e abaixo listar algumas etiquetas padrões em um listview, algo semelhante com a imagem abaixo
     ![](https://raw.githubusercontent.com/Rodrigo80221/MARKDOWN/main/Imagens/SelecaoEtiqueta.png)
 
 No novo form manter as configurações padrões da Telecon
@@ -138,15 +239,22 @@ No novo form manter as configurações padrões da Telecon
 1. Na imagem colocar uma foto da imagem para cada arquivo
     [Link para as etiquetas](https://github.com/Rodrigo80221/MARKDOWN/tree/main/Download/Etiquetas)
 1. Criar um procedimento para cada uma destas etiquetas retornando uma string
-1. Abaixo o link para as etiquetas, testar com a argox da telecon, se necessário ajustar os objetos. Testar com valores até 999,00 para ver se não corta
+1. Abaixo o link para as etiquetas, testar com a argox da telecon, ajustar os objetos. Testar com valores até 999,00 para ver se não corta
 1. Após abrir uma etiqueta de modelo salvar no banco de dados com o nome definido pelo usuário
 ** Não coloquei as imagens das etiquetas porque ainda podem sofrer alterações.
 
 
-## Tarefa 9: Teste de integração
-1. Ajustar algum código antigo que possa ter ficado para trás
-1. Testar as opções criadas e a integração com o banco de dados, novo, salvar como, deletar e salvar. Criar e selecionar diversas etiquetas e imprimir verificando o comportamento da tela. 
-1. Ajustar possíves erros. 
+## Tarefa 9: Ajustes finais e Teste de integração
+
+1. As tarefas anteriores refletam a estrutura principal, realizar os testes abaixos e corrigir eventuais erros.
+
+1. Testar as opções criadas e a integração com o banco de dados
+    * novo
+    * salvar como
+    * deletar 
+    * salvar
+    * Criar e alternar entre as etiquetas, verificar a impressão tanto na argox quanto no windows
+
  
 
 
