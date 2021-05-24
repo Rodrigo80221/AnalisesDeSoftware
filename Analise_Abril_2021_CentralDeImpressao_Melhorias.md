@@ -66,7 +66,7 @@ Na atualização do sistema iremos migrar as etiquetas para o banco de dados.
 1. Verificar se o procedimento `Form_Resize` continuará funcionando, se necessário ajustar    
 1. Manter o mesmo tamanho do list e o tabindex = 87
 
-## Tarefa 3: Carregar etiquetas no Form_Load
+## Tarefa 4: Carregar etiquetas no Form_Load
 
 1. Criar a função `fListarEtiquetas` para listar as etiquetas no listview, carregar a descrição das etiquetas
     * Buscar a última etiqueta utilizada salva no registro do windows `GetSetting("Gestao", "Impressao", "ArquivoEtq", -1)`
@@ -136,14 +136,14 @@ Na atualização do sistema iremos migrar as etiquetas para o banco de dados.
 
 
 
-## Tarefa 3: Alterar procedimento filArquivos_DblClick
+## Tarefa 5: Alterar procedimento filArquivos_DblClick
 
 1. Alterar o procedimento `filArquivos_DblClick` para carregar a etiqueta na tela
     * Buscar a etiqueta no banco de dados
     * Chamar o sCarregarConfigEtiquetasParametro
     * Salvar a etiqueta selecionada no registro do windows.
 
-## Tarefa 3: Alterar procedimento Form_Unload
+## Tarefa 6: Alterar procedimento Form_Unload
 1. Alterar o código abaixo no Form_Unload para salvar no registro do windows 
     ``` vb
     4   If filArquivos.filename <> "" Then
@@ -152,7 +152,7 @@ Na atualização do sistema iremos migrar as etiquetas para o banco de dados.
     ```
 
 
-## Tarefa 3: Ajustar alterações
+## Tarefa 7: Ajustar alterações
 
 1. Devido a alteração do filelist e retirada das funções alguns códigos terão que ser adaptados.
     * Dar ctrl + F5 e verificar demais pontos que devem ser alterados, ajustar.
@@ -162,7 +162,7 @@ Na atualização do sistema iremos migrar as etiquetas para o banco de dados.
 "Dê duplo clique para selecionar a etiqueta"
 
 
-## Tarefa 4: Excluir etiquetas
+## Tarefa 8: Excluir etiquetas
 
 1. Substituir o cmdDeletar do FrmImpressao por um cmdSalvarComo, manter o tabindex. Remover o código de exclusão. Esse botão será implementado mais adiante.
 
@@ -172,7 +172,7 @@ Na atualização do sistema iremos migrar as etiquetas para o banco de dados.
 A etiqueta será excluída. A ação não poderá ser desfeita! Deseja continuar? (sim/não) O foco inicial deve ficar em cima do botão não.
 ```
 
-## Tarefa 5: Salvar, Retirar o txtArquivo e carregar etiqueta
+## Tarefa 9: Salvar, Retirar o txtArquivo e carregar etiqueta
 
 1. Remover o componete txtArquivo do FrmImpressao
     * Retirar código do `Form_resize`
@@ -188,7 +188,7 @@ A etiqueta será excluída. A ação não poderá ser desfeita! Deseja continuar
 
 1. Ainda poderá restar trechos de códigos dos componentes que alteramos na tela, ir dando ctrl + F5 e corrigir
 
-## Tarefa 6: Tratar o fechamento da tela para avisar que a etiqueta foi modificada. 
+## Tarefa 10: Tratar o fechamento da tela para avisar que a etiqueta foi modificada. 
 
 1. Criar a função fValidarEtiquetaAlterada e chama-la no form_unload
 
@@ -200,7 +200,7 @@ A etiqueta será excluída. A ação não poderá ser desfeita! Deseja continuar
 1. Caso sim fechar a tela, caso não voltar para a tela da central de impressão
 
 
-## Tarefa 7: Criar o botão salvar como...
+## Tarefa 11: Criar o botão salvar como...
 
 1. No local onde tínhamos o botão Deletar, implementar o botão `cmdSalvarComo` com o Text `S&alvar como...`
 
@@ -212,7 +212,7 @@ A etiqueta será excluída. A ação não poderá ser desfeita! Deseja continuar
 1. Colocar o Tooltip no botão = "Salve a etiqueta atual com um novo nome"
 
 
-## Tarefa 8: Criar o botão Novo (validar etiquetas)
+## Tarefa 12: Criar o botão Novo (validar etiquetas)
 
 1. Substituir o botão `cmdCarregar` pelo `cmdNovo` com caption `&Novo` manter o mesmo tabindex
 
@@ -225,7 +225,7 @@ A etiqueta será excluída. A ação não poderá ser desfeita! Deseja continuar
 1. Criar um form frmImpressaoNovaEtq colocar um list com uma imagem e abaixo listar algumas etiquetas padrões em um listview, algo semelhante com a imagem abaixo
     ![](https://raw.githubusercontent.com/Rodrigo80221/MARKDOWN/main/Imagens/SelecaoEtiqueta.png)
 
-No novo form manter as configurações padrões da Telecon
+    > No novo form manter as configurações padrões da Telecon
 1. Fechar com esc
 1. Enter como tab
 1. Ícone na janela
@@ -244,7 +244,7 @@ No novo form manter as configurações padrões da Telecon
 ** Não coloquei as imagens das etiquetas porque ainda podem sofrer alterações.
 
 
-## Tarefa 9: Ajustes finais e Teste de integração
+## Tarefa 13: Ajustes finais e Teste de integração
 
 1. As tarefas anteriores refletam a estrutura principal, realizar os testes abaixos e corrigir eventuais erros.
 
