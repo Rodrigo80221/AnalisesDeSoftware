@@ -20,7 +20,7 @@ Questionamentos
 1. Ao marcar o check box listar os produtos que possuem desconto para atacado e estão listados no grid
     * Listar abaixo do respectivo produto
 
-    
+
 1. Adicionar menu no produto, "Inserir desconto para atacado (R$)"
 1. 
 
