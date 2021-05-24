@@ -1,40 +1,28 @@
-Possibilidade 1: 
-    * Ter outro produto para a caixa/fardo... , ele seria o produto pai
-    * Adiciona o item na fórmula dele 
-    * Puxa os pais no controle de entradas
-    * Cria um campo, que seria a embalagem de atacado, que seria também o incremento do site, e talvez seja o mesmo campo da fórmula
-
-    Ruim:
-    * Aumentaria muito a base de dados
-    * Aumentaria muito o banco compartilhado?
-    * Necessitaria de mais gerencia
-    * Perderíamos as fotos
-
-    Bom:
-    * Teriamos tudo certo nos relatórios
-    * Teríamos um histórico correto de venda
-    * Poderíamos fazer notas para o DUN
 
 
+Questionamentos
+-- Será que ele tem interesse em usar o Desconto para atacado por %, será que não seria melhor para ele?
+    Assim quando alterar o preço de um produto já alteraria o preço do pack automáticamente
+    
+## Controle de entradas
+1. Maximizar a tela do controle de entradas
 
-Possibilidade 2:    
-    * Adicionar o código DUN no cadastro de produtos
-    * Adicionar quantidade de varejo para ele, que já seria também o incremento do site
-    * Adicionar um preço de venda
-    * Teria que tratar nas triggers para deixar o estoque correto
-    * Tratar ele nas nf saídas e nf entradas e pedidos, para buscar o campo qtd??? ou não permitir estes produtos, prod apenas para compra ou venda
-    * Puxar os dois no controle de entradas
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Maximizar.jpg?raw=true)
 
-    Ruim
-    * perderia o histórico de vendas
+1. Arrumar colunas "Lojas" e "Nome da Loja"
 
-
-    Bom:
-    * manteria as fotos
+    "[](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ColunaLojaNomeDaLoja.jpg?raw=true)
 
 
+1. Inserir checkbox "Listar descontos para atacado"
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/CheckboxDescontoAtacado.jpg?raw=true)
+
+1. Ao marcar o check box listar os produtos que possuem desconto para atacado e estão listados no grid
+    * Listar abaixo do respectivo produto
 
     
+1. Adicionar menu no produto, "Inserir desconto para atacado (R$)"
+1. 
 
 
 
@@ -42,12 +30,29 @@ Possibilidade 2:
 
 
 
-    copetti augusto dun 
-
-    pedido de compra usar o dun, tbm transferencias
 
 
- Tratar ele nas nf saídas e nf entradas e pedidos, para buscar o campo qtd??? ou não permitir estes produtos, prod apenas para compra ou venda
 
- desativar o produto apenas para compra ou venda
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
