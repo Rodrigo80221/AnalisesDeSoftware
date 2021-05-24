@@ -21,8 +21,9 @@ Questionamentos
     * Listar abaixo do respectivo produto
 
 
-1. Adicionar menu no produto, "Inserir desconto para atacado (R$)"
-1. 
+1. Adicionar menu no produto, "Inserir desconto para atacado (R$)" e "Inserir desconto para atacado (%)"
+
+
 
 
 
