@@ -15,12 +15,11 @@
 1. Deve atualizar dinamicamente a descrição do pack
 1. Ao salvar o pack deve salvar em um pack com a mesma descrição e regras ou criar outro
 
-    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ListarPacks2.jpg?raw=true)
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ListarPacks4.jpg?raw=true)
 
 1. Adicionar menu no produto "Inserir desconto para atacado (%)"
 
-    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ListarPacks3.jpg?raw=true)
-
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ListarPacks5.jpg?raw=true)
 
 1. Criar configurações para colunas visualizadas
 
