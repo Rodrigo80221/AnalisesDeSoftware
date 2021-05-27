@@ -63,12 +63,23 @@
 
 1. Caso o usuário não encontre um pack desejado deverá escolher a opção `Novo`
 
-![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO3.jpg?raw=true)
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO3.jpg?raw=true)
+
+1. Será exibida a tela de busca
+1. O campo `A partir de (Qtd.)` deverá vir preenchido com a quantidade da embalagem desse fornecedor
+1. O campo `Valor Atacado` deverá vir com o preço do grid
+1. O campo `Desconto %` deverá ser calculado de acordo com a regra de arredondamento
+    * Caso o usuário altere os valores o respectivo campo deverá ser recalculado, sempre de acordo com a regra de arredondamento.
+1. No grid serão listados os packs que se encaixam nas regras digitadas, o usuário pode selecionar um modelo.
 
 
 ---
 
-## Criar a opção `Novo` no combo
+## Clique no Preço de Venda do atacado
+
+1. Se o usuário clicar no preço de venda do atacado irá abrir uma tela para ajuda-lo a selecionar um pack ou para criar um novo
+
+1. Neste caso os campos da tela deverão vir preenchidos
 
 
 
@@ -77,6 +88,10 @@
 
 
 
+
+
+
+---
 
 1. Permitir editar a quantidade da regra 
 1. Permitir editar a porcentagem da regra 
