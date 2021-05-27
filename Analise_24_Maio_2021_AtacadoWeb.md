@@ -23,8 +23,10 @@
 1. Criar configuração de arredondamento igual a tela Desconto Atacado 
 ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ConfigurarArredondamento.jpg?raw=true)
 
-> Terei que ter a mesma configuração de arredondamento dos packs
+> Terei que ter a mesma configuração de arredondamento dos packs.
+
 > Na simulação de preço/ porcentagem terei que buscar somente packs com as mesmas questões de arredondamento, do contrário teremos problemas no resultado final
+
 > Criar configuração de arredondamento geral?
 
 ---
