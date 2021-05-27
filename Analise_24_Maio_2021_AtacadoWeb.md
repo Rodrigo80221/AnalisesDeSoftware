@@ -91,6 +91,9 @@
 
 1. O usuário irá clicar no botão `Adicionar Novo`
 
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Selecionar3.jpg?raw=true)
+
+1. Será exibido um inputbox sugerindo a descrição
 
 
 
