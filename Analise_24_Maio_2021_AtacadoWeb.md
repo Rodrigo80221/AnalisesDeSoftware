@@ -10,6 +10,7 @@
 ## Correção
 
 1. Arrumar colunas "Lojas" e "Nome da Loja"
+
 ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ColunaLojaNomeDaLoja.jpg?raw=true)    
 
 
