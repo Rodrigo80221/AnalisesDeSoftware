@@ -65,21 +65,31 @@
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO3.jpg?raw=true)
 
+
+---
+
+## Opção `Novo` no combo ou clique na coluna `Preço Venda`
+
+> Neste caso possívelmente o cliente deseja alterar o preço de venda
+
 1. Será exibida a tela de busca
-1. Neste caso o usário está alterando um produto e a tela deverá vir carregada com os dados atuais do produto
+1. A tela deverá vir carregada com os dados atuais do produto
+
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Selecionar2.jpg?raw=true)
+
+1. Caso o usuário altere os campos `Valor Atacado` ou `Desconto %` o outro deverá ser recalculado de acordo com a regra de arredondamento
+    * Se houver alteração o grid deverá buscar os respectivos packs
+
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Selecionar1.jpg?raw=true)
 
 
+---
 
-1.Caso o usuário altere os valores o respectivo campo deverá ser recalculado, sempre de acordo com a regra de arredondamento.
+## Botão `Adicionar Novo`
 
+> O cliente não encontrou um modelo 
 
-
-
-
-
-
-
-
+1. O usuário irá clicar no botão `Adicionar Novo`
 
 
 
