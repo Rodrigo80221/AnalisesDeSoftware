@@ -34,7 +34,7 @@
 ## Listar Packs
 
 1. Caso configurado no controle de entradas listar os descontos de atacado para cada produto em forma de combobox 
-    * Inicialmente nas colunas `Valor Atual (do Atacado)` e `Preço de Venda (do Atacado)` devem constar o preço de venda do produto com o desconto do pack aplicado
+    * Inicialmente nas colunas `Valor Atual (do Atacado)` e `Preço de Venda (do Atacado)` devem constar o preço de venda do produto com o desconto do pack selecionado + arredondamento
     * Ao alterar a coluna `Preço de Venda (do Produto)` deverá alterar também a coluna `Preço de Venda (do Atacado)` aplicando o percentual
     * A Margem e Markup são sempre calculadas em relação aos preços em qualquer alteração ocorrida
 
@@ -64,6 +64,16 @@
 1. Caso o usuário não encontre um pack desejado deverá escolher a opção `Novo`
 
 ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO3.jpg?raw=true)
+
+
+---
+
+## Criar a opção `Novo` no combo
+
+
+
+
+
 
 
 
