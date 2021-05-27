@@ -1,15 +1,21 @@
-## Controle de entradas
+# Alterações Controle de entradas
+
+## Maximizar
 
 1. Maximizar a tela do controle de entradas para podermos visualizar mais colunas
 ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Maximizar.jpg?raw=true)
 
 ---
 
+## Correção
+
 1. Arrumar colunas "Lojas" e "Nome da Loja"
 ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ColunaLojaNomeDaLoja.jpg?raw=true)    
 
 
 ---
+
+## Configuração
 
 1. Criar a configuração abaixo no controle de entradas
     - [x] Exibir Preços de Atacado
@@ -22,6 +28,8 @@
 
 ---
 
+## Listar Packs
+
 1. Caso configurado no controle de entradas listar os descontos de atacado para cada produto em forma de combobox 
     * Inicialmente nas colunas `Valor Atual (do Atacado)` e `Preço de Venda (do Atacado)` devem constar o preço de venda do produto com o desconto do pack aplicado
     * Ao alterar a coluna `Preço de Venda (do Produto)` deverá alterar também a coluna `Preço de Venda (do Atacado)` aplicando o percentual
@@ -29,14 +37,32 @@
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO1.jpg?raw=true)
 
+---
+
+## Alterar Pack
+
+1. O usuário poder alterar o tipo de desconto no combo, caso altere o percentual deverá atualizar a coluna `Preço de Venda`
+
+![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO2.jpg?raw=true)
 
 
-2. O usuário poder alterar o tipo de desconto no combo, se o tipo alterar o percentual deverá atualizar a coluna `Preço de Venda`
+---
+
+## Busca no combo
+
+1. O usuário poderá digitar no combo para buscar o pack
+
+![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO4jpg.jpg?raw=true)
+
+---
+
+## Criar a opção `Novo` no combo
+
+1. Caso o usuário não encontre um pack desejado deverá escolher a opção `Novo`
+
+![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO3.jpg?raw=true)
 
 
-
-
-1. No combo listar todos os packs disponíveis 
 
 
 1. Permitir editar a quantidade da regra 
