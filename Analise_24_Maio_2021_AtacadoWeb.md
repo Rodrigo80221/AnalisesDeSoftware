@@ -82,7 +82,7 @@
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Selecionar1.jpg?raw=true)
 
-
+> O packs buscados sempre terão que estar na mesma regra de arredondamento da tela de controle de entradas, senão o resultado final ficará errado.
 ---
 
 ## Botão `Adicionar Novo`
@@ -95,22 +95,31 @@
 
 1. Será exibido um inputbox sugerindo a descrição
 
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Selecionar4.jpg?raw=true)
 
+1. Após confirmado já voltará para a tela do controle de entradas.
+1. O pack já será criado no banco com as regras, descrição e configurações de arredondamento
 
-1. O campo `A partir de (Qtd.)` deverá vir preenchido com a quantidade da embalagem desse fornecedor
-1. O campo `Valor Atacado` deverá vir com o preço do grid
-1. O campo `Desconto %` deverá ser calculado de acordo com a regra de arredondamento
-    * Caso o usuário altere os valores o respectivo campo deverá ser recalculado, sempre de acordo com a regra de arredondamento.
+---
+
+## Criar menu para adicionar pack
+
+1. Ao clicar com o botão direito será exibido um menu
+
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ListarPacks5.jpg?raw=true)
+
+1. A selecionar `Inserir Desconto Para Atacado %` exibir a tela de definição de modelos
+    * O campo `A partir de (Qtd.)` deverá vir preenchido com a quantidade da embalagem desse fornecedor
+    1. O campo `Valor Atacado` deverá vir em branco
 1. No grid serão listados os packs que se encaixam nas regras digitadas, o usuário pode selecionar um modelo.
 
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Selecionar1.jpg?raw=true)
+
+1. Após selecionado um pack voltará para a tela do controle de entradas.
 
 ---
 
-## Clique no Preço de Venda do atacado
-
-1. Se o usuário clicar no preço de venda do atacado irá abrir uma tela para ajuda-lo a selecionar um pack ou para criar um novo
-
-1. Neste caso os campos da tela deverão vir preenchidos
+## Criar menu para remover pack do produto
 
 
 
@@ -121,48 +130,14 @@
 
 
 
-
----
-
-1. Permitir editar a quantidade da regra 
-1. Permitir editar a porcentagem da regra 
-1. Ao alterar o preço de venda deve alterar a porcentagem, ao alterar a porcentagem deve alterar o preço de venda (margem e markup andam juntas)
-1. Se estiver marcado a sugestão de arredondamento deve ser utilizada também para o pack virtual
-1. Deve atualizar dinamicamente a descrição do pack
-1. Ao salvar o pack deve salvar em um pack com a mesma descrição e regras ou criar outro
-![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ListarPacks4.jpg?raw=true)
-
-
-
-
----
-
-![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ListarPacks5.jpg?raw=true)
-1. Adicionar menu no produto "Inserir desconto para atacado (%)"
-1. Exibir input box para exibir a quantidade e porcentagem inicial
-
----
-
-1. Destaque da cor da linha
-    * Atualmente os packs e as promoções são destacados com verde, será mantida a mesma cor???
-    * O procedimento para colorir a linha está bem ruim, pisca muito
+    * O procedimento para colorir a promoção deverá ficar apenas em 1 célular
     * Colocar uma legenda
 
 
 
----
-
-
-1. Criar configurações para colunas visualizadas
-
-
-
-
----
-
 
 Tratamento para produtos associados
-
+Adicionar os produtos associados no pack?
 
 
 Item que está na promoção não deverá sofrer alteração percentual no preço de venda
@@ -173,8 +148,6 @@ Item que está na promoção não deverá sofrer alteração percentual no preç
 
 
 
-
-qtd atacado
 
 
 
@@ -188,9 +161,8 @@ se alterar o produto pai , altera o percentual do filho
 
 o valor atual é diferente na linha do  pack 
 
-tirar os custos da linha do pack , cfop , loja, tirar o simbolo também 
 
-sugerir a quantidade a partir do fornecedor da nota, no imputbox , o índio vai utilizar 
+
 
 remover pack 
 
