@@ -66,6 +66,24 @@
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO3.jpg?raw=true)
 
 1. Será exibida a tela de busca
+1. Neste caso o usário está alterando um produto e a tela deverá vir carregada com os dados atuais do produto
+
+
+
+1.Caso o usuário altere os valores o respectivo campo deverá ser recalculado, sempre de acordo com a regra de arredondamento.
+
+
+
+
+
+
+
+
+
+
+
+
+
 1. O campo `A partir de (Qtd.)` deverá vir preenchido com a quantidade da embalagem desse fornecedor
 1. O campo `Valor Atacado` deverá vir com o preço do grid
 1. O campo `Desconto %` deverá ser calculado de acordo com a regra de arredondamento
