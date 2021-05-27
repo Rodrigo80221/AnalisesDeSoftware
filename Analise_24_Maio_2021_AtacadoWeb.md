@@ -11,27 +11,32 @@
 
 ---
 
-1. Criar configuração de arredondamento igual a tela Desconto Atacado (ou reduzido)
+1. Criar a configuração abaixo no controle de entradas
+    - [x] Exibir Preços de Atacado
+1. Criar configuração de arredondamento igual a tela Desconto Atacado 
+![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ConfigurarArredondamento.jpg?raw=true)
 
-
-
-
-
-
-
-
-
+> Terei que ter a mesma configuração de arredondamento dos packs
+> Na simulação de preço/ porcentagem terei que buscar somente packs com as mesmas questões de arredondamento, do contrário teremos problemas no resultado final
+> Criar configuração de arredondamento geral?
 
 ---
 
+1. Caso configurado no controle de entradas listar os descontos de atacado para cada produto em forma de combobox 
+    * Inicialmente nas colunas `Valor Atual (do Atacado)` e `Preço de Venda (do Atacado)` devem constar o preço de venda do produto com o desconto do pack aplicado
+    * Ao alterar a coluna `Preço de Venda (do Produto)` deverá alterar também a coluna `Preço de Venda (do Atacado)` aplicando o percentual
+    * A Margem e Markup são sempre calculadas em relação aos preços em qualquer alteração ocorrida
+
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO1.jpg?raw=true)
 
 
-1. Se a configuração estiver marcada listar os packs existentes na tela para cada produto
-    - [x] Exibir Preços de Atacado
+
+2. O usuário poder alterar o tipo de desconto no combo, se o tipo alterar o percentual deverá atualizar a coluna `Preço de Venda`
 
 
 
-1. Ao marcar o check box listar os produtos que possuem desconto para atacado conforme os filtros
+
+1. No combo listar todos os packs disponíveis 
 
 
 1. Permitir editar a quantidade da regra 
