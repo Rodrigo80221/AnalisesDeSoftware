@@ -121,13 +121,12 @@
 
 ## Criar menu para remover pack do produto
 
+1. Ao clicar com o botão direito será exibido um menu para remover o pack do produto
+
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ListarPacks6.jpg?raw=true)
 
 
-
-
-
-
-
+    
 
 
     * O procedimento para colorir a promoção deverá ficar apenas em 1 célular
@@ -143,13 +142,6 @@ Adicionar os produtos associados no pack?
 Item que está na promoção não deverá sofrer alteração percentual no preço de venda
  * Tratar na exportação para o Te levo
  * Tratar no PDV 
-
-
-
-
-
-
-
 
 
 mais para frente padronizar as configurações de arredondamento
