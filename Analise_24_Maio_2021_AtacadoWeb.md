@@ -79,6 +79,7 @@
 
 1. Caso o usuário altere os campos `Valor Atacado` ou `Desconto %` o outro deverá ser recalculado de acordo com a regra de arredondamento
     * Se houver alteração o grid deverá buscar os respectivos packs
+    * Validar porcentagem entre 0 e 99%
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Selecionar1.jpg?raw=true)
 
