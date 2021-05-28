@@ -15,6 +15,13 @@
 
 
 ---
+## Melhoria
+
+1. Alterar os produtos com promoção para não colorir a linha toda, apenas a coluna `Valor Atual`
+
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ColoririPromocao.jpg?raw=true)
+
+--
 
 ## Configuração
 
