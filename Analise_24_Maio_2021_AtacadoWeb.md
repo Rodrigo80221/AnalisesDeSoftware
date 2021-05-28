@@ -55,6 +55,8 @@
     * A Margem e Markup são sempre calculadas em relação aos preços em qualquer alteração ocorrida
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO12.jpg?raw=true)
+
+> Verificar como vou ter o histórico da coluna `Valor Atual` (do atacado)    
 ---    
 
 ## Alterar Pack
