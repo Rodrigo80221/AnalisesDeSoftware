@@ -36,18 +36,25 @@
 
 > Criar configuração de arredondamento geral?
 
+> Criar no pack um arredondamento igual ao do controle de entradas?
+
 ---
 
 ## Listar Packs
 
-1. Caso configurado no controle de entradas listar os descontos de atacado para cada produto em forma de combobox 
-    * Inicialmente nas colunas `Valor Atual (do Atacado)` e `Preço de Venda (do Atacado)` devem constar o preço de venda do produto com o desconto do pack selecionado + arredondamento
-    * Ao alterar a coluna `Preço de Venda (do Produto)` deverá alterar também a coluna `Preço de Venda (do Atacado)` aplicando o percentual
-    * A Margem e Markup são sempre calculadas em relação aos preços em qualquer alteração ocorrida
+1. Caso configurado listar os descontos de atacado em forma de combobox 
+    * As colunas `Valor Atual (do Atacado)` e `Preço de Venda (do Atacado)` receberão o preço de venda do produto com o desconto % do seu pack + arredondamento
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO1.jpg?raw=true)
 
 ---
+
+## Alterar Preço de Venda do Produto
+
+1. Ao alterar a coluna `Preço de Venda (do Produto)` deverá alterar também a coluna `Preço de Venda (do Atacado)` aplicando o percentual + arred.
+    * A Margem e Markup são sempre calculadas em relação aos preços em qualquer alteração ocorrida
+
+---    
 
 ## Alterar Pack
 
