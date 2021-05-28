@@ -18,7 +18,7 @@
 ## Melhoria
 
 1. Alterar os produtos com promoção para não colorir a linha toda, apenas a coluna `Valor Atual`
-
+ * Colocar uma legenda
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ColoririPromocao.jpg?raw=true)
 
 --
@@ -43,7 +43,7 @@
 ## Listar Packs
 
 1. Caso configurado listar os descontos de atacado em forma de combobox 
-    * As colunas `Valor Atual (do Atacado)` e `Preço de Venda (do Atacado)` receberão o preço de venda do produto com o desconto % do seu pack + arredondamento
+    * As colunas `Valor Atual` (do Atacado) e `Preço de Venda` (do Atacado) receberão o preço de venda do produto com o desconto % do seu pack + arredondamento
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO1.jpg?raw=true)
 
@@ -51,14 +51,15 @@
 
 ## Alterar Preço de Venda do Produto
 
-1. Ao alterar a coluna `Preço de Venda (do Produto)` deverá alterar também a coluna `Preço de Venda (do Atacado)` aplicando o percentual + arred.
+1. Ao alterar a coluna `Preço de Venda` (do Produto) deverá alterar também a coluna `Preço de Venda` (do Atacado) aplicando o percentual + arred.
     * A Margem e Markup são sempre calculadas em relação aos preços em qualquer alteração ocorrida
 
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO12.jpg?raw=true)
 ---    
 
 ## Alterar Pack
 
-1. O usuário poder alterar o tipo de desconto no combo, caso altere o percentual deverá atualizar a coluna `Preço de Venda`
+1. O usuário poder alterar o pack no combo, caso altere, a `Preço de Venda` (do atacado) deverá ser atualizada com o desconto % + arred.
 
 ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO2.jpg?raw=true)
 
@@ -84,27 +85,37 @@
 
 ## Opção `Novo` no combo ou clique na coluna `Preço Venda`
 
-> Neste caso possívelmente o cliente deseja alterar o preço de venda
+> Neste momento o usuário já buscou pela descrição ou clicou no `Preço Venda`
+
+> Possívelmente o usuário deseja apenas alterar o `Preço Venda`
 
 1. Será exibida a tela de busca
 1. A tela deverá vir carregada com os dados atuais do produto
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Selecionar2.jpg?raw=true)
 
-1. Caso o usuário altere os campos `Valor Atacado` ou `Desconto %` o outro deverá ser recalculado de acordo com a regra de arredondamento
-    * Se houver alteração o grid deverá buscar os respectivos packs
-    * Validar porcentagem entre 0 e 99%
+1. Caso o usuário altere o campo `Valor Atacado` o campo `Desconto %` deverá ser calculado
+
+    > aqui teremos que tentar usar o arredondamento para tirar a quebra do percentual
+
+1. Caso o usuário altere o campo `Desconto %` o campo `Valor Atacado` deverá ser recalculado de acordo com a regra de arredondamento
+
+1. A cada alteração o grid deverá buscar os respectivos packs    
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Selecionar1.jpg?raw=true)
+
+1. Se colocar o mouse em uma linha mostrar um tooltip com o Valor de Atacado
+
+1. Se o usuário der duplo clique em uma linha do grid ou selecionar um modelo volta para o controle de entradas
 
 > O packs buscados sempre terão que estar na mesma regra de arredondamento da tela de controle de entradas, senão o resultado final ficará errado.
 ---
 
 ## Botão `Adicionar Novo`
 
-> O cliente não encontrou um modelo 
+> O usuário não encontrou um modelo 
 
-1. O usuário irá clicar no botão `Adicionar Novo`
+1. Irá clicar no botão `Adicionar Novo`
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Selecionar3.jpg?raw=true)
 
@@ -115,6 +126,7 @@
 1. Após confirmado já voltará para a tela do controle de entradas.
 1. O pack já será criado no banco com as regras, descrição e configurações de arredondamento
 
+> Validar porcentagem entre 0 e 99%
 ---
 
 ## Criar menu para adicionar pack
@@ -123,9 +135,9 @@
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ListarPacks5.jpg?raw=true)
 
-1. A selecionar `Inserir Desconto Para Atacado %` exibir a tela de definição de modelos
+1. A selecionar `Adicionar Desconto Atacado` exibir a tela de Busca
     * O campo `A partir de (Qtd.)` deverá vir preenchido com a quantidade da embalagem desse fornecedor
-    1. O campo `Valor Atacado` deverá vir em branco
+    * O campo `Valor Atacado` deverá vir em branco
 1. No grid serão listados os packs que se encaixam nas regras digitadas, o usuário pode selecionar um modelo.
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Selecionar1.jpg?raw=true)
@@ -140,38 +152,44 @@
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ListarPacks6.jpg?raw=true)
 
-
+---
     
+## Botão `Aplicar Valores`    
 
+> Apenas nesse momento saberemos em quais lojas se refletirá o preço
 
-    * O procedimento para colorir a promoção deverá ficar apenas em 1 célular
-    * Colocar uma legenda
+> Só neste momento iremos colocar o produto no pack?
 
+> Se o pack for apenas para 1 loja, não podemos alterar a loja do pack se tiver outros produtos nele
 
+---
 
+## Produtos associados
 
-Tratamento para produtos associados
-Adicionar os produtos associados no pack?
+> Adicionar os produtos associados no pack?
 
+![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ProdutosAssociados.jpg?raw=true)
+
+---
+
+## Produto com promoção + pack
+
+> Tratar para no atacado nunca aplicar desconto em produtos com promoção?
 
 Item que está na promoção não deverá sofrer alteração percentual no preço de venda
  * Tratar na exportação para o Te levo
  * Tratar no PDV 
 
 
-mais para frente padronizar as configurações de arredondamento
-
-
-ajustar o arredondamento e o percentual para ficar número cheio 3,89 / 10%
-
-se alterar o produto pai , altera o percentual do filho
-
-o valor atual é diferente na linha do  pack 
 
 
 
 
-remover pack 
+
+
+
+
+
 
 
 
