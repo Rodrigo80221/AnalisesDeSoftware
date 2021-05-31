@@ -19,30 +19,28 @@
 
 1. Alterar os produtos com promoção para não colorir a linha toda, apenas a coluna `Valor Atual`
  * Colocar uma legenda
+ * Não colorir os produtos com pack, eles terão o combo
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ColoririPromocao.jpg?raw=true)
 
 --
 
 ## Configuração
 
-1. Criar a configuração abaixo no controle de entradas
+1. Criar a configuração abaixo no controle de entradas na opção `Configurações`
     - [x] Exibir Preços de Atacado
-1. Criar configuração de arredondamento igual a tela Desconto Atacado 
-![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ConfigurarArredondamento.jpg?raw=true)
-
-> Terei que ter a mesma configuração de arredondamento dos packs.
-
-> Na simulação de preço/ porcentagem terei que buscar somente packs com as mesmas questões de arredondamento, do contrário teremos problemas no resultado final
-
-> Criar configuração de arredondamento geral?
-
-> Criar no pack um arredondamento igual ao do controle de entradas?
-
+1. Ao marcar a opção exibir o um frame com o caption `Configurações padrão para novos modelos`    
+    * Neste frame criar configuração de arredondamento igual a tela Desconto Atacado 
+    * Neste frame Criar configuração de lojas igual a tela Desconto Atacado 
 ---
 
 ## Listar Packs
 
-1. Caso configurado listar os descontos de atacado em forma de combobox 
+1. Verificar se o produto possui pack de atacado
+    * Se possui inserir uma linha abaixo do produto. Adicionar o combo que liste a descrição de todos os packs
+    ``` Csharp
+    select Descricao from PackVirtual where modelopack = 13
+    ```
+    * Posicionar o pack do produto
     * As colunas `Valor Atual` (do Atacado) e `Preço de Venda` (do Atacado) receberão o preço de venda do produto com o desconto % do seu pack + arredondamento
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO1.jpg?raw=true)
@@ -158,12 +156,7 @@
     
 ## Botão `Aplicar Valores`    
 
-> Apenas nesse momento saberemos em quais lojas se refletirá o preço
-
-> Só neste momento iremos colocar o produto no pack?
-
-> Se o pack for apenas para 1 loja, não podemos alterar a loja do pack se tiver outros produtos nele
-
+1. Neste momento iremos colocar o produto no respectivo pack
 ---
 
 ## Produtos associados
