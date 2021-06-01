@@ -68,14 +68,6 @@
 
 ---
 
-## Busca no combo
-
-1. O usuário poderá digitar no combo para buscar o pack
-
-![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/COMBO4jpg.jpg?raw=true)
-
----
-
 ## Criar a opção `Novo` no combo
 
 1. Caso o usuário não encontre um pack desejado deverá escolher a opção `Novo`
@@ -87,10 +79,6 @@
 
 ## Opção `Novo` no combo ou clique na coluna `Preço Venda`
 
-> Neste momento o usuário já buscou pela descrição ou clicou no `Preço Venda`
-
-> Possívelmente o usuário deseja apenas alterar o `Preço Venda`
-
 1. Será exibida a tela de busca
 1. A tela deverá vir carregada com os dados atuais do produto
 
@@ -100,17 +88,17 @@
 
     > aqui teremos que tentar usar o arredondamento para tirar a quebra do percentual
 
-1. Caso o usuário altere o campo `Desconto %` o campo `Valor Atacado` deverá ser recalculado de acordo com a regra de arredondamento
+1. Caso o usuário altere o campo `Desconto %` o campo `Valor Atacado` deverá ser recalculado de acordo com a regra de arredondamento configurado nas configurações
 
-1. A cada alteração o grid deverá buscar os respectivos packs    
+1. A cada alteração o grid deverá buscar os respectivos packs de acordo com a quantidade e porcentagem    
+
+1. O grid deve exibir a coluna `Preço Atacado` que deverá ser calculada com o valor atual + porcentagem do pack + arredondamento do pack. O arredondamento do pack pode ser visto na tela Desconto Atacado.
 
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Selecionar1.jpg?raw=true)
 
-1. Se colocar o mouse em uma linha mostrar um tooltip com o Valor de Atacado
-
 1. Se o usuário der duplo clique em uma linha do grid ou selecionar um modelo volta para o controle de entradas
 
-> O packs buscados sempre terão que estar na mesma regra de arredondamento da tela de controle de entradas, senão o resultado final ficará errado.
+
 ---
 
 ## Botão `Adicionar Novo`
@@ -126,7 +114,8 @@
     ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Selecionar4.jpg?raw=true)
 
 1. Após confirmado já voltará para a tela do controle de entradas.
-1. O pack já será criado no banco com as regras, descrição e configurações de arredondamento
+1. O pack já será criado no banco com as regras, descrição e configurações de arredondamento;
+    * A regra de arredondamento e as lojas estão nas configurações da tela.
 
 > Validar porcentagem entre 0 e 99%
 ---
@@ -158,12 +147,12 @@
     
 ## Botão `Aplicar Valores`    
 
-1. Neste momento iremos colocar o produto no respectivo pack
+1. Neste momento iremos colocar o produto no respectivo pack não importando as lojas selecionadas.
 ---
 
 ## Produtos associados
 
-> Adicionar os produtos associados no pack?
+1. No final iremos mostrar a tela de produtos associados para verificar se o cliente deseja inserir a promoção nos outros produtos.
 
 ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ProdutosAssociados.jpg?raw=true)
 
@@ -178,6 +167,15 @@ Item que está na promoção não deverá sofrer alteração percentual no preç
  * Tratar no PDV 
 
 
+Modelos que não devem ser ignorados por promoção
+
+CodPack = 2 
+Compre 2 unidades da Pizza XXX e ganhe um bombom da marca YYY.
+Compre 2 unidades da Pizza XXX e pague R$5,00 no refrigerante 2 litros
+
+CodPack = 7
+CodPack = 6
+Compre 2 Pizzas XXX e ganhe desconto de R$ 3,00 no refrigerante YYY.
 
 
 
