@@ -31,6 +31,8 @@
 1. Ao marcar a opção exibir o um frame com o caption `Configurações padrão para novos modelos`    
     * Neste frame criar configuração de arredondamento igual a tela Desconto Atacado 
     * Neste frame Criar configuração de lojas igual a tela Desconto Atacado 
+
+    ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/Configurar4.jpg?raw=true)
 ---
 
 ## Listar Packs
