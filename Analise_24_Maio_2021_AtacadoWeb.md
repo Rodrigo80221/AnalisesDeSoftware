@@ -162,28 +162,22 @@
 
 ## Produto com promoção + pack
 
-1. Tratar no pdv para caso o produto esteja em promoção, não participar dos packs 1,3,8,9,10,11,12,13,14
+> O item que está na promoção não deverá sofrer mais uma alteração percentual no preço de venda
 
-> Item que está na promoção não deverá sofrer mais uma alteração percentual no preço de venda
- * Tratar na exportação para o Te levo
- * Tratar no PDV 
+1. Tratar no pdv para caso o produto esteja em promoção, não participar dos packs 
 
+1. Tratar nas triggers ou exportação para o Te Levo
 
-Modelos que não devem ser ignorados por promoção
+1. Alertar caso cadastre um pack para um produto com promoção vigente
+    * Alertar também no prorrogar
 
-CodPack = 2 
-Compre 2 unidades da Pizza XXX e ganhe um bombom da marca YYY.
-Compre 2 unidades da Pizza XXX e pague R$5,00 no refrigerante 2 litros
+1. Alertar caso cadastre um promoção para um produto com pack vigente ou com desconto para atacado
+    * Alertar também no prorrogar
+    * Alertar também no prorrogar encarte    
 
-CodPack = 7
-CodPack = 6
-Compre 2 Pizzas XXX e ganhe desconto de R$ 3,00 no refrigerante YYY.
+---
+## Criar View para consultado do Te levo, retornando os dados de atacado
 
-
-
-
-
-/*
 
 Create Function fn_ArredondarBC(@Valor Money, @UltimaCasa Money) returns money as
 begin
@@ -224,8 +218,7 @@ return 0;
 End 
 
 
-
-ALTER FUNCTION FN_ArredondarDescontoAtacado (@Valor Money , @AjusteUltimaCasaDecimal Int,  @TipoAjusteValor varchar(2)) returns money as
+CREATE FUNCTION FN_ArredondarDescontoAtacado (@Valor Money , @AjusteUltimaCasaDecimal Int,  @TipoAjusteValor varchar(2)) returns money as
 Begin
 
     If (@AjusteUltimaCasaDecimal = '') 
@@ -256,8 +249,6 @@ Begin
      	 
 return 0;
 End;
-
-*/
 
 
 select pvg.CodProduto,pv.QtdRegra,pv.VlrRegra  from PackVirtual pv
