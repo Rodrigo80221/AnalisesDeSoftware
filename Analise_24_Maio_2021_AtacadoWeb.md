@@ -39,7 +39,7 @@
 
 1. Verificar se o produto possui pack de atacado
     * Se possui inserir uma linha abaixo do produto. Adicionar o combo que liste a descrição de todos os packs
-    ``` Csharp
+    ``` sql
     select Descricao from PackVirtual where modelopack = 13
     ```
     * Posicionar o pack do produto
@@ -153,6 +153,8 @@
 ## Produtos associados
 
 1. No final iremos mostrar a tela de produtos associados para verificar se o cliente deseja inserir a promoção nos outros produtos.
+    * Criar um novo form para os packs
+    * Caption do form (Produtos Associados - Adicionar Desconto para Atacado)
 
 ![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/AtacadoWEB/ProdutosAssociados.jpg?raw=true)
 
@@ -160,9 +162,9 @@
 
 ## Produto com promoção + pack
 
-> Tratar para no atacado nunca aplicar desconto em produtos com promoção?
+1. Tratar no pdv para caso o produto esteja em promoção, não participar dos packs 1,3,8,9,10,11,12,13,14
 
-Item que está na promoção não deverá sofrer alteração percentual no preço de venda
+> Item que está na promoção não deverá sofrer mais uma alteração percentual no preço de venda
  * Tratar na exportação para o Te levo
  * Tratar no PDV 
 
@@ -180,6 +182,87 @@ Compre 2 Pizzas XXX e ganhe desconto de R$ 3,00 no refrigerante YYY.
 
 
 
+
+/*
+
+Create Function fn_ArredondarBC(@Valor Money, @UltimaCasa Money) returns money as
+begin
+    If (@UltimaCasa = Null Or @UltimaCasa = -1 Or @UltimaCasa = 0) 
+        return  Round(@Valor, 1)
+    Else
+		begin
+			set @UltimaCasa = @UltimaCasa / 100
+			return  Round(@Valor, 1) + @UltimaCasa
+		end
+return 0;
+End 
+
+
+Create Function fn_ArredondarAB(@Valor Money, @UltimaCasa Money) returns money as
+begin
+    If (@UltimaCasa = Null Or @UltimaCasa = -1) 
+        return Round(@Valor - (0.049), 1)
+    Else
+	begin
+        set @UltimaCasa = @UltimaCasa / 100
+        return Round(@Valor - ((0.049) + @UltimaCasa), 1) + @UltimaCasa
+    End
+return 0;
+End 
+
+
+Create Function fn_ArredondarAC(@Valor Money, @UltimaCasa Money) returns money as
+begin
+    If (@UltimaCasa = Null Or @UltimaCasa = -1) 
+       return  Round(@Valor + (0.049), 1)
+    Else
+	begin
+        set @UltimaCasa = @UltimaCasa / 100
+        return Round(@Valor + (0.049) - @UltimaCasa, 1) + @UltimaCasa
+    End 
+return 0;
+End 
+
+
+
+ALTER FUNCTION FN_ArredondarDescontoAtacado (@Valor Money , @AjusteUltimaCasaDecimal Int,  @TipoAjusteValor varchar(2)) returns money as
+Begin
+
+    If (@AjusteUltimaCasaDecimal = '') 
+      Set @AjusteUltimaCasaDecimal = -1    
+	
+		if (@TipoAjusteValor = 'BC') 
+		begin
+			If (Not @TipoAjusteValor = '') 
+			begin
+				If ( CAST(STR(@VALOR,50,1) AS MONEY) > 4) 
+					return [dbo].[fn_ArredondarAC] (@Valor, cast(@AjusteUltimaCasaDecimal as money))
+				Else
+					return [dbo].[fn_ArredondarAB] (@Valor, cast(@AjusteUltimaCasaDecimal as money))					
+				
+			end
+		    else
+				return [dbo].[fn_ArredondarBC] (@Valor, cast(@AjusteUltimaCasaDecimal as money))
+		end
+			
+		If (@TipoAjusteValor = 'AC') 
+			return [dbo].[fn_ArredondarAC] (@Valor, cast(@AjusteUltimaCasaDecimal as money))
+
+		If (@TipoAjusteValor = 'AB') 
+			return [dbo].[fn_ArredondarAB] (@Valor, cast(@AjusteUltimaCasaDecimal as money))
+
+		if (@TipoAjusteValor = '') 
+			return @Valor
+     	 
+return 0;
+End;
+
+*/
+
+
+select pvg.CodProduto,pv.QtdRegra,pv.VlrRegra  from PackVirtual pv
+inner join PackVirtualGrupo1 pvg on pv.Codigo = pvg.CodPack  
+where ModeloPack in (3,9)
 
 
 
