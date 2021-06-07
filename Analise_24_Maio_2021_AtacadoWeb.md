@@ -177,7 +177,9 @@
 
 ---
 ## Criar View para consultado do Te levo, retornando os dados de atacado
+> **Espetado OK - Criado atualiza banco fCriarObjetosAtacadoWeb()**
 
+``` sql
 
 Create Function fn_ArredondarBC(@Valor Money, @UltimaCasa Money) returns money as
 begin
@@ -218,7 +220,7 @@ return 0;
 End 
 
 
-CREATE FUNCTION FN_ArredondarDescontoAtacado (@Valor Money , @AjusteUltimaCasaDecimal Int,  @TipoAjusteValor varchar(2)) returns money as
+create FUNCTION FN_ArredondarDescontoAtacado (@Valor Money , @AjusteUltimaCasaDecimal Int,  @TipoAjusteValor varchar(2)) returns money as
 Begin
 
     If (@AjusteUltimaCasaDecimal = '') 
@@ -228,7 +230,7 @@ Begin
 		begin
 			If (Not @TipoAjusteValor = '') 
 			begin
-				If ( CAST(STR(@VALOR,50,1) AS MONEY) > 4) 
+				If ( RIGHT(@Valor,1)  > 4) 
 					return [dbo].[fn_ArredondarAC] (@Valor, cast(@AjusteUltimaCasaDecimal as money))
 				Else
 					return [dbo].[fn_ArredondarAB] (@Valor, cast(@AjusteUltimaCasaDecimal as money))					
@@ -251,10 +253,24 @@ return 0;
 End;
 
 
-select pvg.CodProduto,pv.QtdRegra,pv.VlrRegra  from PackVirtual pv
-inner join PackVirtualGrupo1 pvg on pv.Codigo = pvg.CodPack  
-where ModeloPack in (3,9)
 
+Create View VW_ProdutosAtacado
+as
+select 
+PVG.CodProduto [CodigoProduto],
+PV.QtdRegra [QtdEmbalagem],
+[GESTAO].[dbo].FN_ArredondarDescontoAtacado(PL.ValorNoPdv - (PL.ValorNoPdv * PV.VlrRegra/100),PV.AjusteUltimaCasaDecimal,PV.TipoAjusteValor) [ValorProduto], 
+PVL.CodLoja 
+from PackVirtual PV
+inner join PackVirtualLojas PVL on PV.Codigo = PVL.CodPack
+inner join PackVirtualGrupo1 PVG on pv.Codigo = pvg.CodPack  
+inner join ProdutoLojas PL on PL.codProduto = PVG.CodProduto and PVL.CodLoja = PL.codLoja
+where 
+ModeloPack in (13)
+and PVG.CodProduto not in 
+(select CD_PRODUTO from PROMOCAO PM where codLoja = PVL.CodLoja and GETDATE() > PM.DT_INICIAL AND GETDATE() < ISNULL(PM.DT_FINAL,GETDATE()+1) and Config = '1' )
+
+``` 
 
 
 
