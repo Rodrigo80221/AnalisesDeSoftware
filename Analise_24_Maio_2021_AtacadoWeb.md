@@ -162,6 +162,11 @@
 
 ## Produto com promoção + pack
 
+> **Espetado:
+Programação em andamento - Criado atualiza banco fCriarObjetosAtacadoWeb()
+vb6 - fValidarProdutoComPack
+c# - ValidarProdutosComPromocao**
+
 > O item que está na promoção não deverá sofrer mais uma alteração percentual no preço de venda
 
 1. Tratar no pdv para caso o produto esteja em promoção, não participar dos packs 
@@ -177,7 +182,8 @@
 
 ---
 ## Criar View para consultado do Te levo, retornando os dados de atacado
-> **Espetado OK - Criado atualiza banco fCriarObjetosAtacadoWeb()**
+> **Espetado:
+Programação OK - Criado atualiza banco fCriarObjetosAtacadoWeb()**
 
 ``` sql
 
