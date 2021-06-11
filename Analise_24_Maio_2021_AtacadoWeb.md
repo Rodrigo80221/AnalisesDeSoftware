@@ -163,9 +163,11 @@
 ## Produto com promoção + pack
 
 > **Espetado:
-Programação em andamento - Criado atualiza banco fCriarObjetosAtacadoWeb()
-vb6 - fValidarProdutoComPack
-c# - ValidarProdutosComPromocao**
+Programação ok
+vb6 - Gestão Promoções - fValidarProdutoComPack
+vb6 - Gestão Duplicar encartes
+vb6 - PDV - Alteração no mdlValidarRegras - no select de busca dos produtos.
+c# - Pack Virtual - ValidarProdutosComPromocao() + ValidarPackComPromocao()**
 
 > O item que está na promoção não deverá sofrer mais uma alteração percentual no preço de venda
 
