@@ -183,6 +183,106 @@ c# - Pack Virtual - ValidarProdutosComPromocao() + ValidarPackComPromocao()**
     * Alertar também no prorrogar encarte    
 
 ---
+## Criar trigger para atualizar a tabela DriveFilaExportação ao inserir ou alterar um desconto para atacado
+
+``` sql
+
+INSERT INTO [dbo].[DriveTiposExportacao]
+           ([CodTipo]
+           ,[Descricao])
+     VALUES
+           (6,'Desconto para Atacado')
+
+
+ALTER TRIGGER [dbo].[TG_EXPORTACAO_TELEVO_PACKVIRTUALGRUPO1] ON [dbo].[PACKVIRTUALGRUPO1]
+FOR INSERT, UPDATE
+AS
+SET NOCOUNT ON;
+
+
+DECLARE @CD_PRODUTO AS FLOAT;
+DECLARE @IS_UPDATE_INSERT AS BIT;
+
+
+SET @IS_UPDATE_INSERT = 0;
+
+IF (
+        (
+            EXISTS (
+                SELECT *
+                FROM INSERTED
+                )
+            AND EXISTS (
+                SELECT *
+                FROM DELETED
+                )
+            )
+        OR (
+            EXISTS (
+                SELECT *
+                FROM INSERTED
+                )
+            AND NOT EXISTS (
+                SELECT *
+                FROM DELETED
+                )
+            )
+        )
+BEGIN
+    SET @IS_UPDATE_INSERT = (1);
+END
+
+IF (@IS_UPDATE_INSERT = 1)
+BEGIN
+    DECLARE NOVO_DRIVE CURSOR FOR
+
+    SELECT I.CodProduto AS CD_PRODUTO
+    FROM Inserted I
+	INNER JOIN PackVirtual PV ON I.CodPack = PV.Codigo AND PV.ModeloPack = 13
+	INNER JOIN PackVirtualLojas PVL ON PV.Codigo = PVL.CodPack 
+	INNER JOIN Lojas L ON PVL.CodLoja = L.Codigo AND L.SincronizaDrive = 1
+    INNER JOIN LISTA_PRODUTOS LP ON L.CodListaDrive = LP.CD_LISTA AND LP.CD_PRODUTO = I.CodProduto
+	WHERE I.CodProduto NOT IN (SELECT D.CodProduto FROM deleted D)
+   
+    OPEN NOVO_DRIVE;
+
+    FETCH NEXT FROM NOVO_DRIVE INTO @CD_PRODUTO
+
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+
+	DELETE FROM [DriveFilaExportacoes] WHERE Detalhe = CONVERT(NVARCHAR, cast(@CD_PRODUTO AS BIGINT))
+
+    INSERT INTO [dbo].[DriveFilaExportacoes] (
+        [CodTipoExportacao]
+        , [Detalhe]
+        , [DataHoraRegistro]
+        , [DataHoraUltimoEnvio]
+        , [MensagemErro]
+        , [Exportado]
+        )
+    VALUES (
+			6
+			, CONVERT(NVARCHAR, cast(@CD_PRODUTO AS BIGINT))
+			, getdate()
+			, NULL
+			, ''
+			, 0
+        )
+
+        FETCH NEXT FROM NOVO_DRIVE INTO @CD_PRODUTO;
+    END
+
+    CLOSE NOVO_DRIVE;
+
+    DEALLOCATE NOVO_DRIVE;
+END
+
+
+
+```
+
+---
 ## Criar View para consultado do Te levo, retornando os dados de atacado
 > **Espetado:
 Programação OK - Criado atualiza banco fCriarObjetosAtacadoWeb()**
