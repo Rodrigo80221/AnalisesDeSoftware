@@ -49,14 +49,44 @@ Criar form XXXX
 No novo form implementar as configurações padrões da Telecon
 1. Fechar com esc
 1. Enter como tab
+
+        Propriedade do form: keyPreview = True
+
+            Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
+                On Error GoTo TrataErro
+
+                Select Case KeyCode
+                Case vbKeyReturn
+                    If Funcoes.fControleAtivo(Me) <> "grdGrid.name" Then SendKeys "{TAB}"
+                Case vbKeyEscape
+                    If dtpFinal.Enabled = False Then Exit Sub
+                    Unload Me
+                Case vbKeyF1
+                    KeyCode = 0
+                End Select
+
+                Exit Sub
+            TrataErro:
+                Funcoes.sLogErros App, "frmControleEntradasAtacado", Err, "Form_KeyDown", Erl, True
+            End Sub
+
 1. Ícone na janela
 1. Abrir com vbmodal
 1. Não deve ter os botões de maximizar
-1. O Fechar/Sair cancela a operação
 1. Não deve permitir resize na tela
+        Propriedade do form: BorderStyle: 1 - Fixed Single
+
+1. O Fechar/Sair cancela a operação
+
 1. Deve abrir centralizado. 
+        Propriedade do form: StartUpPosition = 2 - CenterScreen
+
 1. Deve estar correto quanto ao tab index ao finalizar a tela
 1. F4 abre a busca 
+-- evento activeText_KeyDown
+    If KeyCode = vbKeyF4 Then
+        cmdBuscaGrupo_Click
+    End If        
 
 
 # Finalização/ Testes de Integração

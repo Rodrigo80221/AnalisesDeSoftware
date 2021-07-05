@@ -251,7 +251,7 @@ BEGIN
     WHILE @@FETCH_STATUS = 0
     BEGIN
 
-	DELETE FROM [DriveFilaExportacoes] WHERE Detalhe = CONVERT(NVARCHAR, cast(@CD_PRODUTO AS BIGINT))
+	DELETE FROM [DriveFilaExportacoes] WHERE Detalhe = CONVERT(NVARCHAR, cast(@CD_PRODUTO AS BIGINT)) AND CODEXPORTACAO = 6
 
     INSERT INTO [dbo].[DriveFilaExportacoes] (
         [CodTipoExportacao]
