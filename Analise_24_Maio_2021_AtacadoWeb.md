@@ -160,6 +160,11 @@
 
 ---
 
+## Criar verifica banco no te levo para não precisar mais de script manual
+
+
+---
+
 ## Produto com promoção + pack
 
 > **Espetado:
@@ -184,6 +189,9 @@ c# - Pack Virtual - ValidarProdutosComPromocao() + ValidarPackComPromocao()**
 
 ---
 ## Criar trigger para atualizar a tabela DriveFilaExportação ao inserir ou alterar um desconto para atacado
+
+> **Espetado:
+Programação ok**
 
 ``` sql
 
@@ -374,7 +382,7 @@ inner join PackVirtualLojas PVL on PV.Codigo = PVL.CodPack
 inner join PackVirtualGrupo1 PVG on pv.Codigo = pvg.CodPack  
 inner join ProdutoLojas PL on PL.codProduto = PVG.CodProduto and PVL.CodLoja = PL.codLoja
 where 
-ModeloPack in (13)
+ModeloPack in (13) and DtFinal > getdate()
 and PVG.CodProduto not in 
 (select CD_PRODUTO from PROMOCAO PM where codLoja = PVL.CodLoja and GETDATE() > PM.DT_INICIAL AND GETDATE() < ISNULL(PM.DT_FINAL,GETDATE()+1) and Config = '1' )
 
