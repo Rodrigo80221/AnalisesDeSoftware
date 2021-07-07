@@ -244,7 +244,7 @@ IF (@IS_UPDATE_INSERT = 1)
 BEGIN
     DECLARE NOVO_DRIVE CURSOR FOR
 
-    SELECT I.CodProduto AS CD_PRODUTO
+    SELECT DISTINCT I.CodProduto AS CD_PRODUTO
     FROM Inserted I
 	INNER JOIN PackVirtual PV ON I.CodPack = PV.Codigo AND PV.ModeloPack = 13
 	INNER JOIN PackVirtualLojas PVL ON PV.Codigo = PVL.CodPack 
@@ -259,7 +259,7 @@ BEGIN
     WHILE @@FETCH_STATUS = 0
     BEGIN
 
-	DELETE FROM [DriveFilaExportacoes] WHERE Detalhe = CONVERT(NVARCHAR, cast(@CD_PRODUTO AS BIGINT)) AND CODEXPORTACAO = 6
+	DELETE FROM [DriveFilaExportacoes] WHERE Detalhe = CONVERT(NVARCHAR, cast(@CD_PRODUTO AS BIGINT)) AND CodTipoExportacao = 6
 
     INSERT INTO [dbo].[DriveFilaExportacoes] (
         [CodTipoExportacao]
