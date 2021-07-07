@@ -1,5 +1,5 @@
 ```Csharp
-.TextMatrix(iLinhaProdAnterior, btCodigoProduto) = Space(4) & grsGeral("CD_Produto")
+                        .TextMatrix(iLinhaProdAnterior, btCodigoProduto) = Space(4) & grsGeral("CD_Produto")
                         .TextMatrix(iLinha, btProdutoAtivo) = grsGeral("Ativo")
                         .TextMatrix(iLinhaProdAnterior, btDescricaoProduto) = grsGeral("Descricao")
                         .TextMatrix(iLinhaProdAnterior, btProdutoAtivo) = grsGeral("Ativo")
