@@ -403,6 +403,63 @@ and PVG.CodProduto not in
 
 
 
+O LABEL DE ALTERAÇÃO DE PREÇO EM VERMELHO DEVE FICAR VERMELHO ATÉ QUANDO???
+
+
+REGRA PARA PINTAR DE AMARELO (QUAL CÉLULA EU DEVERIA PINTAR?)
+
+``` vb
+if bApurarSt then
+
+    If IIf(ReducaoBaseStEfetivo = 0, ValorVenda, (ValorVenda * ReducaoBaseStEfetivo) / 100) > BaseValorStRetido And BaseValorStRetido <> 0 Then
+    ' PINTA DE AMARELO
+    end if 
+
+end if 
+```
+
+REGRA PARA PINTAR DE VERMELHO CLARO 
+
+``` vb
+5   If Abs(btMarkUp - btMarkUpIdeal) > txtDiferencaMarkup.Text Then
+6       If btMarkUpIdeal > 0 Then
+7          ' PINTA DE VERMELHO
+8       End If
+9   End If
+
+5   If Abs(btMargem - btMargemIdeal) > txtDiferencaMargem.Text Then
+6       If btMargemIdeal > 0 Then
+7          ' PINTA DE VERMELHO
+8       End If
+9   End If
+```
+
+REGRA PARA PINTAR DE VERDE 
+CASO O PRODUTO ESTEJA EM UMA PROMOÇÃO VIGENTE OU TENHA UM PACK VIRTUAL QUE NÃO SEJA DE ATACADO (MODELOPACK <> 13)
+
+
+REGRA PARA PINTAR DE CINZA
+LINHA DO FORNECEDOR
+MARGEM, MARKUP E VALOR DE VENDA
+
+
+
+
+comentar tratamento para coloração do st em amarelo
+comentar tratamento para coloração da divergencia de margem em vermelho
+
+colocar coloração de seleção de linha em azul
+
+acertar tratamento da promoção, colocar fonte do valor de venda em verde com tooltips detalhando
+
+confirmar cor vermelha ao enviar carga (que vai virar azul)
+
+colocar cor em azul e talvez em negrito
+
+margem e markup cor em vermelho, com tooltip avisando
+
+diferimento e st | são distorção de impostos que reduzem a margem do produto | colocar a margem em vermelho com tootips de alertas
+criar uma estrutura para poder criar novos alertas 
 
 
 
@@ -414,5 +471,38 @@ and PVG.CodProduto not in
 
 
 
+btCodBarras
+btCodigoProduto
+btDescricaoProduto
+btPicStatusPrecosAlterados
+btCustoExibido
+btCustoGerencialAnterior
+btMarkUp
+btMargem
+btValorVenda
+btValorOriginal
+btQtdProduto
+btCustoMedio
+btCfop
+btLojaDesc
 
 
+
+
+
+                        If .RowHeight(CLng(iLinhaProdAnterior)) <> 0 Then
+						
+                            'liNumeroProdutos = liNumeroProdutos + 1
+							
+                            liSomaQtdProdutos = liSomaQtdProdutos - .TextMatrix(iLinhaProdAnterior, btQtdProduto)
+							
+							
+							
+							
+							
+                            liSomaQtdProdutos = liSomaQtdProdutos + format(grsGeral("QT_Produto"), "#0.00")
+                            lcSomaMarkup = lcSomaMarkup - CCur(.TextMatrix(iLinhaProdAnterior, btQtdProduto) * .TextMatrix(iLinhaProdAnterior, btMarkUp))
+                            lcSomaMarkup = lcSomaMarkup + CCur(format(grsGeral("QT_Produto"), "#0.00") * format(fMarkUp(grsGeral("CD_Produto"), IIf(bAlteraCusto, cCustoAtual, grsGeral("CustoGerencialAnterior")), grsGeral("ValorVenda")), "#0.00"))
+                            lcSomaMargem = lcSomaMargem - CCur(.TextMatrix(iLinhaProdAnterior, btQtdProduto) * .TextMatrix(iLinhaProdAnterior, btMargem))
+                            lcSomaMargem = lcSomaMargem + CCur(format(grsGeral("QT_Produto"), "#0.00") * format(fMargem(IIf(bAlteraCusto, cCustoAtual, grsGeral("CustoGerencialAnterior")), grsGeral("ValorVenda"), grsGeral("Aliquota"), grsGeral("PisEntrada"), grsGeral("CofinsEntrada"), grsGeral("PisSaida"), grsGeral("CofinsSaida"), cIcms_compra, grsGeral("ValorFcpEntrada"), grsGeral("AliquotaFcpVenda"), grsGeral("BaseValorStRetido"), grsGeral("AliquotaIcmsStRetido"), grsGeral("BaseValorStRetido"), grsGeral("AliquotaFcpStRetido"), grsGeral("ReducaoBaseStEfetivo"), bApurarSt), "#0.00"))
+                        End If
