@@ -372,19 +372,18 @@ End;
 
 Create View VW_ProdutosAtacado
 as
-select 
+SELECT 
 PVG.CodProduto [CodigoProduto],
 PV.QtdRegra [QtdEmbalagem],
-[GESTAO].[dbo].FN_ArredondarDescontoAtacado(PL.ValorNoPdv - (PL.ValorNoPdv * PV.VlrRegra/100),PV.AjusteUltimaCasaDecimal,PV.TipoAjusteValor) [ValorProduto], 
-PVL.CodLoja 
-from PackVirtual PV
-inner join PackVirtualLojas PVL on PV.Codigo = PVL.CodPack
-inner join PackVirtualGrupo1 PVG on pv.Codigo = pvg.CodPack  
-inner join ProdutoLojas PL on PL.codProduto = PVG.CodProduto and PVL.CodLoja = PL.codLoja
-where 
+CASE WHEN VALOR_PROMOCAO IS NULL THEN [GESTAO].[dbo].FN_ArredondarDescontoAtacado(PL.ValorNoPdv - (PL.ValorNoPdv * PV.VlrRegra/100),PV.AjusteUltimaCasaDecimal,PV.TipoAjusteValor) ELSE VALOR_PROMOCAO END [ValorProduto], 
+PVL.CodLoja
+FROM PackVirtual PV
+INNER JOIN PackVirtualLojas PVL on PV.Codigo = PVL.CodPack
+INNER JOIN PackVirtualGrupo1 PVG on pv.Codigo = pvg.CodPack  
+INNER JOIN ProdutoLojas PL on PL.codProduto = PVG.CodProduto and PVL.CodLoja = PL.codLoja
+LEFT JOIN PROMOCAO P ON P.CD_PRODUTO = PVG.CodProduto AND P.CodLoja = PL.codLoja AND P.CONFIG LIKE '1%'
+WHERE 
 ModeloPack in (13) and DtFinal > getdate()
-and PVG.CodProduto not in 
-(select CD_PRODUTO from PROMOCAO PM where codLoja = PVL.CodLoja and GETDATE() > PM.DT_INICIAL AND GETDATE() < ISNULL(PM.DT_FINAL,GETDATE()+1) and Config = '1' )
 
 ``` 
 
