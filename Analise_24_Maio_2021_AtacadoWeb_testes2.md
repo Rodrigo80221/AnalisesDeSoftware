@@ -2,7 +2,9 @@
 
 1. Mensagens de aviso ao cadastrar um produto com 2 tipos de promoção
     * Mensagem ao cadastrar promoção
+   
    ![image](https://user-images.githubusercontent.com/80394522/126569457-59a0b9da-7ebf-43c1-bb4d-eec59cad8eb3.png)
+   
     * Mensagem no prorrogar promoção
     * Mensagem ao cadastrar pack virtual
     * Mensagem no prorrogar pack virtual
