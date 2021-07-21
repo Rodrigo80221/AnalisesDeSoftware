@@ -505,3 +505,17 @@ btLojaDesc
                             lcSomaMargem = lcSomaMargem - CCur(.TextMatrix(iLinhaProdAnterior, btQtdProduto) * .TextMatrix(iLinhaProdAnterior, btMargem))
                             lcSomaMargem = lcSomaMargem + CCur(format(grsGeral("QT_Produto"), "#0.00") * format(fMargem(IIf(bAlteraCusto, cCustoAtual, grsGeral("CustoGerencialAnterior")), grsGeral("ValorVenda"), grsGeral("Aliquota"), grsGeral("PisEntrada"), grsGeral("CofinsEntrada"), grsGeral("PisSaida"), grsGeral("CofinsSaida"), cIcms_compra, grsGeral("ValorFcpEntrada"), grsGeral("AliquotaFcpVenda"), grsGeral("BaseValorStRetido"), grsGeral("AliquotaIcmsStRetido"), grsGeral("BaseValorStRetido"), grsGeral("AliquotaFcpStRetido"), grsGeral("ReducaoBaseStEfetivo"), bApurarSt), "#0.00"))
                         End If
+
+
+
+
+
+
+
+
+
+
+
+
+
+
