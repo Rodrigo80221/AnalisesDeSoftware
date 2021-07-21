@@ -61,9 +61,9 @@
     
 ## Controle de entradas - Tela de cadastro/alteração do desconto para atacado
 
+1. Detalhes da tela
     * Na tela de alteração ao digitar um valor de atacado deverá sugerir uma porcentagem calculada de acordo com o arredondamento configurado. 
     Buscando sempre uma porcentagem que não fique quebrada
     * Na tela de alteração ao digitar uma porcentagem o valor de atacado deverá ser calculado de acordo com o arredondamento configurado
-    * Ao cadastrar um novo desconto atacado pelo atalho (A), pelo menu inserir, ou pelo novo do combo, a quantidade do produto deverá ser preencida
-     de acordo com a embalagem do fornecedor
-    * Na grade da tela de alteração ao editar a porcentagem o valor de atacado deverá ser calculado de acordo com o arredondamento configurado
+    * Ao editar a porcentagem o valor de atacado deverá ser calculado de acordo com o arredondamento configurado    
+    * Ao cadastrar um novo desconto atacado pelo atalho (A), pelo menu inserir, ou pelo novo do combo, a quantidade do produto deverá ser preencida de acordo com a embalagem do fornecedor cadastrada
