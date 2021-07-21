@@ -42,7 +42,8 @@
     * Ao aplicar valores deverá ser salvo o desconto atacado de acordo todas as lojas configuradas
     * Ao aplicar valores deverá ser desativado os descontos para atacado que não são mais utilizandos, visando ter o menor número possível
     * Ao listar na grade o desconto atacado deverá ser listado de acordo com as lojas configuradas
-    * Se o produto estar repetidos na grade para lojas diferentes que estejam configuradas para utilizar o desconto atacado, deverá ser inserido, removido e alterado em todas as ocorrências
+    * Se o produto estar repetidos na grade para lojas diferentes que estejam configuradas para utilizar o desconto atacado, deverá ser 
+    inserido, removido e alterado em todas as ocorrências
     * Ao filtrar um número grande de registros deverá ser exibida uma mensagem e não dar erro na tela
     * Foram feitos diversos tratamentos para a coloração de seleção do grid (azul), não deverá se perder ou se repetir
 
@@ -55,11 +56,14 @@
     * preço de venda alterado - neste caso agora deverá ficar alterado até o envio de carga para os pdvs
 
 1. Impressão
-    * o relatório deverá imprimir também os registros relacionados a desconto atacado
+    * o relatório deverá imprimir também os registros relacionados a desconto atacado bem como markup, marge e valor atacado
+    * Existem 2 relatórios com ou sem o agrupamento por fornecedor
     
 ## Controle de entradas - Tela de cadastro/alteração do desconto para atacado
 
-    * Na tela de alteração ao digitar um valor de atacado deverá sugerir uma porcentagem calculada de acordo com o arredondamento configurado. Buscando sempre uma porcentagem que não fique quebrada
+    * Na tela de alteração ao digitar um valor de atacado deverá sugerir uma porcentagem calculada de acordo com o arredondamento configurado. 
+    Buscando sempre uma porcentagem que não fique quebrada
     * Na tela de alteração ao digitar uma porcentagem o valor de atacado deverá ser calculado de acordo com o arredondamento configurado
-    * Ao cadastrar um novo desconto atacado pelo atalho (A), pelo menu inserir, ou pelo novo do combo, a quantidade do produto deverá ser preencida de acordo com a embalagem do fornecedor
+    * Ao cadastrar um novo desconto atacado pelo atalho (A), pelo menu inserir, ou pelo novo do combo, a quantidade do produto deverá ser preencida
+     de acordo com a embalagem do fornecedor
     * Na grade da tela de alteração ao editar a porcentagem o valor de atacado deverá ser calculado de acordo com o arredondamento configurado
