@@ -1,6 +1,6 @@
-## Promoção + Pack ou Desconto Atacado
+## Produtos com Promoção + Pack/ Desconto Atacado
 
-1. Mensagens de aviso
+1. Mensagens de aviso ao cadastrar um produto com 2 tipos de promoção
     * Mensagem ao cadastrar promoção
     * Mensagem no prorrogar promoção
     * Mensagem ao cadastrar pack virtual
@@ -8,7 +8,7 @@
     * Mensagem ao cadastrar desconto atacado
     * Mensagem ao prorrogar encarte
 
-1. PDV - produto com pack ou desconto atacado cadastrado para a loja deverá ser vendido com preço de promoção
+1. PDV - produto com pack ou desconto atacado cadastrado para uma determinada loja deverá ser vendido com preço de promoção
 
 1. Atacado web - O produto com desconto atacado deverá ser vendido com preço de promoção
 
@@ -24,7 +24,8 @@
 
 1. Se não marcar a configuração "Exibir preços de Atacado" a tela deverá funcionar como antes, com melhorias no maximizar e nas colorações e tooltip
 
-1. Ao ativar a configuração do controle de entradas usa preço atacado , lojas e arredondamento considerar:
+1. Ao ativar a configuração do controle de entradas usa preço atacado 
+    * permitir cadatrar as lojas e arredondamento para os novos descontos para atacado que serão cadastrados na tela
     * Ao salvar as configurações de arredondamento e loja deverão ser refletidas em todos os descontos para atacado cadastrados
     * mostrar coluna de desconto atacado na grade
     * menu para add ou remover desconto atacado nos produtos 
