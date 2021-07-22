@@ -3,13 +3,28 @@
 1. Mensagens de aviso ao cadastrar um produto com 2 tipos de promoção
     * Mensagem ao cadastrar promoção
    
-   ![image](https://user-images.githubusercontent.com/80394522/126569457-59a0b9da-7ebf-43c1-bb4d-eec59cad8eb3.png)
+   ![image](https://user-images.githubusercontent.com/80394522/126570266-81f09b1a-a046-44db-b0c7-dc1b7c72700a.png)
    
     * Mensagem no prorrogar promoção
+
+   ![image](https://user-images.githubusercontent.com/80394522/126570848-d1619472-9d21-4b21-83c4-7e16b05ab02f.png)
+
     * Mensagem ao cadastrar pack virtual
+
+   ![image](https://user-images.githubusercontent.com/80394522/126572067-ef8e1ca9-9b7a-4e5d-ab5b-9b6e3ee7a6ec.png)
+
     * Mensagem no prorrogar pack virtual
+
+   ![image](https://user-images.githubusercontent.com/80394522/126576420-c2b48e25-6e53-4ba7-9886-805f4c3e6f6b.png)   
+
     * Mensagem ao cadastrar desconto atacado
-    * Mensagem ao prorrogar encarte
+
+   ![image](https://user-images.githubusercontent.com/80394522/126576580-016d64c9-0bec-449d-9634-5b4915fe1294.png)
+
+    * Mensagem ao prorrogar encarte em que uma promoção sobrescreva um pack/desconto atacado
+
+
+    * Mensagem ao prorrogar encarte em que um pack sobrescreva uma promoção
 
 1. PDV - produto com pack ou desconto atacado cadastrado para uma determinada loja deverá ser vendido com preço de promoção
 
@@ -52,6 +67,9 @@
 
 1. Tooltip + coloração do grid
     * produto em promoção
+
+   ![image](https://user-images.githubusercontent.com/80394522/126570751-4b63127d-4b66-46df-9f84-d67a6751457c.png)
+
     * produto com pack
     * diferenças entre markup/ markup ideal e margem/ margem ideal de acordo com a diferença configurada 
     * produtos fora do mix 
