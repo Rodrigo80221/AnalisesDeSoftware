@@ -1,30 +1,35 @@
 ## Produtos com Promoção + Pack/ Desconto Atacado
 
 1. Mensagens de aviso ao cadastrar um produto com 2 tipos de promoção
-    * Mensagem ao cadastrar promoção
+    * Mensagem ao cadastrar promoção (ok)
    
    ![image](https://user-images.githubusercontent.com/80394522/126570266-81f09b1a-a046-44db-b0c7-dc1b7c72700a.png)
    
-    * Mensagem no prorrogar promoção
+    * Mensagem no prorrogar promoção (ok)
 
    ![image](https://user-images.githubusercontent.com/80394522/126570848-d1619472-9d21-4b21-83c4-7e16b05ab02f.png)
 
-    * Mensagem ao cadastrar pack virtual
+    * Mensagem ao cadastrar pack virtual (ok)
 
    ![image](https://user-images.githubusercontent.com/80394522/126572067-ef8e1ca9-9b7a-4e5d-ab5b-9b6e3ee7a6ec.png)
 
-    * Mensagem no prorrogar pack virtual
+    * Mensagem no prorrogar pack virtual (ok)
 
    ![image](https://user-images.githubusercontent.com/80394522/126576420-c2b48e25-6e53-4ba7-9886-805f4c3e6f6b.png)   
 
-    * Mensagem ao cadastrar desconto atacado
+    * Mensagem ao cadastrar desconto atacado (ok)
 
    ![image](https://user-images.githubusercontent.com/80394522/126576580-016d64c9-0bec-449d-9634-5b4915fe1294.png)
 
     * Mensagem ao prorrogar encarte em que uma promoção sobrescreva um pack/desconto atacado
+    
+   ![image](https://user-images.githubusercontent.com/80394522/126577627-99768c43-3ca5-4cc8-b2cc-ebb3733bdb03.png)
 
 
-    * Mensagem ao prorrogar encarte em que um pack sobrescreva uma promoção
+    * Mensagem ao prorrogar encarte em que um pack sobrescreva uma promoção (ok)
+
+    ![image](https://user-images.githubusercontent.com/80394522/126576977-c9752870-0b9d-4821-9a12-c2bce5b646d6.png)
+
 
 1. PDV - produto com pack ou desconto atacado cadastrado para uma determinada loja deverá ser vendido com preço de promoção
 
