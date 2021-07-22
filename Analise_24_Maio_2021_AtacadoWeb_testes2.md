@@ -66,6 +66,10 @@
 
 1. Ao ativar a configuração do controle de entradas usa preço atacado 
     * permitir cadatrar as lojas e arredondamento para os novos descontos para atacado que serão cadastrados na tela
+
+   ![image](https://user-images.githubusercontent.com/80394522/126688657-73e08363-35cc-4b97-b09f-c4000189f875.png)
+
+
     * Ao salvar as configurações de arredondamento e loja deverão ser refletidas em todos os descontos para atacado cadastrados
     * mostrar coluna de desconto atacado na grade
     * menu para add ou remover desconto atacado nos produtos 
