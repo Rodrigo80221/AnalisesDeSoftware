@@ -1,43 +1,41 @@
 ## Produtos com Promoção + Pack/ Desconto Atacado
 
 1. Mensagens de aviso ao cadastrar um produto com 2 tipos de promoção
-    * Mensagem ao cadastrar promoção (ok)
+    * Mensagem ao cadastrar promoção (teste ok)
    
    ![image](https://user-images.githubusercontent.com/80394522/126570266-81f09b1a-a046-44db-b0c7-dc1b7c72700a.png)
    
-    * Mensagem no prorrogar promoção (ok)
+    * Mensagem no prorrogar promoção (teste ok)
 
    ![image](https://user-images.githubusercontent.com/80394522/126570848-d1619472-9d21-4b21-83c4-7e16b05ab02f.png)
 
-    * Mensagem ao cadastrar pack virtual (ok)
+    * Mensagem ao cadastrar pack virtual (teste ok)
 
    ![image](https://user-images.githubusercontent.com/80394522/126572067-ef8e1ca9-9b7a-4e5d-ab5b-9b6e3ee7a6ec.png)
 
-    * Mensagem no prorrogar pack virtual (ok)
+    * Mensagem no prorrogar pack virtual (teste ok)
 
    ![image](https://user-images.githubusercontent.com/80394522/126576420-c2b48e25-6e53-4ba7-9886-805f4c3e6f6b.png)   
 
-    * Mensagem ao cadastrar desconto atacado (ok)
+    * Mensagem ao cadastrar desconto atacado (teste ok)
 
    ![image](https://user-images.githubusercontent.com/80394522/126576580-016d64c9-0bec-449d-9634-5b4915fe1294.png)
 
-    * Mensagem ao prorrogar encarte em que uma promoção sobrescreva um pack/desconto atacado (ok)
+    * Mensagem ao prorrogar encarte em que uma promoção sobrescreva um pack/desconto atacado (teste ok)
     
    ![image](https://user-images.githubusercontent.com/80394522/126577627-99768c43-3ca5-4cc8-b2cc-ebb3733bdb03.png)
 
 
-    * Mensagem ao prorrogar encarte em que um pack sobrescreva uma promoção (ok)
+    * Mensagem ao prorrogar encarte em que um pack sobrescreva uma promoção (teste ok)
 
     ![image](https://user-images.githubusercontent.com/80394522/126576977-c9752870-0b9d-4821-9a12-c2bce5b646d6.png)
 
 
 1. PDV - produto com pack ou desconto atacado cadastrado para uma determinada loja deverá ser vendido com preço de promoção
 
-1. Atacado web - O produto com desconto atacado deverá ser vendido com preço de promoção
-
 ## Maximizar
 
-1. Maximizar controle de entradas deverá funcionar em diversas resoluções com ou sem a configuração usa atacado  (ok)
+1. Maximizar controle de entradas deverá funcionar em diversas resoluções com ou sem a configuração usa atacado  (teste ok)
 
 1600X900 SEM A CONFIGUIRAÇÃO "USA DESCONTO ATACADO"
 ![image](https://user-images.githubusercontent.com/80394522/126577922-379fe4b3-e374-42e9-9fc6-46a1e2882885.png)
@@ -56,8 +54,6 @@
 
 1024x768 COM A CONFIGUIRAÇÃO "USA DESCONTO ATACADO"
 ![image](https://user-images.githubusercontent.com/80394522/126578192-ba78123f-4b59-499b-8cc5-3733f6784d1e.png)
-
-
 
 
 ## Grupo de produtos
@@ -114,3 +110,17 @@
     * Na tela de alteração ao digitar uma porcentagem o valor de atacado deverá ser calculado de acordo com o arredondamento configurado
     * Ao editar a porcentagem o valor de atacado deverá ser calculado de acordo com o arredondamento configurado    
     * Ao cadastrar um novo desconto atacado pelo atalho (A), pelo menu inserir, ou pelo novo do combo, a quantidade do produto deverá ser preencida de acordo com a embalagem do fornecedor cadastrada
+
+
+## Banco de Dados 
+
+1. Inserção de desconto atacado em um produto
+   * Deve criar um registro com código 6 na tabela DriveFilaExportação
+   * Deve exibir o registro com o valor correto na view VW_ProdutosAtacado
+
+1. Alteração de desconto atacado em um produto
+   * Deve excluir e criar um registro com código 6 na tabela DriveFilaExportação
+   * Deve exibir o registro com o valor correto na view VW_ProdutosAtacado
+
+1. Produto com promoção
+   * Deve exibir o registro com o valor da promoção na view VW_ProdutosAtacado
