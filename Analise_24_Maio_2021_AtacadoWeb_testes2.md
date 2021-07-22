@@ -21,7 +21,7 @@
 
    ![image](https://user-images.githubusercontent.com/80394522/126576580-016d64c9-0bec-449d-9634-5b4915fe1294.png)
 
-    * Mensagem ao prorrogar encarte em que uma promoção sobrescreva um pack/desconto atacado
+    * Mensagem ao prorrogar encarte em que uma promoção sobrescreva um pack/desconto atacado (ok)
     
    ![image](https://user-images.githubusercontent.com/80394522/126577627-99768c43-3ca5-4cc8-b2cc-ebb3733bdb03.png)
 
@@ -37,7 +37,28 @@
 
 ## Maximizar
 
-1. Maximizar controle de entradas deverá funcionar em diversas resoluções com ou sem a configuração usa atacado
+1. Maximizar controle de entradas deverá funcionar em diversas resoluções com ou sem a configuração usa atacado  (ok)
+
+1600X900 SEM A CONFIGUIRAÇÃO "USA DESCONTO ATACADO"
+![image](https://user-images.githubusercontent.com/80394522/126577922-379fe4b3-e374-42e9-9fc6-46a1e2882885.png)
+
+1600X900 COM A CONFIGUIRAÇÃO "USA DESCONTO ATACADO"
+![image](https://user-images.githubusercontent.com/80394522/126577960-bbf7cfd9-5c3a-4029-b77b-cc7718696c64.png)
+
+1366x768 SEM A CONFIGUIRAÇÃO "USA DESCONTO ATACADO"
+![image](https://user-images.githubusercontent.com/80394522/126578087-478fc2c2-5e87-4f8a-aff2-193f19dee031.png)
+
+1366x768 COM A CONFIGUIRAÇÃO "USA DESCONTO ATACADO"
+![image](https://user-images.githubusercontent.com/80394522/126578069-64f55c14-8e8a-4399-bb71-83c2dc0af357.png)
+
+1024x768 SEM A CONFIGUIRAÇÃO "USA DESCONTO ATACADO"
+![image](https://user-images.githubusercontent.com/80394522/126578170-aa3e3d8a-93a4-4d86-b506-c8213a69e138.png)
+
+1024x768 COM A CONFIGUIRAÇÃO "USA DESCONTO ATACADO"
+![image](https://user-images.githubusercontent.com/80394522/126578192-ba78123f-4b59-499b-8cc5-3733f6784d1e.png)
+
+
+
 
 ## Grupo de produtos
 
