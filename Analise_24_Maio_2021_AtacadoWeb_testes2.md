@@ -65,20 +65,20 @@
 1. Se não marcar a configuração "Exibir preços de Atacado" a tela deverá funcionar como antes, com melhorias no maximizar e nas colorações e tooltip
 
 1. Ao ativar a configuração do controle de entradas usa preço atacado 
-    * permitir cadatrar as lojas e arredondamento para os novos descontos para atacado que serão cadastrados na tela
+    * permitir cadatrar as lojas e arredondamento para os novos descontos para atacado que serão cadastrados na tela (ok todos arredondamentos testados)
 
    ![image](https://user-images.githubusercontent.com/80394522/126688657-73e08363-35cc-4b97-b09f-c4000189f875.png)
 
 
-    * Ao salvar as configurações de arredondamento e loja deverão ser refletidas em todos os descontos para atacado cadastrados
-    * mostrar coluna de desconto atacado na grade
-    * menu para add ou remover desconto atacado nos produtos 
-    * ao alterar valor, margem ou markup do produto deverá refletir no preço do atacado
-    * ao alterar valor, margem ou markup do desconto atacado deverá abrir a tela de alteração já com o valor digitado
-    * duplo clique no valor, margem ou markup do desconto atacado deverá abrir a tela de alteração
-    * Atalhos (A) e (DEL) para inserir ou remover atacado
-    * combobbox deve possibilitar alteração do desconto de atacado
-    * ao alterar o combobox deverá ser recalculado o markup, margem e valor de venda 
+    * Ao salvar as configurações de arredondamento e loja deverão ser refletidas em todos os descontos para atacado cadastrados (teste ok)
+    * mostrar coluna de desconto atacado na grade (teste ok)
+    * menu para add ou remover desconto atacado nos produtos (teste ok) 
+    * ao alterar valor, margem ou markup do produto deverá refletir no preço do atacado (teste ok) 
+    * ao alterar valor, margem ou markup do desconto atacado deverá abrir a tela de alteração já com o valor digitado (teste ok) 
+    * duplo clique no valor, margem ou markup do desconto atacado deverá abrir a tela de alteração  (teste ok) 
+    * Atalhos (A) e (DEL) para inserir ou remover atacado  (teste ok) 
+    * combobbox deve possibilitar alteração do desconto de atacado  (teste ok)  
+    * ao alterar o combobox deverá ser recalculado o markup, margem e valor de venda  (teste ok) 
     * novo do combobox abre a tela para cadastrar novo desconto atacado
 
 1. Detalhes da tela
