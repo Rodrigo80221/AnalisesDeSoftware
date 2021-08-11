@@ -760,12 +760,7 @@ Percebi que ao abrir a tela de preços alterados não tinhamos o preço da promo
 ### 2. Erro no cadastro de produtos
 * Considere o cenário abaixo
 
-Produto Coca Cola
-
-Loja | Matriz|Loja 1|Loja 2
-----------|-----|-----|-----
-Vlr. Venda|R$ 3,00 |R$ 4,00 |R$ 6,00 
-Promoção|R$ 1,99 |R$ 1,99 |R$ 1,99  
+![image](https://user-images.githubusercontent.com/80394522/129110547-abd20bc6-929d-4cc3-b023-37561bb8360d.png)
 
 * Logar na Matriz
 * Ir no cadastro de produtos na aba `Lojas e Estoques`
