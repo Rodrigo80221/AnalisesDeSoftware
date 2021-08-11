@@ -391,6 +391,71 @@ ModeloPack in (13) and DtFinal > getdate()
 
 
 
+``` sql
+--CORREÇÃO DO BUG DE NÃO TER GRUPO DE CLIENTES
+	DECLARE @CodGrupoCliente as tinyint
+	DECLARE @CodPack as int
+
+	DECLARE rsCursorPack CURSOR LOCAL FOR
+	select Codigo from PACKVIRTUAL WHERE modelopack = 13 and CODIGO NOT IN (SELECT CodPack FROM [PackVirtualGrupoClientes]))
+	OPEN rsCursorPack 
+	FETCH NEXT FROM rsCursorPack INTO @CodPack
+	WHILE @@FETCH_STATUS = 0 
+	BEGIN  
+
+		DECLARE rsCursorCliente CURSOR LOCAL FOR     
+
+		select Codigo from GRUPOS_CLIENTES
+ 
+		OPEN rsCursorCliente 
+		FETCH NEXT FROM rsCursorCliente INTO @CodGrupoCliente
+		WHILE @@FETCH_STATUS = 0 
+		BEGIN       
+			INSERT INTO [PackVirtualGrupoClientes] (CodPack,CodGrupoCliente) VALUES (@CodPack, @CodGrupoCliente)
+			FETCH NEXT FROM rsCursorCliente INTO @CodGrupoCliente
+		END  
+
+		CLOSE rsCursorCliente 
+		DEALLOCATE rsCursorCliente
+
+
+		FETCH NEXT FROM rsCursorPack INTO @CodPack
+	END  
+
+	CLOSE rsCursorPack 
+	DEALLOCATE rsCursorPack
+```     
+
+
+
+
+Tarefa 19.1: Fixar configurações na tela desconto atacado
+
+Atualmente o usuário pode definir as configurações padrões do desconto atacado no form frmControleDeEntradas. Caso ele faça isso devemos usar as mesmas configurações na tela desconto atacado e boloquear a edição
+
+>Caso ele ative a configuração no controle de entradas
+>"ControleDeEntradas_DescontoAtacado_UsaAtacado" = "1"
+
+
+1. Padronizar a configuração de arredondamento e desabilitar a edição
+`ControleDeEntradas_DescontoAtacado_TipoAjusteValor` ("AC","AB","BC","")
+`ControleDeEntradas_DescontoAtacado_AjusteUltimaCasaDecimal`
+
+1. Padronizar a selecção de lojas e desabilitar a edição
+`ControleDeEntradas_DescontoAtacado_ConfigLojas`
+    > obs: O código da loja virá separado por vírulas exemplos ("1") ou ("1,2,3,4,5")
+
+1. Padronizar a descrição e bloquear, padronizar no formato abaixo, inserir a descrição ao alterar ou qtdRegra ou vlrRegra
+`A PARTIR DE 12 GANHE 12,00% DE DESCONTO`
+
+
+
+
+
+
+Innovation Center/GestaoComercial/GestaoComercial.Biblioteca/PackVirtual/PackVirtual.cs
+Innovation Center/GestaoComercial/GestaoComercial.Biblioteca/PackVirtual/PackVirtualVB6.cs
+Innovation Center/GestaoComercial/GestaoComercial/Formularios/PackVirtual/FrmPackVirtual.cs
 
 
 
@@ -402,66 +467,235 @@ ModeloPack in (13) and DtFinal > getdate()
 
 
 
-O LABEL DE ALTERAÇÃO DE PREÇO EM VERMELHO DEVE FICAR VERMELHO ATÉ QUANDO???
 
 
-REGRA PARA PINTAR DE AMARELO (QUAL CÉLULA EU DEVERIA PINTAR?)
 
-``` vb
-if bApurarSt then
 
-    If IIf(ReducaoBaseStEfetivo = 0, ValorVenda, (ValorVenda * ReducaoBaseStEfetivo) / 100) > BaseValorStRetido And BaseValorStRetido <> 0 Then
-    ' PINTA DE AMARELO
-    end if 
 
-end if 
+
+
+
+
+
+Tarefa 19.2: Validar e se preciso Adicionar código criado na hitória do atacado web
+
+>As alterações abaixo servem para alertar caso seja criado um pack virtual ou um desconto para atacado em um produto que já possua promoção. As validações também são utilizadas na tela do controle de entradas.
+
+>Pode ser que as funções já estejam na tela refatorada.
+
+Arquivo
+`Innovation Center/GestaoComercial/GestaoComercial/Formularios/PackVirtual/FrmPackVirtual.cs`
+No final do `private void TestarCampos()` colocar o código abaixo
+
+
+
+``` csharp
+            // Foi colocada essa validação de lojas que não tinha
+            if (dgvLojasCadastro.Visible)
+            {
+                var lojas = RetornarLojasSelecionadasDataGridView(dgvLojasCadastro);
+
+                if (lojas.Count.Equals(0))
+                {
+                    throw new Exception("Selecione uma loja!");
+                }
+            }
+             
+            if (!ValidarProdutosComPromocao())
+                throw new Exception("Remova os produtos com promoção ativa!");
+
 ```
 
-REGRA PARA PINTAR DE VERMELHO CLARO 
+Criar o procedimento abaixo
 
-``` vb
-5   If Abs(btMarkUp - btMarkUpIdeal) > txtDiferencaMarkup.Text Then
-6       If btMarkUpIdeal > 0 Then
-7          ' PINTA DE VERMELHO
-8       End If
-9   End If
 
-5   If Abs(btMargem - btMargemIdeal) > txtDiferencaMargem.Text Then
-6       If btMargemIdeal > 0 Then
-7          ' PINTA DE VERMELHO
-8       End If
-9   End If
+``` csharp
+
+        private bool ValidarProdutosComPromocao()
+        {
+ 
+            var lojas = RetornarLojasSelecionadasDataGridView(dgvLojasCadastro);
+
+            var listaLojas = "";
+
+            if (dgvLojasCadastro.Visible)
+            {
+                foreach (var l in lojas)
+                {
+
+                    if (listaLojas != "")
+                        listaLojas += ",";
+
+                    listaLojas += l.Codigo.ToString();
+
+                }
+            }
+            else
+            {
+                listaLojas = "1";
+            }
+
+            string produtosGrupo1 = "";
+
+            for (var l = 0;l < dgvGrupo1.Rows.Count;l++)
+            {
+                if (produtosGrupo1 != "")
+                    produtosGrupo1 += ",";
+
+                produtosGrupo1 += dgvGrupo1[l, (int)ColunasDgvGrupo.Codigo];
+
+            }
+
+            string produtosGrupo2 = "";
+
+            for (var l = 0; l < dgvGrupo2.Rows.Count; l++)
+            {
+                if (produtosGrupo2 != "")
+                    produtosGrupo2 += ",";
+
+                produtosGrupo2 += dgvGrupo2[l, (int)ColunasDgvGrupo.Codigo];
+
+            }
+
+            PackVirtualVB6 vb6 = new PackVirtualVB6();
+            var banco = Telecon.GestaoComercial.Biblioteca.Utilitarios.Utilitarios.ObterConexao();
+            return vb6.ValidarPackComPromocao(listaLojas, produtosGrupo1, produtosGrupo2, Convert.ToDateTime(dtpHoraInicio.Value), Convert.ToDateTime(dtpHoraFim.Value), banco);
+
+        }
+
+
 ```
 
-REGRA PARA PINTAR DE VERDE 
-CASO O PRODUTO ESTEJA EM UMA PROMOÇÃO VIGENTE OU TENHA UM PACK VIRTUAL QUE NÃO SEJA DE ATACADO (MODELOPACK <> 13)
+Alterar o procedimento `private void btnProrrogar_Click(object sender, EventArgs e)`
 
 
-REGRA PARA PINTAR DE CINZA
-LINHA DO FORNECEDOR
-MARGEM, MARKUP E VALOR DE VENDA
+``` csharp
+
+    if (!removido)
+    {
+
+```
+
+por 
 
 
+``` csharp
 
+    var alertaPromocao = ValidarPackComPromocao(item.Codigo, listaPackVirtualGrupo1, listaPackVirtualGrupo2, dataAtual, item.DtFinal);
 
-comentar tratamento para coloração do st em amarelo
-comentar tratamento para coloração da divergencia de margem em vermelho
+    if (!removido && alertaPromocao)
+    {
 
-colocar coloração de seleção de linha em azul
-
-acertar tratamento da promoção, colocar fonte do valor de venda em verde com tooltips detalhando
-
-confirmar cor vermelha ao enviar carga (que vai virar azul)
-
-colocar cor em azul e talvez em negrito
-
-margem e markup cor em vermelho, com tooltip avisando
-
-diferimento e st | são distorção de impostos que reduzem a margem do produto | colocar a margem em vermelho com tootips de alertas
-criar uma estrutura para poder criar novos alertas 
+```
 
 
 
+Criar o procedimento abaixo
+
+
+``` csharp
+
+        private Boolean ValidarPackComPromocao(double codPack, List<Pack.PackVirtualGrupo1> listaPackVirtualGrupo1, List<Pack.PackVirtualGrupo2> listaPackVirtualGrupo2, DateTime dataInicial, DateTime dataFinal)
+        {
+
+            string listaLojas = "";
+            string produtosGrupo1 = "";
+            string produtosGrupo2 = "";
+
+            var banco = Telecon.GestaoComercial.Biblioteca.Utilitarios.Utilitarios.ObterConexao();
+
+            var dr = banco.Consultar("Select CodLoja from PackVirtualLojas Where CodPack = " + codPack.ToString());
+
+            while (dr.Read())
+                listaLojas += listaLojas == "" ? dr["CodLoja"].ToString() : "," + dr["CodLoja"].ToString();
+                        
+            for (var aux = 0; aux < listaPackVirtualGrupo1.Count(); aux++)
+                produtosGrupo1 += produtosGrupo1 == "" ? listaPackVirtualGrupo1[aux].CodProduto.ToString() : "," + listaPackVirtualGrupo1[aux].CodProduto.ToString();
+            
+            for (var aux = 0; aux < listaPackVirtualGrupo2.Count(); aux++)
+                produtosGrupo2 += produtosGrupo2 == "" ? listaPackVirtualGrupo2[aux].CodProduto.ToString() : "," + listaPackVirtualGrupo2[aux].CodProduto.ToString();
+
+            banco.FecharConexao();
+            banco.Dispose();
+
+            PackVirtualVB6 vb6 = new PackVirtualVB6();
+            return vb6.ValidarPackComPromocao(listaLojas, produtosGrupo1, produtosGrupo2, dataInicial, dataFinal, banco);
+
+        }
+
+```
+
+
+Criar o procedimento abaixo em `Innovation Center/GestaoComercial/GestaoComercial.Biblioteca/PackVirtual/PackVirtualVB6.cs` 
+
+===> Adicionar no final do arquivo
+
+``` csharp
+
+        public Boolean ValidarPackComPromocao(string listaLojas, string produtosGrupo1, string produtosGrupo2, DateTime dataInicial, DateTime dataFinal, string servidor)
+        {
+            var banco = new Sql2000(servidor, "GESTAO", "sa", "a2m8x7h5");
+            banco.AbrirConexao();
+
+            return ValidarPackComPromocao(listaLojas, produtosGrupo1, produtosGrupo2, dataInicial, dataFinal, banco);
+        }
+
+
+        public Boolean ValidarPackComPromocao(string listaLojas, string produtosGrupo1, string produtosGrupo2, DateTime dataInicial, DateTime dataFinal, IBanco banco)
+        {
+
+
+            string PromocaoDTInicio = "P.DT_INICIAL";
+            string PromocaoDTFIM = "ISNULL(CONVERT(DATETIME,P.DT_FINAL),CONVERT(smalldatetime,'2079/06/06'))";
+            string PackDTInicio = banco.ObterDataHora(dataInicial);
+            string PackDTFIM = banco.ObterDataHora(dataFinal);
+
+
+            string sql = "";
+
+            sql = "SELECT CD_PROMOCAO, CD_PRODUTO, CODLOJA, DT_INICIAL, DT_FINAL , (SELECT DESCRICAOREDUZIDA FROM PRODUTOS WHERE CODIGO = CD_PRODUTO) [DESCRICAO] FROM PROMOCAO P" + Environment.NewLine;
+            sql += "WHERE" + Environment.NewLine;
+            //sql += "CONFIG = '1'" + Environment.NewLine;
+            sql += "CODLOJA IN(" + listaLojas + ")" + Environment.NewLine;
+            sql += "AND (" + Environment.NewLine;
+            sql += "    CD_PRODUTO IN(" + produtosGrupo1 + ")" + Environment.NewLine;
+
+            if (produtosGrupo2 != "")
+                sql += "    OR CD_PRODUTO IN(" + produtosGrupo2 + ")" + Environment.NewLine;
+
+            sql += "    )" + Environment.NewLine;
+            sql += "AND" + Environment.NewLine;
+            sql += "(" + Environment.NewLine;
+
+            sql += "    ( " + PackDTInicio + " > " + PromocaoDTInicio + " and " + PackDTInicio + " < " + PromocaoDTFIM + " ) " + Environment.NewLine;
+            sql += " or ( " + PackDTFIM + " > " + PromocaoDTInicio + " and " + PackDTFIM + " < " + PromocaoDTFIM + " ) " + Environment.NewLine;
+            sql += " or ( " + PackDTInicio + " < " + PromocaoDTInicio + " and " + PackDTFIM + " > " + PromocaoDTFIM + " ) " + Environment.NewLine;
+
+            sql += " ) " + Environment.NewLine;
+
+            var dr = banco.Consultar(sql);
+
+            var msgm = "Os produtos abaixo possuem promoção vigente neste período! Durante a promoção o pack virtual ou desconto para atacado não ficará ativo. Deseja continuar mesmo assim?" + Environment.NewLine + Environment.NewLine;
+
+            while (dr.Read())
+                if (!msgm.Contains(dr["CD_PRODUTO"].ToString()))
+                    msgm += "Produto: " + dr["CD_PRODUTO"].ToString() + " - " + dr["DESCRICAO"].ToString() + Environment.NewLine;
+
+            if (msgm.Contains("Produto:"))
+                if (Msg.PerguntarPadraoNao(msgm) == DialogResult.No)
+                {
+                    banco.FecharConexao();
+                    banco.Dispose();
+                    return false;
+                }
+
+            banco.FecharConexao();
+            banco.Dispose();
+
+            return true;
+        }
+
+```
 
 
 
@@ -470,41 +704,35 @@ criar uma estrutura para poder criar novos alertas
 
 
 
-btCodBarras
-btCodigoProduto
-btDescricaoProduto
-btPicStatusPrecosAlterados
-btCustoExibido
-btCustoGerencialAnterior
-btMarkUp
-btMargem
-btValorVenda
-btValorOriginal
-btQtdProduto
-btCustoMedio
-btCfop
-btLojaDesc
 
 
 
 
+## Tarefa 20: Adicionar facilitador para o Desconto de Atacado no Cadastro de Produtos 
 
-                        If .RowHeight(CLng(iLinhaProdAnterior)) <> 0 Then
-						
-                            'liNumeroProdutos = liNumeroProdutos + 1
-							
-                            liSomaQtdProdutos = liSomaQtdProdutos - .TextMatrix(iLinhaProdAnterior, btQtdProduto)
-							
-							
-							
-							
-							
-                            liSomaQtdProdutos = liSomaQtdProdutos + format(grsGeral("QT_Produto"), "#0.00")
-                            lcSomaMarkup = lcSomaMarkup - CCur(.TextMatrix(iLinhaProdAnterior, btQtdProduto) * .TextMatrix(iLinhaProdAnterior, btMarkUp))
-                            lcSomaMarkup = lcSomaMarkup + CCur(format(grsGeral("QT_Produto"), "#0.00") * format(fMarkUp(grsGeral("CD_Produto"), IIf(bAlteraCusto, cCustoAtual, grsGeral("CustoGerencialAnterior")), grsGeral("ValorVenda")), "#0.00"))
-                            lcSomaMargem = lcSomaMargem - CCur(.TextMatrix(iLinhaProdAnterior, btQtdProduto) * .TextMatrix(iLinhaProdAnterior, btMargem))
-                            lcSomaMargem = lcSomaMargem + CCur(format(grsGeral("QT_Produto"), "#0.00") * format(fMargem(IIf(bAlteraCusto, cCustoAtual, grsGeral("CustoGerencialAnterior")), grsGeral("ValorVenda"), grsGeral("Aliquota"), grsGeral("PisEntrada"), grsGeral("CofinsEntrada"), grsGeral("PisSaida"), grsGeral("CofinsSaida"), cIcms_compra, grsGeral("ValorFcpEntrada"), grsGeral("AliquotaFcpVenda"), grsGeral("BaseValorStRetido"), grsGeral("AliquotaIcmsStRetido"), grsGeral("BaseValorStRetido"), grsGeral("AliquotaFcpStRetido"), grsGeral("ReducaoBaseStEfetivo"), bApurarSt), "#0.00"))
-                        End If
+![](https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/Imagens/FrmCadProdutos_FramePromocao.jpg?raw=true)
+
+1. Se o produto possui pack virtual ou desconto atacado na loja logada , mostrar um label com a descrição do pack ou atacado no cadastro de produtos no local onde está o combobox de desconto atacado na imagem
+
+1. Criar um checkbox "Usa Desconto Atacado" 
+    * Se o "Usa Desconto Atacado" esteja configurado no controle de entradas exibir esse checkbox
+    * Se o produto possuir desconto para atacado marcar essa opção
+    * Se o produto possuir pack virtual nunca exibir essa pção 
+    
+* Carregar um combobox com os descontos atacado cadastrados ordernados por qtdRegra, vlrRegra
+Carregar uma opção novo
+
+* Se o checkbox estiver marcado exibir combobox na posição do atacado do produto
+    * o usuário pode alterar o desconto atacado do produto
+    * o usuário escolher a opção Novo (chamar o frmControleEntradasAtacado), no retorno recarregar o combo
+
+* Se o usuário marcar o checkbox exibir o combobox na posição Novo
+
+> Ao alterar um desconto atacado
+
+* Se o produto possui promoção para uma das lojas configuradas no controle de entradas apresentar mensagem de alerta (chamar validação que já existe no controle de entradas no menu add desconto atacado)
+
+1. Acertar o tabIndex
 
 
 
@@ -517,5 +745,34 @@ btLojaDesc
 
 
 
+## Erros relacionados a promoções
 
+> Durante o desenvolvimento da história atacado web foi encontrado alguns problemas relacionados a promoções
 
+`hotfix/CorrecoesPromocoes`
+
+### 1. Erro no controle de entradas 
+* Ao Cadastrar uma promoção pela tela de promoções, abrir o controle de entradas (novo - do menu ajuda) e alterar o preço do produto. A promoção não ia para o PDV.
+Percebi que ao abrir a tela de preços alterados não tinhamos o preço da promoção para enviar para o PDV, o registro sumia, logo a promoção não ia para o PDV
+> Resultado esperado
+* A promoção deve gerar um registro em preços alterados, ao alterar o preço do produto pelo controle de entradas, cadastro de produtos ou outro local, não deve gerar um novo preço alterado pois o preço que deve ser enviado para o PDV é o da promoção.
+
+### 2. Erro no cadastro de produtos
+* Considere o cenário abaixo
+
+Produto Coca Cola
+
+Loja | Matriz|Loja 1|Loja 2
+----------|-----|-----|-----
+Vlr. Venda|R$ 3,00 |R$ 4,00 |R$ 6,00 
+Promoção|R$ 1,99 |R$ 1,99 |R$ 1,99  
+
+* Logar na Matriz
+* Ir no cadastro de produtos na aba `Lojas e Estoques`
+* Alterar o preço do produto da Loja 2 para R$ 5,00
+
+* Verificar a promoção da loja 2 na tela de promoções
+    * Neste caso o sistema colocava no valor anterior da promoção o valor de venda da Matriz de 3,00 e ao acabar a promoção o valor de venda da loja 2 ficaria 3,00 e deveria ficar R$ 6,00
+
+> Resultado esperado
+* Ao alterar o valor de venda da loja 2 ou de qualquer loja com promoção, independente de estar logado nessa loja, ao encerrar a promoção deve manter o valor de venda anterior.
