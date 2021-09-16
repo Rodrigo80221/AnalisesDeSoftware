@@ -760,12 +760,7 @@ Percebi que ao abrir a tela de preços alterados não tinhamos o preço da promo
 ### 2. Erro no cadastro de produtos
 * Considere o cenário abaixo
 
-Produto Coca Cola
-
-Loja | Matriz|Loja 1|Loja 2
-----------|-----|-----|-----
-Vlr. Venda|R$ 3,00 |R$ 4,00 |R$ 6,00 
-Promoção|R$ 1,99 |R$ 1,99 |R$ 1,99  
+![image](https://user-images.githubusercontent.com/80394522/129110547-abd20bc6-929d-4cc3-b023-37561bb8360d.png)
 
 * Logar na Matriz
 * Ir no cadastro de produtos na aba `Lojas e Estoques`
@@ -776,6 +771,7 @@ Promoção|R$ 1,99 |R$ 1,99 |R$ 1,99
 
 > Resultado esperado
 * Ao alterar o valor de venda da loja 2 ou de qualquer loja com promoção, independente de estar logado nessa loja, ao encerrar a promoção deve manter o valor de venda anterior.
+
 
 
 
@@ -804,4 +800,5 @@ Para produtos com Desconto Atacado:
 1. Ao cadastrar desconto atacado para um produto que tenha promoção o usuário deverá ser alertado com mensagem;
 
 1. Ao cadastrar desconto atacado para um produto que tenha promoção FUTURA cadastrada o usuário deverá ser alertado com mensagem; 
+
 
