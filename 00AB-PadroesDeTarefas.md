@@ -29,16 +29,12 @@ Descrição das variáveis:
 ## Tarefa X: Criar Verifica Banco
 
 >Observações:
->frmLogin.lblInicializando.Caption = ""
 >Utilizar o Funcoes.fExisteObjeto 
-
 >Utilizar o Funcoes.fExisteObjeto e excluir objeto caso já tenha sido criado
-
-
 Cuidar time out da conexão, retornar time out no trata erro
 Fechar recordset no trata erro
 Reabilitar triggers e constraints no trata erro
- Funcoes.fAtivarSingleUser goConexao, True
+Funcoes.fAtivarSingleUser goConexao, True
 
 
 
