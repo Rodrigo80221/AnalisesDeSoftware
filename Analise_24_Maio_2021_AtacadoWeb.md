@@ -776,3 +776,32 @@ Promoção|R$ 1,99 |R$ 1,99 |R$ 1,99
 
 > Resultado esperado
 * Ao alterar o valor de venda da loja 2 ou de qualquer loja com promoção, independente de estar logado nessa loja, ao encerrar a promoção deve manter o valor de venda anterior.
+
+
+
+
+
+
+
+
+Alteração em : Promoções + Pack Virtual / Promoções + Desconto Atacado
+
+Regra 1
+
+Após as novas alterações podemos cadastrar uma promoção + pack virtual para um produto e deverá funcionar normalmente no PDV. 
+Deve funcionar da mesma forma que era antes:
+- Não deve ter nenhuma mensagem de alerta no cadastro;
+- No PDV deve funcionar as duas promoções, mesmo que promoção sob promoção
+
+Regra 2
+
+Para produtos com Desconto Atacado:
+
+1. Se um produto tiver promoção + desconto atacado sempre deverá prevalecer o preço de promoção no PDV, ou seja, o desconto para atacado deverá ficar desativado durante a vigência da promoção.
+
+1. Ao cadastrar uma promoção para um produto que tenha desconto atacado, deverá ser alertado com mensagem, o mesmo deve ocorrer ao prorrogar uma promoção. 
+
+1. Ao cadastrar desconto atacado para um produto que tenha promoção o usuário deverá ser alertado com mensagem;
+
+1. Ao cadastrar desconto atacado para um produto que tenha promoção FUTURA cadastrada o usuário deverá ser alertado com mensagem; 
+
