@@ -35,19 +35,35 @@ Atualmente nossa estrutura para armazenar o vendedor é um campo livre para digi
 
 
 
+pernambuco 2 clientes
+
+na nota fiscal em informações complementares
+vem o vendedor
+na tela de notas colocar também quem foi o vendedor daquela nota 
+
+no relatório de vendas por período por vendedor
+no pedido de compras tem um atalho para esse relatório, filtro por fornecedor e vendedor
+
+impressão na telinha de cadastro
+
+colocar uma chamada da telinha em fornecedores
+
+
+
+
 ## Criar tabela VendedoresFornecedor -------------- OK
 (será que precisa o código do fornecedor??)
 - Criar tabela VendedoresFornecedor (CodVendedor (PK Identity), CodFornecedor, Nome, telefone, e-mail, MixPorVendedor(bit))
 ## Popular tabela VendedoresFornecedor -------------- OK
 (neste caso serão somente os produtos que tem pedido então?)
 - Popular a nova tabela criada com dados históricos da tabela Pedidos (distinct de Pedidos.codFornecedor e Pedidos.Vendedor) O e-mail e fone deve ser do último pedido do vendedor
-## Criar campo PedidoCompras.CodVendedor
+## Criar campo PedidoCompras.CodVendedor -------------- OK
 - Criar campo CodVendedor (Null, Foregin key VendedoresFornecedor) na tabela PedidoCompras (OBS: pode ser null pois o usuário pode não informar vendedor caso desejar)
 - Atualizar PedidoCompras.CodVendedor buscando os dados populados na tabela "VendedoresFornecedor"
 - Remover da tabela PedidoCompra os antigos campos Vendedor, Fone, E-mail.
 
 
-## Criar tabela VendedoresProdutos
+## Criar tabela VendedoresProdutos -------------- OK
 - Criar tabela VendedoresProdutos (codVendedor, CodProduto)
 ## Popular tabela VendedoresProdutos
 - Popular nova tabela com dados dos últimos 3 pedidos do vendedor
@@ -86,7 +102,11 @@ Atualmente nossa estrutura para armazenar o vendedor é um campo livre para digi
 
 # ALTERAÇÕES NO BANCO DE DADOS  
 
-## Tarefa: Criar verifica banco para criar tabela
+## Tarefa 1: Criar função no atualiza banco fCriarCadastroDeVendedoresNasCompras  PARTE 1
+
+1. Criar função fCriarCadastroDeVendedoresNasCompras
+1. Criar tabela abaixo
+1. Testar com Funcoes.fExisteObjeto se a tabela FornecedorVendedores já estiver no banco de dados dar um `Exit Sub`
 
 ``` SQL
 CREATE TABLE [dbo].[FornecedorVendedores](
@@ -97,11 +117,20 @@ CREATE TABLE [dbo].[FornecedorVendedores](
 	[Email] [nvarchar](64) NOT NULL DEFAULT (''),
 	[MixPorVendedor] [bit] NOT NULL DEFAULT (0), CONSTRAINT [PK_CodVendedor] PRIMARY KEY CLUSTERED ([CodVendedor] ASC))
 GO
-ALTER TABLE [dbo].[FornecedorVendedores]  WITH NOCHECK ADD  CONSTRAINT [FK_Fornecedor_Vendedores] FOREIGN KEY([CodFornecedor])
-REFERENCES [dbo].[Fornecedores] ([codigo])
+ALTER TABLE [dbo].[FornecedorVendedores]  WITH NOCHECK ADD  CONSTRAINT [FK_Fornecedor_Vendedores] FOREIGN KEY([CodFornecedor])  
+REFERENCES [dbo].[Fornecedores] ([codigo]) ON DELETE CASCADE ON UPDATE CASCADE
 GO
 ALTER TABLE [dbo].[FornecedorVendedores] ADD CONSTRAINT chk_NomeVendedor CHECK (LEN(Nome) > 1)
 ```
+
+
+
+## Tarefa 2: Continuar função fCriarCadastroDeVendedoresNasCompras PARTE 2
+
+1. Incrementar na função fCriarCadastroDeVendedoresNasCompras
+1. Ao final verificar se atendeu o requisito abaixo:
+- Os vendedores cadastrados nos pedidos devem ser migrados para a tabela FornecedorVendedores
+- O e-mail e fone deve ser do último pedido do vendedor
 
 ``` SQL
 INSERT INTO [FornecedorVendedores] ([CodFornecedor],[Nome],[Fone],[Email])
@@ -120,6 +149,14 @@ AND NOT EXISTS (SELECT * FROM FornecedorVendedores FV WHERE FV.CodFornecedor <> 
 GROUP BY CodFornecedor, Vendedor
 ```
 
+## Tarefa 3: Continuar função fCriarCadastroDeVendedoresNasCompras PARTE 3
+
+1. Incrementar na função fCriarCadastroDeVendedoresNasCompras
+1. Ao final verificar se atendeu o requisito abaixo:
+- Criar campo CodVendedor na tabela PedidoCompras 
+- Atualizar PedidoCompras.CodVendedor buscando os dados populados na tabela "VendedoresFornecedor"
+- Remover da tabela PedidoCompra os antigos campos Vendedor, Fone, E-mail.
+
 ``` SQL
 ALTER TABLE PedidoCompra ADD [CodVendedor] [int] NULL;
 GO
@@ -137,3 +174,57 @@ ALTER TABLE PedidoCompra DROP COLUMN VendedorFone
 GO
 ALTER TABLE PedidoCompra DROP COLUMN VendedorMail
 ```
+
+
+## Tarefa 4: Continuar função fCriarCadastroDeVendedoresNasCompras PARTE 4
+
+1. Incrementar na função fCriarCadastroDeVendedoresNasCompras
+1. Ao final verificar se atendeu o requisito abaixo:
+- Criar tabela VendedoresProdutos (codVendedor, CodProduto)
+- Popular nova tabela com dados dos últimos 3 pedidos do vendedor
+
+``` SQL
+CREATE TABLE [dbo].[FornecedorVendedoresProdutos](
+	[CodVendedor] [int] NOT NULL,
+	[CodProdut] [float] NOT NULL)
+GO
+ALTER TABLE [dbo].[FornecedorVendedoresProdutos]  WITH NOCHECK ADD  CONSTRAINT [FK_FornecedorVendedoresProdutos_FornecedorVendedores] FOREIGN KEY([CodVendedor])  
+REFERENCES [dbo].[FornecedorVendedores] ([CodVendedor]) ON DELETE CASCADE ON UPDATE CASCADE
+GO
+ALTER TABLE [dbo].[FornecedorVendedoresProdutos]  WITH NOCHECK ADD CONSTRAINT [FK_FornecedorVendedoresProdutos_Produtos] FOREIGN KEY([CodProduto])  
+REFERENCES [dbo].[Produtos] ([codigo]) ON DELETE CASCADE ON UPDATE CASCADE
+```
+
+``` SQL
+DECLARE @CodVendedor INTEGER
+DECLARE NOVOS CURSOR LOCAL FOR
+
+SELECT CodVendedor FROM PedidoCompra WHERE CodVendedor IS NOT NULL group by CodVendedor  
+
+OPEN NOVOS;  
+FETCH NEXT FROM NOVOS INTO @CodVendedor;  
+WHILE @@FETCH_STATUS = 0  
+BEGIN  
+	INSERT INTO FornecedorVendedoresProdutos
+	SELECT @CodVendedor, CodProduto FROM PedidoCompraProdutos PCP WHERE PCP.CodPedidoCompra in
+	(SELECT TOP 3 PC.Codigo FROM PedidoCompra PC where PC.CodVendedor = @CodVendedor group by PC.CodVendedor, PC.DataPedido, PC.Codigo ORDER BY PC.CodVendedor, DataPedido desc)
+
+    FETCH NEXT FROM NOVOS INTO @CodVendedor;  
+END  
+CLOSE NOVOS;  
+DEALLOCATE NOVOS; 
+```
+
+
+## Tarefa 6: Atualizar classes C# com Telecode
+1. Recriar classe Telecon.GestaoComercial.Biblioteca.Pedidos => PedidoCompra.Telecode pelo aplicativo do Telecode
+- Resultado esperado: 
+    - Deverão ser removidas da classe as colunas Vendedor, VendedorFone e VendedorEmail;
+    - Deverá ser add a nova coluna CodVendedor
+
+1.     
+
+
+
+
+## Tarefa 5: Criar tela para manipular os dados dos Vendedores
