@@ -65,7 +65,7 @@ colocar uma chamada da telinha em fornecedores
 
 ## Criar tabela VendedoresProdutos -------------- OK
 - Criar tabela VendedoresProdutos (codVendedor, CodProduto)
-## Popular tabela VendedoresProdutos
+## Popular tabela VendedoresProdutos -------------- OK
 - Popular nova tabela com dados dos últimos 3 pedidos do vendedor
 ## Criar tela para manipular os Vendedores dos fornecedores
 - Criar tela de Crud para o usuário cadastrar/alterar os dados da tabela VendedoresFornecedor (será chamada apenas pela tela do Pedido de Compra)
@@ -216,15 +216,67 @@ DEALLOCATE NOVOS;
 ```
 
 
-## Tarefa 6: Atualizar classes C# com Telecode
+## Tarefa 6: Atualizar/Criar classes C# com Telecode
+1. Criar a classe FornecedorVendedores pelo aplicativo do Telecode no namespace Telecon.GestaoComercial.Biblioteca.Pedidos
+
+1. Criar a classe FornecedorVendedoresProdutos pelo aplicativo do Telecode no namespace Telecon.GestaoComercial.Biblioteca.Pedidos
+
 1. Recriar classe Telecon.GestaoComercial.Biblioteca.Pedidos => PedidoCompra.Telecode pelo aplicativo do Telecode
 - Resultado esperado: 
     - Deverão ser removidas da classe as colunas Vendedor, VendedorFone e VendedorEmail;
     - Deverá ser add a nova coluna CodVendedor
 
-1.     
+
+## Tarefa 7: Compatibilizar classe PedidoCompra do c# para utilizar os novos campos 
+
+> Tela a ser alterada: Pedidos => Controle de Cargas Pedidos
+
+> Resumo: Ao criar uma nova carga e selecionarmos um pedido, devemos consultar o vendedor na tabela >FornecedorVendedores nos locais:
+>- Ao buscar um pedido pelo formulário de busca
+>- Ao selecionar o pedido
+>- Ao inserir o pedido na grade
+>- Ao selecionar a carga na tela inicial
+
+> Abaixo após dar um rebuild teremos algumas linhas que ficarão incompatíveis, corrigir.
+
+1. Compatibilizar a classe PedidoDeCompra Telecon.GestaoComercial.Biblioteca.Pedidos.PedidoCompra
+* Alterar os locais abaixo para utilizar pedidoCompra.CodVendedor seguindo os padrões dos procedimentos
+    * ConverterDataReaderPesquisaPedidoCompra
+    * ConverterDataReaderResumidoPesquisa
+    * ConverterDataReaderGeral
+
+## Tarefa 8: Compatibilizar tela FrmBuscaPedidosCompra do c# para utilizar os novos campos 
+
+1. Compatibilizar o formulário de busca de busca GestaoComercial.Formularios.Outros.FrmBuscaPedidosCompra
+* Alterar o precedimento FrmBuscaPedidosVenda_CarregaStringSql. Utilizar a função FornecedorVendedores.ConsultarChave passando o item.CodVendedor
+
+2. Verificar o funcionamento da pesquisa pelo critério, se necessário programar para funcionar
+
+## Tarefa 9: Compatibilizar tela FrmControleCargas do c# para utilizar os novos campos
+
+1. Compatibilizar o controle de cargas GestaoComercial.Formularios.PedidosVendas.FrmControleCargas
+* Alterar o procedimento TxtCodigoPedido_KeyDown. 
+    * Para preencher o  txtVendedorPedido.Text utilizar a função FornecedorVendedores.ConsultarChave passando o pedido.CodVendedor
+    * Abaixo dessa linha atribuir ao txtVendedorPedido.Tag o pedido.CodVendedor
+
+* Alterar o procedimento AtualizaGridPedidosConformeObjetoPrincipal. Utilizar a função FornecedorVendedores.ConsultarChave passando o pedidoCompra.CodVendedor
+* Alterar o procedimento AdicionaPedidosCompraDeCargaExistente. Utilizar a função FornecedorVendedores.ConsultarChave passando o pedido.CodVendedor
+* Alterar o procedimento BtnAddPedido_Click. Atribuir ao pedidoAdd.CodVendedor o conteúdo do campo  txtVendedorPedido.Tag
+    * No procedimento LimpaCamposTextPedidos limpar o txtVendedorPedido.Tag
+
+
+## Tarefa 10: Compatibilizar a tela FrmPesquisaPedidosCompra do c# para utilizar os novos campos
+
+1. Compatibilizar o FrmPesquisaPedidosCompra GestaoComercial.Formularios.PedidosVendas.FrmControleCargas   
+* Alterar o procedimento CarregarPagina. Utilizar a função FornecedorVendedores.ConsultarChave passando o pedido.CodVendedor
+* Alterar o procedimento BtCarga_Click. Precisaremos buscar o código do vendedor no pedido. Criar na classe PedidoCompra o procedimento RetornarCodVendedor que receba o código do pedido e retorne o código do vendedor
+
+
+## Tarefa 11: Teste de integração do controle de cargas 
+* Dar um rebuild no C# e verificar se todos os locais foram contemplados pela análise, corrigir eventuais problemas, caso necessário retornar para a análise.
+* Testar os recursos da tela alterados, verificar se está buscando corretamente o vendedor do pedido. Avaliar os recursos de busca, adicionar na grade e pesquisa inicial.
+* Verificar se o form de busca de pedidos funcionou corretamente 
 
 
 
-
-## Tarefa 5: Criar tela para manipular os dados dos Vendedores
+## Tarefa 12: Criar tela para manipular os dados dos Vendedores
