@@ -280,3 +280,9 @@ DEALLOCATE NOVOS;
 
 
 ## Tarefa 12: Criar tela para manipular os dados dos Vendedores
+
+![image](https://user-images.githubusercontent.com/80394522/134260228-c6d71be8-b7b6-48d5-8878-c9fbd2e95767.png)
+
+![image](https://user-images.githubusercontent.com/80394522/134260261-62b36ea5-09e3-42ba-a7b6-82e041a1cff1.png)
+
+
