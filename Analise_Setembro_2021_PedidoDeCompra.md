@@ -315,3 +315,6 @@ Add no caminho: GestaoComercial.Formularios.PedidosVendas
 
 ## Tarefa 12: Criar chamadas para o formulário FrmFornecedorVendedores
 COMENTÁRIOESPETO
+
+
+tooltip nos novos campos do pedido de compra
