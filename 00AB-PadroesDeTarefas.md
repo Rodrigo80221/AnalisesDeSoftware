@@ -72,7 +72,7 @@ No novo form implementar as configurações padrões da Telecon
 1. Não deve permitir resize na tela
         Propriedade do form: BorderStyle: 1 - Fixed Single
 
-1. O Fechar/Sair cancela a operação
+1. O Fechar/Sair cancela a operação, caso alterando na barra de cadastros, mostrar mensagem de aviso.
 
 1. Deve abrir centralizado. 
         Propriedade do form: StartUpPosition = 2 - CenterScreen
@@ -83,6 +83,9 @@ No novo form implementar as configurações padrões da Telecon
     If KeyCode = vbKeyF4 Then
         cmdBuscaGrupo_Click
     End If        
+1. Implementar tratamentos da ampulheta do mouse no click dos botões de lupa, atualiza tela, gravar, excluir, alterar
+
+
 
 
 # Finalização/ Testes de Integração

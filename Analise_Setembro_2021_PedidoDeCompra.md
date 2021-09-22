@@ -278,7 +278,6 @@ DEALLOCATE NOVOS;
 * Verificar se o form de busca de pedidos funcionou corretamente 
 
 
-
 ## Tarefa 12: Criar tela para manipular os dados dos Vendedores
 
 ![image](https://user-images.githubusercontent.com/80394522/134260228-c6d71be8-b7b6-48d5-8878-c9fbd2e95767.png)
@@ -286,3 +285,28 @@ DEALLOCATE NOVOS;
 ![image](https://user-images.githubusercontent.com/80394522/134260261-62b36ea5-09e3-42ba-a7b6-82e041a1cff1.png)
 
 
+1. Add formulário FrmFornecedorVendedores no progeto do gestão c#
+Link: [link github](https://github.com/Rodrigo80221/AnalisesDeSoftware/tree/main/Classes/FrmFornecedorVendedores)
+Add no caminho: GestaoComercial.Formularios.PedidosVendas
+
+1. Implentar formulário c#
+* Implementar os eventos da barraCadastro. Verificar exemplos em outras telas
+* Para atualização e persistência dos dados utilizar as classes FornecedorVendedores, FornecedorVendedoresProdutos e FornecedorProduto
+* Para pesquisar os fornecedores utilizar o formulário GestaoComercial.Formularios.Produtos.FrmBuscaFornecedor
+
+> No novo form implementar as configurações padrões da Telecon.
+1. Esc deve ferchar a tela
+1. Enter deverá funcionar como tab
+1. Ícone do gestão na janela
+1. Não deve ter o botão de maximizar
+1. Não deve permitir resize na tela
+    Propriedade do form: BorderStyle: 1 - Fixed Single
+1. O Fechar/Sair cancela a operação, caso alterando na barra de cadastros, mostrar mensagem de aviso.
+1. Deve abrir centralizado. 
+    Propriedade do form: StartUpPosition = 2 - CenterScreen
+1. Deve estar correto quanto ao tab index ao finalizar a tela
+1. F4 no campo Cod. Fornecedor deve abrir a busca de fornecedor
+1. Implementar tratamentos da ampulheta do mouse no click dos botões de lupa, gravar, excluir, alterar e atualiza tela.
+
+
+## Tarefa 12: Criar chamadas para o formulário FrmFornecedorVendedores
