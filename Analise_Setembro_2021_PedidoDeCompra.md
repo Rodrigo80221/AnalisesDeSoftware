@@ -67,7 +67,7 @@ colocar uma chamada da telinha em fornecedores
 - Criar tabela VendedoresProdutos (codVendedor, CodProduto)
 ## Popular tabela VendedoresProdutos -------------- OK
 - Popular nova tabela com dados dos últimos 3 pedidos do vendedor
-## Criar tela para manipular os Vendedores dos fornecedores
+## Criar tela para manipular os Vendedores dos fornecedores -------------- OK
 - Criar tela de Crud para o usuário cadastrar/alterar os dados da tabela VendedoresFornecedor (será chamada apenas pela tela do Pedido de Compra)
 
 ## Alterações na tela pedido de compra
@@ -310,3 +310,4 @@ Add no caminho: GestaoComercial.Formularios.PedidosVendas
 
 
 ## Tarefa 12: Criar chamadas para o formulário FrmFornecedorVendedores
+COMENTÁRIOESPETO
