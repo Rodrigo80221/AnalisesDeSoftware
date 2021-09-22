@@ -10,6 +10,8 @@
 
 ![image](https://user-images.githubusercontent.com/80394522/134431214-d7910fd7-baed-42b4-8709-bfeeeed7e082.png)
 
+![image](https://user-images.githubusercontent.com/80394522/134431683-9f809165-4525-4c31-9f7b-01fee360bb96.png)
+
 
 
 # Pedido de Compra: Criar castro de Vendedores e Filtro de Produtos por Vendedor (Santana, Nova Compra)
