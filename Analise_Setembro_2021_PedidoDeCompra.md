@@ -1,3 +1,7 @@
+![image](https://user-images.githubusercontent.com/80394522/134410945-534af1f8-60f4-440a-93cf-57e73865ceae.png)
+
+
+
 # Pedido de Compra: Criar castro de Vendedores e Filtro de Produtos por Vendedor (Santana, Nova Compra)
 
 Alguns fornecedores possuem mais que um vendedor atendendo os supermercados, um para cada "pasta", ou seja uma linha de produtos ou marcas. Isso causa dificuldade para o comprador que não consegue filtrar na tela do Compras apenas os produtos de determinado vendedor.
