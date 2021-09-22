@@ -1,30 +1,35 @@
 
-
-![image](https://user-images.githubusercontent.com/80394522/134434423-46dc2f76-1de6-46e9-961b-7c0b955a57cf.png)
-
-
-![image](https://user-images.githubusercontent.com/80394522/134427264-b55f8593-3907-4d55-bd7b-ea4341fcd3c0.png)
-
-
+# Tela atual
 ![image](https://user-images.githubusercontent.com/80394522/134410945-534af1f8-60f4-440a-93cf-57e73865ceae.png)
 
+# Tela com link
 ![image](https://user-images.githubusercontent.com/80394522/134422247-097bedf9-cf3b-480d-a595-bc01341f0730.png)
 
+# Tela com link e combo
+![image](https://user-images.githubusercontent.com/80394522/134434423-46dc2f76-1de6-46e9-961b-7c0b955a57cf.png)
 
+# Tela com a lupa
+![image](https://user-images.githubusercontent.com/80394522/134427264-b55f8593-3907-4d55-bd7b-ea4341fcd3c0.png)
+
+# NF Entradas com link e combo
 ![image](https://user-images.githubusercontent.com/80394522/134434218-b7d6c3ff-b35a-4f10-b0e8-2c09ccb2fc30.png)
 
-
-
+# NF Entradas com frame link e combo
 ![image](https://user-images.githubusercontent.com/80394522/134429906-37bd039b-6991-495c-86b1-7179b0642cb9.png)
 
+# NF Entradas padronizada com frame link e combo
 ![image](https://user-images.githubusercontent.com/80394522/134431214-d7910fd7-baed-42b4-8709-bfeeeed7e082.png)
 
+# NF Entradas padronizada com frame link, combo, email e telefone
 ![image](https://user-images.githubusercontent.com/80394522/134431744-39a0f63c-3462-443e-b333-5939beb8e4c6.png)
 
+# NF Entradas padronizada com lupa
 ![image](https://user-images.githubusercontent.com/80394522/134432084-c5925e04-9883-47c6-83be-2d5bc61bea8f.png)
 
+# Relatório atual
 ![image](https://user-images.githubusercontent.com/80394522/134434627-9bc9ad85-6680-4bde-8069-d16be2231109.png)
 
+# Relatório com o vendedor
 ![image](https://user-images.githubusercontent.com/80394522/134434940-105bc441-8e08-40d6-bd40-52e619ab4d5e.png)
 
 
