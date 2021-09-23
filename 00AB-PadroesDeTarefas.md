@@ -83,7 +83,7 @@ No novo form implementar as configurações padrões da Telecon
     If KeyCode = vbKeyF4 Then
         cmdBuscaGrupo_Click
     End If        
-1. Implementar tratamentos da ampulheta do mouse no click dos botões de lupa, atualiza tela, gravar, excluir, alterar
+1. Implementar tratamentos da ampulheta do mouse no click dos botões de lupa, gravar, excluir, alterar e atualiza tela.
 
 
 

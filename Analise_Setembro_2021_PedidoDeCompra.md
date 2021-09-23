@@ -323,7 +323,7 @@ DEALLOCATE NOVOS;
 ![image](https://user-images.githubusercontent.com/80394522/134260261-62b36ea5-09e3-42ba-a7b6-82e041a1cff1.png)
 
 
-1. Add formulário FrmFornecedorVendedores no progeto do gestão c#
+1. Add formulário FrmFornecedorVendedores no projeto do gestão c#
 Link: [link github](https://github.com/Rodrigo80221/AnalisesDeSoftware/tree/main/Classes/FrmFornecedorVendedores)
 Add no caminho: GestaoComercial.Formularios.PedidosVendas
 
@@ -347,8 +347,82 @@ Add no caminho: GestaoComercial.Formularios.PedidosVendas
 1. Implementar tratamentos da ampulheta do mouse no click dos botões de lupa, gravar, excluir, alterar e atualiza tela.
 
 
+## Tarefa 13: Alterar FrmPedidoCompra - Inserir combobox para o vendedor
+1. Trocar o txtVendedor por um cboVendedor
+1. Colorir o BackColor do txtFone e txtEMail de amarelo "&H00C0FFFF&" e desabilitar os campos para edição
+1. Criar o procedimento sCarregarComboVendedores que recebe o codigo do fornecedor (double) por parâmetro. 
+* Neste procedimento carregar o combo cboVendedor com os vendedores disponíveis para o fornecedor do parâmetro de acordo com a tabela FornecedorVendedores. 
+* Na última posição do combo carregar um campo vazio para caso o usuário queira deixar o vendedor em branco
+1. Chamar esse procedimento no início do procedimento sCarregaVendedor passando o ldbCodigoFornecedor
+* Após a consulta posicionar o combo no vendedor utilizado no último pedido desse fornecedor na tabela PedidoCompra, caso não haja ou seja null deixar o combo na posição vazio
+1. No if do sCarregaVendedor retirar o trecho abaixo
+
+``` vb
+7       txtVendedor.Text = rsVendedor("Vendedor") & ""
+8       txtFone.Text = rsVendedor("VendedorFone") & ""
+9       txtEMail.Text = rsVendedor("VendedorMail") & ""
+``` 
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Tarefa 12: Criar chamadas para o formulário FrmFornecedorVendedores
-COMENTÁRIOESPETO
+
 
 
 tooltip nos novos campos do pedido de compra
+
+
+
+
+
+
+
+
+## Tarefa XX: Alterar pedido de compra grande
+1. Tratar o insert do procedimento FrmPedidoCompraProdutos.fInserirPedidoCabecalho. Substituir os campos Vendedor, Email e Fone por CodVendedor.
+1. Excluir variáveis que não serão mais utilizadas.
+1. Verificar o básico do funcionamento na tela.
+
+
+
+
+
+
+colocar pedidos na nota
+verifica o status do pedido e marcar como entregue 
+consulta de pedidos com dados básicos 
+somente pedidos autorizados , avisar que não está autorizado
+se buscar pelo pedido já preenche o vendedor
+o pedido tem que estar autorizado
+encerrar o pedido
+abrir o pedido
+
+primeiro selecione um pedido
+o chama o pedido
+
+data da entrega do pedido para a data da entrada da nota
+encerrado = true
+
+
+
+controle de entradas - mostrar o valor de venda no pedido
+colorir
+tooltip
+bloquear a alteração de preço
+só de nota que tiver relação com o pedido
+
+
+no cadastro de vendedores
+colocar um imprime grid 
+ultima compra, ultimo custo
+
