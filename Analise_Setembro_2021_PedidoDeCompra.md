@@ -330,35 +330,97 @@ Add no caminho: GestaoComercial.Formularios.PedidosVendas
 
 
 ## Tarefa 13: Alterar FrmPedidoCompra - Inserir combobox para o vendedor
+
+![image](https://user-images.githubusercontent.com/80394522/134574560-8527e151-4d1a-4d2c-a914-f03aa8768b52.png)
+
 1. Trocar o txtVendedor por um cboVendedor
 1. Colorir o BackColor do txtFone e txtEMail de amarelo "&H00C0FFFF&" e desabilitar os campos para edição
-1. Criar o procedimento sCarregarComboVendedores que recebe o codigo do fornecedor (double) por parâmetro. 
+1. Criar o procedimento sCarregarComboVendedores que recebe o codigo do fornecedor (double) por parâmetro. Carregar o código no .ItemData
 * Neste procedimento carregar o combo cboVendedor com os vendedores disponíveis para o fornecedor do parâmetro de acordo com a tabela FornecedorVendedores. 
 * Na última posição do combo carregar um campo vazio para caso o usuário queira deixar o vendedor em branco
 1. Chamar esse procedimento no início do procedimento sCarregaVendedor passando o ldbCodigoFornecedor
-* Após a consulta posicionar o combo no vendedor utilizado no último pedido desse fornecedor na tabela PedidoCompra, caso não haja ou seja null deixar o combo na posição vazio
+* Atualizar a consulta do sCarregaVendedor
+* No sCarregaVendedor após a consulta posicionar o combo no vendedor utilizado no último pedido desse fornecedor na tabela PedidoCompra oriundo da consulta, caso não haja ou seja null deixar o combo na posição vazio
+> utilizar Funcoes.fProcuraItemData
 1. No if do sCarregaVendedor retirar o trecho abaixo
-
 ``` vb
 7       txtVendedor.Text = rsVendedor("Vendedor") & ""
 8       txtFone.Text = rsVendedor("VendedorFone") & ""
 9       txtEMail.Text = rsVendedor("VendedorMail") & ""
 ``` 
 
+## Tarefa 14: Alterar FrmPedidoCompra - Tratar eventos do cboVendedor
+1. Programar o evento KeyPress utilizando Funcoes.fBuscaCombo seguindo o padrão dos outros combos
+1. Programar o envento change do cboVendedor, ao alterar o item do combo deverá preencher os campos de email e telefone de acordo com a tabela FornecedorVendedores
+1. Testar se com esse tratamento ao alterar o fornecedor já estará preenchendo esses campos, ajustar caso necessário
+
+## Tarefa 15: Alterar FrmPedidoCompra - Criar Label Link Vendedores
+
+1. Acima do combo de Vendedores inserir um label link conforme a imagem
+1. Tratar para chamar a tela do C# nas condições abaixo
+* Se o combo Vendedor estiver vazio chamar com o botão novo habilitado assim como ocorre no label link de fornecedor, enviar mensagem para o sistema S do C# seguindo o padrão utilizado nas outras telas.
+* Se o combo Vendedor estiver preenchido abrir na posição do vendedor
+
+## Tarefa 16: Alterar FrmPedidoCompra - fGravaPedido
+
+1. Alterar o procedimento fGravaPedido, retirar do sql os campos vendedor, vendedorFone e VendedorMail e adicionar o campo CodVendedor caso haja um vendedor selecionado, do contrário inserir null
+1. Testar comportamento
+
+## Tarefa 17: Alterar FrmPedidoCompra - sGerarRelatorioPorLote
+1. Alterar o procedimento sGerarRelatorioPorLote
+* Nos dois from add a tabela FornecedorVendedores com left join unindo pelo CodVendedor
+* Nas duas consultas em vez de buscar por `PC.Vendedor, PC.VendedorMail`
+buscar por `FornecedorVendedores.Vendedor, FornecedorVendedores.VendedorMail`
+1. Testar comportamento
+
+## Tarefa 18: Alterar FrmPedidoCompra - txtNumeroPedido_LostFocus
+1. Alterar o procedimento txtNumeroPedido_LostFocus
+* substituir o código abaixo pelo preencimento do campo cboVendedor
+``` VB
+35          txtVendedor.Text = rsPedidoCompra("Vendedor") & ""
+36          txtFone.Text = rsPedidoCompra("VendedorFone") & ""
+37          txtEMail.Text = rsPedidoCompra("VendedorMail") & ""
+```
+
+## Tarefa 19: Alterar FrmPedidoCompra - sImprimirRelatorio
+1. Alterar o rpt do relatório `Pedido Compra.rpt"` 
+1. No rpt adicionar a tabela FornecedorVendedores
+1. Criar relacionamento LeftJoin entre a tabela FornecedorVendedores e PedidoCompra
+1. Remover os campos antigos e add os novos campos da tabela FonecedorVendedores no relatório
+1. Testar comportamento
+
+## Tarefa 20: Alterar FrmPedidoCompra - Inserir chkFiltroVendedor
 
 
+lblLimpar_Click
+chkFiltroVendedor.Value = vbUnchecked
+
+cboVendedor_Change
+FornecedorVendedor.MixPorVendedor
+
+fGravaPedido
+Salvar o chkFiltroVendedor no campo FornecedorVendedor.MixPorVendedor
 
 
+sListaProdutos
+Tratar com left join ou inner join
 
 
+sListaProdutosbkp
+Tratar com left join ou inner join
+
+## Tarefa 20: Alterar FrmPedidoCompra - menu desassociar
+
+Salvarprodutos na tabela FornecedorVendedoresProdutos
 
 
+## Tarefa 20: Alterar FrmPedidoCompra - menu desassociar 
 
 
+## Tarefa 21: Alterar FrmPedidoCompra - Menu Fornecedores + Recursos sistemas S
 
 
-## Tarefa 12: Criar chamadas para o formulário FrmFornecedorVendedores
-
+=> Colocar imprimir no cad vendedores
 
 
 tooltip nos novos campos do pedido de compra
