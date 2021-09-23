@@ -6,7 +6,7 @@
 ![image](https://user-images.githubusercontent.com/80394522/134574560-8527e151-4d1a-4d2c-a914-f03aa8768b52.png)
 
 #NF Entradas Novo
-![image](https://user-images.githubusercontent.com/80394522/134576391-f7e4b3b2-66e7-4a89-84d1-5b51dd2c9a11.png)
+![image](https://user-images.githubusercontent.com/80394522/134583578-7d93c0bb-aa6e-4d01-b9e6-cc106614f220.png)
 
 # Relatório atual
 ![image](https://user-images.githubusercontent.com/80394522/134434627-9bc9ad85-6680-4bde-8069-d16be2231109.png)
