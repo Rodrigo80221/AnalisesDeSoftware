@@ -5,20 +5,8 @@
 # Controle de Entradas Novo
 ![image](https://user-images.githubusercontent.com/80394522/134574560-8527e151-4d1a-4d2c-a914-f03aa8768b52.png)
 
-# NF Entradas com link e combo
-![image](https://user-images.githubusercontent.com/80394522/134434218-b7d6c3ff-b35a-4f10-b0e8-2c09ccb2fc30.png)
-
-# NF Entradas com frame link e combo
-![image](https://user-images.githubusercontent.com/80394522/134429906-37bd039b-6991-495c-86b1-7179b0642cb9.png)
-
-# NF Entradas padronizada com frame link e combo
-![image](https://user-images.githubusercontent.com/80394522/134431214-d7910fd7-baed-42b4-8709-bfeeeed7e082.png)
-
-# NF Entradas padronizada com frame link, combo, email e telefone
-![image](https://user-images.githubusercontent.com/80394522/134431744-39a0f63c-3462-443e-b333-5939beb8e4c6.png)
-
-# NF Entradas padronizada com lupa
-![image](https://user-images.githubusercontent.com/80394522/134432084-c5925e04-9883-47c6-83be-2d5bc61bea8f.png)
+#NF Entradas Novo
+![image](https://user-images.githubusercontent.com/80394522/134576391-f7e4b3b2-66e7-4a89-84d1-5b51dd2c9a11.png)
 
 # Relatório atual
 ![image](https://user-images.githubusercontent.com/80394522/134434627-9bc9ad85-6680-4bde-8069-d16be2231109.png)
