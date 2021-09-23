@@ -2,14 +2,8 @@
 # Tela atual
 ![image](https://user-images.githubusercontent.com/80394522/134410945-534af1f8-60f4-440a-93cf-57e73865ceae.png)
 
-# Tela com link
-![image](https://user-images.githubusercontent.com/80394522/134422247-097bedf9-cf3b-480d-a595-bc01341f0730.png)
-
-# Tela com link e combo
-![image](https://user-images.githubusercontent.com/80394522/134434423-46dc2f76-1de6-46e9-961b-7c0b955a57cf.png)
-
-# Tela com a lupa
-![image](https://user-images.githubusercontent.com/80394522/134427264-b55f8593-3907-4d55-bd7b-ea4341fcd3c0.png)
+# Controle de Entradas Novo
+![image](https://user-images.githubusercontent.com/80394522/134574560-8527e151-4d1a-4d2c-a914-f03aa8768b52.png)
 
 # NF Entradas com link e combo
 ![image](https://user-images.githubusercontent.com/80394522/134434218-b7d6c3ff-b35a-4f10-b0e8-2c09ccb2fc30.png)
