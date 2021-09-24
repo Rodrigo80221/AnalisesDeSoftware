@@ -37,6 +37,10 @@ Reabilitar triggers e constraints no trata erro
 Funcoes.fAtivarSingleUser goConexao, True
 
 
+## Tarefa X: Adicionar combo
+
+_KeyPress
+KeyAscii = Funcoes.fBuscaCombo(cboFormaPgto, KeyAscii)
 
 
 ## Tarefa X: Criar novo form

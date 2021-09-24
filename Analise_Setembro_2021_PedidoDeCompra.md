@@ -348,6 +348,9 @@ Add no caminho: GestaoComercial.Formularios.PedidosVendas
 8       txtFone.Text = rsVendedor("VendedorFone") & ""
 9       txtEMail.Text = rsVendedor("VendedorMail") & ""
 ``` 
+1. Alterar procedimento sLimparCampos
+* Colocar na última posição do combo, que deverá ser a posição em branco
+`cboVendedor.ListIndex = cboVendedor.ListCount - 1`
 
 ## Tarefa 14: Alterar FrmPedidoCompra - Tratar eventos do cboVendedor
 1. Programar o evento KeyPress utilizando Funcoes.fBuscaCombo seguindo o padrão dos outros combos
@@ -389,26 +392,73 @@ buscar por `FornecedorVendedores.Vendedor, FornecedorVendedores.VendedorMail`
 1. Remover os campos antigos e add os novos campos da tabela FonecedorVendedores no relatório
 1. Testar comportamento
 
-## Tarefa 20: Alterar FrmPedidoCompra - Inserir chkFiltroVendedor
+## Tarefa 20: Alterar FrmPedidoCompra - Inserir e tratar o checkbox chkFiltroVendedor
 
 1. Inserir o check box chkFiltroVendedor na tela conforme a imagem
+* se necessário aumentar minimamente o frame de filtros para colocar os labels de observações de 2 em 2 abrindo espaço para novas configurações
 
-lblLimpar_Click
-chkFiltroVendedor.Value = vbUnchecked
+1. Alterar o procedimento cboVendedor_Change
+* caso o combo cboVendedor_Change tenha um vendedor selecionado deixar o componente chkFiltroVendedor.visible = true, caso esteja em branco deixar false
+* Caso tenha vendedor e o campo FornecedorVendedor.MixPorVendedor seja true marcar o  checkbox chkFiltroVendedor, caso seja false desmarcar
+* verificar se ao selecionar um fornecedor está trazendo corretamente o vendedor e marcando o checkbox de acordo com o banco
 
-cboVendedor_Change
-FornecedorVendedor.MixPorVendedor
+1. Alterar o procedimento sAjustaMenorQue1024x768
+* Ajustar o chkFiltroVendedor nas resoluções assim como o chkFiltroFornecedor
 
-fGravaPedido
-Salvar o chkFiltroVendedor no campo FornecedorVendedor.MixPorVendedor
+1. Alterar o procedimento lblLimpar_Click
+* Adicionar chkFiltroVendedor.Value = vbUnchecked
+
+1. Implementar o chkFiltroVendedor_Click
+* Add o código abaixo
+``` vb
+   If Me.ActiveControl.name = "chkFiltroVendedor" Then
+       Call sListaProdutos
+   End If
+```
+
+## Tarefa 21: Alterar FrmPedidoCompra - Tratar o checkbox chkFiltroVendedor no sListaProdutos
+
+1. Remover o procedimento sListaProdutosbkp, não está sendo utilizado
+
+1. Alterar o procedimento sListaProdutos
+* Adicionar if no procedimento para caso o chkFiltroVendedor = vbchecked adicionar um filtro 
+`sFiltro = sFiltro & " AND P.Codigo In (Select Distinct FP.CD_Produto From FornecedorVendedoresProdutos where CodVendedor =  "item data do cboVendedor")` 
+* Fazer similar ao que já acontece com o chkFiltroFornecedor
+
+1. No final da tarefa verificar se só isso já resolve para filtrar os produtos do vendedor. Verificar se ao desmarchar o checkbox do vendedor e alterar a quantidade de um produto fora do mix do vendedor, ao marcar o checkbox do vendedor de novo o produto alterado continuará na grade. Ajustar caso necessário ou verificar com a análise.
 
 
-sListaProdutos
-Tratar com left join ou inner join
+## Tarefa 22: Alterar FrmPedidoCompra - Tratar o checkbox chkFiltroVendedor no sInserirProdutosFornecedores
+
+1. Criar o procedimento sSalvarDadosDoVendedor.
+1. Chamar o procedimento sSalvarDadosDoVendedor dentro do fGravaPedido após a chamada do sAtualizarDadosGiroEstoque
+1. Implemenentar o procedimento sSalvarDadosDoVendedor
+* Atualizar o campo FornecedorVendedor.MixPorVendedor =  chkFiltroVendedor.Value , de acordo com o vendedor e o fornecedor selecionado
+* O código do vendedor está no item do combo e do fornecedor em uma variável local ldbCodigoFornecedor
+* Caso não haja vendedor selecionado sair da sub
 
 
-sListaProdutosbkp
-Tratar com left join ou inner join
+## Tarefa 23: Alterar FrmPedidoCompra - Inserir produtos do pedido no MIX do vendedor
+
+1. Continuar implementando o procedimento sInserirProdutosFornecedores
+1. Após salvar o campo FornecedorVendedor.MixPorVendedor salvar os produtos do pedido na tabela FornecedorVendedoresProdutos de acordo com as regras abaixo:
+* Atualizar somente se o chkFiltroVendedor.Value = vbchecked
+* Atualizar a tabela FornecedorVendedoresProdutos com os produtos do pedido caso esses produtos ainda não estejam lá. 
+* O insert dever ter uma estrutura semelhante ao que inserimos no verifica banco `INSERT INTO FornecedorVendedoresProdutos`
+
+
+
+
+
+
+
+
+
+
+
+usar nas notas de saída sCarregarPedidoCompra
+
+
 
 ## Tarefa 20: Alterar FrmPedidoCompra - menu desassociar
 
