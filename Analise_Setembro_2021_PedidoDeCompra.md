@@ -1,6 +1,6 @@
 
 # Tela atual
-![image](https://user-images.githubusercontent.com/80394522/134410945-534af1f8-60f4-440a-93cf-57e73865ceae.png)
+![image](https://user-images.githubusercontent.com/80394522/134715217-19a16656-0331-43b7-ac67-d312644803b5.png)
 
 # Controle de Entradas Novo
 ![image](https://user-images.githubusercontent.com/80394522/134574560-8527e151-4d1a-4d2c-a914-f03aa8768b52.png)
