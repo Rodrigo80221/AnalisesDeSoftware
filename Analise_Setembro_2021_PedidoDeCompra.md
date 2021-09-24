@@ -309,7 +309,7 @@ DEALLOCATE NOVOS;
 Link: [link github](https://github.com/Rodrigo80221/AnalisesDeSoftware/tree/main/Classes/FrmFornecedorVendedores)
 Add no caminho: GestaoComercial.Formularios.PedidosVendas
 
-1. Implentar formulário c#
+1. Implentar formulário c# nas regras abaixo
 * Implementar os eventos da barraCadastro. Verificar exemplos em outras telas
 * Para atualização e persistência dos dados utilizar as classes FornecedorVendedores, FornecedorVendedoresProdutos e FornecedorProduto
 * Para pesquisar os fornecedores utilizar o formulário GestaoComercial.Formularios.Produtos.FrmBuscaFornecedor
@@ -391,6 +391,7 @@ buscar por `FornecedorVendedores.Vendedor, FornecedorVendedores.VendedorMail`
 
 ## Tarefa 20: Alterar FrmPedidoCompra - Inserir chkFiltroVendedor
 
+1. Inserir o check box chkFiltroVendedor na tela conforme a imagem
 
 lblLimpar_Click
 chkFiltroVendedor.Value = vbUnchecked
