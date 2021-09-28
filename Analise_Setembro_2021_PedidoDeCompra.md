@@ -125,8 +125,7 @@ colocar uma chamada da telinha em fornecedores
 ## Tarefa 1: Criar função no atualiza banco fCriarCadastroDeVendedoresNasCompras  PARTE 1
 
 1. Criar função fCriarCadastroDeVendedoresNasCompras
-1. Adicionar o comando abaixo
-1. Testar com Funcoes.fExisteObjeto, se a tabela FornecedorVendedores já estiver no banco de dados dar um `Exit Sub`
+1. Adicionar os comandos abaixo
 
 ``` SQL
 CREATE TABLE [dbo].[FornecedorVendedores](
@@ -140,10 +139,27 @@ GO
 ALTER TABLE [dbo].[FornecedorVendedores]  WITH NOCHECK ADD  CONSTRAINT [FK_Fornecedor_Vendedores] FOREIGN KEY([CodFornecedor])  
 REFERENCES [dbo].[Fornecedores] ([codigo]) ON DELETE CASCADE ON UPDATE CASCADE
 GO
-ALTER TABLE [dbo].[FornecedorVendedores] ADD CONSTRAINT chk_NomeVendedor CHECK (LEN(Nome) > 1)
+ALTER TABLE [dbo].[FornecedorVendedores] ADD CONSTRAINT chk_NomeVendedor CHECK (LEN(Nome) >= 1)
 ```
 
+``` SQL
+CREATE TABLE [dbo].[NF_Entradas_Pedidos](
+	[CD_NOTA] [float] NOT NULL,
+	[CodPedido] [float] NULL,
+	[CodVendedor] [int] NULL, CONSTRAINT [PK_NF_Entradas_Pedidos] PRIMARY KEY CLUSTERED ([CD_NOTA] ASC))
+GO
+ALTER TABLE [dbo].[NF_Entradas_Pedidos]  WITH NOCHECK ADD  CONSTRAINT [FK_NF_EntradasPedidos_NFEntradas] FOREIGN KEY([CD_NOTA])  
+REFERENCES [dbo].[NF_ENTRADAS] ([CD_NOTA]) ON DELETE CASCADE ON UPDATE CASCADE
+GO
+ALTER TABLE [dbo].[NF_Entradas_Pedidos]  WITH NOCHECK ADD  CONSTRAINT [FK_NF_EntradasPedidos_PedidoCompra] FOREIGN KEY([CodPedido])  
+REFERENCES [dbo].[PedidoCompra] ([Codigo]) ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[NF_Entradas_Pedidos]  WITH NOCHECK ADD  CONSTRAINT [FK_NF_EntradasPedidos_FornecedorVendedores] FOREIGN KEY([CodVendedor])  
+REFERENCES [dbo].[FornecedorVendedores] ([CodVendedor]) ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[NF_Entradas_Pedidos] ADD CONSTRAINT chk_NFEntradasPedidos_DadosNulos CHECK (CodPedido is not null or CodVendedor is not null)
 
+```
 
 ## Tarefa 2: Continuar função fCriarCadastroDeVendedoresNasCompras PARTE 2
 
@@ -342,7 +358,7 @@ Add no caminho: GestaoComercial.Formularios.PedidosVendas
 
 1. Trocar o txtVendedor por um cboVendedor
 1. Colorir o BackColor do txtFone e txtEMail de amarelo "&H00C0FFFF&" e desabilitar os campos para edição
-1. Criar o procedimento sCarregarComboVendedores que recebe o codigo do fornecedor (double) por parâmetro. Carregar o código no .ItemData
+1. No Funcoes criar o procedimento `Public void sCarregarComboVendedores` que recebe o combo e o codigo do fornecedor (double) por parâmetro. Carregar o CodVendedor no .ItemData
 * Neste procedimento carregar o combo cboVendedor com os vendedores disponíveis para o fornecedor do parâmetro de acordo com a tabela FornecedorVendedores. 
 * Na última posição do combo carregar um campo vazio para caso o usuário queira deixar o vendedor em branco
 1. Chamar esse procedimento no início do procedimento sCarregaVendedor passando o ldbCodigoFornecedor
@@ -367,10 +383,20 @@ Add no caminho: GestaoComercial.Formularios.PedidosVendas
 ## Tarefa 15: Alterar FrmPedidoCompra - Criar Label Link Vendedores
 
 1. Acima do combo de Vendedores inserir um label link conforme a imagem
-1. Tratar para chamar a tela do C# nas condições abaixo
-* Se o combo Vendedor estiver vazio chamar com o botão novo habilitado assim como ocorre no label link de fornecedor, enviar mensagem para o sistema S do C# seguindo o padrão utilizado nas outras telas.
+1. Criar em Funcoes a função `fAlterarFornecedorVendedores`, criar um parâmetro byval double dbCodVendedor.
+1. Nesta função criada programar de acordo com os passos abaixo
+1. Se o dbCodVendedor = 0 então chamar a tela c# com o novo habilitado para cadastrar
+1. Se o dbCodVendedor <> 0 então chamar a tela c# com o alterar habilitado para atualizar um vendedor
+* a função `fAlterarFornecedorVendedores` deve retornar o CodVendedor do vendedor cadastrado ou atualizado
+* seguir o padrão de funcionamento utilizado nos outros label links dessa tela
+
+1. Programar no keypress do link uma chamada para a função `Funcoes.fAlterarFornecedorVendedores`, após passar por essa função chamar novamente o procedimento `Funcoes.sCarregarComboVendedores`
+    * Após esses passos posicionar o combo de vendedores no CodVendedor que retornou da função `fAlterarFornecedorVendedores` 
+
+
 * Se o combo Vendedor estiver preenchido abrir na posição do vendedor
-* Inserir tooltip: Abrir o Cadastro de Vendedores dos Fornecedores
+
+* Inserir tooltip no label link: Abrir o Cadastro de Vendedores dos Fornecedores
 
 ## Tarefa 16: Alterar FrmPedidoCompra - fGravaPedido
 
@@ -491,7 +517,7 @@ Descrição das variáveis que serão utilizadas:
 `sDescrição = Cadastro de Vendedores dos Fornecedores`
 `sPalavraChave = FrmFornecedorVendedores`
 
-1. Tratar em mdlGestao.sCarregaModulos, conforme padrão dos procedimentos
+1. Tratar em Funcoes.sCarregaModulos, conforme padrão dos procedimentos
 
 1. Chamar na tela clássica no menu de  Fornecedores > Fornecedor Vendedores
 
@@ -516,42 +542,141 @@ Descrição das variáveis que serão utilizadas:
 ## Tarefa 25: Criar campo no NF_Entradas para inserir o Pedido e o Vendedor
 
 1. Adicionar os campos na tela conforme a imagem
+1. O campo do código do pedido só deverá aceitar números (textMask = Integer)
 1. Cuidar o TabIndex
 
-## Tarefa 26: Tornar funcional o campo do pedido e do vendedor 
+## Tarefa 26: Tornar funcional os componentes de vendedor nas NF Entradas
 
-Vendedor
-1. Criar procedimento `sCarregarComboVendedores` 
-1. Chamar após selecionar um fornecedor
-1. Programar o Label Link do Vendedor assim como na tela do Pedido de Compra
+1. Chamar o procedimento `Funcoes.sCarregarComboVendedores `após selecionar um fornecedor no `fBuscaFornecedor` acima da linha abaixo:
+``` vb
+71      fBuscaFornecedor = True
+```
+1. No procedimento `sLimpaCamposFornecedor` passar o combo do vendedor para o último List Index que deve ser o em branco
+1. Programar o Label Link do Vendedor assim como na tela do Pedido de Compra chamando a função criada no Funcoes
+    
+
+
+## Tarefa 26: Criar formulário de busca de pedido de compra FrmBuscaPedidoCompra
+1. Criar diretório `GestaoComercial.Formularios.PedidosCompras`
+1. Adicionar Formulário no namespace `GestaoComercial.Formularios.PedidosCompras`
+1. Adicionar herança do formulário `FrmPesquisa`. Este formulário deverá seguir o padrão dos formulários de pesquisa da Telecon
+1. Implementar o `AdicionaColunasList`, (acertar as larguras da colunas)
+``` c#
+        base.AdicionarColunaLista("Nro. Pedido", 50, typeof(string));
+        base.AdicionarColunaLista("Dt. Entrega", 50, typeof(string));
+        base.AdicionarColunaLista("Fornecedor", 150, typeof(string));
+        base.AdicionarColunaLista("Loja", 100, typeof(string));
+        base.AdicionarColunaLista("Comprador", 100, typeof(string));
+        base.AdicionarColunaLista("Data Pedido", 50, typeof(string));
+```
+1. Implementar critérios
+=> Campo + Valor no Combo
+``` c#
+        base.AdicionarCriterio(typeof(int), "PedidoCompra.Codigo"; "Nro. Pedido");
+        base.AdicionarCriterio(typeof(string), "PedidoCompra.DataEntrega", "Dt. Entrega");
+        base.AdicionarCriterio(typeof(string), "Fornecedor.Fantasia", "Fornecedor");
+        base.AdicionarCriterio(typeof(string), "Loja.Nome", "Loja");
+        base.AdicionarCriterio(typeof(string), "Operador.Nome", "Comprador");
+        base.AdicionarCriterio(typeof(string), "PedidoCompra.Datapedido", "Data Pedido");
+```
+1. Implementar Ordenação
+``` c#
+        base.AdicionarOrdenacao(typeof(int), "Nro. Pedido", "Nro. Pedido");
+        base.AdicionarOrdenacao(typeof(string), "Dt. Entrega", "Dt. Entrega");
+        base.AdicionarOrdenacao(typeof(string), "Fornecedor", "Fornecedor");
+        base.AdicionarOrdenacao(typeof(string), "Loja", "Loja");
+        base.AdicionarOrdenacao(typeof(string), "Comprador", "Comprador");
+        base.AdicionarOrdenacao(typeof(string), "Data Pedido", "Data Pedido");
+```
+1. Implementar o `CarregaStringSql`
+* utilizar a classe `PedidoCompra`
+* tratar o cursor do mouse durante a pesquisa (trocar seta por ampulheta)
+
+
+
+## Tarefa 27: Tornar funcional os componentes de Pedidos nas NF Entradas
 
 Pedido
-1. Programar a busca de pedido
+1. Programar o botão de busca de pedido, utilizar a tela c# criada FrmBuscaPedidoCompra
+1. Programar o Keypress do código do pedido
+* Ao digitar o código do pedido e der enter verificar se o pedido existe. Se existe atribuir esse código ao txt.Text. Se não existe apresentar mensagem.
+* Se ao selecionar um pedido o fornecedor da nota estiver em branco dar a mensagem `Primeiro selecione o fornecedor!`, Colocar o foco no text do fornecedor
+* Se o pedido existe e possui vendedor já posicionar o combo do vendedor, tratar para caso o vendedor do pedido não esteja no combo, pode acontecer caso o cnpj do pedido seja diferente do cnpj da nota, neste caso deixar o combo em branco.
+* Se clicar F4 abrir a busca de pedidos c#, implentar a busca pela lupa
+* Se o cliente utiliza o módulo de autorizaçao de pedidos (821) teremos que validar se o pedido foi autorizado, e somente se ele foi autorizado poderemos adicionar ele no text. 
+Testar utilizando `If oUsuarioAcesso.Habilitado(821, giCodLojaPadrao) Then`. Caso não tenha sido autorizado mostrar a mensagem `O pedido não foi autorizado! Solicite autorização no pedido de compras.`. Neste caso deixar zero no text do pedido.
+
 1. Programar o Label Link do Pedido
-usar nas notas de entrada sCarregarPedidoCompra
+* Ao clicar no link se o código do pedido for <> 0 chamar `sAbrirForm frmPedidoCompra,dbCodPedido`
+
+
+## Tarefa 28: Programar o Atualiza tela para atualizar os campos de pedido e vendedor
+
+1. No procedimento `sConsultar` add no select o código abaixo
+``` 
+//Campos
+NEP.CodVendedor
+NEP.CodPedido
+// Join
+LEFT JOIN NF_Entradas_Pedidos NEP ON  N.CD_NOTA = NEP.CD_NOTA
+```
+1. No procedimento `AtualizaTela` após a linha ` 37  fBuscaFornecedor` posicionar o combobox do vendedor na posição correta recebida do [CodVendedor]
+1. Após o CodVendedor carregar o text do pedido com o [CodPedido]. Carregar o .text e o .tag
+
+## Tarefa 27: Gravar os novos campos das NF_Entradas
+
+>Ao selecionarmos um pedido e gravar a nota teremos que finalizar esse pedido
+
+1. Primeiro passo, criar o procedimento `sEncerrarPedido`:
+> Nos pedidos temos um código para encerrar o pedido, passar esse código para o projeto Funções e chamar no pedido de compra e nas notas de entrada conforme os passos abaixo:
+* Criar no projeto Funcoes o procedimento `Public Sub sEncerrarPedido(ByVal iCodOperador As Integer, ByVal dbCodPedido As Double, ByRef oConexao As ADODB.Connection, Optional ByVal dtDataEntrega As Date = "1500/01/01")) `
+* Add nele o código abaixo que está no pedido de compra
+``` vb
+11          sSQL = "Update PedidoCompra "
+12          sSQL = sSQL & "Set Finalizado = 1 , CodOperadorFinalizacao = " & iCodOperador
+13          sSQL = sSQL & " Where Codigo = " & dbCodPedido
+14          oConexao.Execute sSQL
+
+            sSQL = "update PCP set PrimeiraCompra = 0 "
+            sSQL = sSQL & " from PedidoCompra P inner join PedidoCompraProdutos PCP on P.Codigo = PCP.CodPedidoCompra "
+            sSQL = sSQL & " where P.Finalizado Is Null And CodProduto IN(Select PP.CodProduto from PedidoCompra Ped inner join PedidoCompraProdutos PP on Ped.Codigo = PP.CodPedidoCompra"
+            sSQL = sSQL & " Where Codigo = " & dbCodPedido & ")"
+            oConexao.Execute sSQL
+
+            If dtDataEntrega <> "1500/01/01" Then
+                sSQL = "Update PedidoCompra "
+                sSQL = sSQL & "Set DataEntrega =" & & Funcoes.fTrataData(dtDataEntrega, True)
+                sSQL = sSQL & " Where Codigo = " & dbCodPedido
+                oConexao.Execute sSQL
+            end if 
+
+```
+* No pedido de compra chamar esse procedimento dentro do for substituindo o código antigo, não passar o parâmetro opcional de data
+
+
+1. Segundo Passo: Criar o procedimento `sAtualizarDadosDePedidoDeCompra` e chamar ele no `cadNotas_Gravar` no final após o `sExibirAvisoFunRural`.
+ Implementação do `sAtualizarDadosDePedidoDeCompra`
+* caso inserindo `If cadNotas.sAcao = "Inserindo Registro" Then` 
+    * se o o text do cód. pedido <> 0 chamar o `sEncerrarPedido` com dtDataEntrega recebendo a data de entrada da nota 
+    * após caso o text do cód. pedido <> 0 E/OU combo do vendedor <> "" dar um insert na tabela NF_Entradas_Pedidos com os dados de pedido e vendedor
+
+* Caso Alterando `If cadNotas.sAcao = "Alterando Registro" Then`   
+    * Se o .txt.Text do cód. pedido = 0 e txt.Tag <> 0 então o usuário removeu o pedido. Colocar null no campo NF_Entradas_Pedidos.CodPedido
+    => AQUI VERIFICAR SE VAMOS TENTAR DESFAZER O UPDATE EM PEDIDOCOMPRA
+    * Se o .txt.Text <> txt.Tag e <> 0 então o usuário alterou o pedido. Dar update no campo NF_Entradas_Pedidos.CodPedido
+    * Atualizar o campo do vendedor com o item data do combo de vendedor, se estiver em branco colocar Null
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(corrigir o bug data do pedido data da entrega)
 
 
 ficou pendente saber como abre o menu trocas botão direito
+
+validar questão do encerramento do pedido caso o usuário altere a nota, se eu não aviso nada deveria corrigir???
+
+
 
 colocar pedidos na nota
 verifica o status do pedido e marcar como entregue 
