@@ -98,3 +98,34 @@ No novo form implementar as configurações padrões da Telecon
 1. Bloquear campos de consulta/pesquisa em consultas e procedimentos demorados, deverá desbloquear após o procedimento finalizar. Em caso de erro deverá retornar também para o padrão no trataerro ou try catch
 
 1. Procedimentos demorados no C# devem ser executados em threads
+
+
+
+## Tarefa X: Criar formulário de busca
+1. Adicionar Formulário no namespace `GestaoComercial.Formularios.`
+1. Adicionar herança do formulário `FrmPesquisa`. Este formulário deverá seguir o padrão dos formulários de pesquisa da Telecon
+1. Implementar o `AdicionaColunasList` , (acertar a largura)
+``` c#
+        base.AdicionarColunaLista("Código", 50, typeof(string));
+        base.AdicionarColunaLista("Razao Social", 200, typeof(string));
+        base.AdicionarColunaLista("Fantasia", 190, typeof(string));
+        base.AdicionarColunaLista("CNPJ", 130, typeof(string));
+```
+1. Implementar critérios
+=> Campo + Valor no Combo
+``` c#
+        base.AdicionarCriterio(typeof(int), "Codigo"; "Código");
+        base.AdicionarCriterio(typeof(string), "Nome", "Razao Social");
+        base.AdicionarCriterio(typeof(string), "Fantasia", "Fantasia");
+        base.AdicionarCriterio(typeof(string), "CNPJ", "CNPJ");
+```
+1. Implementar Ordenação
+``` c#
+        base.AdicionarOrdenacao(typeof(int), "Codigo", "Código");
+        base.AdicionarOrdenacao(typeof(string), "Nome", "Razao Social");
+        base.AdicionarOrdenacao(typeof(string), "Fantasia", "Fantasia");
+        base.AdicionarOrdenacao(typeof(string), "CNPJ", "CNPJ");
+```
+1. Implementar o `CarregaStringSql`
+* utilizar a classe `Nome da Classe da tabela`
+* tratar o cursor do mouse durante a pesquisa (trocar seta por ampulheta)

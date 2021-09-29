@@ -1,126 +1,11 @@
-
-# Tela atual
-![image](https://user-images.githubusercontent.com/80394522/134715217-19a16656-0331-43b7-ac67-d312644803b5.png)
-
-# Controle de Entradas Novo
-![image](https://user-images.githubusercontent.com/80394522/134574560-8527e151-4d1a-4d2c-a914-f03aa8768b52.png)
-
-#NF Entradas Novo
-![image](https://user-images.githubusercontent.com/80394522/134583578-7d93c0bb-aa6e-4d01-b9e6-cc106614f220.png)
-
-# Relatório atual
-![image](https://user-images.githubusercontent.com/80394522/134434627-9bc9ad85-6680-4bde-8069-d16be2231109.png)
-
-# Relatório com o vendedor
-![image](https://user-images.githubusercontent.com/80394522/134434940-105bc441-8e08-40d6-bd40-52e619ab4d5e.png)
-
-
-
-
-
-# Pedido de Compra: Criar castro de Vendedores e Filtro de Produtos por Vendedor (Santana, Nova Compra)
-
-Alguns fornecedores possuem mais que um vendedor atendendo os supermercados, um para cada "pasta", ou seja uma linha de produtos ou marcas. Isso causa dificuldade para o comprador que não consegue filtrar na tela do Compras apenas os produtos de determinado vendedor.
-
-Atualmente sugerimos ao usuário (comprador) fazer filtros por Grupos ou criar lista de códigos, porém ambas não tem boa usabilidade na hora do pedido.
-
-É comum o usuário solicitar um filtro por "Vendedor" ao fazer o pedido. 
-
-Atualmente nossa estrutura para armazenar o vendedor é um campo livre para digitação no cadastro do pedido, isso dificulta um filtro seguro.
-
-**Tarefas:**
-**1) Criar um cadastro de Vendedores**
-- Criar tabela VendedoresFornecedor (CodVendedor (PK Identity), CodFornecedor, Nome, telefone, e-mail, MixPorVendedor(bit))
-- Popular a nova tabela criada com dados históricos da tabela Pedidos (distinct de Pedidos.codFornecedor e Pedidos.Vendedor) O e-mail e fone deve ser do último pedido do vendedor
-- Criar campo CodVendedor (Null, Foregin key VendedoresFornecedor) na tabela PedidoCompras (OBS: pode ser null pois o usuário pode não informar vendedor caso desejar)
-- Atualizar PedidoCompras.CodVendedor buscando os dados populados na tabela "VendedoresFornecedor"
-- Remover da tabela PedidoCompra os antigos campos Vendedor, Fone, E-mail.
-- Criar tela de Crud para o usuário cadastrar/alterar os dados da tabela VendedoresFornecedor (será chamada apenas pela tela do Pedido de Compra)
-- Na tela do Pedido, criar label link "Vendedor" permitindo chamar tela de cadastro do vendedor para criar novo ao alterar um existente.
-- Criar botão de procura (lupa) e popular campos na tela buscando dos novos campos nas tabelas PedidoCompras.CodVendedor e VendedoresFornecedor
-- Alterar os rpts dos Pedidos de Compra para buscar os campos da tabela nova.
-- Criar coluna no grid da busca do pedido e  filtro por nome do vendedor na tela de busca do pedido.
-
-**2) Criar relação de VendedoresProdutos**
-- Criar tabela VendedoresProdutos (codVendedor, CodProduto)
-- Popular nova tabela com dados dos últimos 3 pedidos do vendedor
-- Na tela do pedido de compras, nos filtros de produtos do pedido, criar novo filtro "Vendedor". Deve listar os vendedores disponíveis do fornecedor, e já trazer escolhido o vendedor selecionado no pedido como padrão.
-- Criar checkbox para ativar/desabitar o filtro, sugerindo o vendedor do pedido (semelhante ao filtro atual de "Fornecedor"). Padrão desmarcado, salvar escolha em "VendedorFornecedores.MixPorVendedor)
-- Caso vendedor selecionado e checkbox desmarcado, fazer left join no select que retorna os produtos ainda não adicionados ao pedido para indicar se o produto está no mix do Vendedor ou não, assinalando com fonte itálico nome do produto que estiver fora do mix do vendedor.
-- Caso vendedor selecionado e checkbox marcado, fazer Inner join no select que retorna os produtos para retornar na pesquisa dos produtos ainda não adicionados ao pedido apenas os produtos dentro do mix do vendedor.
-- Caso vendedor não selecionado não deve ser feito nenhum join de vendedores.
-- Criar menu no clique direito do produto "Desvincular produto do Vendedor"
-- Ao "desvincular produto do Fornecedor" deve também desvincular do mix de todos os Vendedores, caso esteja.
-- Ao inserir o produto em "PedidoCompraProduto" caso um vendedor estiver selecionado e o produto fora do mix do vendedor, inserir também em VendedoresProdutos.
-
-
-
-pernambuco 2 clientes
-
-na nota fiscal em informações complementares
-vem o vendedor
-na tela de notas colocar também quem foi o vendedor daquela nota 
-
-no relatório de vendas por período por vendedor
-no pedido de compras tem um atalho para esse relatório, filtro por fornecedor e vendedor
-
-impressão na telinha de cadastro
-
-colocar uma chamada da telinha em fornecedores
-
-
-
-
-## Criar tabela VendedoresFornecedor -------------- OK
-(será que precisa o código do fornecedor??)
-- Criar tabela VendedoresFornecedor (CodVendedor (PK Identity), CodFornecedor, Nome, telefone, e-mail, MixPorVendedor(bit))
-## Popular tabela VendedoresFornecedor -------------- OK
-(neste caso serão somente os produtos que tem pedido então?)
-- Popular a nova tabela criada com dados históricos da tabela Pedidos (distinct de Pedidos.codFornecedor e Pedidos.Vendedor) O e-mail e fone deve ser do último pedido do vendedor
-## Criar campo PedidoCompras.CodVendedor -------------- OK
-- Criar campo CodVendedor (Null, Foregin key VendedoresFornecedor) na tabela PedidoCompras (OBS: pode ser null pois o usuário pode não informar vendedor caso desejar)
-- Atualizar PedidoCompras.CodVendedor buscando os dados populados na tabela "VendedoresFornecedor"
-- Remover da tabela PedidoCompra os antigos campos Vendedor, Fone, E-mail.
-
-
-## Criar tabela VendedoresProdutos -------------- OK
-- Criar tabela VendedoresProdutos (codVendedor, CodProduto)
-## Popular tabela VendedoresProdutos -------------- OK
-- Popular nova tabela com dados dos últimos 3 pedidos do vendedor
-## Criar tela para manipular os Vendedores dos fornecedores -------------- OK
-- Criar tela de Crud para o usuário cadastrar/alterar os dados da tabela VendedoresFornecedor (será chamada apenas pela tela do Pedido de Compra)
-
-## Alterações na tela pedido de compra
-
-* Label link "Vendedor"
-    * Na tela do Pedido, criar label link "Vendedor" permitindo chamar tela de cadastro do vendedor para criar novo ou alterar um existente.
-* Lupa para selecionar o vendedor (acho que não precisa)
-    * Criar botão de procura (lupa) e popular campos na tela buscando dos novos campos nas tabelas PedidoCompras.CodVendedor e VendedoresFornecedor
-* Criar filtro "Vendedor" no filtro de produtos com funcionamento semelhante ao do fornecedor
-    * Na tela do pedido de compras, nos filtros de produtos do pedido, criar novo filtro "Vendedor". Deve listar os vendedores disponíveis do fornecedor, e  já trazer escolhido o vendedor selecionado no pedido como padrão.
-* Criar checkbox para o vendedor, semelhante ao do fornecedor
-    * Criar checkbox para ativar/desabitar o filtro, sugerindo o vendedor do pedido (semelhante ao filtro atual de "Fornecedor"). Padrão desmarcado, salvar escolha em "VendedorFornecedores.MixPorVendedor)
     * Caso vendedor selecionado e checkbox desmarcado, fazer left join no select que retorna os produtos ainda não adicionados ao pedido para indicar se o produto está no mix do Vendedor ou não, assinalando com fonte *** itálico *** nome do produto que estiver fora do mix do vendedor.
-    * Caso vendedor selecionado e checkbox marcado, fazer Inner join no select que retorna os produtos para retornar na pesquisa dos produtos ainda não adicionados ao pedido apenas os produtos dentro do mix do vendedor.
-    * Caso vendedor não selecionado não deve ser feito nenhum join de vendedores.
-* Criar menu para desvincular produto ao vendedor - tratar tbm no menu do fornecedor
-    * Criar menu no clique direito do produto "Desvincular produto do Vendedor"
+    dar update nos produtos nas notas de saída 
+    dar update nos produtos nos pedidos??
+
     * Ao "desvincular produto do Fornecedor" deve também desvincular do mix de todos os Vendedores, caso esteja.
 * Ao inserir o produto em pedido compra produto add tbm no mix do vendedor
     * Ao inserir o produto em "PedidoCompraProduto" caso um vendedor estiver selecionado e o produto fora do mix do vendedor, inserir também em VendedoresProdutos.
-## Alterar RPTs
-- Alterar os rpts dos Pedidos de Compra para buscar os campos da tabela nova.
-## Criar coluna na busca de pedidos de compra
-- Criar coluna no grid da busca do pedido e  filtro por nome do vendedor na tela de busca do pedido.
 
-
-
-
-
-
-
-
-# ALTERAÇÕES NO BANCO DE DADOS  
 
 ## Tarefa 1: Criar função no atualiza banco fCriarCadastroDeVendedoresNasCompras  PARTE 1
 
@@ -222,7 +107,7 @@ ALTER TABLE PedidoCompra DROP COLUMN VendedorMail
 ``` SQL
 CREATE TABLE [dbo].[FornecedorVendedoresProdutos](
 	[CodVendedor] [int] NOT NULL,
-	[CodProdut] [float] NOT NULL)
+	[CodProduto] [float] NOT NULL)
 GO
 ALTER TABLE [dbo].[FornecedorVendedoresProdutos]  WITH NOCHECK ADD  CONSTRAINT [FK_FornecedorVendedoresProdutos_FornecedorVendedores] FOREIGN KEY([CodVendedor])  
 REFERENCES [dbo].[FornecedorVendedores] ([CodVendedor]) ON DELETE CASCADE ON UPDATE CASCADE
@@ -252,7 +137,7 @@ DEALLOCATE NOVOS;
 ```
 
 
-## Tarefa 6: Atualizar/Criar classes C# com Telecode
+## Tarefa 5: Atualizar/Criar classes C# com Telecode
 1. Criar a classe FornecedorVendedores pelo aplicativo do Telecode no namespace Telecon.GestaoComercial.Biblioteca.Pedidos
 
 1. Criar a classe FornecedorVendedoresProdutos pelo aplicativo do Telecode no namespace Telecon.GestaoComercial.Biblioteca.Pedidos
@@ -263,7 +148,7 @@ DEALLOCATE NOVOS;
     - Deverá ser add a nova coluna CodVendedor
 
 
-## Tarefa 7: Compatibilizar classe PedidoCompra do c# para utilizar os novos campos 
+## Tarefa 6: Compatibilizar classe PedidoCompra do c# para utilizar os novos campos 
 
 > Tela a ser alterada: Pedidos => Controle de Cargas Pedidos
 
@@ -281,14 +166,14 @@ DEALLOCATE NOVOS;
     * ConverterDataReaderResumidoPesquisa
     * ConverterDataReaderGeral
 
-## Tarefa 8: Compatibilizar tela FrmBuscaPedidosCompra do c# para utilizar os novos campos 
+## Tarefa 7: Compatibilizar tela FrmBuscaPedidosCompra do c# para utilizar os novos campos 
 
 1. Compatibilizar o formulário de busca de busca GestaoComercial.Formularios.Outros.FrmBuscaPedidosCompra
 * Alterar o precedimento FrmBuscaPedidosVenda_CarregaStringSql. Utilizar a função FornecedorVendedores.ConsultarChave passando o item.CodVendedor
 
 2. Verificar o funcionamento da pesquisa pelo critério, se necessário programar para funcionar
 
-## Tarefa 9: Compatibilizar tela FrmControleCargas do c# para utilizar os novos campos
+## Tarefa 8: Compatibilizar tela FrmControleCargas do c# para utilizar os novos campos
 
 1. Compatibilizar o controle de cargas GestaoComercial.Formularios.PedidosVendas.FrmControleCargas
 * Alterar o procedimento TxtCodigoPedido_KeyDown. 
@@ -301,20 +186,20 @@ DEALLOCATE NOVOS;
     * No procedimento LimpaCamposTextPedidos limpar o txtVendedorPedido.Tag
 
 
-## Tarefa 10: Compatibilizar a tela FrmPesquisaPedidosCompra do c# para utilizar os novos campos
+## Tarefa 9: Compatibilizar a tela FrmPesquisaPedidosCompra do c# para utilizar os novos campos
 
 1. Compatibilizar o FrmPesquisaPedidosCompra GestaoComercial.Formularios.PedidosVendas.FrmControleCargas   
 * Alterar o procedimento CarregarPagina. Utilizar a função FornecedorVendedores.ConsultarChave passando o pedido.CodVendedor
 * Alterar o procedimento BtCarga_Click. Precisaremos buscar o código do vendedor no pedido. Criar na classe PedidoCompra o procedimento RetornarCodVendedor que receba o código do pedido e retorne o código do vendedor
 
 
-## Tarefa 11: Teste de integração do controle de cargas 
+## Tarefa 10: Teste de integração do controle de cargas 
 * Dar um rebuild no C# e verificar se todos os locais foram contemplados pela análise, corrigir eventuais problemas, caso necessário retornar para a análise.
 * Testar os recursos da tela alterados, verificar se está buscando corretamente o vendedor do pedido. Avaliar os recursos de busca, adicionar na grade e pesquisa inicial.
 * Verificar se o form de busca de pedidos funcionou corretamente 
 
 
-## Tarefa 12: Criar tela para manipular os dados dos Vendedores
+## Tarefa 11: Criar tela para manipular os dados dos Vendedores
 
 ![image](https://user-images.githubusercontent.com/80394522/134396374-20abcab9-8f8d-4f9e-a29f-24c71913320a.png)
 
@@ -346,7 +231,7 @@ Add no caminho: GestaoComercial.Formularios.PedidosVendas
 1. F4 no campo Cod. Fornecedor deve abrir a busca de fornecedor
 1. Implementar tratamentos da ampulheta do mouse no click dos botões de lupa, gravar, excluir, alterar e atualiza tela.
 
-## Tarefa 13: Adicionar opção de imprimir grade no FrmFornecedorVendedores
+## Tarefa 12: Adicionar opção de imprimir grade no FrmFornecedorVendedores
 1. Adicionar um botão ou ícone de imprimir abaixo da grade de produtos
 1. Chamar o imprime grid do genéricos
 > Pode usar como modelo o formuário GestaoComercial.Formularios.Indicadores.FrmAnalVendaConjunta
@@ -485,7 +370,7 @@ buscar por `FornecedorVendedores.Vendedor, FornecedorVendedores.VendedorMail`
 
 
 
-## Tarefa 20: Alterar FrmPedidoCompra - menu desassociar 
+## Tarefa 24: Alterar FrmPedidoCompra - menu desassociar 
 > Ao clicar bom botão direito na grade temos a opção de desvincular o produto do fornecedor. Implementar o mesmo funcionamento com os vendedores
 
 1. Criar o procedimento sDesvincularProdutoFornecedorVendedores
@@ -499,7 +384,7 @@ mnuDesvincularFornecedor_Click
 mnuDesvincularFornecedorBonf_Click
 mnuDesvincularFornecedorTrocas_Click
 
-## Tarefa 21: Criar outras chamadas para a tela de Cadastro de Vendedores
+## Tarefa 25: Criar outras chamadas para a tela de Cadastro de Vendedores
 > Criar módulo para Gerenciar o recurso FrmFornecedorVendedores nos Sistema S
 
 Resultado esperado: A tela Cadastro de Vendedores deverá ser chamada pelo menu de fornecedores da tela clássica e pelo setores de Pedidos e Fornecedores do Sistemas S e R
@@ -523,13 +408,13 @@ Descrição das variáveis que serão utilizadas:
 
 1. Tratar no frmModulos.cmdRestaurar_Click conforme padrão do procedimento
 
-## Tarefa 23: Alterar pedido de compra grande
+## Tarefa 26: Alterar pedido de compra grande
 1. Tratar o insert do procedimento FrmPedidoCompraProdutos.fInserirPedidoCabecalho. Substituir os campos Vendedor, Email e Fone por CodVendedor.
 1. Excluir variáveis que não serão mais utilizadas.
 1. Verificar o básico do funcionamento na tela.
 
 
-## Tarefa 24: Alterar relatório Análise Mensal de Vendas
+## Tarefa 27: Alterar relatório Análise Mensal de Vendas
  1. Inserir os campos conforme a imagem adicionando o campo Vendedor, reorganizando e alinhando os outros componentes
     * O componente Text deve ser do tipo `Genéricos.Controles.Busca` assim como o do Fonecedor
 1. Altear a classe GestaoComercial.Formularios.Indicadores.FrmAnaliseMensalVendas:
@@ -539,13 +424,13 @@ Descrição das variáveis que serão utilizadas:
 1. Criar novo parâmentro no procedimento `RelAnaliseMensalVendas.Consultar` e implementar a consulta da mesma forma que ocorre no fornecedor
 
 
-## Tarefa 25: Criar campo no NF_Entradas para inserir o Pedido e o Vendedor
+## Tarefa 28: Criar campo no NF_Entradas para inserir o Pedido e o Vendedor
 
 1. Adicionar os campos na tela conforme a imagem
 1. O campo do código do pedido só deverá aceitar números (textMask = Integer)
 1. Cuidar o TabIndex
 
-## Tarefa 26: Tornar funcional os componentes de vendedor nas NF Entradas
+## Tarefa 29: Tornar funcional os componentes de vendedor nas NF Entradas
 
 1. Chamar o procedimento `Funcoes.sCarregarComboVendedores `após selecionar um fornecedor no `fBuscaFornecedor` acima da linha abaixo:
 ``` vb
@@ -556,7 +441,7 @@ Descrição das variáveis que serão utilizadas:
     
 
 
-## Tarefa 26: Criar formulário de busca de pedido de compra FrmBuscaPedidoCompra
+## Tarefa 30: Criar formulário de busca de pedido de compra FrmBuscaPedidoCompra
 1. Criar diretório `GestaoComercial.Formularios.PedidosCompras`
 1. Adicionar Formulário no namespace `GestaoComercial.Formularios.PedidosCompras`
 1. Adicionar herança do formulário `FrmPesquisa`. Este formulário deverá seguir o padrão dos formulários de pesquisa da Telecon
@@ -594,7 +479,7 @@ Descrição das variáveis que serão utilizadas:
 
 
 
-## Tarefa 27: Tornar funcional os componentes de Pedidos nas NF Entradas
+## Tarefa 31: Tornar funcional os componentes de Pedidos nas NF Entradas
 
 Pedido
 1. Programar o botão de busca de pedido, utilizar a tela c# criada FrmBuscaPedidoCompra
@@ -610,7 +495,7 @@ Testar utilizando `If oUsuarioAcesso.Habilitado(821, giCodLojaPadrao) Then`. Cas
 * Ao clicar no link se o código do pedido for <> 0 chamar `sAbrirForm frmPedidoCompra,dbCodPedido`
 
 
-## Tarefa 28: Programar o Atualiza tela para atualizar os campos de pedido e vendedor
+## Tarefa 32: Programar o Atualiza tela para atualizar os campos de pedido e vendedor
 
 1. No procedimento `sConsultar` add no select o código abaixo
 ``` 
@@ -623,50 +508,291 @@ LEFT JOIN NF_Entradas_Pedidos NEP ON  N.CD_NOTA = NEP.CD_NOTA
 1. No procedimento `AtualizaTela` após a linha ` 37  fBuscaFornecedor` posicionar o combobox do vendedor na posição correta recebida do [CodVendedor]
 1. Após o CodVendedor carregar o text do pedido com o [CodPedido]. Carregar o .text e o .tag
 
-## Tarefa 27: Gravar os novos campos das NF_Entradas
+## Tarefa 33: Gravar os novos campos das NF_Entradas
 
->Ao selecionarmos um pedido e gravar a nota teremos que finalizar esse pedido
+>Resumo: Ao inserirmos ou alterarmos os campos de pedido e vendedor nas notas de entradas temos que atualizar a tabela NF_Entradas_Pedidos e fechar o pedido de compra
 
-1. Primeiro passo, criar o procedimento `sEncerrarPedido`:
-> Nos pedidos temos um código para encerrar o pedido, passar esse código para o projeto Funções e chamar no pedido de compra e nas notas de entrada conforme os passos abaixo:
-* Criar no projeto Funcoes o procedimento `Public Sub sEncerrarPedido(ByVal iCodOperador As Integer, ByVal dbCodPedido As Double, ByRef oConexao As ADODB.Connection, Optional ByVal dtDataEntrega As Date = "1500/01/01")) `
-* Add nele o código abaixo que está no pedido de compra
+1. Primeiro passo, criar no FrmNFEntradas o procedimento `sEncerrarPedido` `Public Sub sEncerrarPedido(ByVal iCodOperador As Integer, ByVal dbCodPedido As Double, ByVal dtDataEntrega As Datem, byval iCodVendedor as integer) `
+* Add nele o código abaixo
 ``` vb
 11          sSQL = "Update PedidoCompra "
-12          sSQL = sSQL & "Set Finalizado = 1 , CodOperadorFinalizacao = " & iCodOperador
+12          sSQL = sSQL & "Set Finalizado = 1 , CodOperadorFinalizacao = " & iCodOperador & "," &  "DataEntrega =" & Funcoes.fTrataData(dtDataEntrega, True)
 13          sSQL = sSQL & " Where Codigo = " & dbCodPedido
 14          oConexao.Execute sSQL
-
-            sSQL = "update PCP set PrimeiraCompra = 0 "
-            sSQL = sSQL & " from PedidoCompra P inner join PedidoCompraProdutos PCP on P.Codigo = PCP.CodPedidoCompra "
-            sSQL = sSQL & " where P.Finalizado Is Null And CodProduto IN(Select PP.CodProduto from PedidoCompra Ped inner join PedidoCompraProdutos PP on Ped.Codigo = PP.CodPedidoCompra"
-            sSQL = sSQL & " Where Codigo = " & dbCodPedido & ")"
-            oConexao.Execute sSQL
-
-            If dtDataEntrega <> "1500/01/01" Then
-                sSQL = "Update PedidoCompra "
-                sSQL = sSQL & "Set DataEntrega =" & & Funcoes.fTrataData(dtDataEntrega, True)
-                sSQL = sSQL & " Where Codigo = " & dbCodPedido
-                oConexao.Execute sSQL
-            end if 
-
 ```
-* No pedido de compra chamar esse procedimento dentro do for substituindo o código antigo, não passar o parâmetro opcional de data
+Após esse código  dar um insert na tabela NF_Entradas_Pedidos com os dados de pedido, se vier zero colocar NULL
+
+1. Segundo passo, criar no FrmNFEntradas o procedimento `sReabrirPedido` `Public Sub sReabrirPedido(ByVal dbCodPedido As Double) `
+* Add nele o código abaixo
+    ``` vb
+        sSQL = "Update PedidoCompra "
+        sSQL = sSQL & "Set Finalizado = 0"
+        sSQL = sSQL & " Where Codigo = " & dbCodPedido
+        oConexao.Execute sSQL
+    ```
+Após esse código  dar um delete na tabela NF_Entradas_Pedidos com os dados de pedido
 
 
-1. Segundo Passo: Criar o procedimento `sAtualizarDadosDePedidoDeCompra` e chamar ele no `cadNotas_Gravar` no final após o `sExibirAvisoFunRural`.
+1. Terceiro Passo: Criar o procedimento `sAtualizarDadosDePedidoDeCompra` e chamar ele no `cadNotas_Gravar` no final após o `sExibirAvisoFunRural`.
  Implementação do `sAtualizarDadosDePedidoDeCompra`
 * caso inserindo `If cadNotas.sAcao = "Inserindo Registro" Then` 
     * se o o text do cód. pedido <> 0 chamar o `sEncerrarPedido` com dtDataEntrega recebendo a data de entrada da nota 
-    * após caso o text do cód. pedido <> 0 E/OU combo do vendedor <> "" dar um insert na tabela NF_Entradas_Pedidos com os dados de pedido e vendedor
+    * após caso o text do cód. pedido <> 0 
+    * Dar o insert do vendedor em NF_Entradas_Pedido ou colocar null
 
 * Caso Alterando `If cadNotas.sAcao = "Alterando Registro" Then`   
-    * Se o .txt.Text do cód. pedido = 0 e txt.Tag <> 0 então o usuário removeu o pedido. Colocar null no campo NF_Entradas_Pedidos.CodPedido
-    => AQUI VERIFICAR SE VAMOS TENTAR DESFAZER O UPDATE EM PEDIDOCOMPRA
-    * Se o .txt.Text <> txt.Tag e <> 0 então o usuário alterou o pedido. Dar update no campo NF_Entradas_Pedidos.CodPedido
-    * Atualizar o campo do vendedor com o item data do combo de vendedor, se estiver em branco colocar Null
+    * Se o .txt.Text do cód. pedido = 0 e txt.Tag <> 0 então o usuário removeu o pedido. 
+        * chamar o sReabrirPedido para reabrir o pedido
+
+    * Se o .txt.Text <> txt.Tag e <> 0 então o usuário alterou o pedido. 
+        * Reabrir o pedido anterior sReabrirPedido txt.Tab
+        * Encerrar o pedido atual sEncerrarPedido txt.Text
+    * Dar o update do vendedor em NF_Entradas_Pedido ou colocar null
 
 
+## Tarefa 34: Alterar Controle de entradas - Criar recordset desconectado de pedidos
+
+>Fluxo do resultado esperado das tarefas referentes ao controle de entradas
+- Usuário cria um pedido para o produto x
+- No pedido o usuário seta um novo valor de venda para o produto x
+- Usuário recebe o pedido e lança a nota de entrada
+- Usuário relaciona o pedido na nota de entrada
+- Sistema finaliza o pedido
+- Usuário abre o controle de entradas no intervalo de datas da nota
+- O produto x deverá ser listado e na coluna preço venda já deverá estar preenchido o valor inserido no pedido. Deverá ficar na cor amarela como no pedido, e não deve ser permitida a alteração do preço de venda.
+
+
+1. Nas declarações do frmControleEntradas3 declarar o recordset abaixo junto com as declareções dos outros recorsets da tela 
+``` vb
+Private lrsPedidoProdutos As ADODB.Recordset
+```
+1. Criar o procedimento `sCarregarRecordsetPedidoProdutos`. Neste procedimento carregar o recordset `lrsPedidoProdutos` da mesma forma que foi feito na função `fCarregarRecordAtacado`
+* Criar os parametros dtDataInicio e dtDataFim no procedimento e add no select abaixo. 
+``` sql
+SELECT NF.CD_NOTA,NFP.CodPedido,PCP.CodProduto,PCP.NovoValorVenda FROM 
+NF_Entradas NF 
+INNER JOIN [NF_Entradas_Pedidos] NFP ON NF.CD_NOTA = NFP.CD_NOTA
+INNER JOIN [PedidoCompra] PC ON NFP.CodPedido = PC.Codigo 
+INNER JOIN [PedidoCompraProdutos] PCP ON PC.Codigo = PCP.CodPedidoCompra 
+WHERE DATAS
+```
+1. Chamar o procedimento `sCarregarRecordsetPedidoProdutos` no `sVisualizarDados` antes da a linha
+``` vb
+11  sCarregaDados
+```
+* chamar apenas se `gbChamouDoFormCentralColeta = false and gbChamadoPelosPedidos = false`
+> Se a tela FrmControleEntradas3 for chamada pela tela de pedido de compra não deverá ter impacto
+
+
+## Tarefa 35: Alterar Controle de entradas - Setar valor do pedido na grade e colorir
+
+1. Nas declarações do frmControleEntradas3 declarar a constante abaixo junto com as declareções das outras colorações
+``` vb
+Private Const ldbCorAmareloPedidos As Double = &H80FFFF
+```
+> Abaixo iremos criar funções e códigos para colocar o preço de venda definido no pedido na grade , alterar a cor e colocar um tooltip
+
+1. Criar a função `fRetornarValorDoPedido` que recebe o código nota e o código produto por parâmentro
+* O código da nota será uma string e poderá ter vários códigos de notas separados por ","
+* A função deverá retornar o campo `PCP.NovoValorVenda` do último pedido
+* A função deverá pesquisar no `lrsPedidoProdutos.Filter` assim como na função `fObterDescricaoPack` buscando performance
+* Se não encontrar nada retornar zero
+
+> Para constar: No controle de entradas se utilizar a configuração **Ocultar Variação de Custo** ele agrupa os produtos iguais e coloca os cod notas agrupadas na coluna de notas, neste caso teremos que considerar que pode ter várias notas
+
+1. Alterar a função `fRetornarValorDoPedido` para receber o parâmetro `ByRef dbCodPedido as double` setar essa váriavel com o código do pedido selecionado
+* Se não encontrar nada atribuir zero ao dbCodPedido
+
+1.  No procedimento `sAplicarRegraColoracoes` após o trexo de código abaixo:
+``` vb
+If CCur(.TextMatrix(.row, btValorVenda)) <> CCur(.TextMatrix(.row, btValorVendaAntesAlteracao)) And .CellBackColor <> &H80FFFF Then
+    .Col = btValorVenda
+    .CellBackColor = ldbCorCinza
+    .CellForeColor = ldbCorAzul
+    .negrito = True
+End If
+```
+APÓS ESSE if inserir o código abaixo corrigindo os parâmetros necessários
+``` vb
+    if gbChamouDoFormCentralColeta = false and gbChamadoPelosPedidos = false then
+            cValorPedido = fRetornarValorDoPedido (btCdNotasProdAgrupados,btCodigoProduto)
+            If fValorPedido <> 0 Then
+                .CellBackColor = &H80FFFF
+                .TextMatrix(.row, btValorVenda) = format(cValorPedido, "#0.00")
+                grdDados_FimDaEdicao (cValorPedido)
+                .CellForeColor = ldbCorAzul
+                .negrito = Trueta 
+            End If
+    end if 
+```
+1.  No procedimento `sAplicarRegraColoracoes` após o trexo de código abaixo:
+``` vb
+If .TextMatrix(iLinha, btValorVenda) <> .TextMatrix(iLinha, btValorVendaAntesAlteracao) And Trim(.TextMatrix(iLinha, btValorVendaAntesAlteracao)) <> "" Then
+    If Funcoes.fLeConfiguracao(goConexao, "USA_PRECO_OFFLINE", "TRUE") = "FALSE" Then
+        sMensagem = "Preço de venda alterado.    Valor Anterior: R$" & .TextMatrix(iLinha, btValorVendaAntesAlteracao)
+    Else
+        sMensagem = "Preço de venda alterado, aplique o valor e envie carga para os PDVs.    Valor Anterior: R$" & .TextMatrix(iLinha, btValorVendaAntesAlteracao)
+    End If
+End If
+```
+APÓS ESSE if inserir o código abaixo corrigindo os parâmetros necessários
+``` vb
+    dbCodPedido = 0
+    fRetornarValorDoPedido (btCdNotasProdAgrupados,btCodigoProduto,dbCodPedido)
+
+    If dbCodPedido <> 0 Then
+        sMensagem = "Preço de venda definido no Pedido Nº " & dbCodPedido & "." & " " & sMensagem
+    End If
+```
+
+
+
+
+
+
+
+
+
+
+
+
+# Tela atual
+![image](https://user-images.githubusercontent.com/80394522/134715217-19a16656-0331-43b7-ac67-d312644803b5.png)
+
+# Controle de Entradas Novo
+![image](https://user-images.githubusercontent.com/80394522/134574560-8527e151-4d1a-4d2c-a914-f03aa8768b52.png)
+
+#NF Entradas Novo
+![image](https://user-images.githubusercontent.com/80394522/134583578-7d93c0bb-aa6e-4d01-b9e6-cc106614f220.png)
+
+# Relatório atual
+![image](https://user-images.githubusercontent.com/80394522/134434627-9bc9ad85-6680-4bde-8069-d16be2231109.png)
+
+# Relatório com o vendedor
+![image](https://user-images.githubusercontent.com/80394522/134434940-105bc441-8e08-40d6-bd40-52e619ab4d5e.png)
+
+
+
+
+
+# Pedido de Compra: Criar castro de Vendedores e Filtro de Produtos por Vendedor (Santana, Nova Compra)
+
+Alguns fornecedores possuem mais que um vendedor atendendo os supermercados, um para cada "pasta", ou seja uma linha de produtos ou marcas. Isso causa dificuldade para o comprador que não consegue filtrar na tela do Compras apenas os produtos de determinado vendedor.
+
+Atualmente sugerimos ao usuário (comprador) fazer filtros por Grupos ou criar lista de códigos, porém ambas não tem boa usabilidade na hora do pedido.
+
+É comum o usuário solicitar um filtro por "Vendedor" ao fazer o pedido. 
+
+Atualmente nossa estrutura para armazenar o vendedor é um campo livre para digitação no cadastro do pedido, isso dificulta um filtro seguro.
+
+**Tarefas:**
+**1) Criar um cadastro de Vendedores**
+- Criar tabela VendedoresFornecedor (CodVendedor (PK Identity), CodFornecedor, Nome, telefone, e-mail, MixPorVendedor(bit))
+- Popular a nova tabela criada com dados históricos da tabela Pedidos (distinct de Pedidos.codFornecedor e Pedidos.Vendedor) O e-mail e fone deve ser do último pedido do vendedor
+- Criar campo CodVendedor (Null, Foregin key VendedoresFornecedor) na tabela PedidoCompras (OBS: pode ser null pois o usuário pode não informar vendedor caso desejar)
+- Atualizar PedidoCompras.CodVendedor buscando os dados populados na tabela "VendedoresFornecedor"
+- Remover da tabela PedidoCompra os antigos campos Vendedor, Fone, E-mail.
+- Criar tela de Crud para o usuário cadastrar/alterar os dados da tabela VendedoresFornecedor (será chamada apenas pela tela do Pedido de Compra)
+- Na tela do Pedido, criar label link "Vendedor" permitindo chamar tela de cadastro do vendedor para criar novo ao alterar um existente.
+- Criar botão de procura (lupa) e popular campos na tela buscando dos novos campos nas tabelas PedidoCompras.CodVendedor e VendedoresFornecedor
+- Alterar os rpts dos Pedidos de Compra para buscar os campos da tabela nova.
+- Criar coluna no grid da busca do pedido e  filtro por nome do vendedor na tela de busca do pedido.
+
+**2) Criar relação de VendedoresProdutos**
+- Criar tabela VendedoresProdutos (codVendedor, CodProduto)
+- Popular nova tabela com dados dos últimos 3 pedidos do vendedor
+- Na tela do pedido de compras, nos filtros de produtos do pedido, criar novo filtro "Vendedor". Deve listar os vendedores disponíveis do fornecedor, e já trazer escolhido o vendedor selecionado no pedido como padrão.
+- Criar checkbox para ativar/desabitar o filtro, sugerindo o vendedor do pedido (semelhante ao filtro atual de "Fornecedor"). Padrão desmarcado, salvar escolha em "VendedorFornecedores.MixPorVendedor)
+- Caso vendedor selecionado e checkbox desmarcado, fazer left join no select que retorna os produtos ainda não adicionados ao pedido para indicar se o produto está no mix do Vendedor ou não, assinalando com fonte itálico nome do produto que estiver fora do mix do vendedor.
+- Caso vendedor selecionado e checkbox marcado, fazer Inner join no select que retorna os produtos para retornar na pesquisa dos produtos ainda não adicionados ao pedido apenas os produtos dentro do mix do vendedor.
+- Caso vendedor não selecionado não deve ser feito nenhum join de vendedores.
+- Criar menu no clique direito do produto "Desvincular produto do Vendedor"
+- Ao "desvincular produto do Fornecedor" deve também desvincular do mix de todos os Vendedores, caso esteja.
+- Ao inserir o produto em "PedidoCompraProduto" caso um vendedor estiver selecionado e o produto fora do mix do vendedor, inserir também em VendedoresProdutos.
+
+
+
+pernambuco 2 clientes
+
+na nota fiscal em informações complementares
+vem o vendedor
+na tela de notas colocar também quem foi o vendedor daquela nota 
+
+no relatório de vendas por período por vendedor
+no pedido de compras tem um atalho para esse relatório, filtro por fornecedor e vendedor
+
+impressão na telinha de cadastro
+
+colocar uma chamada da telinha em fornecedores
+
+
+
+
+## Criar tabela VendedoresFornecedor -------------- OK
+(será que precisa o código do fornecedor??)
+- Criar tabela VendedoresFornecedor (CodVendedor (PK Identity), CodFornecedor, Nome, telefone, e-mail, MixPorVendedor(bit))
+## Popular tabela VendedoresFornecedor -------------- OK
+(neste caso serão somente os produtos que tem pedido então?)
+- Popular a nova tabela criada com dados históricos da tabela Pedidos (distinct de Pedidos.codFornecedor e Pedidos.Vendedor) O e-mail e fone deve ser do último pedido do vendedor
+## Criar campo PedidoCompras.CodVendedor -------------- OK
+- Criar campo CodVendedor (Null, Foregin key VendedoresFornecedor) na tabela PedidoCompras (OBS: pode ser null pois o usuário pode não informar vendedor caso desejar)
+- Atualizar PedidoCompras.CodVendedor buscando os dados populados na tabela "VendedoresFornecedor"
+- Remover da tabela PedidoCompra os antigos campos Vendedor, Fone, E-mail.
+
+
+## Criar tabela VendedoresProdutos -------------- OK
+- Criar tabela VendedoresProdutos (codVendedor, CodProduto)
+## Popular tabela VendedoresProdutos -------------- OK
+- Popular nova tabela com dados dos últimos 3 pedidos do vendedor
+## Criar tela para manipular os Vendedores dos fornecedores -------------- OK
+- Criar tela de Crud para o usuário cadastrar/alterar os dados da tabela VendedoresFornecedor (será chamada apenas pela tela do Pedido de Compra)
+
+## Alterações na tela pedido de compra
+
+* Label link "Vendedor" -------------- OK
+    * Na tela do Pedido, criar label link "Vendedor" permitindo chamar tela de cadastro do vendedor para criar novo ou alterar um existente. -------------- OK
+* Lupa para selecionar o vendedor (acho que não precisa) -------------- OK
+    * Criar botão de procura (lupa) e popular campos na tela buscando dos novos campos nas tabelas PedidoCompras.CodVendedor e VendedoresFornecedor -------------- OK
+* Criar filtro "Vendedor" no filtro de produtos com funcionamento semelhante ao do fornecedor -------------- OK
+    * Na tela do pedido de compras, nos filtros de produtos do pedido, criar novo filtro "Vendedor". Deve listar os vendedores disponíveis do fornecedor, e  já trazer escolhido o vendedor selecionado no pedido como padrão. -------------- OK
+* Criar checkbox para o vendedor, semelhante ao do fornecedor -------------- OK
+    * Criar checkbox para ativar/desabitar o filtro, sugerindo o vendedor do pedido (semelhante ao filtro atual de "Fornecedor"). Padrão desmarcado, salvar escolha em "VendedorFornecedores.MixPorVendedor) -------------- OK
+
+
+
+----------------------------
+
+    * Caso vendedor selecionado e checkbox desmarcado, fazer left join no select que retorna os produtos ainda não adicionados ao pedido para indicar se o produto está no mix do Vendedor ou não, assinalando com fonte *** itálico *** nome do produto que estiver fora do mix do vendedor.
+    dar update nos produtos nas notas de saída 
+    dar update nos produtos nos pedidos??
+
+    * Ao "desvincular produto do Fornecedor" deve também desvincular do mix de todos os Vendedores, caso esteja.
+* Ao inserir o produto em pedido compra produto add tbm no mix do vendedor
+    * Ao inserir o produto em "PedidoCompraProduto" caso um vendedor estiver selecionado e o produto fora do mix do vendedor, inserir também em VendedoresProdutos.
+----------------------------
+
+
+    * Caso vendedor selecionado e checkbox marcado, fazer Inner join no select que retorna os produtos para retornar na pesquisa dos produtos ainda não adicionados ao pedido apenas os produtos dentro do mix do vendedor.-------------- OK
+    * Caso vendedor não selecionado não deve ser feito nenhum join de vendedores.-------------- OK
+* Criar menu para desvincular produto ao vendedor - tratar tbm no menu do fornecedor-------------- OK
+    * Criar menu no clique direito do produto "Desvincular produto do Vendedor"-------------- OK
+    * Ao "desvincular produto do Fornecedor" deve também desvincular do mix de todos os Vendedores, caso esteja.
+* Ao inserir o produto em pedido compra produto add tbm no mix do vendedor"-------------- OK
+    * Ao inserir o produto em "PedidoCompraProduto" caso um vendedor estiver selecionado e o produto fora do mix do vendedor, inserir também em VendedoresProdutos.
+## Alterar RPTs
+- Alterar os rpts dos Pedidos de Compra para buscar os campos da tabela nova.
+## Criar coluna na busca de pedidos de compra
+- Criar coluna no grid da busca do pedido e  filtro por nome do vendedor na tela de busca do pedido.
+
+
+
+
+
+
+
+
+
+colocar ajuda nas notas de entrada demonstrando o fluxo
 
 
 (corrigir o bug data do pedido data da entrega)
@@ -702,6 +828,19 @@ bloquear a alteração de preço
 só de nota que tiver relação com o pedido
 
 
+"Encerrar o pedido" 
+R: Isso mesmo
 
+"zerar o campo primeira compra"
+R: não deve ser zerado, pois se estiver marcado significa que naquele pedido era a primeira compra do produto. A informação deve se manter para esse pedido, nos próximos o sistema identifica que já teve pedido e não popula mais esse campo.
+
+"Atualizar o campo data entrega"
+R: Isso mesmo
+
+"Posso apenas desfazer o encerrado e deixar aberto de novo"
+R: Isso mesmo
+
+"acha que temos que fazer algo quanto a isso? se sim vou ter que salvar os campos"
+R: Não precisamos fazer nada além de desfazer o encerrado e deixar aberto de novo.
 
 
