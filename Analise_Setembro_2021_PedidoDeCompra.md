@@ -1,13 +1,4 @@
-    * Caso vendedor selecionado e checkbox desmarcado, fazer left join no select que retorna os produtos ainda não adicionados ao pedido para indicar se o produto está no mix do Vendedor ou não, assinalando com fonte *** itálico *** nome do produto que estiver fora do mix do vendedor.
-    dar update nos produtos nas notas de saída 
-    dar update nos produtos nos pedidos??
-
-    * Ao "desvincular produto do Fornecedor" deve também desvincular do mix de todos os Vendedores, caso esteja.
-* Ao inserir o produto em pedido compra produto add tbm no mix do vendedor
-    * Ao inserir o produto em "PedidoCompraProduto" caso um vendedor estiver selecionado e o produto fora do mix do vendedor, inserir também em VendedoresProdutos.
-
-
-## Tarefa 1: Criar função no atualiza banco fCriarCadastroDeVendedoresNasCompras  PARTE 1
+ ## Tarefa 1: Criar função no atualiza banco fCriarCadastroDeVendedoresNasCompras  PARTE 1
 
 1. Criar função fCriarCadastroDeVendedoresNasCompras
 1. Adicionar os comandos abaixo
@@ -239,7 +230,7 @@ Add no caminho: GestaoComercial.Formularios.PedidosVendas
 
 ## Tarefa 13: Alterar FrmPedidoCompra - Inserir combobox para o vendedor
 
-![image](https://user-images.githubusercontent.com/80394522/134574560-8527e151-4d1a-4d2c-a914-f03aa8768b52.png)
+![image](https://user-images.githubusercontent.com/80394522/135516183-b0d21fed-ce06-43d4-b903-19c6c09ca9a5.png)
 
 1. Trocar o txtVendedor por um cboVendedor
 1. Colorir o BackColor do txtFone e txtEMail de amarelo "&H00C0FFFF&" e desabilitar os campos para edição
@@ -313,6 +304,8 @@ buscar por `FornecedorVendedores.Vendedor, FornecedorVendedores.VendedorMail`
 
 ## Tarefa 20: Alterar FrmPedidoCompra - Inserir e tratar o checkbox chkFiltroVendedor
 
+![image](https://user-images.githubusercontent.com/80394522/135516470-96e1ab04-1e97-40e4-81a2-def3c020f04b.png)
+
 1. Inserir o check box chkFiltroVendedor na tela conforme a imagem
 * se necessário aumentar minimamente o frame de filtros para colocar os labels de observações de 2 em 2 abrindo espaço para novas configurações
 * Colocar tooltip: Filtra apenas produtos do vendedor selecionado. (Após o cadastro de um pedido com vendedor selecionado os produtos serão adicionados para esse vendedor.)
@@ -369,6 +362,9 @@ buscar por `FornecedorVendedores.Vendedor, FornecedorVendedores.VendedorMail`
 
 
 ## Tarefa 24: Alterar FrmPedidoCompra - menu desassociar 
+
+![image](https://user-images.githubusercontent.com/80394522/135518761-c17b14af-f980-4e31-898f-282157b22c7f.png)
+
 > Ao clicar bom botão direito na grade temos a opção de desvincular o produto do fornecedor. Implementar o mesmo funcionamento com os vendedores
 
 1. Criar o procedimento sDesvincularProdutoFornecedorVendedores
@@ -444,6 +440,9 @@ Descrição das variáveis que serão utilizadas:
 
 
 ## Tarefa 28: Alterar relatório Análise Mensal de Vendas
+
+![image](https://user-images.githubusercontent.com/80394522/135518929-1857dc2b-4118-4762-88a9-8558b0c3d041.png)
+
  1. Inserir os campos conforme a imagem adicionando o campo Vendedor, reorganizando e alinhando os outros componentes
     * O componente Text deve ser do tipo `Genéricos.Controles.Busca` assim como o do Fonecedor
 1. Altear a classe GestaoComercial.Formularios.Indicadores.FrmAnaliseMensalVendas:
@@ -454,6 +453,8 @@ Descrição das variáveis que serão utilizadas:
 
 
 ## Tarefa 29: Criar campos no NF_Entradas para inserir o Pedido e o Vendedor
+
+![image](https://user-images.githubusercontent.com/80394522/135519699-f8d5731c-f528-4047-9f5f-8ac14705730c.png)
 
 1. Adicionar os campos na tela conforme a imagem
 1. O campo do código do pedido só deverá aceitar números (textMask = Integer)
