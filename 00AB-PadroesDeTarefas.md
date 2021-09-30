@@ -129,3 +129,17 @@ No novo form implementar as configurações padrões da Telecon
 1. Implementar o `CarregaStringSql`
 * utilizar a classe `Nome da Classe da tabela`
 * tratar o cursor do mouse durante a pesquisa (trocar seta por ampulheta)
+
+
+
+## Tarefa X: Recordset Desconectado
+
+>Nesta tarefa criaremos a funcionalidade xyz, mas por motivos de performance não realizaremos mais uma consulta no banco honerando a tela, iremos utilizar um recordset desconectado
+
+1. Nas declarações do FrmPedidoCompra criar a variável abaixo
+``` vb
+Private lrsConsultaFfornecedorVendedoresProdutos As ADODB.Recordset
+```
+1. Criar o procedimento `fCarregarRecordAtacado` para carregar os dados da tabela `FornecedorVendedoresProdrodutos` na memória do cliente (recordset lrsConsultaFfornecedorVendedoresProdutos) de acordo com as regras abaixo:
+* Realizar consulta na tabela `FornecedorVendedoresProdrodutos` de acordo com o vendedor e o fornecedor
+* Criar o procedimento no mesmo padrão do procedimento `frmControleEntradas3.fCarregarRecordAtacado`

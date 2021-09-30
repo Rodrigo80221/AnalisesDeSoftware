@@ -352,7 +352,7 @@ buscar por `FornecedorVendedores.Vendedor, FornecedorVendedores.VendedorMail`
 
 1. Criar o procedimento sSalvarDadosDoVendedor.
 1. Chamar o procedimento sSalvarDadosDoVendedor dentro do fGravaPedido após a chamada do sAtualizarDadosGiroEstoque
-1. Implemenentar o procedimento sSalvarDadosDoVendedor
+1. Implemenentar o procedimento sSalvarDadosDoVendedor seguindo as regras abaixo:
 * Atualizar o campo FornecedorVendedor.MixPorVendedor =  chkFiltroVendedor.Value , de acordo com o vendedor e o fornecedor selecionado
 * O código do vendedor está no item do combo e do fornecedor em uma variável local ldbCodigoFornecedor
 * Caso não haja vendedor selecionado sair da sub
@@ -360,14 +360,12 @@ buscar por `FornecedorVendedores.Vendedor, FornecedorVendedores.VendedorMail`
 
 ## Tarefa 23: Alterar FrmPedidoCompra - Inserir produtos do pedido no MIX do vendedor
 
-1. Continuar implementando o procedimento sInserirProdutosFornecedores
+> Continuar implementando o procedimento `sSalvarDadosDoVendedor`
 1. Após salvar o campo FornecedorVendedor.MixPorVendedor salvar os produtos do pedido na tabela FornecedorVendedoresProdutos de acordo com as regras abaixo:
-* Atualizar a tabela FornecedorVendedoresProdutos com os produtos do pedido caso esses produtos ainda não estejam lá. 
-* O insert dever ter uma estrutura semelhante ao que inserimos no verifica banco `INSERT INTO FornecedorVendedoresProdutos`
-* Inserir sempre que for selecionado o nome de um vendedor
 
-
-
+1. Dar um insert em `FornecedorVendedoresProdutos` adicionando nesta tabela todos os produtos que estão no pedido com qtd > 0, estão na tabela `Fornecedor_Produtos` e ainda não estão associados a esse vendedor
+* Por motivos de performance utilizar um insert into FornecedorVendedoresProdutos where exists in PedidoCompraProdutos com Quantidade > 0 and exists in Fornecedor_Produtos and not exists in FornecedorVendedoresProdutos.
+* Se não for selecionado um vendedor no combo dar um exit sub no início do procedimento
 
 
 ## Tarefa 24: Alterar FrmPedidoCompra - menu desassociar 
@@ -384,7 +382,38 @@ mnuDesvincularFornecedor_Click
 mnuDesvincularFornecedorBonf_Click
 mnuDesvincularFornecedorTrocas_Click
 
-## Tarefa 25: Criar outras chamadas para a tela de Cadastro de Vendedores
+1. O menu deverá aparecer apenas se tivermos um vendedor selecionado no combo
+1. Ao desvincular um produto do fornecedor e tivermos um vendedor selecionado, devemos também desvincular o produto ao vendedor, chamando o procedimento `sDesvincularProdutoFornecedorVendedores`
+
+
+## Tarefa 25: Alterar FrmPedidoCompra - Deixar em itálico na grade produtos fora do MIX do vendedor
+
+>Nesta tarefa criaremos a funcionalidade de deixar os itens fora do mix do vendedor em itálico na grade, mas por motivos de performance não realizaremos mais uma consulta no banco honerando a tela, iremos utilizar um recordset desconectado
+
+1. Nas declarações do FrmPedidoCompra criar a variável abaixo
+``` vb
+Private lrsConsultaFfornecedorVendedoresProdutos As ADODB.Recordset
+```
+1. Criar o procedimento `fCarregarRecordsetVendedoresProdutos` para carregar os dados da tabela `FornecedorVendedoresProdrodutos` na memória do cliente (recordset lrsConsultaFfornecedorVendedoresProdutos) de acordo com as regras abaixo:
+* Realizar consulta na tabela `FornecedorVendedoresProdrodutos` de acordo com o vendedor e o fornecedor passador por parâmentro
+* Criar o procedimento no mesmo padrão do procedimento `frmControleEntradas3.fCarregarRecordAtacado`
+
+1. Chamar o procedimento `fCarregarRecordsetVendedoresProdutos` nos locais abaixo:
+* Ao alterar um item no combo do vendedor
+* No final do procedimento `sDesvincularProdutoFornecedorVendedores` 
+* No final do procedimento `sSalvarDadosDoVendedor`
+
+1. Criar o procedimento `sDestacadarProdutosForaDoMixDoVendedor` de acordo com as regras abaixo:
+* Deve receber por parâmetro
+    * a linha da grade
+    * código do fornecedor
+* Verificar se o produto da linha está contido no recordset lrsConsultaFfornecedorVendedoresProdutos.Filter
+    * Caso não esteja deixar o código do produto, o código de barras e a descrição do produto em itálico na grade
+* Chamar o procedimento no final do loop do `sListaProdutos`    
+
+
+
+## Tarefa 26: Criar outras chamadas para a tela de Cadastro de Vendedores
 > Criar módulo para Gerenciar o recurso FrmFornecedorVendedores nos Sistema S
 
 Resultado esperado: A tela Cadastro de Vendedores deverá ser chamada pelo menu de fornecedores da tela clássica e pelo setores de Pedidos e Fornecedores do Sistemas S e R
@@ -408,13 +437,13 @@ Descrição das variáveis que serão utilizadas:
 
 1. Tratar no frmModulos.cmdRestaurar_Click conforme padrão do procedimento
 
-## Tarefa 26: Alterar pedido de compra grande
+## Tarefa 27: Alterar pedido de compra grande
 1. Tratar o insert do procedimento FrmPedidoCompraProdutos.fInserirPedidoCabecalho. Substituir os campos Vendedor, Email e Fone por CodVendedor.
 1. Excluir variáveis que não serão mais utilizadas.
 1. Verificar o básico do funcionamento na tela.
 
 
-## Tarefa 27: Alterar relatório Análise Mensal de Vendas
+## Tarefa 28: Alterar relatório Análise Mensal de Vendas
  1. Inserir os campos conforme a imagem adicionando o campo Vendedor, reorganizando e alinhando os outros componentes
     * O componente Text deve ser do tipo `Genéricos.Controles.Busca` assim como o do Fonecedor
 1. Altear a classe GestaoComercial.Formularios.Indicadores.FrmAnaliseMensalVendas:
@@ -424,13 +453,20 @@ Descrição das variáveis que serão utilizadas:
 1. Criar novo parâmentro no procedimento `RelAnaliseMensalVendas.Consultar` e implementar a consulta da mesma forma que ocorre no fornecedor
 
 
-## Tarefa 28: Criar campo no NF_Entradas para inserir o Pedido e o Vendedor
+## Tarefa 29: Criar campos no NF_Entradas para inserir o Pedido e o Vendedor
 
 1. Adicionar os campos na tela conforme a imagem
 1. O campo do código do pedido só deverá aceitar números (textMask = Integer)
 1. Cuidar o TabIndex
-
-## Tarefa 29: Tornar funcional os componentes de vendedor nas NF Entradas
+1. Inserir um ícone de ajuda ao lado da busca do pedido, ao clicar mostrar a mensagem abaixo:
+```
+Ao selecionar um pedido de compra na nota você completará os passos abaixo:
+- Preencherá o campo vendedor na nota de entrada caso ele tenha sido informado no pedido;
+- Encerrará o Pedido de Compra;
+- Atualizará a Data de Entrega do Pedido de Compra;
+- Enviará para o Controle de Entradas o Valor de Venda do produto caso ele tenha sido definido no pedido.
+```
+## Tarefa 30: Tornar funcional os componentes de vendedor nas NF Entradas
 
 1. Chamar o procedimento `Funcoes.sCarregarComboVendedores `após selecionar um fornecedor no `fBuscaFornecedor` acima da linha abaixo:
 ``` vb
@@ -441,7 +477,7 @@ Descrição das variáveis que serão utilizadas:
     
 
 
-## Tarefa 30: Criar formulário de busca de pedido de compra FrmBuscaPedidoCompra
+## Tarefa 31: Criar formulário de busca de pedido de compra FrmBuscaPedidoCompra
 1. Criar diretório `GestaoComercial.Formularios.PedidosCompras`
 1. Adicionar Formulário no namespace `GestaoComercial.Formularios.PedidosCompras`
 1. Adicionar herança do formulário `FrmPesquisa`. Este formulário deverá seguir o padrão dos formulários de pesquisa da Telecon
@@ -479,7 +515,7 @@ Descrição das variáveis que serão utilizadas:
 
 
 
-## Tarefa 31: Tornar funcional os componentes de Pedidos nas NF Entradas
+## Tarefa 32: Tornar funcional os componentes de Pedidos nas NF Entradas
 
 Pedido
 1. Programar o botão de busca de pedido, utilizar a tela c# criada FrmBuscaPedidoCompra
@@ -495,7 +531,7 @@ Testar utilizando `If oUsuarioAcesso.Habilitado(821, giCodLojaPadrao) Then`. Cas
 * Ao clicar no link se o código do pedido for <> 0 chamar `sAbrirForm frmPedidoCompra,dbCodPedido`
 
 
-## Tarefa 32: Programar o Atualiza tela para atualizar os campos de pedido e vendedor
+## Tarefa 33: Programar o Atualiza tela para atualizar os campos de pedido e vendedor
 
 1. No procedimento `sConsultar` add no select o código abaixo
 ``` 
@@ -508,7 +544,7 @@ LEFT JOIN NF_Entradas_Pedidos NEP ON  N.CD_NOTA = NEP.CD_NOTA
 1. No procedimento `AtualizaTela` após a linha ` 37  fBuscaFornecedor` posicionar o combobox do vendedor na posição correta recebida do [CodVendedor]
 1. Após o CodVendedor carregar o text do pedido com o [CodPedido]. Carregar o .text e o .tag
 
-## Tarefa 33: Gravar os novos campos das NF_Entradas
+## Tarefa 34: Gravar os novos campos das NF_Entradas
 
 >Resumo: Ao inserirmos ou alterarmos os campos de pedido e vendedor nas notas de entradas temos que atualizar a tabela NF_Entradas_Pedidos e fechar o pedido de compra
 
@@ -549,8 +585,15 @@ Após esse código  dar um delete na tabela NF_Entradas_Pedidos com os dados de 
         * Encerrar o pedido atual sEncerrarPedido txt.Text
     * Dar o update do vendedor em NF_Entradas_Pedido ou colocar null
 
+## Tarefa 35: Gravar os novos produtos das NF_Entradas no vendedor
 
-## Tarefa 34: Alterar Controle de entradas - Criar recordset desconectado de pedidos
+1. Nas NFEntradas criar o procedimento `sinserirProdutosDoVendedor`
+1. O procedimento deve ser chamado no final do `sAtualizarDadosDePedidoDeCompra`. (Executa no gravar e no alterar)
+1. Dar um insert em `FornecedorVendedoresProdutos` adicionando nesta tabela todos os produtos que estão na nota e ainda não estão associados a esse vendedor
+* Por motivos de performance utilizar um insert into FornecedorVendedoresProdutos where exists in NF_Entradas_produtos and not exists in FornecedorVendedoresProdutos. Tratar com distinct, lembrando que o produto pode vir duas vezes na nota
+
+
+## Tarefa 36: Alterar Controle de entradas - Criar recordset desconectado de pedidos
 
 >Fluxo do resultado esperado das tarefas referentes ao controle de entradas
 - Usuário cria um pedido para o produto x
@@ -584,7 +627,7 @@ WHERE DATAS
 > Se a tela FrmControleEntradas3 for chamada pela tela de pedido de compra não deverá ter impacto
 
 
-## Tarefa 35: Alterar Controle de entradas - Setar valor do pedido na grade e colorir
+## Tarefa 37: Alterar Controle de entradas - Setar valor do pedido na grade e colorir
 
 1. Nas declarações do frmControleEntradas3 declarar a constante abaixo junto com as declareções das outras colorações
 ``` vb
