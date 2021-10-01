@@ -1,3 +1,22 @@
+# Épico: Controle de Vendedores nas Compras
+Data de início da análise: 16/09/2021  
+## Problema principal a ser resolvido
+Na tela de pedido de compras o usuário deseja informar um vendedor e receber a listagem de produtos desse vendedor.
+## Impactos
+Pedidos de compra
+Notas de Entrada
+Relatório Análise Mensal de Vendas
+
+## Pré Requisitos
+Tela Pedido De Compras
+    - S
+
+
+
+## Solução
+
+## Tarefa 1:
+
  ## Tarefa 1: Criar função no atualiza banco fCriarCadastroDeVendedoresNasCompras  PARTE 1
 
 1. Criar função fCriarCadastroDeVendedoresNasCompras
