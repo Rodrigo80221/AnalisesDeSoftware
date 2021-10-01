@@ -9,11 +9,12 @@ Data de início do recurso: 16/09/2021
 * Relatório Análise Mensal de Vendas
 * Controle de Cargas Pedidos
 * Pedido de Compra Tishler
+* Controle de Entradas
 ## Pré Requisitos
 * Tela Pedido De Compras
     * Recurso para selecionar o vendedor;
     * Opção para visualizar apenas produtos desse vendedor;
-    * Recurso para Desvincular produtos do vendedor;
+    * Recurso para desvincular produtos do vendedor;
 * Tela Notas de Entradas
     * Recurso para relacionar a nota ao seu pedido de compra;
     * Recurso para selecionar o vendedor, para análisar vendas desse vendedor no relatório;
