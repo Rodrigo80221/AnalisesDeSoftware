@@ -14,11 +14,13 @@ Data de início do recurso: 16/09/2021
     * Recurso para selecionar o vendedor;
     * Opção para visualizar apenas produtos desse vendedor;
     * Recurso para Desvincular produtos do vendedor;
-* Notas de Entradas
+* Tela Notas de Entradas
     * Recurso para relacionar a nota ao seu pedido de compra;
     * Recurso para selecionar o vendedor, para análisar vendas desse vendedor no relatório;
 * Relatório Análise Mensal de Vendas
     * Filtro de vendas apenas desse vendedor.
+* Tela Controle de Entradas
+    * Fixar Preço de Venda informado no pedido    
 
 ## Solução Final Analisada
 
@@ -99,24 +101,31 @@ Data de início do recurso: 16/09/2021
 ### Protótipos das telas
 
 __Pedido de Compra__
+
 ![image](https://user-images.githubusercontent.com/80394522/135516183-b0d21fed-ce06-43d4-b903-19c6c09ca9a5.png)
 
 __Pedido de Compra__
+
 ![image](https://user-images.githubusercontent.com/80394522/135516470-96e1ab04-1e97-40e4-81a2-def3c020f04b.png)
 
 __Pedido de Compra__
+
 ![image](https://user-images.githubusercontent.com/80394522/135518761-c17b14af-f980-4e31-898f-282157b22c7f.png)
 
 __Análise Mensal de Vendas__
+
 ![image](https://user-images.githubusercontent.com/80394522/135518929-1857dc2b-4118-4762-88a9-8558b0c3d041.png)
 
 __Notas de Entrada__
+
 ![image](https://user-images.githubusercontent.com/80394522/135519699-f8d5731c-f528-4047-9f5f-8ac14705730c.png)
 
 __Cadastro de Vendedores__
+
 ![image](https://user-images.githubusercontent.com/80394522/134396374-20abcab9-8f8d-4f9e-a29f-24c71913320a.png)
 
 __Cadastro de Vendedores__
+
 ![image](https://user-images.githubusercontent.com/80394522/134260261-62b36ea5-09e3-42ba-a7b6-82e041a1cff1.png)
 
 
