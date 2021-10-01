@@ -1,21 +1,91 @@
 # Épico: Controle de Vendedores nas Compras
-Data de início da análise: 16/09/2021  
+Data de início do recurso: 16/09/2021  
 ## Problema principal a ser resolvido
-Na tela de pedido de compras o usuário deseja informar um vendedor e receber a listagem de produtos desse vendedor.
+Na tela de pedido de compras o usuário deseja informar o vendedor e receber a listagem de produtos desse vendedor.
+Clientes envolvidos: Santana e Nova Compra
 ## Impactos
-Pedidos de compra
+Pedidos de Compra
 Notas de Entrada
 Relatório Análise Mensal de Vendas
-
+Controle de Cargas Pedidos
+Pedido de Compra Tishler
 ## Pré Requisitos
 Tela Pedido De Compras
-    - S
+    - Recurso para selecionar o vendedor;
+    - Opção para visualizar apenas produtos desse vendedor;
+    - Recurso para Desvincular produtos do vendedor;
+Notas de Entradas
+    - Recurso para relacionar a nota ao seu pedido de compra;
+    - Recurso para selecionar o vendedor, para análisar vendas desse vendedor no relatório;
+Relatório Análise Mensal de Vendas
+    - Filtro de vendas apenas desse vendedor.
 
+## Solução Final Analisada
 
+### Atualização do Banco de dados
+    * Criação da tabela FornecedorVendedores
+        * Migração dos vendedores da tabela PedidoCompra para a tabela FornecedorVendedores
+            * Nota: Manter o email e telefone do último pedido do vendedor
+    * Criação da tabela NF_Entradas_Pedidos
+    * Alteração da tabela PedidoCompras
+        * Adicionar coluna CodVendedor
+        * Atualizar coluna com o código dos vendedores
+        * Remover da tabela os campos antigos Vendedor, Fone e Email
+    * Criação da tabela VendedoresProdutos
+        * Nota: Popular nova tabela com dados dos últimos 3 pedidos do vendedor
+    * Criação dos módulos para os recursos do sistema S    
+### Compatibilidade dos recursos do C#
+    * Criar a classe Telecode FornecedorVendedores
+    * Criar a classe Telecode FornecedorVendedoresProdutos
+    * Recriar a classe Telecode PedidoCompra
+    * Alterar formulário de busca FrmBuscaPedidosCompra do Controle de Cargas Pedidos
+        * Buscar o campo de vendedor da nova tabela FornecedorVendedores
+    * Alterar o formulário FrmControleCargas (Controle de Cargas Pedidos)
+        * Ao selecionar o pedido buscar o vendedor da nova tabela FornecedorVendedores
+        * Ao adicionar o pedido na grade buscar os dados do vendedor da tabela FornecedorVendedores
+        * Ao atualizar a tela buscar os dados do vendedor da tabela FornecedorVendedores
+    * Alterar o formulário de busca FrmPesquisaPedidosCompra do Controle de Cargas Pedidos
+        * Buscar o campo de vendedor da nova tabela FornecedorVendedores
+### Criar formulário C# FrmCadFornecedorVendedores (Cadastro de Vendedores dos Fornecedores)        
+    * Recurso para cadastrar, visualizar e alterar dados de vendedores
+    * Recurso para visualizar o mix de produtos do vendedor
+    * Recurso para impressão do mix de produtos do vendedor
+    * Chamada pela tela clássica e pelo sistemas S
 
-## Solução
+### Alteração do formulário FrmPedidoCompra (Pedido de Compra)
+    * Adicionar combo para seleção do vendedores
+    * Deixar os campos de Telefone e Email apenas leitura
+    * Criar label link para chamar o Cadastro de Vendedores
+    * Atualizar novos campos nos relatórios
+    * Criar a caixa de seleção Mix do Vendedor
+        * Filtrar produtos do vendedor
+    * Destacar na grade em itálico produtos que estão fora do Mix do Vendedor
+    * Salvar Mix do Vendedor
+    * Desvincular produtos do Mix do Vendedor
+        * Nota: Ao desvincular produtos do fornecedor, desvincular também do Vendedor
 
-## Tarefa 1:
+### Alteração do formulário FrmPedidoCompraProdutos (Pedido de Compra Produtos)
+    * Compatibilizar para utilizar os novos campos do vendedor da tabela FornecedorVendedores
+
+### Alteração do relatório C# Análise Mensal de Vendas FrmAnaliseMensalVendas
+    * Criação do Filtro por vendedor
+
+### Criação do Formulário de Busca C# FrmBuscaPedidoCompra
+    * Herança do FrmPesquisa utilizando a classe FornecedorVendedores
+### Alteração do formulário FrmNFEntradas (Notas de Entrada)
+    * Inserir campos para seleção do Pedido de Compra    
+    * Inserir label link para os Pedidos de Compra
+    * Inserir campo para seleção do Vendedor
+    * Inserir label link para o Cad de vendedores
+    * Realizar alterações ao gravar a nota
+        * Associar produtos da nota ao Mix do Vendedor
+        * Finalizar pedido de compra
+        * Alterar Data Entrega do Pedido de Compra
+        
+### Alteração do formulário frmControleEntradas3 (Controle de Entradas)
+    * Destacar Preço de Venda de produtos com preço de venda definido no Pedido de Compra
+        * Nota: Preço de Venda bloqueado para edição
+    * Colocar tooltip mostranto o motivo do destaque e o código do Pedido
 
  ## Tarefa 1: Criar função no atualiza banco fCriarCadastroDeVendedoresNasCompras  PARTE 1
 
