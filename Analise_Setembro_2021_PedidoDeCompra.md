@@ -140,6 +140,7 @@ Obs: Será add também na grade a coluna último custo.
  ## Tarefa 1: Criar função no atualiza banco fCriarCadastroDeVendedoresNasCompras  PARTE 1
 
 1. Criar função fCriarCadastroDeVendedoresNasCompras
+1. Inserir o código formatado no banco de dados, utilizar vbNewLine
 1. Adicionar os comandos abaixo
 
 ``` SQL
@@ -179,6 +180,7 @@ ALTER TABLE [dbo].[NF_Entradas_Pedidos] ADD CONSTRAINT chk_NFEntradasPedidos_Dad
 ## Tarefa 2: Continuar função fCriarCadastroDeVendedoresNasCompras PARTE 2
 
 1. Incrementar na função fCriarCadastroDeVendedoresNasCompras
+1. Inserir o código formatado no banco de dados, utilizar vbNewLine
 1. Ao final verificar se atendeu os requisitos abaixo:
 - Os vendedores cadastrados nos pedidos devem ser migrados para a tabela FornecedorVendedores
 - O e-mail e fone devem ser do último pedido do vendedor
@@ -203,6 +205,7 @@ GROUP BY CodFornecedor, Vendedor
 ## Tarefa 3: Continuar função fCriarCadastroDeVendedoresNasCompras PARTE 3
 
 1. Incrementar na função fCriarCadastroDeVendedoresNasCompras
+1. Inserir o código formatado no banco de dados, utilizar vbNewLine
 1. Ao final verificar se atendeu o requisito abaixo:
 - Criar campo CodVendedor na tabela PedidoCompras 
 - Atualizar PedidoCompras.CodVendedor buscando os dados populados na tabela "VendedoresFornecedor"
@@ -230,9 +233,11 @@ ALTER TABLE PedidoCompra DROP COLUMN VendedorMail
 ## Tarefa 4: Continuar função fCriarCadastroDeVendedoresNasCompras PARTE 4
 
 1. Incrementar na função fCriarCadastroDeVendedoresNasCompras
+1. Inserir o código formatado no banco de dados, utilizar vbNewLine
 1. Ao final verificar se atendeu o requisito abaixo:
 - Criar tabela VendedoresProdutos (codVendedor, CodProduto)
 - Popular nova tabela com dados dos últimos 3 pedidos do vendedor
+
 
 ``` SQL
 CREATE TABLE [dbo].[FornecedorVendedoresProdutos](
@@ -264,6 +269,38 @@ BEGIN
 END  
 CLOSE NOVOS;  
 DEALLOCATE NOVOS; 
+```
+
+``` SQL
+CREATE FUNCTION DBO.FN_RetornarPesquisaFornecedor (@Descricao AS NVARCHAR(100)) RETURNS @Resultado TABLE (CodFornecedor INT) AS 
+
+BEGIN
+
+INSERT INTO @Resultado
+SELECT DISTINCT CODIGO FROM
+	(
+		SELECT Codigo FROM Fornecedores F
+		WHERE F.Fantasia LIKE '%' + @Descricao + '%'
+		UNION
+		SELECT Codigo FROM Fornecedores F
+		WHERE F.Nome LIKE '%' + @Descricao + '%'
+		UNION
+		SELECT Codigo FROM Fornecedores F
+		WHERE F.CNPJ LIKE '%' + @Descricao + '%'
+		UNION
+		SELECT Codigo FROM Fornecedores F
+		WHERE DBO.FN_SO_NUMERO(F.CNPJ) LIKE '%' + @Descricao + '%'
+		UNION
+		SELECT Codigo FROM Fornecedores F
+		WHERE LTRIM(STR(F.CODIGO,50)) = @Descricao
+		UNION
+		SELECT CodFornecedor [CODIGO] FROM FornecedorVendedores F
+		WHERE F.Nome LIKE '%' + @Descricao + '%'
+	) AS T
+
+RETURN;
+
+END
 ```
 
 ---
@@ -581,6 +618,30 @@ Private lrsConsultaFfornecedorVendedoresProdutos As ADODB.Recordset
 * Verificar se o produto da linha está contido no recordset lrsConsultaFfornecedorVendedoresProdutos.Filter
     * Caso não esteja deixar o código do produto, o código de barras e a descrição do produto em itálico na grade
 * Chamar o procedimento no final do loop do `sListaProdutos`    
+
+## Tarefa 27: Alterar FrmPedidoCompra - Criar Filtro por vendedor 
+
+1. Alterar Caption do label conforme a imagem
+
+1. No procedimento sPesquisaPedido substituir código abaixo
+``` VB
+    If txtPesqFornecedor.Text <> "" Then
+        sFiltro = "(F.Fantasia Like '" & Replace(txtPesqFornecedor.Text, " ", "%") & "%' "
+        sFiltro = sFiltro & "Or F.Nome Like '" & Replace(txtPesqFornecedor.Text, " ", "%") & "%' "
+        sFiltro = sFiltro & "Or F.CNPJ Like '" & Replace(txtPesqFornecedor.Text, " ", "%") & "%' "
+        If IsNumeric(txtPesqFornecedor.Text) Then
+            sFiltro = sFiltro & "Or F.Codigo = " & Val(txtPesqFornecedor.Text)
+        End If
+        sFiltro = sFiltro & ")"
+    End If
+```
+POR 
+``` VB
+    If txtPesqFornecedor.Text <> "" Then
+        sFiltro = "F.Codigo in (SELECT CodFornecedor FROM DBO.FN_RetornarPesquisaFornecedor('" & txtPesqFornecedor.Text & "'))"
+    End If
+```
+
 
 
 ## Tarefa 27: Teste de Integração do Pedido de Compra
