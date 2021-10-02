@@ -621,6 +621,8 @@ Private lrsConsultaFfornecedorVendedoresProdutos As ADODB.Recordset
 
 ## Tarefa 27: Alterar FrmPedidoCompra - Criar Filtro por vendedor 
 
+![image](https://user-images.githubusercontent.com/80394522/135731645-aa3445cb-b024-4097-9f7b-b513d046aae0.png)
+
 1. Alterar Caption do label conforme a imagem
 
 1. No procedimento sPesquisaPedido substituir código abaixo
@@ -641,10 +643,12 @@ POR
         sFiltro = "F.Codigo in (SELECT CodFornecedor FROM DBO.FN_RetornarPesquisaFornecedor('" & txtPesqFornecedor.Text & "'))"
     End If
 ```
+## Tarefa 28: Alterar FrmPedidoCompra - Adicionar Coluna Vendedor na grade de Pesquisa
+1. Adicionar a coluna Vendedor conforme o padrão da tela 
+2. Carregar a coluna com os dados da tabela FornecedorVendedores.Nome 
 
 
-
-## Tarefa 27: Teste de Integração do Pedido de Compra
+## Tarefa 29: Teste de Integração do Pedido de Compra
 
 1. Testar a solução completa verificando se atendeu os requisítos.
 1. Corrigir erros encontrados, se necessário enviar a análise
@@ -662,7 +666,7 @@ POR
 ---
 ### Alteração do formulário FrmPedidoCompraProdutos (Pedido de Compra Produtos)   
 ---
-## Tarefa 28: Alterar pedido de compra do Tishler
+## Tarefa 30: Alterar pedido de compra do Tishler
 1. Tratar o insert do procedimento FrmPedidoCompraProdutos.fInserirPedidoCabecalho. Substituir os campos Vendedor, Email e Fone por CodVendedor.
 1. Excluir variáveis que não serão mais utilizadas.
 1. Verificar o básico do funcionamento na tela.
@@ -671,7 +675,7 @@ POR
 ### Alteração do relatório C# Análise Mensal de Vendas FrmAnaliseMensalVendas  
 ---
 
-## Tarefa 29: Alterar relatório Análise Mensal de Vendas
+## Tarefa 31: Alterar relatório Análise Mensal de Vendas
 
 ![image](https://user-images.githubusercontent.com/80394522/135518929-1857dc2b-4118-4762-88a9-8558b0c3d041.png)
 
@@ -688,7 +692,7 @@ POR
 ### Criação do Formulário de Busca C# FrmBuscaPedidoCompra
 ---
 
-## Tarefa 30: Criar formulário de busca de pedido de compra FrmBuscaPedidoCompra
+## Tarefa 32: Criar formulário de busca de pedido de compra FrmBuscaPedidoCompra
 1. Criar diretório `GestaoComercial.Formularios.PedidosCompras`
 1. Adicionar Formulário no namespace `GestaoComercial.Formularios.PedidosCompras`
 1. Adicionar herança do formulário `FrmPesquisa`. Este formulário deverá seguir o padrão dos formulários de pesquisa da Telecon
@@ -728,7 +732,7 @@ POR
 ### Alteração do formulário FrmNFEntradas (Notas de Entrada)
 ---
 
-## Tarefa 31: Criar campos no NF_Entradas para inserir o Pedido e o Vendedor
+## Tarefa 33: Criar campos no NF_Entradas para inserir o Pedido e o Vendedor
 
 ![image](https://user-images.githubusercontent.com/80394522/135519699-f8d5731c-f528-4047-9f5f-8ac14705730c.png)
 
@@ -743,7 +747,7 @@ Ao selecionar um pedido de compra na nota de entrada os seguintes passos serão 
 - Atualização da Data de Entrega do Pedido de Compra;
 - Envio do Valor de Venda do produto para o Controle de Entradas caso ele tenha sido definido no pedido.
 ```
-## Tarefa 32: Tornar funcional os componentes de vendedor nas NF Entradas
+## Tarefa 34: Tornar funcional os componentes de vendedor nas NF Entradas
 
 1. Chamar o procedimento `Funcoes.sCarregarComboVendedores `após selecionar um fornecedor no `fBuscaFornecedor` acima da linha abaixo:
 ``` vb
@@ -752,7 +756,7 @@ Ao selecionar um pedido de compra na nota de entrada os seguintes passos serão 
 1. No procedimento `sLimpaCamposFornecedor` passar o combo do vendedor para o último List Index que deve ser o em branco
 1. Programar o Label Link do Vendedor assim como na tela do Pedido de Compra chamando a função criada no Funcoes    
 
-## Tarefa 33: Tornar funcional os componentes de Pedidos nas NF Entradas
+## Tarefa 35: Tornar funcional os componentes de Pedidos nas NF Entradas
 
 Pedido
 1. Programar o botão de busca de pedido, utilizar a tela c# criada FrmBuscaPedidoCompra
@@ -769,7 +773,7 @@ Testar utilizando `If oUsuarioAcesso.Habilitado(821, giCodLojaPadrao) Then`. Cas
 * Ao clicar no link se o código do pedido for <> 0 chamar `sAbrirForm frmPedidoCompra,dbCodPedido`
 
 
-## Tarefa 34: Programar o Atualiza tela para atualizar os campos de pedido e vendedor
+## Tarefa 36: Programar o Atualiza tela para atualizar os campos de pedido e vendedor
 
 1. No procedimento `sConsultar` add no select o código abaixo
 ``` 
@@ -782,7 +786,7 @@ LEFT JOIN NF_Entradas_Pedidos NEP ON  N.CD_NOTA = NEP.CD_NOTA
 1. No procedimento `AtualizaTela` após a linha ` 37  fBuscaFornecedor` posicionar o combobox do vendedor na posição correta recebida do [CodVendedor]
 1. Após o CodVendedor carregar o text do pedido com o [CodPedido]. Carregar o .text e o .tag
 
-## Tarefa 35: Gravar os novos campos das NF_Entradas
+## Tarefa 37: Gravar os novos campos das NF_Entradas
 
 >Resumo: Ao inserirmos os campos de pedido e vendedor nas notas de entradas temos que atualizar a tabela NF_Entradas_Pedidos e fechar o pedido de compra. Teremos que tratar também o alterar.
 
@@ -823,14 +827,14 @@ Após esse código  dar um delete na tabela NF_Entradas_Pedidos com os dados de 
         * Encerrar o pedido atual sEncerrarPedido txt.Text
     * Dar o update do vendedor em NF_Entradas_Pedido ou colocar null
 
-## Tarefa 36: Gravar os novos produtos das NF_Entradas no vendedor
+## Tarefa 38: Gravar os novos produtos das NF_Entradas no vendedor
 
 1. Nas NFEntradas criar o procedimento `sinserirProdutosDoVendedor`
 1. O procedimento deve ser chamado no final do `sAtualizarDadosDePedidoDeCompra`. (Executa no gravar e no alterar)
 1. Dar um insert em `FornecedorVendedoresProdutos` adicionando nesta tabela todos os produtos que estão na nota e ainda não estão associados a esse vendedor
 * Por motivos de performance utilizar um insert into FornecedorVendedoresProdutos where exists in NF_Entradas_produtos and not exists in FornecedorVendedoresProdutos. Tratar com distinct, lembrando que o produto pode vir duas vezes na nota
 
-## Tarefa 37: Teste de integração das NF_Entradas 
+## Tarefa 39: Teste de integração das NF_Entradas 
 1. Testar a solução completa verificando se atendeu os requisítos.
 1. Corrigir erros encontrados, se necessário enviar a análise
 
@@ -845,7 +849,7 @@ Após esse código  dar um delete na tabela NF_Entradas_Pedidos com os dados de 
 ### Alteração do formulário frmControleEntradas3 (Controle de Entradas)
 ---
 
-## Tarefa 38: Alterar Controle de entradas - Criar recordset desconectado de pedidos
+## Tarefa 40: Alterar Controle de entradas - Criar recordset desconectado de pedidos
 
 Verifique nos passos abaixo o processo esperado antes de desenvolver as tarefas
 
@@ -882,7 +886,7 @@ WHERE DATAS
 > Se a tela FrmControleEntradas3 for chamada pela tela de pedido de compra não deverá ter impacto
 
 
-## Tarefa 39: Alterar Controle de entradas - Setar valor do pedido na grade e colorir
+## Tarefa 41: Alterar Controle de entradas - Setar valor do pedido na grade e colorir
 
 1. Nas declarações do frmControleEntradas3 declarar a constante abaixo junto com as declareções das outras colorações
 ``` vb
@@ -944,7 +948,7 @@ APÓS ESSE if inserir o código abaixo corrigindo os parâmetros necessários
 ```
 
 
-## Tarefa 40: Teste de integração do Controle de Entradas
+## Tarefa 42: Teste de integração do Controle de Entradas
 1. Testar a solução completa verificando se atendeu os requisítos.
 1. Corrigir erros encontrados, se necessário enviar a análise
 
@@ -959,80 +963,4 @@ Testar o fluxo abaixo
  1.O produto x deverá ser listado e na coluna preço venda já deverá estar preenchido o valor inserido no pedido. Deverá ficar na cor amarela como no pedido, e não deve ser permitida a alteração do preço de venda.
  1.O preço de vende deverá ficar bloqueado para edição
  1.Testar alterando os filtros da tela, ordenação, bonificação e Ocultar variação de custo nas configurações
-
-
-
-
-
-
-
-
-
-
-
-
-- Criar coluna no grid da busca do pedido e  filtro por nome do vendedor na tela de busca do pedido.
-
-
-
-
-
-
-
-
-
-
-
-
-colocar ajuda nas notas de entrada demonstrando o fluxo
-
-
-(corrigir o bug data do pedido data da entrega)
-
-
-ficou pendente saber como abre o menu trocas botão direito
-
-validar questão do encerramento do pedido caso o usuário altere a nota, se eu não aviso nada deveria corrigir???
-
-
-
-colocar pedidos na nota
-verifica o status do pedido e marcar como entregue 
-consulta de pedidos com dados básicos 
-somente pedidos autorizados , avisar que não está autorizado
-se buscar pelo pedido já preenche o vendedor
-o pedido tem que estar autorizado
-encerrar o pedido
-abrir o pedido
-
-primeiro selecione um pedido
-o chama o pedido
-
-data da entrega do pedido para a data da entrada da nota
-encerrado = true
-
-
-
-controle de entradas - mostrar o valor de venda no pedido
-colorir
-tooltip
-bloquear a alteração de preço
-só de nota que tiver relação com o pedido
-
-
-"Encerrar o pedido" 
-R: Isso mesmo
-
-"zerar o campo primeira compra"
-R: não deve ser zerado, pois se estiver marcado significa que naquele pedido era a primeira compra do produto. A informação deve se manter para esse pedido, nos próximos o sistema identifica que já teve pedido e não popula mais esse campo.
-
-"Atualizar o campo data entrega"
-R: Isso mesmo
-
-"Posso apenas desfazer o encerrado e deixar aberto de novo"
-R: Isso mesmo
-
-"acha que temos que fazer algo quanto a isso? se sim vou ter que salvar os campos"
-R: Não precisamos fazer nada além de desfazer o encerrado e deixar aberto de novo.
-
 
