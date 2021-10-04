@@ -38,6 +38,7 @@ Data de início do recurso: 16/09/2021
 * Criação da tabela VendedoresProdutos
     * Nota: Popular nova tabela com dados dos últimos 3 pedidos do vendedor
 * Criação dos módulos para os recursos do sistema S    
+* Criação de Função para pesquisa de Fornecedor com performance
 ### Compatibilizar recursos do C#
 
 * Criar a classe Telecode FornecedorVendedores
