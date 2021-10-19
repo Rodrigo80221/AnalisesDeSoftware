@@ -159,3 +159,7 @@ procedimento para habilitar o push
     ``` vb
     Sub sExecutaPush()
     ```
+
+
+problema da thread
+    https://stackoverflow.com/questions/5519294/getting-webbrowser-control-to-work-in-console-application
