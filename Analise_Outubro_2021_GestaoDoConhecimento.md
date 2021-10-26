@@ -5,8 +5,6 @@ atualizações do compras
 https://brandolffvitor.wixsite.com/compras/pagina-inicial
 
 
-Paula, 17:03
-agora, sobre os cartazes poderíamos elaborar novo layout com marketing e ai deixar como padrão no sistema s, se desse
 
 
 seria essa nossa ideia, ver se é possível, com novo visual
@@ -21,31 +19,6 @@ protótipo s
 * Operador Setores
     * Criar tela para o usuário parametrizar 
     * Operadores novidades por setor
-
-Questions?
-
-Como será a estrutura e o acesso a movidesk?
-
-Como está a universidade Telecon?
-
-Mostrar idéias do Profit, Universidade, Vídeos, Alertas, Atualização
-
-A Telecon já tem outro sistema para incluir o cadastro ou fazer um projeto novo?
-    * Já não temos algo que os clientes acessam?
-    * Como pensam em fazer a atualização automática?
-
-Os clientes novos aderem bem a Tela do S? 
-    * Ou quando eles descobrem a tela clássica eles migram
-    * Existema clientes novos usando a tela clássica 
-
-O que faria um cliente como o índio usar a Tela do S?
-    * Se já sabemos o setor do usuário não era melhor mostrar os seus atalhos direto já?
-        * Poderíamos deixar acizentado outros setores..
-        * Lançar uma versão antes para já ir mapeando as telas que o usuário utiliza
-        * Personalização??
-
-Como está funcionando a caixa de entrada? Está sendo utilizada?
-
 
 bordas arredondadas c#
 https://www.codeproject.com/Articles/15964/ExControls-Version-1-0
@@ -104,19 +77,6 @@ Rodrigo949
 
 
 
-Mais perguntas
-
-utilizar a estrutura do comand help para inserir link nos bancos dos clientes
-criar pagina web para cadastrar os links
-
-criar tela inicial para relacionar usuários vs módulos
-
-criar etapas iniciais para atualização do framework nos clientes
-
-como altera os texts da tela do s??
-
-temos que cofigurar o youtube para não mostrar mensagens com propagandas de outros softwares d gestão comercial
-
 
 
 
@@ -163,3 +123,85 @@ procedimento para habilitar o push
 
 problema da thread
     https://stackoverflow.com/questions/5519294/getting-webbrowser-control-to-work-in-console-application
+
+
+
+
+# Não esquecer
+
+Avaliar a necessidade de atualização do framework do pdv
+
+Paula, 17:03
+agora, sobre os cartazes poderíamos elaborar novo layout com marketing e ai deixar como padrão no sistema s, se desse
+
+
+ # Espaço para questões
+
+
+    
+Como será a estrutura e o acesso a movidesk?
+
+Como está a universidade Telecon?
+não está mais em funcionamento
+
+Mostrar idéias do Profit, Universidade, Vídeos, Alertas, Atualização
+
+A Telecon já tem outro sistema para incluir o cadastro ou fazer um projeto novo?
+    * Já não temos algo que os clientes acessam?
+    * Como pensam em fazer a atualização automática?
+
+Os clientes novos aderem bem a Tela do S? 
+    * Ou quando eles descobrem a tela clássica eles migram
+    * Existema clientes novos usando a tela clássica 
+
+O que faria um cliente como o índio usar a Tela do S?
+    * Se já sabemos o setor do usuário não era melhor mostrar os seus atalhos direto já?
+        * Poderíamos deixar acizentado outros setores..
+        * Lançar uma versão antes para já ir mapeando as telas que o usuário utiliza
+        * Personalização??
+
+Como está funcionando a caixa de entrada? Está sendo utilizada?
+não está funcionando
+
+
+
+utilizar a estrutura do comand help para inserir link nos bancos dos clientes
+criar pagina web para cadastrar os links
+
+criar tela inicial para relacionar usuários vs módulos
+
+criar etapas iniciais para atualização do framework nos clientes
+
+como altera os texts da tela do s??
+
+temos que cofigurar o youtube para não mostrar mensagens com propagandas de outros softwares d gestão comercial
+
+será que a cor do fundo cinza com letras brancas está boa para visualização?
+
+os setores abaixo precisam serem programados no sistema R ?
+JuridicoSistemaS
+MarketingSistemaS,
+RretaguardaSistemaS
+
+ ## Reunião 26/10/2021
+
+### Usabilidade 
+
+ Eu gostaria de ter uma meta de conseguirmos abandonar a tela classica (seria sucesso para o projeto)
+ - Se continuarem usando ela, nada disso aparecerá para alguns clientes
+
+O que faria um cliente como o índio usar a Tela do S?
+
+Idéias
+- Menu na esquerda com a árvore de recursos do gestão
+- Colocar na esquerda os ícones mais utilizados 
+
+- Menu na direita para abrir os alertas, youtube, busca de artigos, universidade telecon, suporte, 
+
+Existe um motivo para alterar o nome dos texts somente na tela dos processos?
+
+### Projeto
+
+- Criar tela inicial para relacionar usuários vs setores que deseja acompanhar as novidades
+
+- Automatizar a atualização de framework
