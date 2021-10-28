@@ -1,3 +1,8 @@
+
+![Screenshot_1](https://user-images.githubusercontent.com/80394522/139327878-a241fd12-a419-4fb1-92d2-d2c202643f8e.png)
+
+![Screenshot_2](https://user-images.githubusercontent.com/80394522/139327883-879be795-fd1d-4aa0-a181-dd90a7dae065.png)
+
 Possibilidade 1: 
     * Ter outro produto para a caixa/fardo... , ele seria o produto pai
     * Adiciona o item na fórmula dele 
