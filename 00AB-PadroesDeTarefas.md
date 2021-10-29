@@ -35,6 +35,9 @@ Descrição das variáveis:
 >Observações:
 >Utilizar o Funcoes.fExisteObjeto 
 >Utilizar o Funcoes.fExisteObjeto e excluir objeto caso já tenha sido criado
+fExisteCampo("PedidoCompra", "Vendedor")
+fExisteCampo("PedidoCompra", "VendedorFone")
+fExisteCampo("PedidoCompra", "VendedorMail")
 Cuidar time out da conexão, retornar time out no trata erro
 Fechar recordset no trata erro
 Reabilitar triggers e constraints no trata erro

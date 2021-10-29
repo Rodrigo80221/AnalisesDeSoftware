@@ -601,6 +601,12 @@ buscar por `FornecedorVendedores.Vendedor, FornecedorVendedores.VendedorMail`
 1. O menu deverá aparecer apenas se tivermos um vendedor selecionado no combo
 1. Ao desvincular um produto do fornecedor e tivermos um vendedor selecionado, devemos também desvincular o produto ao vendedor, chamando o procedimento `sDesvincularProdutoFornecedorVendedores`
 
+1. No procedimento `sDesvincularProdutoFornecedorVendedores` mostrar a mensagem abaixo caso a qtd pedido para o produto > 0
+    ```
+    Ao desvincular o produto a quantidade do pedido será zerada, deseja continuar?
+    ```
+    * default no botão não
+    * Caso o usário confirme zerar a quantidade
 
 ## Tarefa 26: Alterar FrmPedidoCompra - Deixar em itálico na grade produtos fora do MIX do vendedor
 
