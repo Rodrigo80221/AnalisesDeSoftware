@@ -1,3 +1,9 @@
+
+
+![sistema s modelo 2](https://user-images.githubusercontent.com/80394522/140608507-ab92ff88-0ecb-4875-99dc-e7df810d694d.png)
+
+
+
 ![image](https://user-images.githubusercontent.com/80394522/139839704-000c7e9c-68d7-4fa3-b167-c2d924d19309.png)
 
 
