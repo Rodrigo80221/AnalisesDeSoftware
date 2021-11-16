@@ -205,3 +205,142 @@ Existe um motivo para alterar o nome dos texts somente na tela dos processos?
 - Criar tela inicial para relacionar usuários vs setores que deseja acompanhar as novidades
 
 - Automatizar a atualização de framework
+
+
+``` sql
+
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=compras' where codigo < 100 and Nome = 'Compras'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=estoque' where codigo < 100 and Nome = 'Estoques'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=retaguarda' where codigo < 100 and Nome = 'T.I / CPD / Preços'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=loja' where codigo < 100 and Nome = 'Loja / Setores'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=caixa' where codigo < 100 and Nome = 'Frente de Caixa'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=acougue' where codigo < 100 and Nome = 'Açougue'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=padaria' where codigo < 100 and Nome = 'Padaria / Confeitaria'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=fiabreria' where codigo < 100 and Nome = 'Fiambreria / Rotisseria'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=hortifruti' where codigo < 100 and Nome = 'Hortifruti'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=financeiro' where codigo < 100 and Nome = 'Financeiro'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=contábil' where codigo < 100 and Nome = 'Contábil / Fiscal'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=seguranca' where codigo < 100 and Nome = 'Segurança'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=rh' where codigo < 100 and Nome = 'R.H.'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=indicadores' where codigo < 100 and Nome = 'Indicadores'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=pdv' where codigo < 100 and Nome = 'Telecon PDV'
+
+```
+
+
+
+
+
+
+
+
+
+
+
+# Reformulação Sistema S: Controle de alertas por operador
+
+1- Criar as tabelas abaixo pelo verifica banco
+
+
+2- Utilizar Funcoes.fExisteObjeto 
+
+``` sql
+CREATE TABLE [dbo].[OperadorLandingPagesLog](
+	[Codigo] [bigint] IDENTITY(1,1) NOT NULL,
+	[CodOperador] [int] NOT NULL,
+	[CodSetor] [int] NOT NULL,
+	[DtVisualizacao] [datetime] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Codigo] ASC
+))
+
+GO 
+
+CREATE TABLE [dbo].[OperadorLandingPages](
+	[CodOperador] [int] NOT NULL,
+	[CodSetor] [int] NOT NULL,
+	[DtVisualizacao] [datetime] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[CodOperador] ASC,[CodSetor] ASC
+))
+
+```
+
+
+3- Criar as classes `OperadorLandingPagesLog` e `OperadorLandingPages` pelo Telecode 
+obs: Namespace `Telecon.GestaoComercial.Biblioteca.Pessoas`
+
+
+4- Inserir um botão do lado esquerdo do formulário com o caption "Atualizar LP"
+Ao clicar no botão inserir o código abaixo
+
+``` sql
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=compras' where codigo < 100 and Nome = 'Compras'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=estoque' where codigo < 100 and Nome = 'Estoques'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=retaguarda' where codigo < 100 and Nome = 'T.I / CPD / Preços'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=loja' where codigo < 100 and Nome = 'Loja / Setores'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=caixa' where codigo < 100 and Nome = 'Frente de Caixa'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=acougue' where codigo < 100 and Nome = 'Açougue'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=padaria' where codigo < 100 and Nome = 'Padaria / Confeitaria'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=fiabreria' where codigo < 100 and Nome = 'Fiambreria / Rotisseria'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=hortifruti' where codigo < 100 and Nome = 'Hortifruti'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=financeiro' where codigo < 100 and Nome = 'Financeiro'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=contábil' where codigo < 100 and Nome = 'Contábil / Fiscal'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=seguranca' where codigo < 100 and Nome = 'Segurança'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=rh' where codigo < 100 and Nome = 'R.H.'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=indicadores' where codigo < 100 and Nome = 'Indicadores'
+update Setores set DtAtuLandingPage = getdate() , LinkLandingPage = 'https://www.dicio.com.br/pesquisa.php?q=pdv' where codigo < 100 and Nome = 'Telecon PDV'
+
+```
+após isso dar um load no browser para atualizar a tela 
+`cwbTelaDoS.Load(BuscarPaginaDoS());`
+
+
+5- Criar função para verificar se o setor teve uma atualização nova para o usuário
+
+a- Criar no FrmPrincipal a função `VerificarAlertaNoSetor (enum Setor)` que retorne um boolean
+
+b- Ir no banco e carregar as variáveis abaixo com o retorno do select
+
+var DtAtuLandingPage =  SELECT [DtAtuLandingPage] FROM [Setores] WHERE [Codigo] = `Setor` 
+
+var DtVisualizacao = SELECT TOP 1 [DtVisualizacao] FROM [OperadorLandingPages] WHERE [CodOperador] = X AND [CodSetor] = `Setor` ORDER BY [DtVisualizacao] DESC
+
+c- A função deverá retornar conforme a lógica abaixo
+
+``` csharp
+if (DtAtuLandingPage > DtVisualizacao) 
+    return true 
+else return false
+```
+obs: tratar caso algum dos 2 selects retornar null
+if DtAtuLandingPage = null and DtVisualizacao = null then return false
+else if DtAtuLandingPage = null then return false
+else if DtVisualizacao = null then return true
+
+
+6- Programar para a tela web verificar se temos um alerta para algum setor
+
+a- criar a função `carregarAlertas` na classe `ComunicacaoChromium` que chame a função `VerificarAlertaNoSetor (enum Setor)` do FrmPrincipal
+
+b- criar as chamadas para essa função no arquivo `SistemaS.JS`
+ 
+obs: Realizar uma estrutura semelhante a já criada para o `carregarResponsaveis` mas em vez de alterar a propriedade `textContent`no arquivo `SistemaS.JS` alterar os atributos abaixo da mesma forma que alteramos os atributos na função js `AjustarTextoNoBox`
+
+``` 
+    stroke: green !important;
+    stroke-width: 4;
+```
+
+
+7- Ao clicar no ícone atualizar a data de visualização da Landing Page desse usuário para esse setor 
+
+a- Criar no formulário a função `AtualizarOperadorLandingPage (enumSetores setor)`
+b- Realizar um insert na tabela [OperadorLandingPagesLog]
+c- Realizar um insert na tabela [OperadorLandingPages]
+
+
+
+
