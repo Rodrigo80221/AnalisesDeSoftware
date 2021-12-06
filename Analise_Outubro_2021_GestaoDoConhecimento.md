@@ -341,6 +341,14 @@ a- Criar no formulário a função `AtualizarOperadorLandingPage (enumSetores se
 b- Realizar um insert na tabela [OperadorLandingPagesLog]
 c- Realizar um insert na tabela [OperadorLandingPages]
 
+Criar novos setores na tela setores
+criar um campo para imagem na tela RecursosSoftware
+Criar um campo para dizer a linguagem (vb ou c#)
+Fazer a tela de processos buscar a imagem da tabela RecursosSoftware
+Inserir na tabela RecursosSoftware todos os recursos que ainda não temos
+
+Criar uma classe ou lista que reflita o menu
+
 
 
 

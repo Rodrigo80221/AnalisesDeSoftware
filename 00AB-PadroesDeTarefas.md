@@ -150,3 +150,15 @@ Private lrsConsultaFfornecedorVendedoresProdutos As ADODB.Recordset
 1. Criar o procedimento `fCarregarRecordAtacado` para carregar os dados da tabela `FornecedorVendedoresProdrodutos` na memória do cliente (recordset lrsConsultaFfornecedorVendedoresProdutos) de acordo com as regras abaixo:
 * Realizar consulta na tabela `FornecedorVendedoresProdrodutos` de acordo com o vendedor e o fornecedor
 * Criar o procedimento no mesmo padrão do procedimento `frmControleEntradas3.fCarregarRecordAtacado`
+
+
+
+
+
+
+
+
+
+
+
+

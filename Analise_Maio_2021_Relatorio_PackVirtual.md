@@ -137,6 +137,38 @@
 
 
 
+select * from MODULOS
+select * from RecursosSoftware
+select * from Categoria
+select * from Setores 
+
+
+Criar verifica banco para inserir módulo. 
+
+1. Chamar o procedimento sInserirModulo
+
+``` vb
+Detalhes das parâmetros do procedimento
+iCodModulo = 630
+sGrupo = "RELATÓRIOS"
+sDescrição = "Relatório Pack Virtual"`
+sPalavraChave = "FrmRelatorioPack"
+iCodCategoria = 6
+iCodSetor
+* Os outros parâmetros s opcionais são true
+```
+
+1. Se o cliente não utiliza PDV o módulo não deve ser habilitado. 
+`fVerificarSeUsaPDV()`
+
+1. Se o cliente não utiliza o módulo para pack virtual o rel. não deve ser habilitado. 
+
+1. Tratar em mdlGestao.sCarregaModulos
+    1.1 Chamar na tela clássica no menu de  Relatórios > Rel. Pack Virtual
+
+1. Tratar no mdiPrincipal.tbrBarra_ButtonMenuClick
+
+1. Tratar no frmModulos.cmdRestaurar_Click conforme padrão do procedimento
 
 
 
