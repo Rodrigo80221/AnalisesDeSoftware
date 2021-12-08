@@ -1,5 +1,10 @@
 
 
+![image](https://user-images.githubusercontent.com/80394522/145128005-d738809c-9712-4243-9f1e-fb014086de79.png)
+
+![image](https://user-images.githubusercontent.com/80394522/145128032-da1297de-a0d0-4409-8f6e-61535c800f13.png)
+
+
 ![sistema s modelo 2](https://user-images.githubusercontent.com/80394522/140608507-ab92ff88-0ecb-4875-99dc-e7df810d694d.png)
 
 
