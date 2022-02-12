@@ -153,6 +153,208 @@ Private lrsConsultaFfornecedorVendedoresProdutos As ADODB.Recordset
 
 
 
+## Tarefa X: Testes em alteração de preço
+
+
+
+Teste alteração de carga ONLINE
+
+Produto 18564 - valor de venda inicial R$ 2,69
+
+Lançamento de nf entrada => custo = R$ 3,00 (OK)
+alteração de preço pelo controle de entradas do produto 18564 para R$ 3,50 (OK)
+verificar comandos pdv (OK)
+verificar tabela de produtos (OK)
+verifica tabela de produtoLojas (OK)
+verifica tabela de preços alterados(OK)
+realizar exportação (OK)
+verificar preço no gestão e pdv (OK)
+
+
+online + produto com a conf. (Vincular Preço de Venda a % Total dos itens)
+
+Produto 18575- valor de venda inicial R$ 4,99
+Produto 42141 (gelado)- valor de venda inicial R$ 5,19
+
+Lançamento de nf entrada do produto 18575 => custo = R$ 5,00 (OK)
+alteração de preço pelo controle de entradas do produto 18575 para R$ 6,50 (OK)
+alteração de preço automática do produto 42141 (ok foi para 6,70)
+
+verificar comandos pdv  (OK)
+verificar tabela de produtos  (OK)
+verifica tabela de produtoLojas  (OK)
+verifica tabela de preços alterados(ERRO - VALOR_ANTERIOR do produto gelado)
+realizar exportação  (OK)
+verificar preço no gestão e pdv  (OK)
+
+online + promoção 
+
+Produto 40224 - valor de venda inicial R$ 3,80
+
+Lançamento de nf entrada => custo = R$ 3,50 
+criar promoção para o produto => R$ 3,59
+alteração de preço pelo controle de entradas do produto 18564 para R$ 4,00
+verificar comandos pdv   (OK)
+verificar tabela de produtos   (OK)
+verifica tabela de produtoLojas   (OK)
+realizar exportação    (OK)
+verificar preço no gestão e pdv   (OK)
+Finalizar promoção    (OK)
+verificar comandos pdv      (OK)
+verificar tabela de produtos      (OK)
+verifica tabela de produtoLojas    (OK) 
+realizar exportação       (OK)
+verificar preço no gestão e pdv     (OK) 
+
+online + produtos associados 
+
+Produto 12810- valor de venda inicial R$ 3,89
+Produto 21341- valor de venda inicial R$ 3,89
+Produto 5888- valor de venda inicial R$ 3,89
+
+
+Lançamento de nf entrada produto 33251=> custo = R$ 2,92 (OK) 
+alteração de preço pelo controle de entradas do produto 26744 para R$ 4,00 (OK)
+verificar comandos pdv -todos produtos  (OK)
+verificar tabela de produtos -todos produtos  (OK)
+verifica tabela de produtoLojas -todos produtos  (OK)
+verifica tabela de preços alterados -todos produtos  (OK)
+exportação  (OK)
+verificar preço no gestão e pdv
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Teste alteração de carga OFFLINE
+
+Produto 18564 - valor de venda inicial R$ 3,50
+
+Lançamento de nf entrada => custo = R$ 3,50 
+alteração de preço pelo controle de entradas do produto 18564 para R$ 4,00 
+verificar comandos pdv (OK)
+verificar tabela de produtos (OK) 
+verifica tabela de produtoLojas (OK) 
+verifica tabela de preços alterados (OK)
+Enviar Carga para os PDVS (OK)
+verificar comandos pdv (OK)
+verificar tabela de produtos (OK) 
+verifica tabela de produtoLojas (OK) 
+verifica tabela de preços alterados (OK)
+realizar exportação  (OK)
+verificar preço no gestão e pdv   (OK)
+
+
+OFFLINE + produto com a conf. (Vincular Preço de Venda a % Total dos itens)
+
+Produto 18575- valor de venda inicial R$ 6,50
+Produto 42141 (gelado)- valor de venda inicial R$ 6,70
+
+Lançamento de nf entrada do produto 18575 => custo = R$ 5,50 
+alteração de preço pelo controle de entradas do produto 18575 para R$ 7,00 
+alteração de preço automática do produto 42141 (ok foi para 6,70)
+
+verificar comandos pdv   (OK)
+verificar tabela de produtos   (OK)
+verifica tabela de produtoLojas  (OK) 
+verifica tabela de preços alterados (OK)
+
+Enviar Carga para os PDVS (OK)
+verificar comandos pdv (OK)
+verificar tabela de produtos (OK) 
+verifica tabela de produtoLojas (OK) 
+verifica tabela de preços alterados (OK)
+
+realizar exportação   (OK)
+verificar preço no gestão e pdv   (OK)
+
+OFFLINE + promoção 
+
+Produto 40224 - valor de venda inicial R$ 5,00
+
+Lançamento de nf entrada => custo = R$ 4,50 
+criar promoção para o produto => R$ 4,00
+
+Enviar carga para o pdv  (OK)
+
+alteração de preço pelo controle de entradas do produto 40224 para R$ 6,00
+
+Enviar carga para o pdv  (OK)
+
+verificar comandos pdv   (OK)  
+verificar tabela de produtos     (OK)
+verifica tabela de produtoLojas  (OK)
+   
+realizar exportação  (OK)    
+
+verificar preço no gestão e pdv     (OK) 
+
+Finalizar promoção (OK)    
+
+verificar comandos pdv (OK)      
+verificar tabela de produtos (OK)      
+verifica tabela de produtoLojas (OK)     
+      
+
+Enviar carga para o pdv  (OK)
+
+verificar comandos pdv (OK)      
+verificar tabela de produtos (OK)      
+verifica tabela de produtoLojas (OK) 
+
+realizar exportação        (OK) 
+verificar preço no gestão e pdv (OK) 
+
+
+
+OFFLINE + produtos associados 
+
+Produto 12810- valor de venda inicial R$ 4,00
+Produto 21341- valor de venda inicial R$ 4,00
+Produto 5888- valor de venda inicial R$ 4,00
+
+
+Lançamento de nf entrada produto 12810 custo = R$ 3,5 
+
+alteração de preço pelo controle de entradas do produto 12810 para R$ 5,50 
+
+verificar comandos pdv -todos produtos (OK)  
+verificar tabela de produtos -todos produtos (OK)  
+verifica tabela de produtoLojas -todos produtos (OK)  
+verifica tabela de preços alterados -todos produtos  (OK) 
+
+enviar carga para os pdvs  (OK)  
+
+verificar comandos pdv -todos produtos  (OK)   
+verificar tabela de produtos -todos produtos  (OK)   
+verifica tabela de produtoLojas -todos produtos  (OK)   
+verifica tabela de preços alterados -todos produtos  (OK)   
+
+exportação  
+verificar preço no gestão e pdv
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
