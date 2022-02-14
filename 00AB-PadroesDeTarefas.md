@@ -30,6 +30,11 @@ Descrição das variáveis:
 
 1. Tratar no frmModulos.cmdRestaurar_Click conforme padrão do procedimento
 
+
+arquivo de categorias
+https://docs.google.com/document/d/17U5pcJoUfe2-p-8dTkpBf5nLfqJjwwRKo9rcM5rgYxg/edit
+
+
 ## Tarefa X: Criar Verifica Banco
 
 >Observações:
