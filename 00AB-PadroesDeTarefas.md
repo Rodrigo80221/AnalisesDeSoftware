@@ -349,6 +349,7 @@ exportação
 verificar preço no gestão e pdv
 
 
+![image](https://user-images.githubusercontent.com/80394522/157093472-b351595b-a303-4b50-a3fe-9e54e2982c8c.png)
 
 
 
