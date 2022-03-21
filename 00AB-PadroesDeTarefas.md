@@ -365,7 +365,96 @@ verificar preço no gestão e pdv
 
 
 
+                // aqui criar mensagem
+
+                if (ex.Message.Contains("Could not load file or assembly 'CefSharp.Core.Runtime.dll' or one of its dependencies. The specified module could not be found."))
+                {
+                   if (Msg.Perguntar("Não é possível abrir o Sistema S" + Environment.NewLine + Environment.NewLine
+                        + "O pacote de bibliotecas de runtime do Microsoft C e C++ está desatualizado" + Environment.NewLine + Environment.NewLine
+                        + "Deseja instalar o pacote de atualizações?") == DialogResult.Yes)
+                    {
+                        string url = "http://aka.ms/vs/17/release/vc_redist.x86.exe";
+
+                        string caminho = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Telecon_Sistemas" + @"\vc_redist.x86.exe.jpg";
+                        
+                       
+                       Internet.BaixarArquivo(url, caminho);                                               
+                    }
+                }
 
 
 
 
+
+
+
+
+
+
+
+        private void DownloadFrame()
+        {
+        
+            using (WebClient webClient = new WebClient())
+            {
+                webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(delegate (object sender, DownloadProgressChangedEventArgs e)
+                {
+                    Console.WriteLine("Downloaded:" + e.ProgressPercentage.ToString());
+                    //Msg.Informar(e.ProgressPercentage.ToString());
+                });
+
+                webClient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler
+                    (delegate (object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+                    {
+                        if (e.Error == null && !e.Cancelled)
+                        {
+                            Console.WriteLine("Download completed!");
+                            //Msg.Informar("Download do arquivo concluído!");
+                        }
+                    });
+                webClient.DownloadFileAsync(new Uri("https://ninite.com/.net4.8/ninite.exe"), @"C:\Telecon_Sistemas\ninite.exe");
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+               private void AtualizarFrame()
+        {
+            Process processo = new Process();
+            processo.StartInfo.FileName = @"C:\Telecon_Sistemas\ninite.exe";
+            bool existeArquivo = File.Exists(@"C:\Telecon_Sistemas\ninite.exe");
+        
+            if (existeArquivo)
+            {
+    
+               processo.StartInfo.RedirectStandardOutput = true;
+               processo.StartInfo.UseShellExecute = false;
+               processo.StartInfo.CreateNoWindow = true;
+
+               processo.Start();
+               processo.WaitForExit();
+                          
+               // Reiniciar o micro
+               var pergunta = Msg.PerguntarPadraoNao("Reinicie o Computador para que a atualização seja concluída. \n\nDeseja reiniciar agora?");
+
+               if (pergunta == DialogResult.Yes)
+               {
+                    ReiniciarMicro();
+               }
+
+            }
+            else
+            {
+                Msg.Informar("Arquivo (.exe) não localizado!");
+                return;
+            }
+        }
