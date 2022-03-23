@@ -1,4 +1,6 @@
-## criar tabela OrigemPrecosAlterados e coluna CodOrigem na tabela preços alterados 
+## Criar verifica banco
+
+criar tabela OrigemPrecosAlterados e coluna CodOrigem na tabela preços alterados 
 
 Criar tabela OrigemPrecosAlterados
 Utilizar Funcoes.fExisteObjeto
@@ -27,9 +29,9 @@ ALTER TABLE PRECOS_ALTERADOS ADD CodOrigem Tinyint null default 7
 criar também no arquivo morto, tratar utilizando fExisteCampo
 ALTER TABLE PRECOS_ALTERADOS_ARQ_MORTO ADD CodOrigem Tinyint null default 7
 
+Dar um update nos registros antigos colocando todos no código 7 tanto na tabela preços alterados quanto na arquivo morto
 
-
-## Criar enum publico eOrigemPrecosAlterados
+## Criar enum público eOrigemPrecosAlterados
 Criar enum no mdlGestao junto com as outras variáveis globais
 Criar igual a tabela OrigemPrecosAlterados na formatação CamelCase
 ex:
@@ -137,12 +139,23 @@ Testar a funcinalidade criando promoções
 
 
 ## Tratar o procedimento frmPrecosAlterados.cmdRemover_Click
-não possibilitar excluir produtos de origem da promoção
- 
+não possibilitar excluir produtos de origem da promoção, mostrar a mensagem abaixo
+
+O registro de preço alterado do produto 9999 XXXX tem a origem "Promoções" e não poderá ser removido.
+
+Fazer testes validando que não é possível remover um produto de promoção 
+
 
 ## Tratar o procedimento frmPrecosAlterados.cmdRemover_Click
 ao remover um produto filho de fórmula avisar
 
+
+## Tratar o procedimento frmPrecosAlterados.cmdRemover_Click
+Resolver o bug de vulnerabilidade abaixo
+Se abrirmos o controle de entradas em 2 computadores, listar nos 2, enviar carga em 1 e no outro remover os registros, é possível
+remover registros que já tiveram a carga enviada. Isso nunca pode acontecer
+
+Tarefa: ao excluir um registro ir no banco e testar novamente com um select se o registro já não teve a carga enviada
 
 
 
