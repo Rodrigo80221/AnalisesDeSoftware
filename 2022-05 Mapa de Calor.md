@@ -1,4 +1,4 @@
-## 1. ALTERAÇÃO DA CLASSE MAPA DE CALOR > Telecon.GestaoComercial.Biblioteca.Outros.MapaCalor
+### 1. ALTERAÇÃO DA CLASSE MAPA DE CALOR > Telecon.GestaoComercial.Biblioteca.Outros.MapaCalor
 
 ``` csharp
         public static bool RegistrarNoMapaDeCalor(IBanco banco, int codModuloCustomerSuccess, int codOperador, int codLoja)
@@ -28,19 +28,23 @@
 
         }		
 ```
+
 		
 ## 2. INCLUSÃO DO MAPA DE CALOR NO BOTÃO DO YOUTUBE (COLOCAR NO INÍCIO DO CÓDIGO DO BOTÃO)
 
-`` csharp
+
+``` csharp
             if (!CwbSite.Address.Contains("youtube"))
             {
                 MapaCalor.RegistrarNoMapaDeCalor(Utilitarios.ObterConexao(), XXXXX, VariaveisGlobais.CodOperador, VariaveisGlobais.CodLoja);
             }		
 ```	    
+
 			
 ## 3. ALTERAÇÃO DA CLASSE DE COMUNICAÇÃO JAVASCRIPT > GestaoComercial.Classes.ComunicacaoCwbSite
 
-`` csharp
+
+``` csharp
         public void registrarNoMapaDeCalor(int codModuloCustomerSuccess)
         {
             
@@ -52,7 +56,7 @@
  	
 	- EDIÇÃO AVANÇADA > JAVASCRIPT EM BODY
 
-`` csharp
+``` csharp
 		<script type="text/javascript">
 			
 			document.getElementById("rd-button-kx0rm8t8").onclick = function () { ComunicacaoCwbSite.registrarNoMapaDeCalor(XXXXX); }
