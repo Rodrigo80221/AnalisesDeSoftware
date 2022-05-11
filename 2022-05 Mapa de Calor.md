@@ -30,7 +30,7 @@
 ```
 
 		
-## 2. INCLUSÃO DO MAPA DE CALOR NO BOTÃO DO YOUTUBE (COLOCAR NO INÍCIO DO CÓDIGO DO BOTÃO)
+### 2. INCLUSÃO DO MAPA DE CALOR NO BOTÃO DO YOUTUBE (COLOCAR NO INÍCIO DO CÓDIGO DO BOTÃO)
 
 
 ``` csharp
@@ -41,7 +41,7 @@
 ```	    
 
 			
-## 3. ALTERAÇÃO DA CLASSE DE COMUNICAÇÃO JAVASCRIPT > GestaoComercial.Classes.ComunicacaoCwbSite
+### 3. ALTERAÇÃO DA CLASSE DE COMUNICAÇÃO JAVASCRIPT > GestaoComercial.Classes.ComunicacaoCwbSite
 
 
 ``` csharp
@@ -52,11 +52,11 @@
         }		
 ```	
 		
-## 4. SITE RD STATION
+### 4. SITE RD STATION
  	
 	- EDIÇÃO AVANÇADA > JAVASCRIPT EM BODY
 
-``` csharp
+``` javascript
 		<script type="text/javascript">
 			
 			document.getElementById("rd-button-kx0rm8t8").onclick = function () { ComunicacaoCwbSite.registrarNoMapaDeCalor(XXXXX); }
