@@ -74,44 +74,26 @@
 ### 2. INCLUSÃO DO MAPA DE CALOR NOS BOTÕES DO SISTEMA S (COLOCAR NO INÍCIO DO CÓDIGO DE CADA BOTÃO)
 
 2.1. Alterar o procedimento FrmPrincipal.CarregarNavegador adicionando o parâmetro MapaCalor.CodCustomerSuccess codCustomerSuccess
+
 	- Neste procedimento após o código `_estadoBrowser = _estadoChromiumBrowser.Normal;` add o código abaixo
+	
 	``` csharp
 	MapaCalor.RegistrarNoMapaDeCalor(Utilitarios.ObterConexao(), codCustomerSuccess, VariaveisGlobais.CodOperador, VariaveisGlobais.CodLoja);	
 	```	
 
-2.2. Criar na classe MapaCalor o procedimento RetornarCodCustomerSucessDaLPDoSetor que receba um parâmetro do tipo `Setor.Setores` e retorne um `MapaCalor.CodCustomerSuccess`. Realizar os cruzamentos manualmente. Ex. Entra Setores.Compras e retorna CodCustomerSuccess.SistemaS_LPCompras
+2.2. Criar na classe MapaCalor o procedimento `RetornarCodCustomerSucessDaLPDoSetor` que receba um parâmetro do tipo `Setor.Setores` e retorne um `MapaCalor.CodCustomerSuccess`. Realizar os cruzamentos manualmente. Ex. Entra Setores.Compras e retorna CodCustomerSuccess.SistemaS_LPCompras
 
-	- Alterar o procedimento CarregarLandingPage para inserir no mapa de calor utilizando MapaCalor.RegistrarNoMapaDeCalor. inserir o código dentro do Invoke.
-	- Testar nos alertas do sistema S (sininhos) e também no botão 
+	- Alterar o procedimento CarregarLandingPage para utilizar o procedimento `RetornarCodCustomerSucessDaLPDoSetor` como parametro na chamada do procedimento `CarregarNavegador`
+	
+2.3. Adicionar o parâmetro criados em todas chamadas abaixo do procedimento CarregarLandingPage
 
-
-
-
-
-
-
-
+	CarregarLinkTelaProcessos - CodCustomerSuccess.SistemaS_Processos
+	btnMoviDesk_Click - CodCustomerSuccess.SistemaS_BaseDeConhecimento
+	btnYouTube_Click - CodCustomerSuccess.SistemaS_YouTube
+	btnChamadoMoviDesk_Click - CodCustomerSuccess.SistemaS_PortalDoCliente
 
 
 
-
-    
-
-2.2. Utilizar a mesma lógica para os botões abaixo
-
-Sistema S - Base de Conhecimento
-Sistema S - Portal do Cliente
-
-2.3. No botão de menu alterar o procedimento AlterarEstadoMenuTelaClassica colocando o código abaixo no else
-
-``` csharp
- MapaCalor.RegistrarNoMapaDeCalor(Utilitarios.ObterConexao(), CodCustomerSuccess.SistemaS_MenuEBuscaDeFormularios, VariaveisGlobais.CodOperador, VariaveisGlobais.CodLoja);
-```
-
-
-
-
-Sistema S - Processos ???
 
 			
 ### 3. ALTERAÇÃO DA CLASSE DE COMUNICAÇÃO JAVASCRIPT > GestaoComercial.Classes.ComunicacaoCwbSite
