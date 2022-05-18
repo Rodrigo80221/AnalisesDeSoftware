@@ -2,6 +2,8 @@
 
 1.1. Criar o enum abaixo na classe que NÂO é sobrescrita pelo telecode
 
+Descrição: Criar código para as próximas tarefas
+
 ``` csharp
         public enum CodCustomerSuccess
         {
@@ -73,13 +75,23 @@
 
 ### 2. INCLUSÃO DO MAPA DE CALOR NOS BOTÕES DO SISTEMA S (COLOCAR NO INÍCIO DO CÓDIGO DE CADA BOTÃO)
 
+Descrição: Ao clicar nos botões abaixo registrar um registro na tabela MapaCalor no banco de dados. Após estar rodando nos clientes essa tabela é enviada para o sistema Customer Success da Telecon gerando informações gerenciais dos clientes.
+O importante neste momento é apenas gerar a informação de registro corretamente na tabela do banco de dados, ou seja, se clicarmos no ícone do Youtube gerar um log na tabela. Devemos gerar esse log nas funcionalidades abaixo
+
+Botões das Landing Pages (sininhos da tela do sistema S ou Botão Notificações na tela de cada setor)
+Botão movidesk
+botão youtube
+botao chamado  movidesk
+
 2.1. Alterar o procedimento FrmPrincipal.CarregarNavegador adicionando o parâmetro MapaCalor.CodCustomerSuccess codCustomerSuccess
 
 	- Neste procedimento após o código `_estadoBrowser = _estadoChromiumBrowser.Normal;` add o código abaixo
 	
-	``` csharp
+``` csharp
+
 	MapaCalor.RegistrarNoMapaDeCalor(Utilitarios.ObterConexao(), codCustomerSuccess, VariaveisGlobais.CodOperador, VariaveisGlobais.CodLoja);	
-	```	
+
+```	
 
 2.2. Criar na classe MapaCalor o procedimento `RetornarCodCustomerSucessDaLPDoSetor` que receba um parâmetro do tipo `Setor.Setores` e retorne um `MapaCalor.CodCustomerSuccess`. Realizar os cruzamentos manualmente. Ex. Entra Setores.Compras e retorna CodCustomerSuccess.SistemaS_LPCompras
 
@@ -93,7 +105,11 @@
 	btnChamadoMoviDesk_Click - CodCustomerSuccess.SistemaS_PortalDoCliente
 
 
-
+3. Testar os botões abaixo para certificar que está criando corretamente o log na table MapaCalor, cuidar para ver se gerou apenas 1 vez ao abrir e fechar cada recurso.
+Botões das Landing Pages (sininhos da tela do sistema S ou Botão Notificações na tela de cada setor)
+Botão movidesk
+botão youtube
+botao chamado  movidesk
 
 			
 ### 3. ALTERAÇÃO DA CLASSE DE COMUNICAÇÃO JAVASCRIPT > GestaoComercial.Classes.ComunicacaoCwbSite
