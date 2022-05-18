@@ -1,3 +1,30 @@
+Sistema S - Base de Conhecimento
+Sistema S - Portal do Cliente
+Sistema S - YouTube
+Sistema S - Processos ???
+Sistema S - Menu e Busca de Formulários ??
+
+Sistema S - LP Compras
+Sistema S - LP Estoques
+Sistema S - LP Retaguarda
+Sistema S - LP Loja
+Sistema S - LP Caixas
+Sistema S - LP Açougue
+Sistema S - LP Padaria
+Sistema S - LP Hortifruti
+Sistema S - LP T.I
+Sistema S - LP Financeiro
+Sistema S - LP Fiscal
+Sistema S - LP Marketing
+Sistema S - LP Jurídico
+Sistema S - LP R.H.
+Sistema S - LP Indicadores
+
+
+Sistema S - LP Compras Artigo AAAA
+Sistema S - LP Compras Artigo BBBB
+
+
 ### 1. ALTERAÇÃO DA CLASSE MAPA DE CALOR > Telecon.GestaoComercial.Biblioteca.Outros.MapaCalor
 
 1.1. Criar o enum abaixo na classe que NÂO é sobrescrita pelo telecode
