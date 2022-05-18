@@ -1,6 +1,6 @@
 ### 1. ALTERAÇÃO DA CLASSE MAPA DE CALOR > Telecon.GestaoComercial.Biblioteca.Outros.MapaCalor
 
-1. Criar o enum abaixo na classe que NÂO é sobrescrita pelo telecode
+1.1. Criar o enum abaixo na classe que NÂO é sobrescrita pelo telecode
 
 ``` csharp
         public enum CodCustomerSuccess
@@ -38,7 +38,7 @@
 ```
 
 
-1. Criar o procedimento abaixo na classe que NÂO é sobrescrita pelo telecode
+1.2. Criar o procedimento abaixo na classe que NÂO é sobrescrita pelo telecode
 
 ``` csharp
         public static bool RegistrarNoMapaDeCalor(IBanco banco, CodCustomerSuccess codModuloCustomerSuccess, int codOperador, int codLoja)
@@ -77,7 +77,7 @@
 ``` csharp
             if (!CwbSite.Address.Contains("youtube"))
             {
-                MapaCalor.RegistrarNoMapaDeCalor(Utilitarios.ObterConexao(), XXXXX, VariaveisGlobais.CodOperador, VariaveisGlobais.CodLoja);
+                MapaCalor.RegistrarNoMapaDeCalor(Utilitarios.ObterConexao(), CodCustomerSuccess.SistemaSYoutube, VariaveisGlobais.CodOperador, VariaveisGlobais.CodLoja);
             }		
 ```	    
 
