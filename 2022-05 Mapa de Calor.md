@@ -1,12 +1,16 @@
-Sistema S - Base de Conhecimento
+Sistema S - Base de Conhecimento (testar os 3 botões - base de conhecimento - hitorico de versoes - mural)
 
-Sistema S - Portal do Cliente
+Sistema S - Portal do Cliente (Não precisa)
 
-Sistema S - YouTube
+Sistema S - YouTube 
 
-Sistema S - Processos ???
+Sistema S - Processos (Fazer separado por processo - CONFIRMAR)
 
-Sistema S - Menu e Busca de Formulários ??
+Sistema S - Menu e Busca de Formulários - colocar no clique da ferramenta
+
+Sistema S - Setor geral - (colocar no clique da ferramenta - CONFIRMAR)
+
+Sistema S - Tela Clássica 
 
 --------------------------------------------------------------------------------------
 
