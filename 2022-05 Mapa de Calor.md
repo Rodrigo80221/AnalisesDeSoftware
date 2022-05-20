@@ -6,7 +6,7 @@ SS - Menu > Ferramentas              | Qtd. cliques nas ferramentas por meio do 
 
 SS - Botão Tela Clássica             | Qtd. cliques no botão tela clássica dentro do setor retaguarda.
 
-SS - LP Compras                      | Qtd. cliques no botão da Landing Page através do sininho ou do botão setor > notificações
+SS - LP Compras                      | Qtd. cliques no botão da Landing Page através do sininho ou do botão setor > Notificações
 
 SS - LP Estoques
 
