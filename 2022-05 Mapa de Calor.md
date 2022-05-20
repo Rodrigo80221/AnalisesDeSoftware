@@ -76,7 +76,7 @@ Descrição: Criar código para as próximas tarefas
             PedidoDeCompra = 5,
             PackVirtual = 6,
             ProdutosSemMovimentacao = 7,
-            Excluido = 8,
+
             ControleDeEntradas = 9,
             DiferencaDeCompraEVenda = 10,
             AbcDeMercadorias = 11,
@@ -98,6 +98,14 @@ Descrição: Criar código para as próximas tarefas
             SimuladorDePrecos = 27,
             TelaClassica = 28,
             NotasFiscaisComErros = 29
+	    	    	    	    
+     	    BaseDeConhecimento = 31,
+	    BC_BaseDeConhecimento = 32,
+	    BC_HistoricoDeVersoes = 33,
+	    BC_MuralDeIdeias = 34,
+	    BC_BlogGrupoTelecon = 35
+	    
+	    
         }
 ```
 
