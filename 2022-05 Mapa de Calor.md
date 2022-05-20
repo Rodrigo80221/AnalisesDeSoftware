@@ -82,27 +82,26 @@ Descrição: Criar código para as próximas tarefas
 	    SS_BC_BaseDeConhecimento = 32,
 	    SS_BC_HistoricoDeVersoes = 33,
 	    SS_BC_MuralDeIdeias = 34,
-	    SS_BC_BlogGrupoTelecon = 35,
-	    
-	    SS_YouTube =
-	    SS_ProcessosFerramentas =
-	    SS_MenuFerramentas =
-	    SS_BotaoTelaClassica =
-	    SS_LPCompras =
-	    SS_LPEstoques =
-	    SS_LPRetaguarda =
-	    SS_LPLoja =
-	    SS_LPCaixas =
-	    SS_LPAcougue =
-	    SS_LPPadaria =
-	    SS_LPHortifruti =
-	    SS_LPTI =
-	    SS_LPFinanceiro =
-	    SS_LPFiscal =
-	    SS_LPMarketing =
-	    SS_LPJuridico =
-	    SS_LPRH =
-	    SS_LPIndicadores =	    
+	    SS_BC_BlogGrupoTelecon = 35,	   
+	    SS_YouTube = 36,
+	    SS_ProcessosFerramentas = 37,
+	    SS_MenuFerramentas = 38,
+	    SS_BotaoTelaClassica = 39,
+	    SS_LPCompras = 40,
+	    SS_LPEstoques = 41,
+	    SS_LPRetaguarda = 42,
+	    SS_LPLoja = 43,
+	    SS_LPCaixas = 44,
+	    SS_LPAcougue = 45,
+	    SS_LPPadaria = 46,
+	    SS_LPHortifruti = 47,
+	    SS_LPTI = 48,
+	    SS_LPFinanceiro = 49,
+	    SS_LPFiscal = 50,
+	    SS_LPMarketing = 51,
+	    SS_LPJuridico = 52,
+	    SS_LPRH = 53,
+	    SS_LPIndicadores = 54	     
 	    
 	    
         }
