@@ -145,6 +145,8 @@ Descrição: Criar código para as próximas tarefas
 
 ### 2. INCLUSÃO DO MAPA DE CALOR NOS BOTÕES DO SISTEMA S (COLOCAR NO INÍCIO DO CÓDIGO DE CADA BOTÃO)
 
+obs: Lembrar que o mapa de calor não funciona para o operador Telecon
+
 Descrição: Ao clicar nos botões abaixo registrar um registro na tabela MapaCalor no banco de dados. Após estar rodando nos clientes essa tabela é enviada para o sistema Customer Success da Telecon gerando informações gerenciais dos clientes.
 O importante neste momento é apenas gerar a informação de registro corretamente na tabela do banco de dados, ou seja, se clicarmos no ícone do Youtube gerar um log na tabela. Devemos gerar esse log nas funcionalidades abaixo
 
@@ -180,6 +182,9 @@ Botões das Landing Pages (sininhos da tela do sistema S ou Botão Notificaçõe
 Botão movidesk
 botão youtube
 botao chamado  movidesk
+
+Testar o botão da base de conhecimento
+Testar os botões dentro da base de conhecimento (Base de Conhedimento, Histórico de Versões, Mural de idéias, Blog Grupo Telecon)
 
 			
 ### 3. ALTERAÇÃO DA CLASSE DE COMUNICAÇÃO JAVASCRIPT > GestaoComercial.Classes.ComunicacaoCwbSite
