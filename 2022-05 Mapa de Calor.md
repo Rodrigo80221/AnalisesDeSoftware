@@ -1,62 +1,41 @@
-Sistema S - Base de Conhecimento (testar os 3 botões - base de conhecimento - hitorico de versoes - mural)
+SS - YouTube                         | Qtd. cliques no botão "YouTube" do menu da direita da nova tela do sistema S.
 
-Sistema S - Portal do Cliente (Não precisa)
+SS - Processos > Ferramentas         | Qtd. cliques nas ferramentas dentro dos setores.
 
-Sistema S - YouTube 
+SS - Menu > Ferramentas              | Qtd. cliques nas ferramentas por meio do menu e busca.
 
-Sistema S - Processos (Fazer separado por processo - CONFIRMAR)
+SS - Botão Tela Clássica             | Qtd. cliques no botão tela clássica dentro do setor retaguarda.
 
-Sistema S - Menu e Busca de Formulários - colocar no clique da ferramenta
+SS - LP Compras                      | Qtd. cliques no botão da Landing Page através do sininho ou do botão setor > notificações
 
-Sistema S - Setor geral - (colocar no clique da ferramenta - CONFIRMAR)
+SS - LP Estoques
 
-Sistema S - Tela Clássica 
+SS - LP Retaguarda
 
---------------------------------------------------------------------------------------
+SS - LP Loja
 
-Sistema S - LP Compras
+SS - LP Caixas
 
-Sistema S - LP Estoques
+SS - LP Açougue
 
-Sistema S - LP Retaguarda
+SS - LP Padaria
 
-Sistema S - LP Loja
+SS - LP Hortifruti
 
-Sistema S - LP Caixas
+SS - LP T.I
 
-Sistema S - LP Açougue
+SS - LP Financeiro
 
-Sistema S - LP Padaria
+SS - LP Fiscal
 
-Sistema S - LP Hortifruti
+SS - LP Marketing
 
-Sistema S - LP T.I
+SS - LP Jurídico
 
-Sistema S - LP Financeiro
+SS - LP R.H.
 
-Sistema S - LP Fiscal
+SS - LP Indicadores
 
-Sistema S - LP Marketing
-
-Sistema S - LP Jurídico
-
-Sistema S - LP R.H.
-
-Sistema S - LP Indicadores
-
---------------------------------------------------------------------------------------
-
-Sistema S - LP Compras Artigo AAAA
-
-Sistema S - LP Compras Artigo BBBB
-
---------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------
 
@@ -143,12 +122,13 @@ Descrição: Criar código para as próximas tarefas
 
 
 
-### 2. INCLUSÃO DO MAPA DE CALOR NOS BOTÕES DO SISTEMA S (COLOCAR NO INÍCIO DO CÓDIGO DE CADA BOTÃO)
+### 2. INCLUSÃO DO MAPA DE CALOR NOS BOTÕES DO SISTEMA S 
 
 obs: Lembrar que o mapa de calor não funciona para o operador Telecon
 
 Descrição: Ao clicar nos botões abaixo registrar um registro na tabela MapaCalor no banco de dados. Após estar rodando nos clientes essa tabela é enviada para o sistema Customer Success da Telecon gerando informações gerenciais dos clientes.
-O importante neste momento é apenas gerar a informação de registro corretamente na tabela do banco de dados, ou seja, se clicarmos no ícone do Youtube gerar um log na tabela. Devemos gerar esse log nas funcionalidades abaixo
+O importante neste momento é apenas gerar a informação de registro corretamente na tabela do banco de dados, ou seja, se clicarmos no ícone do Youtube gerar um log na tabela. Devemos cuidar para não gerar informações desnecessárias, por exemplo, ao clicar no botão youtube para recolher a aba.
+Devemos gerar esse log nas funcionalidades abaixo:
 
 Botões das Landing Pages (sininhos da tela do sistema S ou Botão Notificações na tela de cada setor)
 Botão movidesk
@@ -177,14 +157,6 @@ botao chamado  movidesk
 	btnChamadoMoviDesk_Click - CodCustomerSuccess.SistemaS_PortalDoCliente
 
 
-3. Testar os botões abaixo para certificar que está criando corretamente o log na table MapaCalor, cuidar para ver se gerou apenas 1 vez ao abrir e fechar cada recurso.
-Botões das Landing Pages (sininhos da tela do sistema S ou Botão Notificações na tela de cada setor)
-Botão movidesk
-botão youtube
-botao chamado  movidesk
-
-Testar o botão da base de conhecimento
-Testar os botões dentro da base de conhecimento (Base de Conhedimento, Histórico de Versões, Mural de idéias, Blog Grupo Telecon)
 
 			
 ### 3. ALTERAÇÃO DA CLASSE DE COMUNICAÇÃO JAVASCRIPT > GestaoComercial.Classes.ComunicacaoCwbSite
@@ -194,10 +166,42 @@ Testar os botões dentro da base de conhecimento (Base de Conhedimento, Históri
         public void registrarNoMapaDeCalor(int codModuloCustomerSuccess)
         {
             
-            MapaCalor.RegistrarNoMapaDeCalor(Utilitarios.ObterConexao(), codModuloCustomerSuccess, VariaveisGlobais.CodOperador, VariaveisGlobais.CodLoja);
+            MapaCalor.RegistrarNoMapaDeCalor(Utilitarios.ObterConexao(), enum ModuloCustomerSuccess, VariaveisGlobais.CodOperador, VariaveisGlobais.CodLoja);
         }		
 ```	
-		
+	
+
+3.1. Testar os botões abaixo para certificar que está criando corretamente o log na table MapaCalor, cuidar para ver se gerou apenas 1 vez ao abrir e fechar cada recurso.
+Botões das Landing Pages (sininhos da tela do sistema S ou Botão Notificações na tela de cada setor)
+Botão movidesk
+botão youtube
+botao chamado  movidesk
+
+Testar o botão da base de conhecimento
+Testar os botões dentro da base de conhecimento (Base de Conhedimento, Histórico de Versões, Mural de idéias, Blog Grupo Telecon)
+
+	
+### 4. 	Criar registro no mapa de calor no click das ferramentas no Menu e Busca de Formulários
+
+namespace GestaoComercial.Classes.ComunicacaoChromium.ComunicacaoCwbMenuTelaClassica.abrirFormulario
+
+colocar o código abaixo dentro do invoke e testar se funciona
+MapaCalor.RegistrarNoMapaDeCalor(Utilitarios.ObterConexao(), enum CustomerSuccess, VariaveisGlobais.CodOperador, VariaveisGlobais.CodLoja);
+	
+### 5. 	Criar registro no mapa de calor no click das ferramentas dentro dos setores	
+	
+GestaoComercial.Formularios.FrmProcesso.AbrirRecurso
+
+### 6. 	Criar registro no mapa de calor no botão Retaguarda > Tela clássica
+
+inserir o código abaixo
+MapaCalor.RegistrarNoMapaDeCalor(Utilitarios.ObterConexao(), enum CustomerSuccess, VariaveisGlobais.CodOperador, VariaveisGlobais.CodLoja);
+
+
+
+
+
+
 ### 4. SITE RD STATION
  	
 	- EDIÇÃO AVANÇADA > JAVASCRIPT EM BODY
