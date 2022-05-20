@@ -78,11 +78,31 @@ Descrição: Criar código para as próximas tarefas
             TelaClassica = 28,
             NotasFiscaisComErros = 29,
 	    	    	    	    
-     	    BaseDeConhecimento = 31,
-	    BC_BaseDeConhecimento = 32,
-	    BC_HistoricoDeVersoes = 33,
-	    BC_MuralDeIdeias = 34,
-	    BC_BlogGrupoTelecon = 35
+     	    SS_BaseDeConhecimento = 31,
+	    SS_BC_BaseDeConhecimento = 32,
+	    SS_BC_HistoricoDeVersoes = 33,
+	    SS_BC_MuralDeIdeias = 34,
+	    SS_BC_BlogGrupoTelecon = 35,
+	    
+	    SS_YouTube =
+	    SS_ProcessosFerramentas =
+	    SS_MenuFerramentas =
+	    SS_BotaoTelaClassica =
+	    SS_LPCompras =
+	    SS_LPEstoques =
+	    SS_LPRetaguarda =
+	    SS_LPLoja =
+	    SS_LPCaixas =
+	    SS_LPAcougue =
+	    SS_LPPadaria =
+	    SS_LPHortifruti =
+	    SS_LPTI =
+	    SS_LPFinanceiro =
+	    SS_LPFiscal =
+	    SS_LPMarketing =
+	    SS_LPJuridico =
+	    SS_LPRH =
+	    SS_LPIndicadores =	    
 	    
 	    
         }
