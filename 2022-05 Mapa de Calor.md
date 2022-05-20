@@ -97,7 +97,7 @@ Descrição: Criar código para as próximas tarefas
             SalaDeComando = 26,
             SimuladorDePrecos = 27,
             TelaClassica = 28,
-            NotasFiscaisComErros = 29
+            NotasFiscaisComErros = 29,
 	    	    	    	    
      	    BaseDeConhecimento = 31,
 	    BC_BaseDeConhecimento = 32,
