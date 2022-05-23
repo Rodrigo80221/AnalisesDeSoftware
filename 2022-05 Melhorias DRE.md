@@ -10,7 +10,7 @@
 ![image](https://user-images.githubusercontent.com/80394522/169874442-68c0a11b-99ac-40c3-bea0-613ada85b679.png)
 
 
-![image](https://user-images.githubusercontent.com/80394522/169874541-7b3ee2ba-4ccf-4a83-b854-88cac08f6387.png)
+
 
 
 
@@ -26,4 +26,8 @@ Criar a configuração abaixo na tabela de configurações
 
 ------------------------------------------------------------------------------------------------------
 
+Após gerar o relatório instanciar o objeto GestaoComercial.Formularios.Indicadores.ResultadoDaLoja.CarregarVisaoGeral 
 
+
+
+![image](https://user-images.githubusercontent.com/80394522/169874541-7b3ee2ba-4ccf-4a83-b854-88cac08f6387.png)
