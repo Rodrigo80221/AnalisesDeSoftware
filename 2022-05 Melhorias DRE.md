@@ -11,3 +11,19 @@
 
 
 ![image](https://user-images.githubusercontent.com/80394522/169874541-7b3ee2ba-4ccf-4a83-b854-88cac08f6387.png)
+
+
+
+
+------------------------------------------------------------------------------------------------------
+Pré Requisito: Necessita do Finish da branch feature/ABC_2_0_Relatorio
+
+------------------------------------------------------------------------------------------------------
+
+Criar a configuração abaixo na tabela de configurações
+
+![image](https://user-images.githubusercontent.com/80394522/169920886-889e6dfa-64cd-4590-8bee-36b73fe3270d.png)
+
+------------------------------------------------------------------------------------------------------
+
+
