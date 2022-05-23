@@ -26,8 +26,15 @@ Criar a configuração abaixo na tabela de configurações
 
 ------------------------------------------------------------------------------------------------------
 
-Após gerar o relatório instanciar o objeto GestaoComercial.Formularios.Indicadores.ResultadoDaLoja.CarregarVisaoGeral 
+Criar no formulário abaixo o mesmo label de período que na tela do abc, fazer o tratamento também para não selecionar uma data posterior
+Utilizar o mesmo código e não duplicar, se necessário mudar o código de lugar deixando ele público
 
+![image](https://user-images.githubusercontent.com/80394522/169921621-b7ae6b6b-8481-4ec4-88d1-d6704c556e2f.png)
 
+------------------------------------------------------------------------------------------------------
+
+Ao clicar em visualizar instanciar o objeto GestaoComercial.Formularios.Indicadores.ResultadoDaLoja.CarregarVisaoGeral 
 
 ![image](https://user-images.githubusercontent.com/80394522/169874541-7b3ee2ba-4ccf-4a83-b854-88cac08f6387.png)
+
+
