@@ -22,7 +22,7 @@ Pré Requisito: Necessita do Finish da branch feature/ABC_2_0_Relatorio
 
 Criar a configuração abaixo na tabela de configurações
 
-![image](https://user-images.githubusercontent.com/80394522/169920886-889e6dfa-64cd-4590-8bee-36b73fe3270d.png)
+![image](https://user-images.githubusercontent.com/80394522/169923113-7c0c2e39-b5ce-4e2c-b206-a60eff5b98c1.png)
 
 ------------------------------------------------------------------------------------------------------
 
