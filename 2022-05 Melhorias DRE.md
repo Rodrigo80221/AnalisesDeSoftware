@@ -33,8 +33,15 @@ Utilizar o mesmo código e não duplicar, se necessário mudar o código de luga
 
 ------------------------------------------------------------------------------------------------------
 
-Ao clicar em visualizar caso a configuração criada esteja marcada instanciar o objeto GestaoComercial.Formularios.Indicadores.ResultadoDaLoja.CarregarVisaoGeral para obtermos os dados do relatório abc de mercadorias, marcar como true o parâmetro das transferências
+Ao clicar em visualizar caso a configuração criada esteja marcada instanciar o objeto GestaoComercial.Formularios.Indicadores.ResultadoDaLoja.CarregarVisaoGeral para obtermos os dados do relatório abc de mercadorias
+Utilizar os parâmetros de data da tela
+Utilizar o cmv da configuração (médio ou gerencial)
+utilizar as transferências configuradas
+os outros parametros são em branco , zero ou nulos
 
 ![image](https://user-images.githubusercontent.com/80394522/169874541-7b3ee2ba-4ccf-4a83-b854-88cac08f6387.png)
 
 
+------------------------------------------------------------------------------------------------------
+
+Aqui ver para quando tiver a configuração pegar do objeto instanciado , ver configuração da estrutura
