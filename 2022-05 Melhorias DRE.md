@@ -13,9 +13,9 @@ Necessita o Finish da feature do ABC 2.0
 
 ## Solução
 
-° Criar ou duplicar o formulário
+- Criar ou duplicar o formulário
 
-° Alterar filtros
+- Alterar filtros
    - Deixar invisível o filtro da análise horizontal/ Vertical (vamos usar só no futuro) 
    - Retirar o Filtro Tipo > Analítico/ Sintético e todo código relativo a ele
    - Retirar o filtro Tipo de Análise  e todo código relativo a ele
@@ -23,11 +23,11 @@ Necessita o Finish da feature do ABC 2.0
    - Adicionar o filtro do custo gerencial / custo médio igual a do relatório ABC 2.0
    - Trocar o combo de loja colocando igual a do Relatório Pack Virtual (combo + check box) + marcar/desmarcar todas padrão todas
 
-° Adicionar grade
+- Adicionar grade
     - Utilizar as mesmas funções de formatação da grade que no relatório de pack virtual
     - Colocar totalizador de registros 
     
-° Outros
+- Outros
     - Trocar o botão Visualizar por Consultar
     - Colocar embaixo os botões Exportar, Imprimir e Sair 
     - Ajustar Tab Index
@@ -37,14 +37,14 @@ Necessita o Finish da feature do ABC 2.0
     - Possibilitar maximizar aumentando principalmente o grid
     - Colocar em vermelho quando o resultado é negativo
     
-° Impressão    
+- Impressão    
     - Na impressão perguntar se quer o analítico ou sintético
     - No final da impressão colocar observação do tipo de análise é "Data de Competência: Análise do Resultado do Exercício"    
 
-° Botão Question
+- Botão Question
     - Colocar um mensagebox explicando a origem dos dados
 
-° Relatório ABC 2.0 
+- Relatório ABC 2.0 
     - Alterar os nomes se for custo gerencial ou custo médio
 
 
