@@ -1,3 +1,66 @@
+# Épico: Reformulação do DRE
+Data de início da análise: 23/05/2022
+
+## Problema a ser resolvido
+Diferenças nas informações das vendas e custo das mercadorias vendidas entre o DRE Gerencial e o ABC de Mercadorias
+
+## Impactos
+Não terá impacto pois será uma tela nova somente para exibição de dados
+
+## Pré Requisitos
+Será necessário ter o ambiente do Gestao_Relatorios funcionando.
+Necessita o Finish da feature do ABC 2.0
+
+## Solução
+
+° Criar ou duplicar o formulário
+
+° Alterar filtros
+   - Deixar invisível o filtro da análise horizontal/ Vertical (vamos usar só no futuro) 
+   - Retirar o Filtro Tipo > Analítico/ Sintético e todo código relativo a ele
+   - Retirar o filtro Tipo de Análise  e todo código relativo a ele
+   - Retirar o filtro Não visualizar ajuste de saldo  e todo código relativo a ele
+   - Adicionar o filtro do custo gerencial / custo médio igual a do relatório ABC 2.0
+   - Trocar o combo de loja colocando igual a do Relatório Pack Virtual (combo + check box) + marcar/desmarcar todas padrão todas
+
+° Adicionar grade
+    - Utilizar as mesmas funções de formatação da grade que no relatório de pack virtual
+    - Colocar totalizador de registros 
+    
+° Outros
+    - Trocar o botão Visualizar por Consultar
+    - Colocar embaixo os botões Exportar, Imprimir e Sair 
+    - Ajustar Tab Index
+    - Alterar os nomes dependendo se é custo gerencial ou custo médio
+    - Criar thread no consultar
+    - Deixar do tamanho 1024x768
+    - Possibilitar maximizar aumentando principalmente o grid
+    - Colocar em vermelho quando o resultado é negativo
+    
+° Impressão    
+    - Na impressão perguntar se quer o analítico ou sintético
+    - No final da impressão colocar observação do tipo de análise é "Data de Competência: Análise do Resultado do Exercício"    
+
+° Botão Question
+    - Colocar um mensagebox explicando a origem dos dados
+
+° Relatório ABC 2.0 
+    - Alterar os nomes se for custo gerencial ou custo médio
+
+
+
+
+
+
+
+
+
+
+## Tarefa 1: 
+
+git flow hotfix start {nome]
+
+
 ![image](https://user-images.githubusercontent.com/80394522/170387581-be5e6dff-f95a-4924-9a1b-dbf9045d7a5e.png)
 
 ------------------------------------------------------------------------------------------------------
