@@ -48,8 +48,12 @@ Necessita o Finish da feature do ABC 2.0
     - Alterar os nomes se for custo gerencial ou custo médio
 
 
+Onde Parei
 
+Estava fazendo o protótipo , preciso arrumar o resultado bruto que esta errado 
+preciso ver como ficará o caso do Resultado Gerencial (posso fazer 2 protótipos)
 
+Depois validar os protótipos e começar a analisar a questão do código
 
 
 
