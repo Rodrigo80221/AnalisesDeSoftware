@@ -50,12 +50,9 @@ Necessita o Finish da feature do ABC 2.0
 
 Onde Parei
 
-Estava fazendo o protótipo , preciso arrumar o resultado bruto que esta errado 
-preciso ver como ficará o caso do Resultado Gerencial (posso fazer 2 protótipos)
+Finalizei o protótipo, faltou validar com o pessoal
 
-Depois validar os protótipos e começar a analisar a questão do código
-
-
+iniciar a parte do código
 
 
 
