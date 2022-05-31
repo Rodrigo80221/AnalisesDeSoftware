@@ -21,8 +21,14 @@ Executar update em operadores_modulos para ativar o módulo
 Descrição das variáveis:
 
 `sGrupo = (PDV,PEDIDOS,FINANCEIRO,RELATÓRIOS,NOTAS,CLIENTES,FORNECEDORES,PRODUTOS)`
+
 `sDescrição = (Nome da Tela)`
+
 `sPalavraChave = (Nome do Form)`
+
+Buscar código do módulo
+
+select max(Codigo) + 1 from modulos where grupo = 'RELATÓRIOS'
 
 1. Tratar em mdlGestao.sCarregaModulos
 
