@@ -28,7 +28,7 @@ Descrição das variáveis:
 
 Buscar código do módulo
 
-select max(Codigo) + 1 from modulos where grupo = 'RELATÓRIOS'
+
 
 1. Tratar em mdlGestao.sCarregaModulos
 
@@ -40,6 +40,14 @@ select max(Codigo) + 1 from modulos where grupo = 'RELATÓRIOS'
 arquivo de categorias
 https://docs.google.com/document/d/17U5pcJoUfe2-p-8dTkpBf5nLfqJjwwRKo9rcM5rgYxg/edit
 
+Exemplo módulos Relatório
+
+
+select max(Codigo) + 1 from modulos where grupo = 'RELATÓRIOS'
+
+sInserirModulo 632, "RELATÓRIOS", "Sala de Comando", eStatusModulo.mOculto, 132, 14, "FrmRelDRE", True, True, True, True, 5
+
+-- eStatusModulo.mHabilitado
 
 ## Tarefa X: Criar Verifica Banco
 
