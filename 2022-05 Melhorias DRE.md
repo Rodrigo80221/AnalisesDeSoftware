@@ -67,7 +67,7 @@ Criar novo formulário, iniciar tarefas
 
 git flow feature start NovoRelatorioDRE
 
-
+------------------------------------------------------------------------------------------------------
 
 ## Tarefa 2: Criar novo formulário
 Criar no C# o formulário FrmRelDRE no caminho  GestaoComercial > Formularios > Financeiro
@@ -75,6 +75,7 @@ Criar no C# o formulário FrmRelDRE no caminho  GestaoComercial > Formularios > 
 Criar layout conforme protótipo
 
 No novo form implementar as configurações padrões da Telecon
+1. Criar formulário do tamanho 1024x768
 1. Fechar com esc
 1. Enter deve funcionar como tab
 1. Ícone do sistema S na janela
@@ -84,9 +85,10 @@ No novo form implementar as configurações padrões da Telecon
 1. Deve abrir centralizado. 
 1. Implementar tratamento da ampulheta do mouse no início e fim do click do botões consultar
 1. Formatar o grid. Para formatar o grid deverá ser utilizado a função do genéricos ExecutarFormatacaoPadraoMesclandoColunas assim como no relatório do Pack Virtual FrmRelatorioPack
+1. Adicionar o combo + checkbox de lojas com a opção de marcar e desmarcar todos
+1. Adicionar o combo CMV com as Oções "Custo Médio" e "Custo Gerencial"
 
-
-
+------------------------------------------------------------------------------------------------------
 
 
 ## Tarefa: Criar módulo para Gerenciar o recurso Relatório DRE Gerencial
@@ -101,10 +103,37 @@ Se não ficar ativo para todo usuários executar update em operadores_modulos pa
 3. Chamar na tela clássica no menu de Financeiro > Relatório DRE Gerencial
 Adicionar abaixo do DRE Gerencial, logo será substituído.
 
+------------------------------------------------------------------------------------------------------
+
+## Tarefa: Implementar o botão Consultar 
 
 
 
 
+
+
+
+
+
+
+
+
+
+## Tarefa: Implementar botão de imprimir
+1. Pergutar se a impressão será analítica ou sintética
+2. No final da impressão colocar observação do tipo de análise é "Data de Competência: Análise do Resultado do Exercício"    
+
+## Tarefa: Implementar botão de exportar
+
+## Tarefa: Criar botão Question
+
+## Tarefa: Últimos ajustes
+
+Acertar tab index
+Implementar label totalizador de registros
+
+## Tarefa: - Relatório ABC 2.0 
+    - Alterar os nomes se for custo gerencial ou custo médio
 
 
 
