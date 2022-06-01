@@ -36,6 +36,7 @@ Necessita o Finish da feature do ABC 2.0
     - Deixar do tamanho 1024x768
     - Possibilitar maximizar aumentando principalmente o grid
     - Colocar em vermelho quando o resultado é negativo
+    - tratar o maximizar
     
 - Impressão    
     - Na impressão perguntar se quer o analítico ou sintético
@@ -50,17 +51,64 @@ Necessita o Finish da feature do ABC 2.0
 
 Onde Parei
 
+Validar protótipo com o cássio
+pergutar se mantenho o mesmo nome da tela, se mantenho as 2 com nomes similares
+
 Finalizei o protótipo, faltou validar com o pessoal
 
-iniciar a parte do código
+Criar novo formulário, iniciar tarefas
 
 
 
 
-## Tarefa 1: 
 
-git flow hotfix start {nome]
 
+## Tarefa 1: Criar feature no git
+
+git flow feature start NovoRelatorioDRE
+
+
+
+## Tarefa 2: Criar novo formulário
+Criar no C# o formulário FrmRelDRE no caminho  GestaoComercial > Formularios > Financeiro
+
+Criar layout conforme protótipo
+
+No novo form implementar as configurações padrões da Telecon
+1. Fechar com esc
+1. Enter deve funcionar como tab
+1. Ícone do sistema S na janela
+1. O botão Sair fecha a tela
+1. Não deve permitir o resize da tela com o mouse
+1. Ao maximizar deveremos apenas ancorar os botões e o grid no botton, assim iremos apenas aumentar o grid para baixo.
+1. Deve abrir centralizado. 
+1. Implementar tratamento da ampulheta do mouse no início e fim do click do botões consultar
+1. Formatar o grid. Para formatar o grid deverá ser utilizado a função do genéricos ExecutarFormatacaoPadraoMesclandoColunas assim como no relatório do Pack Virtual FrmRelatorioPack
+
+
+
+
+
+## Tarefa: Criar módulo para Gerenciar o recurso Relatório DRE Gerencial
+
+1. Criar verifica banco para inserir o código abaixo
+sInserirModulo 572, "FINANCEIRO", "Relatório DRE Gerencial", eStatusModulo.mHabilitado, 127, 10, "FrmRelDRE", True, True, True, True, 5
+
+2. Validar se apareceu no módulo de indicadores e também no novo menu do lado esquerdo do novo sistema S
+Se não ficar ativo para todo usuários executar update em operadores_modulos para ativar o módulo
+
+
+3. Chamar na tela clássica no menu de Financeiro > Relatório DRE Gerencial
+Adicionar abaixo do DRE Gerencial, logo será substituído.
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------
 
 ![image](https://user-images.githubusercontent.com/80394522/170387581-be5e6dff-f95a-4924-9a1b-dbf9045d7a5e.png)
 
