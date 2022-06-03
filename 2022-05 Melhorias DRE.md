@@ -13,50 +13,14 @@ Necessita o Finish da feature do ABC 2.0
 
 ## Solução
 
-- Criar ou duplicar o formulário
 
-- Alterar filtros
-   - Deixar invisível o filtro da análise horizontal/ Vertical (vamos usar só no futuro) 
-   - Retirar o Filtro Tipo > Analítico/ Sintético e todo código relativo a ele
-   - Retirar o filtro Tipo de Análise  e todo código relativo a ele
-   - Retirar o filtro Não visualizar ajuste de saldo  e todo código relativo a ele
-   - Adicionar o filtro do custo gerencial / custo médio igual a do relatório ABC 2.0
-   - Trocar o combo de loja colocando igual a do Relatório Pack Virtual (combo + check box) + marcar/desmarcar todas padrão todas
+   
 
-- Adicionar grade
-    - Utilizar as mesmas funções de formatação da grade que no relatório de pack virtual
-    - Colocar totalizador de registros 
-    
-- Outros
-    - Trocar o botão Visualizar por Consultar
-    - Colocar embaixo os botões Exportar, Imprimir e Sair 
-    - Ajustar Tab Index
-    - Alterar os nomes dependendo se é custo gerencial ou custo médio
-    - Criar thread no consultar
-    - Deixar do tamanho 1024x768
-    - Possibilitar maximizar aumentando principalmente o grid
-    - Colocar em vermelho quando o resultado é negativo
-    - tratar o maximizar
-    
-- Impressão    
-    - Na impressão perguntar se quer o analítico ou sintético
-    - No final da impressão colocar observação do tipo de análise é "Data de Competência: Análise do Resultado do Exercício"    
-
-- Botão Question
-    - Colocar um mensagebox explicando a origem dos dados
-
-- Relatório ABC 2.0 
-    - Alterar os nomes se for custo gerencial ou custo médio
-
-
-Onde Parei
-
-Validar protótipo com o cássio
 pergutar se mantenho o mesmo nome da tela, se mantenho as 2 com nomes similares
 
-Finalizei o protótipo, faltou validar com o pessoal
 
-Criar novo formulário, iniciar tarefas
+
+
 
 
 
@@ -84,9 +48,12 @@ No novo form implementar as configurações padrões da Telecon
 1. Ao maximizar deveremos apenas ancorar os botões e o grid no botton, assim iremos apenas aumentar o grid para baixo.
 1. Deve abrir centralizado. 
 1. Implementar tratamento da ampulheta do mouse no início e fim do click do botões consultar
-1. Formatar o grid. Para formatar o grid deverá ser utilizado a função do genéricos ExecutarFormatacaoPadraoMesclandoColunas assim como no relatório do Pack Virtual FrmRelatorioPack
+1. Formatar o grid. 
 1. Adicionar o combo + checkbox de lojas com a opção de marcar e desmarcar todos
 1. Adicionar o combo CMV com as Oções "Custo Médio" e "Custo Gerencial"
+
+![image](https://user-images.githubusercontent.com/80394522/171756235-e8adbe33-4845-4b6f-85f4-95090ad372c3.png)
+
 
 ------------------------------------------------------------------------------------------------------
 
@@ -107,15 +74,31 @@ Adicionar abaixo do DRE Gerencial, logo será substituído.
 
 ## Tarefa: Implementar o botão Consultar 
 
+obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack Virtual
+
+1. No clique do botão consultar
+- Limpar a grade
+- Popular uma classe com com filtros
+- Criar o procedimento processar e chamar ele por uma thread passando a classe filtro por parâmetro
+- Estartar a thread
+
+
+2. Criar diretório "DREGerencial" no caminho Telecon.GestaoComercial.Biblioteca.Relatorios
 
 
 
+Colocar em vermelho quando o resultado é negativo
+
+
+Alterar os nomes dependendo se é custo gerencial ou custo médio
 
 
 
+------------------------------------------------------------------------------------------------------
 
+## Tarefa: Programar o contador de registros
 
-
+## Tarefa: Implementar gif de carregando
 
 
 
@@ -126,11 +109,11 @@ Adicionar abaixo do DRE Gerencial, logo será substituído.
 ## Tarefa: Implementar botão de exportar
 
 ## Tarefa: Criar botão Question
+   - Colocar um mensagebox explicando a origem dos dados
 
 ## Tarefa: Últimos ajustes
 
-Acertar tab index
-Implementar label totalizador de registros
+## Tarefa: Ajustar Tab Index
 
 ## Tarefa: - Relatório ABC 2.0 
     - Alterar os nomes se for custo gerencial ou custo médio
