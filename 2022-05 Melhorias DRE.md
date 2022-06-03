@@ -90,13 +90,16 @@ public decimal PorcentagemDespesa { get; set; }
 
 obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack Virtual
 
-1. Implementar o procedimento ConsultarRelatorioDRE
+1. criar procedimento `private List<VisaoGeral> CarregarVisaoGeral()` igual ao que tem no formulário FrmResultadoLojaFiltros
 
-Criar a variável VendasPDV 
+1. Implementar o procedimento ConsultarRelatorioDRE
+1.1. Criar o list `var visaoGeral = CarregarVisaoGeral();`
+1.1. Criar a variável `VendasPDV` com o conteúdo `visaoGeral.Sum(x => x.CompraTransferencia);`
 
 Criar a variável VendasNotasFiscais
 
-
+                var qtdVendida = visao.Sum(x => x.Venda);
+                var Custo = visao.Sum(x => x.CMV);
 
 
 
