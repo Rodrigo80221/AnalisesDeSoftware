@@ -63,9 +63,9 @@ Adicionar abaixo do DRE Gerencial, logo será substituído.
 
 obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack Virtual
 
-1. No clique do botão consultar
+1. No clique do botão consultar (assim como no relatório Analise de venda conjunta)
 - Limpar a grade
-- Popular uma classe com com filtros
+- Criar e Popular uma classe filtros contendo os filtros da tela
 - Criar o procedimento `Processar` e chamar ele por uma thread passando a classe filtro por parâmetro
 - Estartar a thread
 
@@ -90,11 +90,22 @@ public decimal PorcentagemDespesa { get; set; }
 
 obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack Virtual
 
-1. criar procedimento `private List<VisaoGeral> CarregarVisaoGeral()` igual ao que tem no formulário FrmResultadoLojaFiltros
+1. No FrmRelDRE criar procedimento `private List<VisaoGeral> CarregarVisaoGeral()` semelhante ao que tem no formulário FrmResultadoLojaFiltros
 
 1. Implementar o procedimento ConsultarRelatorioDRE
 1.1. Criar o list `var visaoGeral = CarregarVisaoGeral();`
-1.1. Criar a variável `VendasPDV` com o conteúdo `visaoGeral.Sum(x => x.CompraTransferencia);`
+1.1. Criar a variável `vendas` com o conteúdo `visaoGeral.Sum(x => x.Venda);`
+1.1. Criar a variável `cmv` com o conteúdo `visaoGeral.Sum(x => x.CMV);`
+
+Agora teremos um problema pq temos o valor de venda mas não sabemos quanto foi vendido no pdv e quanto foi vendido nas notas fiscais
+
+
+1. Ao terar a classe  Telecon.GestaoComercial.Biblioteca.Relatorios.ResultadoLoja.VisaoGeral
+1.1. Adicionar a propriedade `public string TipoVenda { get; set; }`
+1.1. 
+
+
+
 
 Criar a variável VendasNotasFiscais
 
