@@ -14,19 +14,6 @@ Necessita o Finish da feature do ABC 2.0
 ## Solução
 
 
-   
-
-pergutar se mantenho o mesmo nome da tela, se mantenho as 2 com nomes similares
-
-
-
-
-
-
-
-
-
-
 ## Tarefa 1: Criar feature no git
 
 git flow feature start NovoRelatorioDRE
@@ -72,18 +59,44 @@ Adicionar abaixo do DRE Gerencial, logo será substituído.
 
 ------------------------------------------------------------------------------------------------------
 
-## Tarefa: Implementar o botão Consultar 
+## Tarefa: Implementar o botão Consultar (Parte 1)
 
 obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack Virtual
 
 1. No clique do botão consultar
 - Limpar a grade
 - Popular uma classe com com filtros
-- Criar o procedimento processar e chamar ele por uma thread passando a classe filtro por parâmetro
+- Criar o procedimento `Processar` e chamar ele por uma thread passando a classe filtro por parâmetro
 - Estartar a thread
 
 
-2. Criar diretório "DREGerencial" no caminho Telecon.GestaoComercial.Biblioteca.Relatorios
+1. Criar diretório "DREGerencial" no caminho Telecon.GestaoComercial.Biblioteca.Relatorios
+1.1. Criar a classe DREGerencialRelatorio com as propriedades abaixo
+
+``` c sharp
+public string CodEstrutura { get; set; }
+public string Descricao { get; set; }
+public decimal Valor { get; set; }
+public decimal PorcentagemReceita { get; set; }
+public decimal PorcentagemDespesa { get; set; }
+```
+1.1. Criar o procedimento ConsultarRelatorioDRE que retorne um list de "DREGerencialRelatorio"
+
+1.1. No procedimento `Processar` chamar o ConsultarRelatorioDRE e a partir do retorno dele carregar o grid
+
+------------------------------------------------------------------------------------------------------
+
+## Tarefa: Implementar o botão Consultar (Parte 2)
+
+obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack Virtual
+
+1. Implementar o procedimento ConsultarRelatorioDRE
+
+Criar a variável VendasPDV 
+
+Criar a variável VendasNotasFiscais
+
+
 
 
 
