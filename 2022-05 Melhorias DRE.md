@@ -71,7 +71,9 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 
 
 1. Criar diretório "DREGerencial" no caminho Telecon.GestaoComercial.Biblioteca.Relatorios
-1.1. Criar a classe DREGerencialRelatorio com as propriedades abaixo
+
+
+1.1. Criar a classe DREGerencialLinhaRelatorio com as propriedades abaixo
 
 ``` c sharp
 public string CodEstrutura { get; set; }
@@ -80,7 +82,19 @@ public decimal Valor { get; set; }
 public decimal PorcentagemReceita { get; set; }
 public decimal PorcentagemDespesa { get; set; }
 ```
-1.1. Criar o procedimento ConsultarRelatorioDRE que retorne um list de "DREGerencialRelatorio"
+
+1.1. No diretório "DREGerencial" Criar a classe `DREGerencialRelatorio`
+
+1.1. Na classe `DREGerencialRelatorio` criar o procedimento `ConsultarRelatorioDRE` que retorne um list de `DREGerencialLinhaRelatorio`
+
+1.1. Na classe `DREGerencialRelatorio` criar o procedimento `RetornarLinhasResultadoBruto` que retorne um list de `DREGerencialLinhaRelatorio`
+
+1.1.Na classe `DREGerencialRelatorio` criar o procedimento `RetornarLinhasDespesasGerenciaisOperacionais` que retorne um list de `DREGerencialLinhaRelatorio`
+
+1.1.Na classe `DREGerencialRelatorio` criar o procedimento `RetornarLinhasDespesasEReceitasNaoOperacionais` que retorne um list de `DREGerencialLinhaRelatorio`
+
+
+
 
 1.1. No procedimento `Processar` chamar o ConsultarRelatorioDRE e a partir do retorno dele carregar o grid
 
@@ -90,12 +104,24 @@ public decimal PorcentagemDespesa { get; set; }
 
 obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack Virtual
 
-1. No FrmRelDRE criar procedimento `private List<VisaoGeral> CarregarVisaoGeral()` semelhante ao que tem no formulário FrmResultadoLojaFiltros
-
 1. Implementar o procedimento ConsultarRelatorioDRE
-1.1. Criar o list `var visaoGeral = CarregarVisaoGeral();`
-1.1. Criar a variável `vendas` com o conteúdo `visaoGeral.Sum(x => x.Venda);`
-1.1. Criar a variável `cmv` com o conteúdo `visaoGeral.Sum(x => x.CMV);`
+1.1. Criar o procedimento static RetornarLinhasVendas que retorne um objeto do tipo DREGerencial: 
+
+
+consulta para buscar as vendas no banco GestaoRelatorios, para a variável IBanco utilizar `Utilitarios.ObterConexaoRelatorios();`. Consultar na tabela `VendasDia` utilizando os filtros do mesmo formato que foi utilizado no procedimento `Telecon.GestaoComercial.Biblioteca.Relatorios.ResultadoLoja.VisaoGeral.Consultar`
+Na tabela VendasDia
+
+select * from VendasDia where TipoVenda =  'NFCe' and TipoVenda =  'NFe'
+
+
+
+Utilitarios.ObterConexaoRelatorios();
+
+
+
+3.1. Criar o list `var visaoGeral = CarregarVisaoGeral();`
+4.1. Criar a variável `vendas` com o conteúdo `visaoGeral.Sum(x => x.Venda);`
+5.1. Criar a variável `cmv` com o conteúdo `visaoGeral.Sum(x => x.CMV);`
 
 Agora teremos um problema pq temos o valor de venda mas não sabemos quanto foi vendido no pdv e quanto foi vendido nas notas fiscais
 
@@ -117,7 +143,40 @@ Criar a variável VendasNotasFiscais
 Colocar em vermelho quando o resultado é negativo
 
 
-Alterar os nomes dependendo se é custo gerencial ou custo médio
+
+
+
+
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+
+-
+-
+-
+-
+-
+-
+
+
+
+
 
 
 
