@@ -73,7 +73,7 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 1. Criar diretório "DREGerencial" no caminho Telecon.GestaoComercial.Biblioteca.Relatorios
 
 
-1.1. Criar a classe DREGerencialLinhaRelatorio com as propriedades abaixo
+1. Criar a classe DREGerencialLinhaRelatorio com as propriedades abaixo
 
 ``` c sharp
 public string CodEstrutura { get; set; }
@@ -83,15 +83,70 @@ public decimal PorcentagemReceita { get; set; }
 public decimal PorcentagemDespesa { get; set; }
 ```
 
-1.1. No diretório "DREGerencial" Criar a classe `DREGerencialRelatorio`
+2. No diretório "DREGerencial" Criar a classe `DREGerencialRelatorio`
+- Na classe `DREGerencialRelatorio` criar o procedimento `ConsultarRelatorioDRE` que retorne um list de `DREGerencialLinhaRelatorio`
+- Na classe `DREGerencialRelatorio` criar o procedimento `RetornarLinhasResultadoBruto` que retorne um list de `DREGerencialLinhaRelatorio`
+- Na classe `DREGerencialRelatorio` criar o procedimento `RetornarLinhasDespesasGerenciaisOperacionais` que retorne um list de `DREGerencialLinhaRelatorio`
+- Na classe `DREGerencialRelatorio` criar o procedimento `RetornarLinhasDespesasEReceitasNaoOperacionais` que retorne um list de `DREGerencialLinhaRelatorio`
 
-1.1. Na classe `DREGerencialRelatorio` criar o procedimento `ConsultarRelatorioDRE` que retorne um list de `DREGerencialLinhaRelatorio`
 
-1.1. Na classe `DREGerencialRelatorio` criar o procedimento `RetornarLinhasResultadoBruto` que retorne um list de `DREGerencialLinhaRelatorio`
 
-1.1.Na classe `DREGerencialRelatorio` criar o procedimento `RetornarLinhasDespesasGerenciaisOperacionais` que retorne um list de `DREGerencialLinhaRelatorio`
+------------------------------------------------------------------------------------------------------
 
-1.1.Na classe `DREGerencialRelatorio` criar o procedimento `RetornarLinhasDespesasEReceitasNaoOperacionais` que retorne um list de `DREGerencialLinhaRelatorio`
+## Tarefa: Implementar procedimento `ConsultarRelatorioDRE`
+
+1. Criar o list `listaDRE <List>DREGerencialLinhaRelatorio`
+- Adicionar manualmente o item 
+ ```
+CodEstrutura = 3
+Descricao = RESULTADO GERENCIAL
+```
+1. Incrementar a lista listaDRE com o procedimento `RetornarLinhasResultadoBruto`
+1. Incrementar a lista listaDRE com o procedimento `RetornarLinhasDespesasGerenciaisOperacionais`
+1. Incrementar a lista listaDRE com o procedimento `RetornarLinhasDespesasEReceitasNaoOperacionais`
+
+1. Atualizar o item "RESULTADO GERENCIAL" com a soma da lista `listaDRE.Valor`
+
+1. Retornar `listaDRE`
+
+------------------------------------------------------------------------------------------------------
+
+## Tarefa: Implementar procedimento `RetornarLinhasResultadoBruto`
+
+1. Criar o list `listaResultadoBruto <List>DREGerencialLinhaRelatorio`
+- Adicionar manualmente o item 
+ ```
+CodEstrutura = 3.1
+Descricao = RESULTADO BRUTO
+
+CodEstrutura = 3.1.1
+Descricao = Vendas
+```
+1. Após realizar consulta em banco e inserir a estrutura abaixo
+ ```
+CodEstrutura = 3.1.1.01
+Descricao = Vendas NFCe
+Valor = (abaixo)
+
+CodEstrutura = 3.1.1.02
+Descricao = Vendas NFe
+Valor = (abaixo)
+
+CodEstrutura = 3.1.2
+Descricao = (-) Custo das Mercadorias Vendidas
+Valor = (abaixo)
+```
+Requisitos para a consulta:
+- Buscar as vendas no banco GestaoRelatorios, para a variável IBanco utilizar `Utilitarios.ObterConexaoRelatorios();`. 
+- Consultar na tabela `VendasDia` utilizando os filtros (where) do mesmo formato que foi utilizado no procedimento `Telecon.GestaoComercial.Biblioteca.Relatorios.ResultadoLoja.VisaoGeral.Consultar`
+
+1. Retornar `listaResultadoBruto`
+
+------------------------------------------------------------------------------------------------------
+
+## Tarefa: Implementar procedimento `RetornarLinhasDespesasGerenciaisOperacionais`
+
+
 
 
 
