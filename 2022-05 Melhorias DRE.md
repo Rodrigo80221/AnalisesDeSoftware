@@ -52,7 +52,7 @@ No novo form implementar as configurações padrões da Telecon
 ## Tarefa: Criar módulo para Gerenciar o recurso Relatório DRE Gerencial
 
 1. Criar verifica banco para inserir o código abaixo
-sInserirModulo 572, "FINANCEIRO", "Relatório DRE Gerencial", eStatusModulo.mHabilitado, 127, 10, "FrmRelDRE", True, True, True, True, 5
+sInserirModulo 572, "FINANCEIRO", "Relatório DRE Gerencial", eStatusModulo.mOCULTO, 127, 10, "FrmRelDRE", True, True, True, True, 5
 
 2. Validar se apareceu no módulo de indicadores e também no novo menu do lado esquerdo do novo sistema S
 Se não ficar ativo para todo usuários executar update em operadores_modulos para ativar o módulo
@@ -90,92 +90,131 @@ public decimal Previsao { get; set; }
 ```
 
 2. No diretório "DREGerencial" Criar a classe `DREGerencialRelatorio`
-- Na classe `DREGerencialRelatorio` criar o procedimento `ConsultarRelatorioDRE` que retorne um list de `DREGerencialLinhaRelatorio`
-- Na classe `DREGerencialRelatorio` criar o procedimento `RetornarLinhasResultadoBruto` que retorne um list de `DREGerencialLinhaRelatorio`
-- Na classe `DREGerencialRelatorio` criar o procedimento `RetornarLinhasDespesasGerenciaisOperacionais` que retorne um list de `DREGerencialLinhaRelatorio`
-- Na classe `DREGerencialRelatorio` criar o procedimento `RetornarLinhasDespesasEReceitasNaoOperacionais` que retorne um list de `DREGerencialLinhaRelatorio`
-
-
+- Na classe `DREGerencialRelatorio` criar o procedimento `ConsultarRelatorioDRE` que retorne um list de `DREGerencialLinhaRelatorio` e receba a classe de filtros por parâmetro.
+- Na classe `DREGerencialRelatorio` criar o procedimento `void MontarEstruturaDRE`
+- Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarResultadoBruto`
+- Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarDespesas` 
 
 ------------------------------------------------------------------------------------------------------
 
 ## Tarefa: Implementar procedimento `ConsultarRelatorioDRE`
 
-1. Criar o list `listaDRE <List>DREGerencialLinhaRelatorio`
-- Adicionar manualmente o item 
+1. Criar a variável list ` <List>DREGerencialLinhaRelatorio listaDRE`
+
+1. Chamar o procedimento `MontarEstruturaDRE` passando a `listaDRE` por parâmetro de referência.
+
+1. Implementar o procedimento `MontarEstruturaDRE`
+- Na lista `listaDRE` Adicionar manualmente os itens abaixo  
+
  ```
-CodEstrutura = 3
-Descricao = RESULTADO GERENCIAL
+    CodEstrutura = 3
+    Descricao = RESULTADO GERENCIAL
+
+    CodEstrutura = 3.1
+    Descricao = RESULTADO BRUTO
+
+    CodEstrutura = 3.1.1
+    Descricao = Vendas
+
+    CodEstrutura = 3.1.1.01
+    Descricao = Vendas NFCe
+
+    CodEstrutura = 3.1.1.02
+    Descricao = Vendas NFe
+
+    CodEstrutura = 3.1.2
+    Descricao = (-) Custo das Mercadorias Vendidas ***
+
+    CodEstrutura = 3.2
+    Descricao = (-) DESPESAS GERENCIAIS OPERACIONAIS 
+
+    * os outros campos recebem zero
 ```
-1. Incrementar a lista listaDRE com o procedimento `RetornarLinhasResultadoBruto`
-1. Incrementar a lista listaDRE com o procedimento `RetornarLinhasDespesasGerenciaisOperacionais`
-1. Incrementar a lista listaDRE com o procedimento `RetornarLinhasDespesasEReceitasNaoOperacionais`
+*** A descrição o custo pode variar de acordo com o combro (Custo Médio / Custo Gerencial). Deverá ficar no formato abaixo 
+"(-) Custo Médio das Mercadorias Vendidas"
+"(-) Custo Gerencial das Mercadorias Vendidas"
 
-1. Atualizar o item "RESULTADO GERENCIAL" com a soma da lista `listaDRE.Valor`
+1. Inserir na `listaDRE` todo o plano de contas a partir do "3.2" que está na configuração `Conta100PorCentoPagar`
+- Criar a variável `var contaDREDespesas = config.Conta100PorCentoPagar.CodEstrutural;`
+- Adicionar na `listaDRE` todo o restante do plano de contas assim como foi feito no procedimento `PlanoConta.ConsultarAPartirEstrutura(banco, contaDRE);` mas na variável `contaDREDespesas`
 
-1. Retornar `listaDRE`
+1. Chamar o procedimento `RetornarLinhasResultadoBruto`  passando a `listaDRE` por parâmetro de referência.
 
+1. Chamar o procedimento `RetornarLinhasDespesasGerenciaisOperacionais` passando a `listaDRE` por parâmetro de referência.
+
+1. Chamar o procedimento `RetornarLinhasDespesasEReceitasNaoOperacionais` passando a `listaDRE` por parâmetro de referência.
 ------------------------------------------------------------------------------------------------------
 
-## Tarefa: Implementar procedimento `RetornarLinhasResultadoBruto`
+## Tarefa: Implementar procedimento `CarregarResultadoBruto`
 
-1. Criar o list `listaResultadoBruto <List>DREGerencialLinhaRelatorio`
-- Adicionar manualmente o item 
- ```
-CodEstrutura = 3.1
-Descricao = RESULTADO BRUTO
 
-CodEstrutura = 3.1.1
-Descricao = Vendas
-```
-1. Após realizar consulta em banco e inserir a estrutura abaixo
- ```
-CodEstrutura = 3.1.1.01
-Descricao = Vendas NFCe
-Valor = (abaixo)
+1. Realizar uma consulta em banco conforme os passos abaixo e atualizar na `listaDRE` que veio por parâmetro as informações de Venda e custo.
 
-CodEstrutura = 3.1.1.02
-Descricao = Vendas NFe
-Valor = (abaixo)
-
-CodEstrutura = 3.1.2
-Descricao = (-) Custo das Mercadorias Vendidas ***
-Valor = (abaixo)
-```
 Requisitos para a consulta:
 - Buscar as vendas no banco GestaoRelatorios, para a variável IBanco utilizar `Utilitarios.ObterConexaoRelatorios();`. 
 - Consultar na tabela `VendasDia` utilizando os filtros (where) do mesmo formato que foi utilizado no procedimento `Telecon.GestaoComercial.Biblioteca.Relatorios.ResultadoLoja.VisaoGeral.Consultar`
 - Valor vendas pdv = sum(vendasDia) where TipoVenda = 'NFCe'
 - Valor vendas nfe = sum(vendasDia) where TipoVenda =  'NFe'
+- Diferenciar Custo Médio ou Custo Gerencial dependendo do combo (filtro)
 
-*** A descrição o custo pode variar de acordo com o combro (Custo Médio / Custo Gerencial). Deverá ficar no formato abaixo 
-"(-) Custo Médio das Mercadorias Vendidas"
-"(-) Custo Gerencial das Mercadorias Vendidas"
-
-1. Retornar `listaResultadoBruto`
+2. Percorrer os dados da consulta atualizando a propriedade `Valor` da `listaDRE`
 
 ------------------------------------------------------------------------------------------------------
 
-## Tarefa: Implementar procedimento `RetornarLinhasDespesasGerenciaisOperacionais`
+## Tarefa: Implementar procedimento `CarregarListaDespesas`
 
-1. Iremos utilizar o procedimento Telecon.GestaoComercial.Biblioteca.Financeiro.ConsultarDRE apenas para
+
+obs 1: Iremos utilizar o procedimento Telecon.GestaoComercial.Biblioteca.Financeiro.ConsultarDRE para
 utilizar como base.
 
-1. Iremos utilizar o procedimento Telecon.GestaoComercial.Biblioteca.Financeiro.ConsultarLancamentos apenas para
+obs 2: Iremos utilizar o procedimento Telecon.GestaoComercial.Biblioteca.Financeiro.ConsultarLancamentos para
 utilizar como base.
 
-1. Criar na classe a propriedade `<List>DREGerencialLinhaRelatorio _listaDespesas`
-1. Criar o procedimento `RetornarLinhasDespesasGerenciaisOperacionais`
-- Criar a variável `var contaDRE = config.Conta100PorCentoPagar.CodEstrutural;`
-- Criar a variável var planoContas = `PlanoConta.ConsultarAPartirEstrutura(banco, contaDRE);`
-- Realizar consulta na tabela LancamentosFinanceirosPagamento somente nas contas com codigo estrutural > que a variável `planoContas`
-- Realizar consulta na tabela LancamentosFinanceirosRecebimentos somente nas contas com codigo estrutural > que a variável `planoContas`
+1. Criar a variável com a configuração da contaDRE `var contaDRE = config.ContaDRE.CodEstrutural;`
+
+- Realizar consulta na tabela LancamentosFinanceirosPagamento semelhante a consulta abaixo utilizando os filtros corretos (where)
+- Realizar consulta na tabela LancamentosFinanceirosRecebimentos semelhante a consulta abaixo utilizando os filtros corretos (where)
 - Para as 2 consultas usar o filtro abaixo
-Filtro 1: + `WHERE L.Cancelado = " + banco.ObterVerdadeiroFalso(false)`
-Filtro 2: + Filtros de data nesse modelo `sb.AppendLine(" AND " + new CalculosRelatoriosSQL().SoData("LP.DataHoraPagamento") + " >= " + banco.ObterData(Convert.ToDateTime(dataInicio)));`
-- Realizar as consultas abaixo assim como no procedimento `ConsultarLancamentos`
-    -- BUSCAR LANÇAMENTOS FINANCEIROS REFERENTES A ESTORNO NAS NOTAS DE SAÍDA DO TIPO DE OPERAÇÃO Estorno de NF-e (DÉBITO) e (CRÉDITO)
-    -- BUSCAR LANÇAMENTOS FINANCEIROS REFERENTES A ESTORNO NAS NOTAS DE ENTRADA DO TIPO DE OPERAÇÃO Estorno de NF-e (DÉBITO) e (CRÉDITO) 
+Filtro 1:  CodEstrutural LIKE `var contaDRE + %` (ficará algo semelhante a consulta logo abaixo)
+Filtro 2: `Cancelado = " + banco.ObterVerdadeiroFalso(false)`
+Filtro 3: Utilizar Filtros de data nesse modelo `sb.AppendLine(" AND " + new CalculosRelatoriosSQL().SoData("LP.DataHoraPagamento") + " >= " + banco.ObterData(Convert.ToDateTime(dataInicio)));`
+
+
+``` SQL
+    SELECT TAB.CodEstrutural, TAB.Descricao, SUM(TAB.VALOR) FROM
+    (
+
+        select PC.CodEstrutural, PC.Descricao, LFR.* from [dbo].[LancamentosFinanceirosReceber][LFR]
+        inner join [dbo].[PlanoContas][PC] ON LFR.CodContaReceber = PC.CodConta 
+        WHERE CodEstrutural LIKE '3.%' AND YEAR(LFR.DataCompetencia) = 2022 AND MONTH(LFR.DataCompetencia) = 2
+
+    ) AS TAB
+    GROUP BY TAB.CodEstrutural, TAB.Descricao
+
+
+
+
+    SELECT TAB.CodEstrutural, TAB.Descricao, SUM(TAB.VALOR) FROM
+    (
+
+        select PC.CodEstrutural, PC.Descricao, LFR.* from [dbo].[LancamentosFinanceirosPagar][LFR]
+        inner join [dbo].[PlanoContas][PC] ON LFR.CodContaPagar = PC.CodConta 
+        WHERE CodEstrutural LIKE '3.%' AND YEAR(LFR.DataCompetencia) = 2022 AND MONTH(LFR.DataCompetencia) = 2
+
+    ) AS TAB
+    GROUP BY TAB.CodEstrutural, TAB.Descricao
+    order by TAB.CodEstrutural 
+```
+
+
+1. Realizar as consultas abaixo assim como no procedimento `ConsultarLancamentos` citado no início da tarefa 
+- BUSCAR LANÇAMENTOS FINANCEIROS REFERENTES A ESTORNO NAS NOTAS DE SAÍDA DO TIPO DE OPERAÇÃO Estorno de NF-e (DÉBITO) e (CRÉDITO)
+- BUSCAR LANÇAMENTOS FINANCEIROS REFERENTES A ESTORNO NAS NOTAS DE ENTRADA DO TIPO DE OPERAÇÃO Estorno de NF-e (DÉBITO) e (CRÉDITO) 
+obs 1: Em vez da tabela Gestao.LancamentosFinanceiros iremos utilizar as tabelas GestaoRelatorios.LancamentosFinanceirosReceber e GestaoRelatorios.LancamentosFinanceirosPagar
+`PUTS`obs 2: Não precisaremos dos filtros de codestrutura??, pois já está certo na tabela Gestão
+--- SERÁ QUE NÃO PRECISAREMOS PARA FAZER JOIN COM O TIPO DE OPERAÇÃO ???
+
+
 - Preenche a variável de contas com os valores
 - Adicionar nas contas os valores de Juros, taxas, descontos e multas
 - Atualizar previsto vs realizado
@@ -188,7 +227,7 @@ Filtro 2: + Filtros de data nesse modelo `sb.AppendLine(" AND " + new CalculosRe
  Teremos que realizar diversas alterações. Alterar o retorno do procedimento ConsultarDRE de  `List<RelDRE>` para `<List>DREGerencialLinhaRelatorio`
 
 - retirar os parâmetros `EnumTipoData tipoData| EnumTipo tipo | numAnalise analise | bool naoVisualizarAjuste`
-- Na contaDRE utilizar `var contaDRE = config.Conta100PorCentoPagar.CodEstrutural;`
+
 - Retirar o if `if (naoVisualizarAjuste)`
 - Retirar o if `if (tipo == EnumTipo.Sintetico)`
 - Comentar todos os trechos de código que utilizam o if `if (analise == EnumAnalise.Horizontal)`
@@ -205,12 +244,12 @@ obs: Neste momento consultar a análise para realizar os passos abaixo
 - Duplicar o select principal devido a termos 2 tabelas 
 
 
-------------------------------------------------------------------------------------------------------
+
 
 ## Tarefa: Implementar procedimento `RetornarLinhasDespesasEReceitasNaoOperacionais`
+------------------------------------------------------------------------------------------------------
 
-
-
+1. Atualizar o item "RESULTADO GERENCIAL" com a soma da lista `listaDRE.Valor`
 ------------------------------------------------------------------------------------------------------
 
 ## Tarefa: No procedimento Processar chamar o ConsultarRelatorioDRE e a partir do retorno dele carregar o grid
@@ -227,6 +266,9 @@ Colocar em vermelho quando o resultado é negativo
 
 ## Tarefa: Criar mensagem padrão caso não possua a estrutura do Gestão Relatórios Ativa
 
+------------------------------------------------------------------------------------------------------
+
+## Tarefa: Trabalhar na questão das contas selecionadas para carregar as despesas na tabela Gestão Relatórios
 
 
 
