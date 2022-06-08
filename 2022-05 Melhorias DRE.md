@@ -14,9 +14,13 @@ Necessita o Finish da feature do ABC 2.0
 ## Solução
 
 
-## Tarefa 1: Criar feature no git
+## Tarefa 1: Criar feature no git e ambiente
 
 git flow feature start NovoRelatorioDRE
+
+Criar ambiente GestaoRelatorios
+
+Tela Classica > Sistema > Congigurações Gestão Relatórios
 
 ------------------------------------------------------------------------------------------------------
 
@@ -77,10 +81,12 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 
 ``` c sharp
 public string CodEstrutura { get; set; }
+public double CodConta { get; set; }
 public string Descricao { get; set; }
 public decimal Valor { get; set; }
 public decimal PorcentagemReceita { get; set; }
 public decimal PorcentagemDespesa { get; set; }
+public decimal Previsao { get; set; }
 ```
 
 2. No diretório "DREGerencial" Criar a classe `DREGerencialRelatorio`
@@ -133,12 +139,18 @@ Descricao = Vendas NFe
 Valor = (abaixo)
 
 CodEstrutura = 3.1.2
-Descricao = (-) Custo das Mercadorias Vendidas
+Descricao = (-) Custo das Mercadorias Vendidas ***
 Valor = (abaixo)
 ```
 Requisitos para a consulta:
 - Buscar as vendas no banco GestaoRelatorios, para a variável IBanco utilizar `Utilitarios.ObterConexaoRelatorios();`. 
 - Consultar na tabela `VendasDia` utilizando os filtros (where) do mesmo formato que foi utilizado no procedimento `Telecon.GestaoComercial.Biblioteca.Relatorios.ResultadoLoja.VisaoGeral.Consultar`
+- Valor vendas pdv = sum(vendasDia) where TipoVenda = 'NFCe'
+- Valor vendas nfe = sum(vendasDia) where TipoVenda =  'NFe'
+
+*** A descrição o custo pode variar de acordo com o combro (Custo Médio / Custo Gerencial). Deverá ficar no formato abaixo 
+"(-) Custo Médio das Mercadorias Vendidas"
+"(-) Custo Gerencial das Mercadorias Vendidas"
 
 1. Retornar `listaResultadoBruto`
 
@@ -146,56 +158,74 @@ Requisitos para a consulta:
 
 ## Tarefa: Implementar procedimento `RetornarLinhasDespesasGerenciaisOperacionais`
 
+1. Iremos utilizar o procedimento Telecon.GestaoComercial.Biblioteca.Financeiro.ConsultarDRE apenas para
+utilizar como base.
+
+1. Iremos utilizar o procedimento Telecon.GestaoComercial.Biblioteca.Financeiro.ConsultarLancamentos apenas para
+utilizar como base.
+
+1. Criar na classe a propriedade `<List>DREGerencialLinhaRelatorio _listaDespesas`
+1. Criar o procedimento `RetornarLinhasDespesasGerenciaisOperacionais`
+- Criar a variável `var contaDRE = config.Conta100PorCentoPagar.CodEstrutural;`
+- Criar a variável var planoContas = `PlanoConta.ConsultarAPartirEstrutura(banco, contaDRE);`
+- Realizar consulta na tabela LancamentosFinanceirosPagamento somente nas contas com codigo estrutural > que a variável `planoContas`
+- Realizar consulta na tabela LancamentosFinanceirosRecebimentos somente nas contas com codigo estrutural > que a variável `planoContas`
+- Para as 2 consultas usar o filtro abaixo
+Filtro 1: + `WHERE L.Cancelado = " + banco.ObterVerdadeiroFalso(false)`
+Filtro 2: + Filtros de data nesse modelo `sb.AppendLine(" AND " + new CalculosRelatoriosSQL().SoData("LP.DataHoraPagamento") + " >= " + banco.ObterData(Convert.ToDateTime(dataInicio)));`
+- Realizar as consultas abaixo assim como no procedimento `ConsultarLancamentos`
+    -- BUSCAR LANÇAMENTOS FINANCEIROS REFERENTES A ESTORNO NAS NOTAS DE SAÍDA DO TIPO DE OPERAÇÃO Estorno de NF-e (DÉBITO) e (CRÉDITO)
+    -- BUSCAR LANÇAMENTOS FINANCEIROS REFERENTES A ESTORNO NAS NOTAS DE ENTRADA DO TIPO DE OPERAÇÃO Estorno de NF-e (DÉBITO) e (CRÉDITO) 
+- Preenche a variável de contas com os valores
+- Adicionar nas contas os valores de Juros, taxas, descontos e multas
+- Atualizar previsto vs realizado
+- Fazer if para exluir contas sem saldo caso selecionado pelo usuário
 
 
 
 
 
-1.1. No procedimento `Processar` chamar o ConsultarRelatorioDRE e a partir do retorno dele carregar o grid
+ Teremos que realizar diversas alterações. Alterar o retorno do procedimento ConsultarDRE de  `List<RelDRE>` para `<List>DREGerencialLinhaRelatorio`
+
+- retirar os parâmetros `EnumTipoData tipoData| EnumTipo tipo | numAnalise analise | bool naoVisualizarAjuste`
+- Na contaDRE utilizar `var contaDRE = config.Conta100PorCentoPagar.CodEstrutural;`
+- Retirar o if `if (naoVisualizarAjuste)`
+- Retirar o if `if (tipo == EnumTipo.Sintetico)`
+- Comentar todos os trechos de código que utilizam o if `if (analise == EnumAnalise.Horizontal)`
+
+1. Iremos copiar o procedimento Telecon.GestaoComercial.Biblioteca.Financeiro.ConsultarLancamentos apenas para
+utilizar como base. Teremos que realizar diversas alterações. Alterar o retorno do procedimento ConsultarDRE de  `List<RelDRE>` para `<List>DREGerencialLinhaRelatorio`
+- Comentar todos os trechos de código que utilizam o if `if (analise == EnumAnalise.Horizontal)`
+- 
+
+
+obs: Esta será a tarefa mais complexa
+obs: Neste momento consultar a análise para realizar os passos abaixo
+- Corrigir todos os nomes de campos para buscarmos do banco Gestão Relatórios
+- Duplicar o select principal devido a termos 2 tabelas 
+
 
 ------------------------------------------------------------------------------------------------------
 
-## Tarefa: Implementar o botão Consultar (Parte 2)
-
-obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack Virtual
-
-1. Implementar o procedimento ConsultarRelatorioDRE
-1.1. Criar o procedimento static RetornarLinhasVendas que retorne um objeto do tipo DREGerencial: 
-
-
-consulta para buscar as vendas no banco GestaoRelatorios, para a variável IBanco utilizar `Utilitarios.ObterConexaoRelatorios();`. Consultar na tabela `VendasDia` utilizando os filtros do mesmo formato que foi utilizado no procedimento `Telecon.GestaoComercial.Biblioteca.Relatorios.ResultadoLoja.VisaoGeral.Consultar`
-Na tabela VendasDia
-
-select * from VendasDia where TipoVenda =  'NFCe' and TipoVenda =  'NFe'
+## Tarefa: Implementar procedimento `RetornarLinhasDespesasEReceitasNaoOperacionais`
 
 
 
-Utilitarios.ObterConexaoRelatorios();
+------------------------------------------------------------------------------------------------------
 
-
-
-3.1. Criar o list `var visaoGeral = CarregarVisaoGeral();`
-4.1. Criar a variável `vendas` com o conteúdo `visaoGeral.Sum(x => x.Venda);`
-5.1. Criar a variável `cmv` com o conteúdo `visaoGeral.Sum(x => x.CMV);`
-
-Agora teremos um problema pq temos o valor de venda mas não sabemos quanto foi vendido no pdv e quanto foi vendido nas notas fiscais
-
-
-1. Ao terar a classe  Telecon.GestaoComercial.Biblioteca.Relatorios.ResultadoLoja.VisaoGeral
-1.1. Adicionar a propriedade `public string TipoVenda { get; set; }`
-1.1. 
-
-
-
-
-Criar a variável VendasNotasFiscais
-
-                var qtdVendida = visao.Sum(x => x.Venda);
-                var Custo = visao.Sum(x => x.CMV);
-
-
+## Tarefa: No procedimento Processar chamar o ConsultarRelatorioDRE e a partir do retorno dele carregar o grid
 
 Colocar em vermelho quando o resultado é negativo
+
+
+
+
+
+## Tarefa: Melhorar dados de cabeçalho contendo todoas as inforações de filtros
+
+
+
+## Tarefa: Criar mensagem padrão caso não possua a estrutura do Gestão Relatórios Ativa
 
 
 
