@@ -17,9 +17,7 @@ Necessita o Finish da feature do ABC 2.0
 ## Tarefa 1: Criar feature no git e ambiente
 
 git flow feature start NovoRelatorioDRE
-
 Criar ambiente GestaoRelatorios
-
 Tela Classica > Sistema > Congigurações Gestão Relatórios
 
 ------------------------------------------------------------------------------------------------------
@@ -48,6 +46,12 @@ No novo form implementar as configurações padrões da Telecon
 
 ------------------------------------------------------------------------------------------------------
 
+## Tarefa: Carregamento da tela
+ 
+- Criar label com a data de início e fim dos dados disponibilizados no data warehouse assim como no relatório ABC 2.0 
+- Não está no protótipo. Adicionar abaixo dos campos no groupbox de filtros.
+
+------------------------------------------------------------------------------------------------------
 
 ## Tarefa: Criar módulo para Gerenciar o recurso Relatório DRE Gerencial
 
@@ -68,6 +72,7 @@ Adicionar abaixo do DRE Gerencial, logo será substituído.
 obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack Virtual
 
 1. No clique do botão consultar (assim como no relatório Analise de venda conjunta)
+- Criar mensagem padrão caso não possua a estrutura do Gestão Relatórios Ativa
 - Limpar a grade
 - Criar e Popular uma classe filtros contendo os filtros da tela
 - Criar o procedimento `processar` e chamar ele por uma thread passando a classe filtro por parâmetro
@@ -108,9 +113,8 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 - Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarDespesas` 
 
 3. No procedimento `processar` 
-- Criar a variável `<List>DREGerencialLinhaRelatorio listaDRELancamentosFinanceiros`
-- Chamar o procedimento `ConsultarRelatorioDRE`passando o `listaDRELancamentosFinanceiros` por parâmetro de referência
-- com o retorno do `ConsultarRelatorioDRE` + a variável `listaDRELancamentosFinanceiros` iremos carregar o grid, deixar apenas um comentário pois iremos fer esta parte mais na frente.
+- Chamar o procedimento `ConsultarRelatorioDRE`
+- com o retorno do `ConsultarRelatorioDRE` iremos carregar o grid, deixar apenas um comentário pois iremos fer esta parte mais na frente.
 
 ------------------------------------------------------------------------------------------------------
 
@@ -159,7 +163,7 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 - Adicionar na `listaDRE` todo o restante do plano de contas assim como foi feito no procedimento `PlanoConta.ConsultarAPartirEstrutura(banco, contaDRE);` mas na variável `contaDREDespesas`
 - TipoDeRegistro = PlanoDeContas
 
-1. Chamar o procedimento `CarregarListaDespesas`  passando a `listaDRE` e a `listaDRELancamentosFinanceiros` por parâmetro de referência + a variável de filtros.
+1. Chamar o procedimento `CarregarListaDespesas`  passando a `listaDRE` por parâmetro de referência + a variável de filtros.
 
 1. Chamar o procedimento `RetornarLinhasDespesasGerenciaisOperacionais` passando a `listaDRE` por parâmetro de referência + a variável de filtros.
 
@@ -203,7 +207,7 @@ utilizar como base.
 obs 2: Iremos utilizar o procedimento Telecon.GestaoComercial.Biblioteca.Financeiro.RelDRE.ConsultarLancamentos para
 utilizar como base.
 
-1. Criar a variável com a configuração da contaDRE `var contaDRE = config.ContaDRE.CodEstrutural;`
+1. Criar a variável com a configuração da contaDRE `var contaDRE = config.Conta100PorCentoPagar.CodEstrutural;`
 
 1. Realizar consulta na tabela LancamentosFinanceirosPagamento semelhante a consulta abaixo utilizando os filtros corretos (where)
 - Para a consulta usar o filtro abaixo
@@ -212,10 +216,15 @@ Filtro 2: `Cancelado = " + banco.ObterVerdadeiroFalso(false)`
 Filtro 3: Utilizar Filtros de data nesse modelo `sb.AppendLine(" AND " + new CalculosRelatoriosSQL().SoData("LP.DataHoraPagamento") + " >= " + banco.ObterData(Convert.ToDateTime(dataInicio)));`
 
 ``` SQL
+    SELECT TAB.CodEstrutural, TAB.Descricao, SUM(TAB.VALOR) FROM
+    (
+
         select PC.CodEstrutural, PC.Descricao, LFR.* from [dbo].[LancamentosFinanceirosReceber][LFR]
         inner join [dbo].[PlanoContas][PC] ON LFR.CodContaReceber = PC.CodConta 
         WHERE CodEstrutural LIKE '3.%' AND YEAR(LFR.DataCompetencia) = 2022 AND MONTH(LFR.DataCompetencia) = 2
-        order by PC.CodEstrutural
+
+    ) AS TAB
+    GROUP BY TAB.CodEstrutural, TAB.Descricao
 ```
 - Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE` (quando débito deverá ser negativo)
 obs: seria interessante criar um procedimento para isso que pudesse ser utilizado também nas outras consultas
@@ -228,14 +237,20 @@ Filtro 3: Utilizar Filtros de data nesse modelo `sb.AppendLine(" AND " + new Cal
 
 ``` SQL
 
+
+    SELECT  TAB.CodEstrutural, TAB.Descricao, SUM(TAB.VALOR) FROM
+    (
+
         select PC.CodEstrutural, PC.Descricao, LFR.* from [dbo].[LancamentosFinanceirosPagar][LFR]
         inner join [dbo].[PlanoContas][PC] ON LFR.CodContaPagar = PC.CodConta 
         WHERE CodEstrutural LIKE '3.%' AND YEAR(LFR.DataCompetencia) = 2022 AND MONTH(LFR.DataCompetencia) = 2
-        order by PC.CodEstrutural
+
+    ) AS TAB
+    GROUP BY TAB.CodEstrutural, TAB.Descricao
+    order by TAB.CodEstrutural 
 
 ```
 - Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE`
-- Ao percorrer os lançamentos já adicionalos na `listaDRELancamentosFinanceiros` (add o codConta)
 
 1. Realizar as consultas abaixo assim como no procedimento `ConsultarLancamentos` citado no início da tarefa 
 - Criar consulta para buscar lançamentos financeiros referentes a estorno nas notas de saída do tipo de operação Estorno de NF-e (DÉBITO)
@@ -248,7 +263,6 @@ obs 1: Em vez da tabela Gestao.LancamentosFinanceiros iremos utilizar as tabelas
 obs 2: Não precisaremos dos filtros de codestrutura, em vez disso iremos verificar se estão na tabela de recebimentos ou pagamentos
 
 - Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE` (quando débito deverá ser negativo)
-- Ao percorrer os lançamentos já adicionalos na `listaDRELancamentosFinanceiros` (add o codConta)
 
 1. Adicionar nas contas os valores de Juros, taxas, descontos e multas semelhante a como foi feito no procedimento `ConsultarLancamentos`
 - Criar consulta para buscar os valores de Juros, taxas, descontos e multas
@@ -283,14 +297,34 @@ obs 2: Não precisaremos dos filtros de codestrutura, em vez disso iremos verifi
 
 ------------------------------------------------------------------------------------------------------
 
-## Tarefa: Implementar procedimento `processar` (Parte 2)             
-- Ao carregar o grid caso o código estrutural possua outros derivados (usar lambda) colocar um `"-"` na primeira coluna
+## Tarefa: Implementar procedimento `processar` (Parte 2 - Carregamento do Grid)             
+- Carregar a `listaDRE` no grid
+- Ao carregar o grid caso o código estrutural possua outros derivados na lista `listaDRE` (usar lambda) colocar um `"+"` na primeira coluna
+- Os 2 primeiros níveis ficarão com a fonte em maiúsculo (codEstrutura Não possui "." ou possui 1 ponto "." )
+- Os 3 primeiros níveis terão coloração de cinza em degradê na linha assim como no exemplo do excel.  (Tratar pelo número de "." no codStrutural)
+    - Criar constantes para as cores, caso desajarem trocar fica mais fácil.
+[Link Planilha](https://docs.google.com/spreadsheets/d/1cr54cDCsruG1pRD61DhnGFrpHO5xjzVNp-8DjKglcHg/edit?usp=sharing)
+- Ao inserir a descrição na linha terá uma tabulação no início. O número de tab é igual ao número de "." no codEstruturaal
+- Após carregar o grid dar um Hide em todas as linhas que não possuam o `"+"`
+------------------------------------------------------------------------------------------------------
+
+## Tarefa: Implementar o recolher e expandir linhas
+Ao clicar no "+' ou "-" verificar na lista tem derivados no codestrutural e esconder ou exibir as linhas.
 
 ------------------------------------------------------------------------------------------------------
 
 ## Tarefa: Validação dos Dados
 
 Essa será a tarefa mais difícil teremos que fazer uma auditoria nos dados
+
+Bater os dados do novo DRE com o Antigo DRE, Novo ABC 2.0 e Antigo ABC de Mercadorias
+
+Criar notas de estorno de entrada e saída para verificarmos como fica no DRE antigo e no novo 
+
+Gerar juro e multa no financeiro
+
+Se necessário teremos que alterar a criação das tabelas no Data Warehouse GestaoRelatorios
+
 ------------------------------------------------------------------------------------------------------
 
 ## Tarefa: No procedimento Processar chamar o ConsultarRelatorioDRE e a partir do retorno dele carregar o grid
@@ -298,16 +332,6 @@ Essa será a tarefa mais difícil teremos que fazer uma auditoria nos dados
 
 
 
-
-
-
-## Tarefa: Melhorar dados de cabeçalho contendo todoas as inforações de filtros
-
-
-
-## Tarefa: Criar mensagem padrão caso não possua a estrutura do Gestão Relatórios Ativa
-
-------------------------------------------------------------------------------------------------------
 
 ## Tarefa: Trabalhar na questão das contas selecionadas para carregar as despesas na tabela Gestão Relatórios
 
@@ -321,6 +345,7 @@ Essa será a tarefa mais difícil teremos que fazer uma auditoria nos dados
 ## Tarefa: Implementar botão de imprimir
 1. Pergutar se a impressão será analítica ou sintética
 2. No final da impressão colocar observação do tipo de análise é "Data de Competência: Análise do Resultado do Exercício"    
+- Melhorar dados de cabeçalho do relatório contendo todoas as inforações de filtros
 
 ## Tarefa: Implementar botão de exportar
 
