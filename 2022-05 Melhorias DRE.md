@@ -53,7 +53,9 @@ No novo form implementar as configurações padrões da Telecon
 
 ![image](https://user-images.githubusercontent.com/80394522/172939691-b576749e-36a9-4977-99b9-c83ffdda88f2.png)
 
-no início do botão consultar dar uma mensagem caso o filtro de data esteja fora do intervalo de dados do data warehouse
+- No início do botão consultar dar a mensagem abaixo e impedir o filtro de data esteja fora do intervalo de dados do data warehouse.
+"Os parâmetros de data está fora do período disponível para a consulta. Revise os filtros!"
+colocar o foco no campo de data inicial
 
 ------------------------------------------------------------------------------------------------------
 
@@ -95,9 +97,6 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
             InseridoManualmente = 0,
             PlanoDeContas,
             TabelaVendas,
-            LancamentoFinanceiro,
-            NotaDeEntrada,
-            NotaDeSaida
     }
 
     public string CodEstrutura { get; set; }
@@ -109,7 +108,6 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
     public OrigemRegistro TipoDeRegistro { get; set; }
 
 ```
-
 2. No diretório "DREGerencial" Criar a classe `DREGerencialRelatorio`
 - Na classe `DREGerencialRelatorio` criar o procedimento `ConsultarRelatorioDRE` que retorne um list de `DREGerencialLinhaRelatorio` e receba a classe de filtros por parâmetro.
 - Na classe `DREGerencialRelatorio` criar o procedimento `void MontarEstruturaDRE`
@@ -118,7 +116,8 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 
 3. No procedimento `processar` 
 - Chamar o procedimento `ConsultarRelatorioDRE`
-- com o retorno do `ConsultarRelatorioDRE` iremos carregar o grid, deixar apenas um comentário pois iremos fer esta parte mais na frente.
+- Com o retorno do `ConsultarRelatorioDRE` iremos carregar o grid, deixar apenas um comentário pois iremos fer esta parte mais na frente.
+- Após consultar colocar o foco na grade na primeira coluna (expandir vs retrair)
 
 ------------------------------------------------------------------------------------------------------
 
@@ -265,6 +264,8 @@ Filtro 3: Utilizar Filtros de data nesse modelo `sb.AppendLine(" AND " + new Cal
 
 obs 1: Em vez da tabela Gestao.LancamentosFinanceiros iremos utilizar as tabelas GestaoRelatorios.LancamentosFinanceirosReceber e GestaoRelatorios.LancamentosFinanceirosPagar
 obs 2: Não precisaremos dos filtros de codestrutura, em vez disso iremos verificar se estão na tabela de recebimentos ou pagamentos
+obs 3: Colocar na propriedade codconta o número da nota 
+
 
 - Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE` (quando débito deverá ser negativo)
 
@@ -321,29 +322,25 @@ Ao clicar no "+' ou "-" verificar na lista tem derivados no codestrutural e esco
 
 Essa será a tarefa mais difícil teremos que fazer uma auditoria nos dados
 
-Bater os dados do novo DRE com o Antigo DRE, Novo ABC 2.0 e Antigo ABC de Mercadorias
+1. Criar notas de estorno de entrada e saída para verificarmos como fica no DRE antigo e no novo 
 
-Criar notas de estorno de entrada e saída para verificarmos como fica no DRE antigo e no novo 
+1. Gerar juro e multa no financeiro
 
-Gerar juro e multa no financeiro
-
-Se necessário teremos que alterar a criação das tabelas no Data Warehouse GestaoRelatorios
-
-------------------------------------------------------------------------------------------------------
-
-## Tarefa: No procedimento Processar chamar o ConsultarRelatorioDRE e a partir do retorno dele carregar o grid
-
-
-
-
-
-## Tarefa: Trabalhar na questão das contas selecionadas para carregar as despesas na tabela Gestão Relatórios
-
+1. Bater os dados do novo DRE com o Antigo DRE, Novo ABC 2.0 e Antigo ABC de Mercadorias
+- Se necessário teremos que alterar a criação das tabelas no Data Warehouse GestaoRelatorios
 
 ------------------------------------------------------------------------------------------------------
 
-## Tarefa: Criar as chamadas paraa outras telas do c# ou vb
+------------------------------------------------------------------------------------------------------
 
+## Tarefa: Criar as chamadas para outras telas do c# ou vb
+1. Caso clique na linha de vendas ou custos das mercadorias (TipoDeRegistro.TabelaVendas)
+- Alterar o cursor para mouse hand ao colocar o mouse sob esse tipo de linha
+- Abrir o Reltório do ABC 2.0 com mesma data, loja, combo de cmv ou gerencial
+
+1. Caso clique na linha de contas (TipoDeRegistro.PlanoDeContas)
+- Alterar o cursor para mouse hand ao colocar o mouse sob esse tipo de linha
+- Abrir a tela Lançamentos Financeiros filtrado pela mesma conta e data na loja todas
 
 
 ## Tarefa: Implementar botão de imprimir
