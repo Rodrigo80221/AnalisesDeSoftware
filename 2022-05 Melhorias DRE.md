@@ -51,6 +51,10 @@ No novo form implementar as configurações padrões da Telecon
 - Criar label com a data de início e fim dos dados disponibilizados no data warehouse assim como no relatório ABC 2.0 
 - Não está no protótipo. Adicionar abaixo dos campos no groupbox de filtros.
 
+![image](https://user-images.githubusercontent.com/80394522/172939691-b576749e-36a9-4977-99b9-c83ffdda88f2.png)
+
+no início do botão consultar dar uma mensagem caso o filtro de data esteja fora do intervalo de dados do data warehouse
+
 ------------------------------------------------------------------------------------------------------
 
 ## Tarefa: Criar módulo para Gerenciar o recurso Relatório DRE Gerencial
