@@ -346,7 +346,9 @@ Essa será a tarefa mais difícil teremos que fazer uma auditoria nos dados
 ## Tarefa: Implementar botão de imprimir
 1. Pergutar se a impressão será analítica ou sintética
 2. No final da impressão colocar observação do tipo de análise é "Data de Competência: Análise do Resultado do Exercício"    
-- Melhorar dados de cabeçalho do relatório contendo todoas as inforações de filtros
+- Melhorar dados de cabeçalho do relatório contendo todoas as inforações de filtros, seguindo a formatação do exemplo abaixo mas ocupando o menor espaço possível.
+![image](https://user-images.githubusercontent.com/80394522/172962951-6ebf0732-3c3b-4014-a0ef-9156dd77738f.png)
+
 
 ## Tarefa: Implementar botão de exportar
 
