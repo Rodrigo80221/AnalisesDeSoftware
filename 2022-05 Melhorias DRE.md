@@ -18,6 +18,7 @@ Foi realizada análise para uma nova tela conforme o protótipo abaixo. Essa nov
 - Consultar no banco GestaoRelatorios (data warehouse criado pelo Samir: Tela Classica > Sistema > Configurações Gestão Relatórios)
 - Mostrar os dados de venda e custo das mercadorias não mais do financeiro e sim diretamente das vendas.
 - Mostrar os dados de despesas de acordo com as informações que já tínhamos no DRE Gerencial. (Irá mudar alguns nomes de contas apenas.)
+- Nas informações de despesas devemos manter regras antigas como NF de entrada e saída de estorno + taxas, juros, descontos e multas nos registros do financeiro.
 
 ![image](https://user-images.githubusercontent.com/80394522/171756235-e8adbe33-4845-4b6f-85f4-95090ad372c3.png)
 
@@ -26,52 +27,49 @@ Abaixo uma imagem com as principais mudanças em relação ao DRE Gerencial
 
 ------------------------------------------------------------------------------------------------------
 
-## Tarefa 1: Criar feature no git e ambiente
+## Tarefa 1: Criar feature no git e ajustar ambiente
 
-git flow feature start NovoRelatorioDRE
-Criar ambiente GestaoRelatorios
-Tela Classica > Sistema > Configurações Gestão Relatórios
-
-
+1. git flow feature start NovoRelatorioDRE
+2. Criar ambiente GestaoRelatorios
+- Tela Classica > Sistema > Configurações Gestão Relatórios
 
 ## Tarefa 2: Criar novo formulário
-Criar no C# o formulário FrmRelDRE no caminho  GestaoComercial > Formularios > Financeiro
 
-Criar layout conforme protótipo
+1. Criar no C# o formulário FrmRelDRE no caminho  GestaoComercial > Formularios > Financeiro
+2. Criar layout conforme protótipo no final da tarefa.
+    - Adicionar o combo + checkbox de lojas com a opção de marcar e desmarcar todos
+    - Adicionar o combo CMV com as Oções "Custo Médio" e "Custo Gerencial"
+3. No novo form implementar as configurações padrões da Telecon
+    - Criar formulário do tamanho 1024x768
+    - Fechar com esc
+    - Enter deve funcionar como tab
+    - Ícone do sistema S na janela
+    - O botão Sair fecha a tela
+    - Não deve permitir o resize da tela com o mouse
+    - Ao maximizar deveremos apenas ancorar os botões e o grid no botton, assim iremos apenas aumentar o grid para baixo.
+    - Deve abrir centralizado. 
 
-No novo form implementar as configurações padrões da Telecon
-1. Criar formulário do tamanho 1024x768
-1. Fechar com esc
-1. Enter deve funcionar como tab
-1. Ícone do sistema S na janela
-1. O botão Sair fecha a tela
-1. Não deve permitir o resize da tela com o mouse
-1. Ao maximizar deveremos apenas ancorar os botões e o grid no botton, assim iremos apenas aumentar o grid para baixo.
-1. Deve abrir centralizado. 
-1. Implementar tratamento da ampulheta do mouse no início e fim do click do botões consultar
-1. Formatar o grid. 
-1. Adicionar o combo + checkbox de lojas com a opção de marcar e desmarcar todos
-1. Adicionar o combo CMV com as Oções "Custo Médio" e "Custo Gerencial"
 
 ![image](https://user-images.githubusercontent.com/80394522/171756235-e8adbe33-4845-4b6f-85f4-95090ad372c3.png)
 
-
-
-
-## Tarefa: Carregamento da tela
+## Tarefa3: Carregamento da tela (Form Load) 
  
-- Criar label com a data de início e fim dos dados disponibilizados no data warehouse assim como no relatório ABC 2.0 
+1. Criar label com a data de início e fim dos dados disponibilizados no data warehouse assim como no relatório ABC 2.0 
 - Não está no protótipo. Adicionar abaixo dos campos no groupbox de filtros.
+- Seguir exemplo abaixo
+- Já fazer uma validação para caso não exista o banco GestaoRelatorios. Neste caso mostrar uma mensagem e desatiblitar o botão consultar.
 
 ![image](https://user-images.githubusercontent.com/80394522/172939691-b576749e-36a9-4977-99b9-c83ffdda88f2.png)
 
-- No início do botão consultar dar a mensagem abaixo e impedir o filtro de data esteja fora do intervalo de dados do data warehouse.
-"Os parâmetros de data está fora do período disponível para a consulta. Revise os filtros!"
-colocar o foco no campo de data inicial
+2. No início do botão consultar dar a mensagem abaixo e impedir que o filtro de data esteja fora do intervalo de dados do data warehouse.
+```
+    "Os parâmetros de data estão fora do período disponível para a consulta.
+     Revise os filtros!"
+```
+- colocar o foco no campo de data inicial
 
-
-
-## Tarefa: Criar módulo para Gerenciar o recurso Relatório DRE Gerencial
+DRG (Demonstrativo de Resultado Gerencial)
+## Tarefa 4: Criar módulo para Gerenciar o recurso Relatório DRE Gerencial
 
 1. Criar verifica banco para inserir o código abaixo
 sInserirModulo 572, "FINANCEIRO", "Relatório DRE Gerencial", eStatusModulo.mOCULTO, 127, 10, "FrmRelDRE", True, True, True, True, 5
@@ -79,26 +77,25 @@ sInserirModulo 572, "FINANCEIRO", "Relatório DRE Gerencial", eStatusModulo.mOCU
 2. Validar se apareceu no módulo de indicadores e também no novo menu do lado esquerdo do novo sistema S
 Se não ficar ativo para todo usuários executar update em operadores_modulos para ativar o módulo
 
-
 3. Chamar na tela clássica no menu de Financeiro > Relatório DRE Gerencial
 Adicionar abaixo do DRE Gerencial, logo será substituído.
 
+4. Adicionar no procedimento do botão `Padronizar recursos de software` 
+- Esse botão fica no setor Retaguarda
+- Ao padronizarmos a nova tela deverá ficar no setor financeiro.
 
-
-## Tarefa: Implementar o botão Consultar
+## Tarefa 4: Implementar o botão Consultar
 
 obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack Virtual
 
 1. No clique do botão consultar (assim como no relatório Analise de venda conjunta)
-- Criar mensagem padrão caso não possua a estrutura do Gestão Relatórios Ativa
+- Alterar o ponteiro do mouse para aguardando
 - Limpar a grade
-- Criar e Popular uma classe filtros contendo os filtros da tela
+- Criar e Popular uma classe filtros contendo os filtros da tela.
 - Criar o procedimento `processar` e chamar ele por uma thread passando a classe filtro por parâmetro
 - Estartar a thread
 
-
 1. Criar diretório "DREGerencial" no caminho Telecon.GestaoComercial.Biblioteca.Relatorios
-
 
 1. Criar a classe DREGerencialLinhaRelatorio com as propriedades abaixo
 
@@ -121,25 +118,23 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 
 ```
 2. No diretório "DREGerencial" Criar a classe `DREGerencialRelatorio`
-- Na classe `DREGerencialRelatorio` criar o procedimento `ConsultarRelatorioDRE` que retorne um list de `DREGerencialLinhaRelatorio` e receba a classe de filtros por parâmetro.
-- Na classe `DREGerencialRelatorio` criar o procedimento `void MontarEstruturaDRE`
-- Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarResultadoBruto`
-- Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarDespesas` 
+- Na classe `DREGerencialRelatorio` criar o procedimento `ConsultarRelatorioDRE` que retorne um list de `DREGerencialLinhaRelatorio` e receba a classe de filtros por parâmetro. Se não der podemos transferir a classe de filtros para o diretório DREGerencial
+- Na classe `DREGerencialRelatorio` criar o procedimento `void MontarEstruturaDRE` passando a classe de filtros
+- Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarResultadoBruto` passando a classe de filtros
+- Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarDespesas`  passando a classe de filtros
 
 3. No procedimento `processar` 
-- Chamar o procedimento `ConsultarRelatorioDRE`
+- Chamar o procedimento `ConsultarRelatorioDRE` passando a classe de filtros
 - Com o retorno do `ConsultarRelatorioDRE` iremos carregar o grid, deixar apenas um comentário pois iremos fer esta parte mais na frente.
-- Após consultar colocar o foco na grade na primeira coluna (expandir vs retrair)
+- Após consultar colocar o foco na grade
 
-
-
-## Tarefa: Implementar procedimento `ConsultarRelatorioDRE`
+## Tarefa 5: Implementar procedimento "ConsultarRelatorioDRE" e "MontarEstruturaDRE"
 
 1. Criar a variável list `<List>DREGerencialLinhaRelatorio listaDRE`
 
-1. Chamar o procedimento `MontarEstruturaDRE` passando a `listaDRE` e por parâmetro de referência.
+2. No `ConsultarRelatorioDRE` chamar o procedimento `MontarEstruturaDRE` passando a `listaDRE` e por parâmetro de referência.
 
-1. Implementar o procedimento `MontarEstruturaDRE`
+3. Implementar o procedimento `MontarEstruturaDRE`
 - Na lista `listaDRE` Adicionar manualmente os itens abaixo  
 
  ```
@@ -173,36 +168,33 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 "(-) Custo Médio das Mercadorias Vendidas"
 "(-) Custo Gerencial das Mercadorias Vendidas"
 
-1. Inserir na `listaDRE` todo o plano de contas a partir do "3.2" que está na configuração `Conta100PorCentoPagar`
+4. Inserir na `listaDRE` todo o plano de contas a partir do "3.2" que está na configuração `Conta100PorCentoPagar`
 - Criar a variável `var contaDREDespesas = config.Conta100PorCentoPagar.CodEstrutural;`
-- Adicionar na `listaDRE` todo o restante do plano de contas assim como foi feito no procedimento `PlanoConta.ConsultarAPartirEstrutura(banco, contaDRE);` mas na variável `contaDREDespesas`
-- TipoDeRegistro = PlanoDeContas
+- Adicionar na `listaDRE` todo o restante do plano de contas assim como foi feito no procedimento `PlanoConta.ConsultarAPartirEstrutura(banco, contaDRE);` 
+- Ao adicionar os registros na listas setar a propriedade `TipoDeRegistro = PlanoDeContas`
 
-1. Chamar o procedimento `CarregarListaDespesas`  passando a `listaDRE` por parâmetro de referência + a variável de filtros.
+5. Chamar o procedimento `CarregarListaDespesas` passando a `listaDRE` por parâmetro de referência + a variável de filtros.
 
-1. Chamar o procedimento `RetornarLinhasDespesasGerenciaisOperacionais` passando a `listaDRE` por parâmetro de referência + a variável de filtros.
+6. Chamar o procedimento `RetornarLinhasDespesasGerenciaisOperacionais` passando a `listaDRE` por parâmetro de referência + a variável de filtros.
 
-1. Retorar a função com a variável `listaDRE`
-
-
-
-## Tarefa: Implementar procedimento `processar`
+7. Retorar a função com a variável `listaDRE`
 
 
-- Realizar o procedimento de forma semelhante ao processar do FrmRelatorioPack
-- Deixar visível o gif de aguarde durante a consulta, com o grid invisivel e o group box de viltros desabilitado
-- Realizar tratamento caso a lista venha vazia (se utilizar o check box para remover contas zeradas a listaa poderá vir vazia)
-- Formatar o grid
-- Atualizar a linha de totais
-- Carregar o Grid
-    - Colocar em vermelho quando o resultado for negativo
+## Tarefa 6: Implementar procedimento "processar" no FrmRelatorioPack
+
+obs: Realizar o procedimento de forma semelhante ao processar do FrmRelatorioPack
+
+1. Deixar visível o gif de aguarde durante a consulta, com o grid invisivel e o group box de viltros desabilitado
+2. Realizar tratamento caso a lista venha vazia (se utilizar o check box para remover contas zeradas a listaa poderá vir vazia)
+3. Formatar o grid
+4. Atualizar a linha de totais
+5. Carregar o Grid
+    - Colocar em vermelho quando a coluna valor for negativa (retirando o sinal de - (menos))
     - Por enquanto fazer só essa parte, mais a frente ajustaremos melhor o grid
 
-## Tarefa: Implementar procedimento `CarregarResultadoBruto`
+## Tarefa 7: Implementar procedimento "CarregarResultadoBruto"
 
-
-1. Realizar uma consulta em banco conforme os passos abaixo e atualizar na `listaDRE` que veio por parâmetro as informações de Venda e custo.
-
+1. Realizar uma consulta no banco GestaoRelatorios conforme os passos abaixo e atualizar a propriedade `Valor` na `listaDRE` que veio por parâmetro com as informações de Venda e custo.
 Requisitos para a consulta:
 - Buscar as vendas no banco GestaoRelatorios, para a variável IBanco utilizar `Utilitarios.ObterConexaoRelatorios();`. 
 - Consultar na tabela `VendasDia` utilizando os filtros (where) do mesmo formato que foi utilizado no procedimento `Telecon.GestaoComercial.Biblioteca.Relatorios.ResultadoLoja.VisaoGeral.Consultar`
@@ -210,11 +202,9 @@ Requisitos para a consulta:
 - Valor vendas nfe = sum(vendasDia) where TipoVenda =  'NFe'
 - Diferenciar Custo Médio ou Custo Gerencial dependendo do combo (filtro)
 
-2. Percorrer os dados da consulta atualizando a propriedade `Valor` da `listaDRE`
+2. Atualizar a propriedade `Valor` da `listaDRE` no item correspondente
 
-
-
-## Tarefa: Implementar procedimento `CarregarListaDespesas`
+## Tarefa 8: Implementar procedimento "CarregarListaDespesas"  (Parte 1)
 
 obs 1: Iremos utilizar o procedimento Telecon.GestaoComercial.Biblioteca.Financeiro.RelDRE.ConsultarDRE para
 utilizar como base.
@@ -224,7 +214,7 @@ utilizar como base.
 
 1. Criar a variável com a configuração da contaDRE `var contaDRE = config.Conta100PorCentoPagar.CodEstrutural;`
 
-1. Realizar consulta na tabela LancamentosFinanceirosPagamento semelhante a consulta abaixo utilizando os filtros corretos (where)
+2. Realizar consulta na tabela LancamentosFinanceirosPagamento semelhante a consulta abaixo utilizando os filtros corretos (where)
 - Para a consulta usar o filtro abaixo
 Filtro 1:  CodEstrutural LIKE `var contaDRE + %` (ficará algo semelhante a consulta logo abaixo)
 Filtro 2: `Cancelado = " + banco.ObterVerdadeiroFalso(false)`
@@ -241,10 +231,10 @@ Filtro 3: Utilizar Filtros de data nesse modelo `sb.AppendLine(" AND " + new Cal
     ) AS TAB
     GROUP BY TAB.CodEstrutural, TAB.Descricao
 ```
-- Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE` (quando débito deverá ser negativo)
+3. Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE` (quando débito deverá ser negativo)
 obs: seria interessante criar um procedimento para isso que pudesse ser utilizado também nas outras consultas
 
-1. Realizar consulta na tabela LancamentosFinanceirosRecebimentos semelhante a consulta abaixo utilizando os filtros corretos (where)
+4. Realizar consulta na tabela LancamentosFinanceirosRecebimentos semelhante a consulta abaixo utilizando os filtros corretos (where)
 - Para a consultas usar o filtro abaixo
 Filtro 1:  CodEstrutural LIKE `var contaDRE + %` (ficará algo semelhante a consulta logo abaixo)
 Filtro 2: `Cancelado = " + banco.ObterVerdadeiroFalso(false)`
@@ -265,123 +255,122 @@ Filtro 3: Utilizar Filtros de data nesse modelo `sb.AppendLine(" AND " + new Cal
     order by TAB.CodEstrutural 
 
 ```
-- Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE`
-
-1. Realizar as consultas abaixo assim como no procedimento `ConsultarLancamentos` citado no início da tarefa 
-- Criar consulta para buscar lançamentos financeiros referentes a estorno nas notas de saída do tipo de operação Estorno de NF-e (DÉBITO)
-- Criar consulta para buscar lançamentos financeiros referentes a estorno nas notas de saída do tipo de operação Estorno de NF-e (CRÉDITO)
-- Criar consulta para buscar lançamentos financeiros referentes a estorno nas notas de entrada do tipo de operação Estorno de NF-e (DÉBITO)
-- Criar consulta para buscar lançamentos financeiros referentes a estorno nas notas de entrada do tipo de operação Estorno de NF-e (CRÉDITO) que estejam nas contas de débito e crédito
-- Criar consulta para buscar lançamentos financeiros referentes a estorno nas notas de entrada do tipo de operação Estorno de NF-e (CRÉDITO) que estejam nas notas de crédito e não nas de débito
-
-obs 1: Em vez da tabela Gestao.LancamentosFinanceiros iremos utilizar as tabelas GestaoRelatorios.LancamentosFinanceirosReceber e GestaoRelatorios.LancamentosFinanceirosPagar
-obs 2: Não precisaremos dos filtros de codestrutura, em vez disso iremos verificar se estão na tabela de recebimentos ou pagamentos
-obs 3: Colocar na propriedade codconta o número da nota 
+5. Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE`
 
 
-- Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE` (quando débito deverá ser negativo)
+## Tarefa 9: Implementar procedimento "CarregarListaDespesas" (Parte 2)
 
-1. Adicionar nas contas os valores de Juros, taxas, descontos e multas semelhante a como foi feito no procedimento `ConsultarLancamentos`
+Obs 1: Iremos utilizar o procedimento Telecon.GestaoComercial.Biblioteca.Financeiro.RelDRE.ConsultarLancamentos para
+utilizar como base.
+
+Obs 2: Realizar as consultas abaixo assim como no procedimento `ConsultarLancamentos` 
+
+obs 3: Em vez da tabela Gestao.LancamentosFinanceiros iremos utilizar as tabelas GestaoRelatorios.LancamentosFinanceirosReceber e GestaoRelatorios.LancamentosFinanceirosPagar, de acordo com cada consulta (débito ou crédito)
+
+obs 4: Não precisaremos dos filtros (where) de codestrutura, em vez disso iremos verificar se estão na tabela de recebimentos ou pagamentos
+
+1. Criar consulta para buscar lançamentos financeiros referentes a estorno nas notas de saída do tipo de operação Estorno de NF-e (DÉBITO)
+2. Criar consulta para buscar lançamentos financeiros referentes a estorno nas notas de saída do tipo de operação Estorno de NF-e (CRÉDITO)
+3. Criar consulta para buscar lançamentos financeiros referentes a estorno nas notas de entrada do tipo de operação Estorno de NF-e (DÉBITO)
+4. Criar consulta para buscar lançamentos financeiros referentes a estorno nas notas de entrada do tipo de operação Estorno de NF-e (CRÉDITO) que estejam nas contas de débito e crédito
+5. Criar consulta para buscar lançamentos financeiros referentes a estorno nas notas de entrada do tipo de operação Estorno de NF-e (CRÉDITO) que estejam nas notas de crédito e não nas de débito
+
+6. Percorrer os dados das consultas acima atualizando a propriedade `Valor` da `listaDRE` (quando débito deverá ser negativo)
+
+7.. Adicionar nas contas os valores de Juros, taxas, descontos e multas semelhante a como foi feito no procedimento `ConsultarLancamentos`
 - Criar consulta para buscar os valores de Juros, taxas, descontos e multas
 - Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE`
 
 - Alterar a descrição da conta `Despesas Fixas` para `(-) DESPESAS GERENCIAIS OPERACIONAIS` 
 
 
+## Tarefa 10: Finalizar dados na lista
 
 
-
-## Tarefa: Finalizar dados na lista
-
-1. Atualizar o valor das linhas de cabeçalho da lista `listaDRE`
+1. No `FrmRelDRE`criar procedimento para atualizar o valor das linhas de cabeçalho da lista `listaDRE`. Chamar esse procedimento antes de caregar o Grid.
 - Utilizar o procedimento abaixo como base
 `Telecon.GestaoComercial.Biblioteca.Financeiro.RelDRE.AtualizarContasPais(contas);`
 
-
-1. Criar procedimento para atualizar os percentuais 
+2. Criar procedimento para atualizar os percentuais 
 - Utilizar o procedimento abaixo como base
-`Telecon.GestaoComercial.Biblioteca.Financeiro.RelDRE.AtualizarPercentuais`
+`Telecon.GestaoComercial.Biblioteca.Financeiro.RelDRE.AtualizarPercentuais`. Chamar esse procedimento após o de cima e antes de caregar o Grid.
 - Temos também um arquivo de apoio
 [Link Planilha](https://docs.google.com/spreadsheets/d/1cr54cDCsruG1pRD61DhnGFrpHO5xjzVNp-8DjKglcHg/edit?usp=sharing)
 
-
-1. Fazer if para exluir do list as contas sem saldo caso selecionado pelo usuário, algo semelhante ao código abaixo
+3. Fazer if para exluir do list as contas sem saldo caso selecionado pelo usuário, algo semelhante ao código abaixo. Chamar esse procedimento antes de caregar o Grid.
 
 ``` C sharp
             if (!visualizarContasSemSaldo)
                 contas.RemoveAll(c => c.Valor.Equals(0));
 ```
 
+## Tarefa 11: Implementar procedimento "processar" (Parte 2 - Carregamento do Grid)           
 
-
-## Tarefa: Implementar procedimento `processar` (Parte 2 - Carregamento do Grid)             
-- Carregar a `listaDRE` no grid
-- Ao carregar o grid caso o código estrutural possua outros derivados na lista `listaDRE` (usar lambda) colocar um `"+"` na primeira coluna
-- Os 2 primeiros níveis ficarão com a fonte em maiúsculo (codEstrutura Não possui "." ou possui 1 ponto "." )
-- Os 3 primeiros níveis terão coloração de cinza em degradê na linha assim como no exemplo do excel.  (Tratar pelo número de "." no codStrutural)
+1. Carregar a `listaDRE` no grid
+2. Ao carregar o grid caso o código estrutural possua outros derivados na lista `listaDRE` (usar lambda) colocar um `"+"` na primeira coluna
+3. Nos 2 primeiros (quando codEstrutura Não possui "." ou possui 1 ponto "." ) a fonte ficará com a fonte em maiúsculo 
+4. Os 3 primeiros níveis terão coloração de cinza em degradê na linha assim como no exemplo do excel.  (Tratar pelo número de "." no codStrutural)
     - Criar constantes para as cores, caso desajarem trocar fica mais fácil.
-[Link Planilha](https://docs.google.com/spreadsheets/d/1cr54cDCsruG1pRD61DhnGFrpHO5xjzVNp-8DjKglcHg/edit?usp=sharing)
-- Ao inserir a descrição na linha terá uma tabulação no início. O número de tab é igual ao número de "." no codEstruturaal
+    - [Link Planilha](https://docs.google.com/spreadsheets/d/1cr54cDCsruG1pRD61DhnGFrpHO5xjzVNp-8DjKglcHg/edit?usp=sharing)
+5. Ao inserir a descrição na linha terá uma tabulação no início. O número de tab é igual ao número de "." no codEstruturaal
 - Após carregar o grid dar um Hide em todas as linhas que não possuam o `"+"`
 
+## Tarefa 12: Implementar o recolher e expandir linhas
 
-## Tarefa: Implementar o recolher e expandir linhas
-Ao clicar no "+' ou "-" verificar na lista tem derivados no codestrutural e esconder ou exibir as linhas.
+1. Ao clicar no "+' ou "-" verificar se na lista tem derivados no codestrutural e esconder ou exibir as linhas.
+- No relatório do pack virtual existe um recurso semelhante
 
 
-
-## Tarefa: Validação dos Dados
+## Tarefa 13: Validação dos Dados
 
 Essa será a tarefa mais difícil teremos que fazer uma auditoria nos dados
 
-1. Criar notas de estorno de entrada e saída para verificarmos como fica no DRE antigo e no novo 
-
-1. Gerar juro e multa no financeiro
-
-1. Bater os dados do novo DRE com o Antigo DRE, Novo ABC 2.0 e Antigo ABC de Mercadorias
+1. Criar notas de estorno de entrada e saída para verificarmos como fica no DRE antigo e no novo;
+2. Gerar juros, multa, desconto e taxas no financeiro;
+3. Bater os dados do novo DRE com o Antigo DRE, Novo ABC 2.0 e Antigo ABC de Mercadorias
+4. Fazer os ajustes necessários
 - Se necessário teremos que alterar a criação das tabelas no Data Warehouse GestaoRelatorios
 
+## Tarefa 14: Criar as chamadas para outras telas do c# ou vb
 
+1. Grid: linha de vendas ou custos das mercadorias
+- Alterar o cursor para mouse hand ao colocar o mouse sob esse tipo de linha (TipoDeRegistro.TabelaVendas)
+- Caso clique na linha de vendas ou custos das mercadorias abrir o Reltório do ABC 2.0 (Resultado da Loja) com mesma data, loja e combo de cmv 
 
+2. Grid: linha de contas
+- Alterar o cursor para mouse hand ao colocar o mouse sob esse tipo de linha  (TipoDeRegistro.PlanoDeContas)
+- Caso clique na linha de contas abrir a tela Lançamentos Financeiros filtrando pela mesma conta e data na loja todas
 
-
-## Tarefa: Criar as chamadas para outras telas do c# ou vb
-1. Caso clique na linha de vendas ou custos das mercadorias (TipoDeRegistro.TabelaVendas)
-- Alterar o cursor para mouse hand ao colocar o mouse sob esse tipo de linha
-- Abrir o Reltório do ABC 2.0 com mesma data, loja, combo de cmv ou gerencial
-
-1. Caso clique na linha de contas (TipoDeRegistro.PlanoDeContas)
-- Alterar o cursor para mouse hand ao colocar o mouse sob esse tipo de linha
-- Abrir a tela Lançamentos Financeiros filtrado pela mesma conta e data na loja todas
-
-
-## Tarefa: Implementar botão de imprimir
-1. Pergutar se a impressão será analítica ou sintética
-2. No final da impressão colocar observação do tipo de análise é "Data de Competência: Análise do Resultado do Exercício"   
-3. Criar o mesmo relatório do DRE antigo 
-- Melhorar dados de cabeçalho do relatório contendo todas as inforações de filtros, seguindo a formatação do exemplo abaixo mas ocupando o menor espaço possível.
+## Tarefa 15: Implementar botão de imprimir
+1. Pergutar se a impressão será analítica ou sintética. 
+- Mostrar a mensagem "Deseja visualizar as informações referentes as contas (Analítico)?"
+2. Tratar a impressão analítica/ sintética no mesmo formato que o relatório antigo.
+3. No final da impressão colocar observação do tipo de análise é "Data de Competência: Análise do Resultado do Exercício"   
+4. Criar o mesmo relatório do DRE antigo 
+5. Melhorar dados de cabeçalho do relatório contendo todas as inforações de filtros, seguindo a formatação do exemplo abaixo mas ocupando o menor espaço possível.
 ![image](https://user-images.githubusercontent.com/80394522/172962951-6ebf0732-3c3b-4014-a0ef-9156dd77738f.png)
 
-## Tarefa: Implementar botão de exportar
+## Tarefa 16: Implementar botão de exportar
+1. Criar o exportar no mesmo formato que já temos no DRE antigo
 
-Criar o exportar no mesmo formato que já temos no DRE antigo
+## Tarefa 17: Criar botão Question
 
-## Tarefa: Criar botão Question
+1. Colocar um botão "?" (mesmo ícone da tela pack virtual) do lado direito do groupbox de filtros que exiba o mensagebox abaixo:
+```
+    O DRE Gerencial (Demonstrativo de Resultado de Exercício Gerencial) exibe as receitas, custos e despesas operacionais e não operacionais segundo a competência das movimentações financeiras.
+    As informações de venda e custo das mercadorias vendidas são obtidas diretamente dos registros de vendas.
+    As informações de despesas operacionais e não operacionais são obtidas dos lançamentos financeiros.
+```
 
-1. Colocar um botão "?" (mesmo ícone da tela pack virtual) do lado direito do groupbox de filtros que exiba o mensagebox abaaixo:
-
-O DRE Gerencial (Demonstrativo de Resultado de Exercício Gerencial) exibe as receitas, custos e despesas operacionais e não operacionais segundo a competência das movimentações financeiras.
-As informações de venda e custo das mercadorias vendidas são obtidas diretamente dos registros de vendas.
-As informações de despesas operacionais e não operacionais são obtidas dos lançamentos financeiros.
-
-
-## Tarefa: Últimos ajustes
+## Tarefa 18: Últimos ajustes
 - Ajustar Tab Index
 - Tratar cursor do mouse nos botões de imprimir e exportar
+- Realizar testes e ajustes gerais
+- Comemorar e correr para o abraço
 
 
-## Tarefa: - Relatório ABC 2.0 
-    - Alterar os nomes se for custo gerencial ou custo médio
+
+
 
 
 
