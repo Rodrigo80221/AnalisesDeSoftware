@@ -2,25 +2,34 @@
 Data de início da análise: 23/05/2022
 
 ## Problema a ser resolvido
-Diferenças nas informações das vendas e custo das mercadorias vendidas entre o DRE Gerencial e o ABC de Mercadorias
+Diferenças nas informações das vendas e custo das mercadorias vendidas entre o DRE Gerencial e o ABC de Mercadorias.
 
 ## Impactos
-Não terá impacto pois será uma tela nova somente para exibição de dados
+Não terá impacto pois será uma tela nova somente para exibição de dados.
 
 ## Pré Requisitos
-Será necessário ter o ambiente do Gestao_Relatorios funcionando.
+Será necessário ter o ambiente do GestaoRelatorios funcionando.
 Necessita o Finish da feature do ABC 2.0
 
 ## Solução
 
+Foi realizada análise para uma nova tela conforme o protótipo abaixo. Essa novas tela deverá atender as especificações abaixo:
+- Será criada uma tela para melhor visualização dos dados. A nova tela deverá atender os padrões de qualidade da Telecon Sistemas.
+- Consultar no banco GestaoRelatorios (data warehouse criado pelo Samir: Tela Classica > Sistema > Configurações Gestão Relatórios)
+- Mostrar os dados de venda e custo das mercadorias não mais do financeiro e sim diretamente das vendas.
+- Mostrar os dados de despesas de acordo com as informações que já tínhamos no DRE Gerencial. (Irá mudar alguns nomes de contas apenas.)
+
+![image](https://user-images.githubusercontent.com/80394522/171756235-e8adbe33-4845-4b6f-85f4-95090ad372c3.png)
+
+------------------------------------------------------------------------------------------------------
 
 ## Tarefa 1: Criar feature no git e ambiente
 
 git flow feature start NovoRelatorioDRE
 Criar ambiente GestaoRelatorios
-Tela Classica > Sistema > Congigurações Gestão Relatórios
+Tela Classica > Sistema > Configurações Gestão Relatórios
 
-------------------------------------------------------------------------------------------------------
+
 
 ## Tarefa 2: Criar novo formulário
 Criar no C# o formulário FrmRelDRE no caminho  GestaoComercial > Formularios > Financeiro
@@ -44,7 +53,7 @@ No novo form implementar as configurações padrões da Telecon
 ![image](https://user-images.githubusercontent.com/80394522/171756235-e8adbe33-4845-4b6f-85f4-95090ad372c3.png)
 
 
-------------------------------------------------------------------------------------------------------
+
 
 ## Tarefa: Carregamento da tela
  
@@ -57,7 +66,7 @@ No novo form implementar as configurações padrões da Telecon
 "Os parâmetros de data está fora do período disponível para a consulta. Revise os filtros!"
 colocar o foco no campo de data inicial
 
-------------------------------------------------------------------------------------------------------
+
 
 ## Tarefa: Criar módulo para Gerenciar o recurso Relatório DRE Gerencial
 
@@ -71,7 +80,7 @@ Se não ficar ativo para todo usuários executar update em operadores_modulos pa
 3. Chamar na tela clássica no menu de Financeiro > Relatório DRE Gerencial
 Adicionar abaixo do DRE Gerencial, logo será substituído.
 
-------------------------------------------------------------------------------------------------------
+
 
 ## Tarefa: Implementar o botão Consultar
 
@@ -119,7 +128,7 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 - Com o retorno do `ConsultarRelatorioDRE` iremos carregar o grid, deixar apenas um comentário pois iremos fer esta parte mais na frente.
 - Após consultar colocar o foco na grade na primeira coluna (expandir vs retrair)
 
-------------------------------------------------------------------------------------------------------
+
 
 ## Tarefa: Implementar procedimento `ConsultarRelatorioDRE`
 
@@ -171,7 +180,7 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 1. Chamar o procedimento `RetornarLinhasDespesasGerenciaisOperacionais` passando a `listaDRE` por parâmetro de referência + a variável de filtros.
 
 1. Retorar a função com a variável `listaDRE`
-------------------------------------------------------------------------------------------------------
+
 
 
 ## Tarefa: Implementar procedimento `processar`
@@ -200,7 +209,7 @@ Requisitos para a consulta:
 
 2. Percorrer os dados da consulta atualizando a propriedade `Valor` da `listaDRE`
 
-------------------------------------------------------------------------------------------------------
+
 
 ## Tarefa: Implementar procedimento `CarregarListaDespesas`
 
@@ -300,7 +309,7 @@ obs 3: Colocar na propriedade codconta o número da nota
                 contas.RemoveAll(c => c.Valor.Equals(0));
 ```
 
-------------------------------------------------------------------------------------------------------
+
 
 ## Tarefa: Implementar procedimento `processar` (Parte 2 - Carregamento do Grid)             
 - Carregar a `listaDRE` no grid
@@ -311,12 +320,12 @@ obs 3: Colocar na propriedade codconta o número da nota
 [Link Planilha](https://docs.google.com/spreadsheets/d/1cr54cDCsruG1pRD61DhnGFrpHO5xjzVNp-8DjKglcHg/edit?usp=sharing)
 - Ao inserir a descrição na linha terá uma tabulação no início. O número de tab é igual ao número de "." no codEstruturaal
 - Após carregar o grid dar um Hide em todas as linhas que não possuam o `"+"`
-------------------------------------------------------------------------------------------------------
+
 
 ## Tarefa: Implementar o recolher e expandir linhas
 Ao clicar no "+' ou "-" verificar na lista tem derivados no codestrutural e esconder ou exibir as linhas.
 
-------------------------------------------------------------------------------------------------------
+
 
 ## Tarefa: Validação dos Dados
 
@@ -329,9 +338,9 @@ Essa será a tarefa mais difícil teremos que fazer uma auditoria nos dados
 1. Bater os dados do novo DRE com o Antigo DRE, Novo ABC 2.0 e Antigo ABC de Mercadorias
 - Se necessário teremos que alterar a criação das tabelas no Data Warehouse GestaoRelatorios
 
-------------------------------------------------------------------------------------------------------
 
-------------------------------------------------------------------------------------------------------
+
+
 
 ## Tarefa: Criar as chamadas para outras telas do c# ou vb
 1. Caso clique na linha de vendas ou custos das mercadorias (TipoDeRegistro.TabelaVendas)
@@ -345,19 +354,28 @@ Essa será a tarefa mais difícil teremos que fazer uma auditoria nos dados
 
 ## Tarefa: Implementar botão de imprimir
 1. Pergutar se a impressão será analítica ou sintética
-2. No final da impressão colocar observação do tipo de análise é "Data de Competência: Análise do Resultado do Exercício"    
-- Melhorar dados de cabeçalho do relatório contendo todoas as inforações de filtros, seguindo a formatação do exemplo abaixo mas ocupando o menor espaço possível.
+2. No final da impressão colocar observação do tipo de análise é "Data de Competência: Análise do Resultado do Exercício"   
+3. Criar o mesmo relatório do DRE antigo 
+- Melhorar dados de cabeçalho do relatório contendo todas as inforações de filtros, seguindo a formatação do exemplo abaixo mas ocupando o menor espaço possível.
 ![image](https://user-images.githubusercontent.com/80394522/172962951-6ebf0732-3c3b-4014-a0ef-9156dd77738f.png)
-
 
 ## Tarefa: Implementar botão de exportar
 
+Criar o exportar no mesmo formato que já temos no DRE antigo
+
 ## Tarefa: Criar botão Question
-   - Colocar um mensagebox explicando a origem dos dados
+
+1. Colocar um botão "?" (mesmo ícone da tela pack virtual) do lado direito do groupbox de filtros que exiba o mensagebox abaaixo:
+
+O DRE Gerencial (Demonstrativo de Resultado de Exercício Gerencial) exibe as receitas, custos e despesas operacionais e não operacionais segundo a competência das movimentações financeiras.
+As informações de venda e custo das mercadorias vendidas são obtidas diretamente dos registros de vendas.
+As informações de despesas operacionais e não operacionais são obtidas dos lançamentos financeiros.
+
 
 ## Tarefa: Últimos ajustes
+- Ajustar Tab Index
+- Tratar cursor do mouse nos botões de imprimir e exportar
 
-## Tarefa: Ajustar Tab Index
 
 ## Tarefa: - Relatório ABC 2.0 
     - Alterar os nomes se for custo gerencial ou custo médio
