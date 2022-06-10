@@ -1,4 +1,4 @@
-# Épico: Reformulação do DRE
+# Épico: Reformulação do DRE Fase 1
 Data de início da análise: 23/05/2022
 
 ## Problema a ser resolvido
@@ -52,7 +52,7 @@ Abaixo uma imagem com as principais mudanças em relação ao DRE Gerencial
 
 ![image](https://user-images.githubusercontent.com/80394522/171756235-e8adbe33-4845-4b6f-85f4-95090ad372c3.png)
 
-## Tarefa3: Carregamento da tela (Form Load) 
+## Tarefa 3: Carregamento da tela (Form Load) 
  
 1. Criar label com a data de início e fim dos dados disponibilizados no data warehouse assim como no relatório ABC 2.0 
 - Não está no protótipo. Adicionar abaixo dos campos no groupbox de filtros.
@@ -84,7 +84,7 @@ Adicionar abaixo do DRE Gerencial, logo será substituído.
 - Esse botão fica no setor Retaguarda
 - Ao padronizarmos a nova tela deverá ficar no setor financeiro.
 
-## Tarefa 4: Implementar o botão Consultar
+## Tarefa 5: Implementar o botão Consultar
 
 obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack Virtual
 
@@ -128,7 +128,7 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 - Com o retorno do `ConsultarRelatorioDRE` iremos carregar o grid, deixar apenas um comentário pois iremos fer esta parte mais na frente.
 - Após consultar colocar o foco na grade
 
-## Tarefa 5: Implementar procedimento "ConsultarRelatorioDRE" e "MontarEstruturaDRE"
+## Tarefa 6: Implementar procedimento "ConsultarRelatorioDRE" e "MontarEstruturaDRE"
 
 1. Criar a variável list `<List>DREGerencialLinhaRelatorio listaDRE`
 
@@ -180,7 +180,7 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 7. Retorar a função com a variável `listaDRE`
 
 
-## Tarefa 6: Implementar procedimento "processar" no FrmRelatorioPack
+## Tarefa 7: Implementar procedimento "processar" no FrmRelatorioPack
 
 obs: Realizar o procedimento de forma semelhante ao processar do FrmRelatorioPack
 
@@ -192,7 +192,7 @@ obs: Realizar o procedimento de forma semelhante ao processar do FrmRelatorioPac
     - Colocar em vermelho quando a coluna valor for negativa (retirando o sinal de - (menos))
     - Por enquanto fazer só essa parte, mais a frente ajustaremos melhor o grid
 
-## Tarefa 7: Implementar procedimento "CarregarResultadoBruto"
+## Tarefa 8: Implementar procedimento "CarregarResultadoBruto"
 
 1. Realizar uma consulta no banco GestaoRelatorios conforme os passos abaixo e atualizar a propriedade `Valor` na `listaDRE` que veio por parâmetro com as informações de Venda e custo.
 Requisitos para a consulta:
@@ -204,7 +204,7 @@ Requisitos para a consulta:
 
 2. Atualizar a propriedade `Valor` da `listaDRE` no item correspondente
 
-## Tarefa 8: Implementar procedimento "CarregarListaDespesas"  (Parte 1)
+## Tarefa 9: Implementar procedimento "CarregarListaDespesas"  (Parte 1)
 
 obs 1: Iremos utilizar o procedimento Telecon.GestaoComercial.Biblioteca.Financeiro.RelDRE.ConsultarDRE para
 utilizar como base.
@@ -258,7 +258,7 @@ Filtro 3: Utilizar Filtros de data nesse modelo `sb.AppendLine(" AND " + new Cal
 5. Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE`
 
 
-## Tarefa 9: Implementar procedimento "CarregarListaDespesas" (Parte 2)
+## Tarefa 10: Implementar procedimento "CarregarListaDespesas" (Parte 2)
 
 Obs 1: Iremos utilizar o procedimento Telecon.GestaoComercial.Biblioteca.Financeiro.RelDRE.ConsultarLancamentos para
 utilizar como base.
@@ -284,7 +284,7 @@ obs 4: Não precisaremos dos filtros (where) de codestrutura, em vez disso iremo
 - Alterar a descrição da conta `Despesas Fixas` para `(-) DESPESAS GERENCIAIS OPERACIONAIS` 
 
 
-## Tarefa 10: Finalizar dados na lista
+## Tarefa 11: Finalizar dados na lista
 
 
 1. No `FrmRelDRE`criar procedimento para atualizar o valor das linhas de cabeçalho da lista `listaDRE`. Chamar esse procedimento antes de caregar o Grid.
@@ -304,7 +304,7 @@ obs 4: Não precisaremos dos filtros (where) de codestrutura, em vez disso iremo
                 contas.RemoveAll(c => c.Valor.Equals(0));
 ```
 
-## Tarefa 11: Implementar procedimento "processar" (Parte 2 - Carregamento do Grid)           
+## Tarefa 12: Implementar procedimento "processar" (Parte 2 - Carregamento do Grid)           
 
 1. Carregar a `listaDRE` no grid
 2. Ao carregar o grid caso o código estrutural possua outros derivados na lista `listaDRE` (usar lambda) colocar um `"+"` na primeira coluna
@@ -315,13 +315,13 @@ obs 4: Não precisaremos dos filtros (where) de codestrutura, em vez disso iremo
 5. Ao inserir a descrição na linha terá uma tabulação no início. O número de tab é igual ao número de "." no codEstruturaal
 - Após carregar o grid dar um Hide em todas as linhas que não possuam o `"+"`
 
-## Tarefa 12: Implementar o recolher e expandir linhas
+## Tarefa 13: Implementar o recolher e expandir linhas
 
 1. Ao clicar no "+' ou "-" verificar se na lista tem derivados no codestrutural e esconder ou exibir as linhas.
 - No relatório do pack virtual existe um recurso semelhante
 
 
-## Tarefa 13: Validação dos Dados
+## Tarefa 14: Validação dos Dados
 
 Essa será a tarefa mais difícil teremos que fazer uma auditoria nos dados
 
@@ -331,7 +331,7 @@ Essa será a tarefa mais difícil teremos que fazer uma auditoria nos dados
 4. Fazer os ajustes necessários
 - Se necessário teremos que alterar a criação das tabelas no Data Warehouse GestaoRelatorios
 
-## Tarefa 14: Criar as chamadas para outras telas do c# ou vb
+## Tarefa 15: Criar as chamadas para outras telas do c# ou vb
 
 1. Grid: linha de vendas ou custos das mercadorias
 - Alterar o cursor para mouse hand ao colocar o mouse sob esse tipo de linha (TipoDeRegistro.TabelaVendas)
@@ -341,7 +341,7 @@ Essa será a tarefa mais difícil teremos que fazer uma auditoria nos dados
 - Alterar o cursor para mouse hand ao colocar o mouse sob esse tipo de linha  (TipoDeRegistro.PlanoDeContas)
 - Caso clique na linha de contas abrir a tela Lançamentos Financeiros filtrando pela mesma conta e data na loja todas
 
-## Tarefa 15: Implementar botão de imprimir
+## Tarefa 16: Implementar botão de imprimir
 1. Pergutar se a impressão será analítica ou sintética. 
 - Mostrar a mensagem "Deseja visualizar as informações referentes as contas (Analítico)?"
 2. Tratar a impressão analítica/ sintética no mesmo formato que o relatório antigo.
@@ -350,10 +350,10 @@ Essa será a tarefa mais difícil teremos que fazer uma auditoria nos dados
 5. Melhorar dados de cabeçalho do relatório contendo todas as inforações de filtros, seguindo a formatação do exemplo abaixo mas ocupando o menor espaço possível.
 ![image](https://user-images.githubusercontent.com/80394522/172962951-6ebf0732-3c3b-4014-a0ef-9156dd77738f.png)
 
-## Tarefa 16: Implementar botão de exportar
+## Tarefa 17: Implementar botão de exportar
 1. Criar o exportar no mesmo formato que já temos no DRE antigo
 
-## Tarefa 17: Criar botão Question
+## Tarefa 18: Criar botão Question
 
 1. Colocar um botão "?" (mesmo ícone da tela pack virtual) do lado direito do groupbox de filtros que exiba o mensagebox abaixo:
 ```
@@ -362,7 +362,7 @@ Essa será a tarefa mais difícil teremos que fazer uma auditoria nos dados
     As informações de despesas operacionais e não operacionais são obtidas dos lançamentos financeiros.
 ```
 
-## Tarefa 18: Últimos ajustes
+## Tarefa 19: Últimos ajustes
 - Ajustar Tab Index
 - Tratar cursor do mouse nos botões de imprimir e exportar
 - Realizar testes e ajustes gerais
