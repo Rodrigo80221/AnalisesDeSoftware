@@ -21,6 +21,9 @@ Foi realizada análise para uma nova tela conforme o protótipo abaixo. Essa nov
 
 ![image](https://user-images.githubusercontent.com/80394522/171756235-e8adbe33-4845-4b6f-85f4-95090ad372c3.png)
 
+Abaixo uma imagem com as principais mudanças em relação ao DRE Gerencial
+![Alterações DRE Gerencial](https://user-images.githubusercontent.com/80394522/173059149-3893c07d-e6eb-4fc6-8175-7b1be9d4f308.png)
+
 ------------------------------------------------------------------------------------------------------
 
 ## Tarefa 1: Criar feature no git e ambiente
