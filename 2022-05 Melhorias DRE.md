@@ -214,22 +214,22 @@ utilizar como base.
 1. Criar a variável com a configuração da contaDRE `var contaDRE = config.Conta100PorCentoPagar.CodEstrutural;`
 
 2. Realizar consulta na tabela LancamentosFinanceirosPagamento semelhante a consulta abaixo utilizando os filtros corretos (where)
-- Para a consulta usar o filtro abaixo
-Filtro 1:  CodEstrutural LIKE `var contaDRE + %` (ficará algo semelhante a consulta logo abaixo)
-Filtro 2: `Cancelado = " + banco.ObterVerdadeiroFalso(false)`
-Filtro 3: Utilizar Filtros de data nesse modelo `sb.AppendLine(" AND " + new CalculosRelatoriosSQL().SoData("LP.DataHoraPagamento") + " >= " + banco.ObterData(Convert.ToDateTime(dataInicio)));`
+Para a consulta usar o filtro abaixo
+    Filtro 1:  CodEstrutural LIKE `var contaDRE + %` (ficará algo semelhante a consulta logo abaixo)
+    Filtro 2: `Cancelado = " + banco.ObterVerdadeiroFalso(false)`
+    Filtro 3: Utilizar Filtros de data nesse modelo `sb.AppendLine(" AND " + new CalculosRelatoriosSQL().SoData("LP.DataHoraPagamento") + " >= " + banco.ObterData(Convert.ToDateTime(dataInicio)));`
 
-``` SQL
+    ``` SQL
     SELECT TAB.CodEstrutural, TAB.Descricao, SUM(TAB.VALOR) FROM
     (
 
-        select PC.CodEstrutural, PC.Descricao, LFR.* from [dbo].[LancamentosFinanceirosReceber][LFR]
-        inner join [dbo].[PlanoContas][PC] ON LFR.CodContaReceber = PC.CodConta 
-        WHERE CodEstrutural LIKE '3.%' AND YEAR(LFR.DataCompetencia) = 2022 AND MONTH(LFR.DataCompetencia) = 2
+    select PC.CodEstrutural, PC.Descricao, LFR.* from [dbo].[LancamentosFinanceirosReceber][LFR]
+    inner join [dbo].[PlanoContas][PC] ON LFR.CodContaReceber = PC.CodConta 
+    WHERE CodEstrutural LIKE '3.%' AND YEAR(LFR.DataCompetencia) = 2022 AND MONTH(LFR.DataCompetencia) = 2
 
     ) AS TAB
     GROUP BY TAB.CodEstrutural, TAB.Descricao
-```
+    ```
 3. Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE` (quando débito deverá ser negativo)
 obs: seria interessante criar um procedimento para isso que pudesse ser utilizado também nas outras consultas
 
