@@ -68,7 +68,6 @@ Abaixo uma imagem com as principais mudanças em relação ao DRE Gerencial
 ```
 - colocar o foco no campo de data inicial
 
-DRG (Demonstrativo de Resultado Gerencial)
 ## Tarefa 4: Criar módulo para Gerenciar o recurso Relatório DRE Gerencial
 
 1. Criar verifica banco para inserir o código abaixo
