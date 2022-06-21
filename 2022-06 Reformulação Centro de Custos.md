@@ -17,7 +17,7 @@ Remover campo porcentagem padrão no centro de custos
 
 ![image](https://user-images.githubusercontent.com/80394522/174691133-ce0041e8-6d73-4bff-82bd-433574046278.png)
 
-![image](https://user-images.githubusercontent.com/80394522/174691160-0d9ff60d-a5b5-43ba-9bc7-82cd6f12ca6f.png)
+![image](https://user-images.githubusercontent.com/80394522/174691639-a825bf55-2e33-4b02-b182-220e5116c54a.png)
 
 
 ![image](https://user-images.githubusercontent.com/80394522/174691186-17f5f0e5-aeb5-45b8-9564-aeff0f6d1180.png)
