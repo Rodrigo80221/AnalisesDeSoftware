@@ -6,7 +6,8 @@
 # Nova Modelagem do Centro de Custos
 
 
-![image](https://user-images.githubusercontent.com/80394522/174665185-202fc456-d6ad-4899-85fa-c9e5c8c0a6e9.png)
+![image](https://user-images.githubusercontent.com/80394522/174790446-2068b3ec-fe62-4c8d-be48-577058e1cd23.png)
+
 
 ## Tarefa: Modificação da modelagem de dados do Centro de Custos
 
