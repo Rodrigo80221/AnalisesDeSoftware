@@ -6,7 +6,7 @@
 # Nova Modelagem do Centro de Custos
 
 
-![image](https://user-images.githubusercontent.com/80394522/174790446-2068b3ec-fe62-4c8d-be48-577058e1cd23.png)
+![image](https://user-images.githubusercontent.com/80394522/175109696-a1b91399-2c58-4942-a7fc-5dfe7206dae9.png)
 
 
 ## Tarefa: Modificação do banco de dados para se adequar ao Centro de Custos por loja
