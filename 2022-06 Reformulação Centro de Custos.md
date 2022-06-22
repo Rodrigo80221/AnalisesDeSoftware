@@ -37,6 +37,8 @@ obs: Podemos realizar as alterações desejadas pois ainda não temos nenhum cli
 1. Recriar a tabela LancamentosFinanceirosCentroCusto com chave composta de 3 elementos + Fk Composta com 2 elementos (CodLojaCentrosCusto, CodCentroCusto) para CentroCustoLojas
     - Alterar classe Telecode
 
+1. Alterar a tabela PlanoContas adicionando o campo bit PermiteCentroCustoLojas    
+
 
 # Remover campo porcentagem padrão no centro de custos
 
@@ -70,7 +72,8 @@ Teremos um novo recurso no plano de contas para importar e exportar configuraç�
     - Salvar o grid na tabela CentroCustoPlanoContas (salvar apenas os registros que possuírem valor de 0 a 100)
 1. Criar o botão `Replicar percentais da matris para outras lojas` Caso chkPermiteAddCentrosDeOutrasLojas esteja desmarcado deixar o botão visível. Ao clicar no botão copiar as porcentagens da matriz para as outras lojas.
     - Tratar para carregar o grid de acordo com a tabela CentroCustoPlanoContas
-
+1. Salvar e carregar o checkbox na tabela PlanoContas
+    - Alterar classe do Telecode
 
 # Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 2)
 
@@ -87,10 +90,20 @@ Teremos um novo recurso no plano de contas para importar e exportar configuraç�
 
     ```
 
-1. 
-
-
 # Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 3)
+
+1. Implementar o botão `Importar Percetuais de Outra Conta`
+    - Exibir formulário de busca para selecionar a conta
+    - Exibir somente contas que tenham registros na tabela CentroCustoPlanoContas
+    - Importar também o campo PlanoContas.PermiteCentroCustoLojas 
+    - Importar as informações da conta selecionada
+
+1. Implementar o botão `Exportar Percetuais para outras contas`
+    - Exibir formulário de busca para seleção em massa
+    - Exibir todas as contas de pagamento. ver `select * from Configuracoes where Descricao like '%EstruturaContas%'`
+    - Exportar as configurações para todas as contas selecionadas
+    - Exportar também o campo PlanoContas.PermiteCentroCustoLojas
+
 
 # Alteração da grade no contas a pagar (Parte 1)
 
