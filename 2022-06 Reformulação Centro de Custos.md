@@ -13,8 +13,9 @@
 
 obs: Podemos realizar as alterações desejadas pois ainda não temos nenhum cliente utilizando o centro de custos
 
-1. Remover relacionamento entre Produtos e Seções
-    - Remover campos do cadastro de produtos no VB6
+1. Remover relacionamento FK entre Produtos e Seções
+    - Deixar invisível o campo relativo a esse campo no cadastro de produtos no VB6
+    - Manter o campo no cadastro de produtos para não termos impacto
 1. 
 
 
