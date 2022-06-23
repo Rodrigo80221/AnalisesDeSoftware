@@ -132,7 +132,7 @@ Obs2: O recurso de atualiza os lançamentos financeiros será migrado para a tel
 
 1. Adequar as regras atuais de digitação
 
-![image](https://user-images.githubusercontent.com/80394522/175374905-51511bd0-62a4-4986-b703-3d48c8e9566a.png)
+![image](https://user-images.githubusercontent.com/80394522/175376155-0ad1ad5b-b1b8-4748-b288-0f90d2c498d6.png)
 
 
 # Alteração da grade no contas a pagar (Parte 2)
