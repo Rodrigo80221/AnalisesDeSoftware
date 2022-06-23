@@ -127,6 +127,8 @@ Obs2: O recurso de atualiza os lançamentos financeiros será migrado para a tel
 
 1. Diminuir a coluna de descrição do centro de custos, deixar semelhante a imagem, assim fica mais rápido a visualização da conta vs valores
 
+1. Alterar o label "Recarregar Percentuais dos Centros de Custos" para "Distribuir automaticamente"
+
 1. Carregar o grid de acordo com os centros de custos da loja configurada no plano de contas
     - Alterar o carregamento do grid atual. Carregar apenas os centros de custos que tem valor (0 - 100%) cadastrado no plano de contas. Essa questão servirá para facilitar os lançamentos, pois teremos poucas opções para informar 
 
@@ -158,14 +160,22 @@ Obs2: O recurso de atualiza os lançamentos financeiros será migrado para a tel
 1. Criar uma nova aba de Centros de Custos na tela de lançamentos financeiros
     - Caso PlanoContas.PermiteCentroCustoLojas esteja marcado mostrar a nova aba, do contrário deixar visível a antiga
     - Tratar para não carregar sempre o código das 2 abas, ou carregar uma ou outra
-    - Carregar o grid com as informações dos centros de custos e as lojas cadastradas no plano de contas
+    - Carregar o grid com os centros de custos e lojas preenchidas no plano de contas
     - Carregar as colunas de totais
 
-1. Criar o label "Porcentagem Total Distribuída"
-    - O label deverá receber a soma da porcentagem de todas as células do grid 
+1. Criar a linha de totais
+    - A linha de totais deve ser a soma dos valores das colunas e não deve ser editável    
+    - Criar a mesma regra para coloração de vermelho da outra aba
+    - Para unir as colunas da grade na linha de totais utilizar o formata grid e o recurso utilizado no relatório do pack virtual
 
-1. Criar o label "Valor Total Distribuído"
-    - C
+1. Criar o label de valor utilizando a mesma regra anterior
+
+1. Criar os mesmos botões da outra aba do centro de custos para resetar os valores ou limpar a coluna de valor do grid
+
+1. Criar a regra de editar os percentuais ou o valor do grid
+    - A diferença é que ao editar o valor iremos distribuir a porcentagem também nas colunas proporcionalmente como o cadastrado no plano de contas
+
+1. Criar o frame para definir se irá preecher a grade com valor monetário ou percentual
 
 # Criação da tela para relacionar as seções e os centros de custos
 
@@ -173,3 +183,10 @@ Obs2: O recurso de atualiza os lançamentos financeiros será migrado para a tel
 
 
 # Criar filtros de busca no financeiro para buscar lançamentos sem centro de custos ?
+
+
+# criar logs nos botões de atualizar o centros de custos nos lançamentos financeiros
+
+# alterar query relatório de resultado da loja
+
+# vamos fazer algo para o  usuário ser obrigado a verificar o centro de custos?
