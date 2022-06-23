@@ -38,6 +38,7 @@ obs: Podemos realizar as alterações desejadas pois ainda não temos nenhum cli
     - Alterar classe Telecode
 
 1. Alterar a tabela PlanoContas adicionando o campo bit PermiteCentroCustoLojas    
+    - Alterar classe do Telecode
 
 
 # Remover campo porcentagem padrão no centro de custos
@@ -49,6 +50,8 @@ obs: Podemos realizar as alterações desejadas pois ainda não temos nenhum cli
 
 Obs: Devido a termos um centro de custos por loja e também podermos adicionar um centro de custos de outra loja impossibilitou criar uma forma simplista para popular o plano de contas.
 Teremos um novo recurso no plano de contas para importar e exportar configurações de determinada conta.
+
+Obs2: O recurso de atualiza os lançamentos financeiros será migrado para a tela do plano de contas
 
 
 # Alterar cadastro do centro de custos
@@ -73,7 +76,14 @@ Teremos um novo recurso no plano de contas para importar e exportar configuraç�
 1. Criar o botão `Replicar percentais da matris para outras lojas` Caso chkPermiteAddCentrosDeOutrasLojas esteja desmarcado deixar o botão visível. Ao clicar no botão copiar as porcentagens da matriz para as outras lojas.
     - Tratar para carregar o grid de acordo com a tabela CentroCustoPlanoContas
 1. Salvar e carregar o checkbox na tabela PlanoContas
-    - Alterar classe do Telecode
+1. Colocar um label na tela com a mensagem abaixo
+    ```
+    Os centros de custos sem percentual informado ficarão ocultos nos lançamentos financeiros.
+    Para que sejam exibidos digite 0 (zero) na célula da grade.
+    ```
+   
+
+[Link para a planilha com os protótipos](https://docs.google.com/spreadsheets/d/1Yn1sK54hgP0BfxfBuJbDr1zxpfpZKRfue5dw_2ZIQAE/edit?usp=sharing)    
 
 # Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 2)
 
@@ -92,22 +102,35 @@ Teremos um novo recurso no plano de contas para importar e exportar configuraç�
 
 # Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 3)
 
+1. Adaptar o recurso atual de atualizar os lançamentos financeiros. Para inserir o código da loja na tabela LancamentosFinanceirosCentroCusto. Trocar o nome do botão de "Atualizar Lançamentos".
+
+1. Criar um botão com o mesmo recurso atual de atualizar os lançamentos financeiros mas apenas da conta posicionada. O nome do botão deverá ser "Atualizar Lançamentos Deste Plano de Contas".
+    - Deixar este botão visível apenas se o botão "Atualizar Lançamentos" estiver visível. 
+
 1. Implementar o botão `Importar Percetuais de Outra Conta`
     - Exibir formulário de busca para selecionar a conta
     - Exibir somente contas que tenham registros na tabela CentroCustoPlanoContas
     - Importar também o campo PlanoContas.PermiteCentroCustoLojas 
-    - Importar as informações da conta selecionada
+    - Importar as informações da conta selecionada  
 
 1. Implementar o botão `Exportar Percetuais para outras contas`
     - Exibir formulário de busca para seleção em massa
     - Exibir todas as contas de pagamento. ver `select * from Configuracoes where Descricao like '%EstruturaContas%'`
     - Exportar as configurações para todas as contas selecionadas
     - Exportar também o campo PlanoContas.PermiteCentroCustoLojas
-
+    - Após a exportação caso o botão "Atualizar Lançamentos" esteja visível perguntar também se deseja atualizar os lançamentos financeiros dos planos de contas selecionados. Atualizar somente os planos de contas exportados.
+ 
 
 # Alteração da grade no contas a pagar (Parte 1)
 
 ![image](https://user-images.githubusercontent.com/80394522/174691224-e4bfeb32-365c-42ca-badc-1302d7125c5d.png)
+
+1. Diminuir a coluna de descrição do centro de custos, deixar semelhante a imagem, assim fica mais rápido a visualização da conta vs valores
+
+1. Carregar o grid de acordo com os centros de custos da loja configurada no plano de contas
+    - Alterar o carregamento do grid atual. Carregar apenas os centros de custos que tem valor (0 - 100%) cadastrado no plano de contas. Essa questão servirá para facilitar os lançamentos, pois teremos poucas opções para informar 
+
+1. Adequar as regras atuais de digitação
 
 # Alteração da grade no contas a pagar (Parte 2)
 
@@ -118,3 +141,4 @@ Teremos um novo recurso no plano de contas para importar e exportar configuraç�
 ![image](https://user-images.githubusercontent.com/80394522/174691282-faa96fbf-627a-4553-8bbd-1095e9e5fbf0.png)
 
 
+# Criar filtros de busca no financeiro para buscar lançamentos sem centro de custos ?
