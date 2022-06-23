@@ -130,7 +130,23 @@ Obs2: O recurso de atualiza os lançamentos financeiros será migrado para a tel
 1. Carregar o grid de acordo com os centros de custos da loja configurada no plano de contas
     - Alterar o carregamento do grid atual. Carregar apenas os centros de custos que tem valor (0 - 100%) cadastrado no plano de contas. Essa questão servirá para facilitar os lançamentos, pois teremos poucas opções para informar 
 
-1. Adequar as regras atuais de digitação
+1. Adequar as regras atuais de digitação conforme a imagem abaixo
+    - Colocar o label "Valor: " semelhante a imagem. Caso o usuário digite o valor no lançamento financeiro o valor do label deverá receber o valor do lançamento financeiro.
+    - Caso o usuário não digite o valor no lançamento financeiro, o label deverá receber o valor total da coluna valor no grid. E o campo valor do lançamento financeiro também deverá receber esse valor.
+    - A coluna valor e porcentagem do grid deverão estar bloqueadas para digitação
+    - A linha de total deverá ser a soma das porcentagens ou valores    
+    - Caso o usuário tenha informado o valor do lançamento financeiro esse valor será utilizado para calcular a porcentagem de referência.
+    -  Caso o usuário não tenha informado o valor do lançamento financeiro. O valor para a porcentagem de referência será o label que está com a linha de total do grid.
+    - Permitir gravar somente se o percentual estiver em 100%
+
+1. Remover label de alerta de valores diferentes (label vermelho)    
+    - Caso a linha total não esteja batendo 100% deixar a célula em vermelho
+    - Caso o usuário tenha inserido o valor do lançamento financeiro e a linha de total esteja diferente desse valor deixar a célula em vermelho.
+
+1. Criar um botão ou label link 
+    - "Zerar Valores": Ao clicar nesse recurso limpar todas as linhas da coluna Valor
+
+
 
 ![image](https://user-images.githubusercontent.com/80394522/175376155-0ad1ad5b-b1b8-4748-b288-0f90d2c498d6.png)
 
@@ -138,6 +154,18 @@ Obs2: O recurso de atualiza os lançamentos financeiros será migrado para a tel
 # Alteração da grade no contas a pagar (Parte 2)
 
 ![image](https://user-images.githubusercontent.com/80394522/174691257-a0e6f9c2-4abd-4a2b-bfc0-63725c6d7eef.png)
+
+1. Criar uma nova aba de Centros de Custos na tela de lançamentos financeiros
+    - Caso PlanoContas.PermiteCentroCustoLojas esteja marcado mostrar a nova aba, do contrário deixar visível a antiga
+    - Tratar para não carregar sempre o código das 2 abas, ou carregar uma ou outra
+    - Carregar o grid com as informações dos centros de custos e as lojas cadastradas no plano de contas
+    - Carregar as colunas de totais
+
+1. Criar o label "Porcentagem Total Distribuída"
+    - O label deverá receber a soma da porcentagem de todas as células do grid 
+
+1. Criar o label "Valor Total Distribuído"
+    - C
 
 # Criação da tela para relacionar as seções e os centros de custos
 
