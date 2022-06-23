@@ -153,7 +153,7 @@ Obs2: O recurso de atualiza os lançamentos financeiros será migrado para a tel
 
 # Alteração da grade no contas a pagar (Parte 2)
 
-![image](https://user-images.githubusercontent.com/80394522/174691257-a0e6f9c2-4abd-4a2b-bfc0-63725c6d7eef.png)
+![image](https://user-images.githubusercontent.com/80394522/175431139-fc4cddf0-5278-4020-8514-c8c3d98d179f.png)
 
 1. Criar uma nova aba de Centros de Custos na tela de lançamentos financeiros
     - Caso PlanoContas.PermiteCentroCustoLojas esteja marcado mostrar a nova aba, do contrário deixar visível a antiga
