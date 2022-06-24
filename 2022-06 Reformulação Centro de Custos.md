@@ -1,40 +1,49 @@
 # Modelagem Atual do Centro de Custos
 
 ![image](https://user-images.githubusercontent.com/80394522/174605425-2bd7b260-d9c2-4a87-a259-ca2543f67291.png)
-
-
-# Nova Modelagem do Centro de Custos
-
-
-![image](https://user-images.githubusercontent.com/80394522/175109696-a1b91399-2c58-4942-a7fc-5dfe7206dae9.png)
-
+>> Imagem Antiga Estrutura Centro de Custos
 
 ## Tarefa: Modificação do banco de dados para se adequar ao Centro de Custos por loja
 
+![image](https://user-images.githubusercontent.com/80394522/175109696-a1b91399-2c58-4942-a7fc-5dfe7206dae9.png)
+>> Imagem Nova Estrutura Centro de Custos
+
 obs: Podemos realizar as alterações desejadas pois ainda não temos nenhum cliente utilizando o centro de custos
 
-1. Remover relacionamento FK entre Produtos e Seções
-    - Deixar invisível o campo relativo a esse campo no cadastro de produtos no VB6
-    - Manter o campo no cadastro de produtos para não termos impacto
+1. Criar verifica banco para realizar as alterações apontadas em vermelho na imagem
+    - Dropar e recriar as tabelas, PK's e FK's com os novos campos
+    - Criar chaves PK indicadas
+    - Criar relacionamento FK indicados
+    - Criar triggers
+    - Alterar classes Telecode
+    - Considerar também os detalhes descritos nos itens abaixo
 
-1. Alterar a tabela CentrosCusto excluindo o campo informado
+1. Alterar a tabela CentrosCusto excluindo o campo informado PercentualPadrao
     - Alterar classe Telecode
 
 1. Criar tabela CentroCustoLojas com chave PK composta
-    - Add delete e update cascade. Caso seja excluído ou alterado um registro na tabela CentrosCusto deverá ser propagada para as outras tabelas
+    - Criar pk para CentrosCusto. Add delete e update cascade. Caso seja excluído ou alterado um registro na tabela CentrosCusto deverá ser propagada para as outras tabelas
     - Realizar um update na tabela CentroCustoLojas populando a tabela com todas lojas e todos centros de custos no banco atual
 
-1. Criar a trigger TG_InserirCentrosCustoLojas na tabela CentrosCusto para que ao inserir um novo centro de custos na tabela CentrosCusto crie automáticamente o centro de custo para todas as lojas na tabela CentroCustoLojas
+1. Criar a trigger TG_InserirCentrosCustoLojas na tabela CentrosCusto
+    obs: servirá para que ao inserir um novo centro de custos na tabela CentrosCusto crie automáticamente o centro de custo para todas as lojas na tabela CentroCustoLojas
 
-1. Criar trigger TG_InserirCentrosDeCusto na tabela de Lojas para que ao ser inserida uma nova loja seja preenchida a tabela CentrosCustoLojas
+1. Criar trigger TG_InserirCentrosDeCusto na tabela de Lojas 
+    - Ao inserirmos um registro na tabela Lojas deverá ser preencida a tabela CentrosCustoLojas com a nova loja e todos os centros de custos
 
-1. Recriar a tabela CentroCustoSecoes com chave PK composta de 3 elementos + Fk Composta com 2 elementos (CodLojaCentrosCusto, CodCentroCusto) para CentroCustoLojas
+1. Recriar a tabela CentroCustoSecoes 
+    - Terá chave PK composta de 3 elementos 
+    - Terá Fk Composta com 2 elementos (CodLojaCentrosCusto, CodCentroCusto) para CentroCustoLojas
     - Alterar classe Telecode
 
-1. Recriar a tabela CentroCustoPlanoContas com chave composta de 3 elementos + Fk Composta com 2 elementos (CodLojaCentrosCusto, CodCentroCusto) para CentroCustoLojas
+1. Recriar a tabela CentroCustoPlanoContas 
+    - Terá chave PK composta de 3 elementos 
+    - Terá Fk Composta com 2 elementos (CodLojaCentrosCusto, CodCentroCusto) para CentroCustoLojas
     - Alterar classe Telecode
 
-1. Recriar a tabela LancamentosFinanceirosCentroCusto com chave composta de 3 elementos + Fk Composta com 2 elementos (CodLojaCentrosCusto, CodCentroCusto) para CentroCustoLojas
+1. Recriar a tabela LancamentosFinanceirosCentroCusto
+    - Terá PK composta de 3 elementos 
+    - Terá FK Composta com 2 elementos (CodLojaCentrosCusto, CodCentroCusto) para CentroCustoLojas
     - Alterar classe Telecode
 
 1. Alterar a tabela PlanoContas adicionando o campo bit PermiteCentroCustoLojas    
@@ -44,68 +53,96 @@ obs: Podemos realizar as alterações desejadas pois ainda não temos nenhum cli
 # Remover campo porcentagem padrão no centro de custos
 
 ![image](https://user-images.githubusercontent.com/80394522/174673749-689b26fb-30b0-4a4b-8f93-57fd1e132870.png)
+>> Imagem print formulário "Cadastro de Centros de Custo"
 
-1. Remover o campo %Padrão
-1. Remover o botão e a funcionalidade "Atualizar Plano de Contas"
+1. Remover o campo `% Padrão`
+1. Remover o botão e a funcionalidade `Atualizar Plano de Contas`
 
 Obs: Devido a termos um centro de custos por loja e também podermos adicionar um centro de custos de outra loja impossibilitou criar uma forma simplista para popular o plano de contas.
 Teremos um novo recurso no plano de contas para importar e exportar configurações de determinada conta.
 
-Obs2: O recurso de atualiza os lançamentos financeiros será migrado para a tela do plano de contas
+Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a tela do plano de contas. O código pode ser mantido para utilizar na outra tela.
 
 
-# Alterar cadastro do centro de custos
+# Testar Cadastro do Centro de Custos
 
-1. Manipular (add, alterar e excluír) os dados utilizando o cadastro de centro de custos atual e verificar se irá manter equivalente as 2 tabelas quanto aos centros de custos e lojas (CentrosCusto vs CentroCustoLojas)
+1. Realizar testes na tabela CentroCustoLojas utilizando a tela "Cadastro de Centro de Custos"
+    - Ao add um novo centro de custos deverá popular a CentroCustoLojas com todas as lojas
+    - Ao remover um centro de custos deverá remover da CentroCustoLojas 
 
 ![image](https://user-images.githubusercontent.com/80394522/174691133-ce0041e8-6d73-4bff-82bd-433574046278.png)
+>> Imagem Excel "Cadastro de Centros de Custo"
 
 # Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 1)
 
 ![image](https://user-images.githubusercontent.com/80394522/174691639-a825bf55-2e33-4b02-b182-220e5116c54a.png)
+>> Imagem Excel "Nova aba no Plano de Contas (parte 1)"
 
 1. No plano de contas criar uma nova aba chamada de "Centros de Custos" e migrar os recursos atuais relacionados para essa aba.
     - Criar o checkbox chkPermiteAddCentrosDeOutrasLojas
-    - Carregar um grid com os "Centros de Custos vs Lojas"
-    - Deixar editavel as celulas referentes as porcentagens
-    - Carregar um linha de totais
-    - Limitar em 100% a digitação em 1 célula
+    - Carregar um grid com os "Centros de Custos vs Lojas" com as células editáveis
+    - Carregar o grid de acordo com os valores contidos na tabela CentroCustoPlanoContas
+    - Limitar em 100 a digitação em cada célula
+    - Carregar uma linha de totais que não pode ser editável
+    - A célula da linha de totais deverá ficar em vermelho caso seja <> 100
     - Possibilitar informar "0" na digitação da célula
-    - Caso chkPermiteAddCentrosDeOutrasLojas esteja desmarcado ao salvar obrigar que todas as lojas estejam com o total em 100%
-    - Salvar o grid na tabela CentroCustoPlanoContas (salvar apenas os registros que possuírem valor de 0 a 100)
-1. Criar o botão `Replicar percentais da matris para outras lojas` Caso chkPermiteAddCentrosDeOutrasLojas esteja desmarcado deixar o botão visível. Ao clicar no botão copiar as porcentagens da matriz para as outras lojas.
-    - Tratar para carregar o grid de acordo com a tabela CentroCustoPlanoContas
-1. Salvar e carregar o checkbox na tabela PlanoContas
-1. Colocar um label na tela com a mensagem abaixo
+    - Caso chkPermiteAddCentrosDeOutrasLojas esteja DESMARCADO ao salvar obrigar que todas as lojas estejam com o total em 100%
+    - Salvar o grid na tabela CentroCustoPlanoContas (salvar apenas os registros que possuírem valor de 0 a 100) conforme demostrado na imagem
+
+1. Criar label link `Replicar percentais da matris para outras lojas` 
+    - Deixar ele visível apenas se o `chkPermiteAddCentrosDeOutrasLojas` estiver visível (será implementado mais adiante)
+    - Ao clicar no botão copiar as porcentagens da matriz para as outras lojas.
+
+
+1. Colocar um label na tela abaixo do grid com a mensagem abaixo
     ```
     Os centros de custos sem percentual informado ficarão ocultos nos lançamentos financeiros.
     Para que sejam exibidos digite 0 (zero) na célula da grade.
-    ```
-   
+    ```   
 
 [Link para a planilha com os protótipos](https://docs.google.com/spreadsheets/d/1Yn1sK54hgP0BfxfBuJbDr1zxpfpZKRfue5dw_2ZIQAE/edit?usp=sharing)    
 
 # Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 2)
 
 ![image](https://user-images.githubusercontent.com/80394522/174691186-17f5f0e5-aeb5-45b8-9564-aeff0f6d1180.png)
+>> Imagem Excel "Nova aba no Plano de Contas (parte 2)"
 
-1. Ao habilitar o checkbox chkPermiteAddCentrosDeOutrasLojas 
-    - exibir o label `Porcentagem total distribuída`. O label deverá mostrar o total a soma das colunas da linha de total
-    - implementar o botão `?`. Ao clicar nele exibir a mensagem abaixo. Colocar o botão ao lado do checkbox
+1. Implementar o checkbox `chkPermiteAddCentrosDeOutrasLojas`
+    - Deixar ele visível apenas para clientes multilojas
+    - Salvar e carregar o checkbox na tabela PlanoContas (PermiteCentroCustoLojas)
+
+1. Implementar label "Porcentagem Total Distribuída"    
+    - Deixar visível quando o checkbox `chkPermiteAddCentrosDeOutrasLojas` for marcado
+    - O label acima deverá conter a soma da linha de totais
+    - Se for 100% deixar o label em verde, caso contrário em vermelho
+    - Não permitir salvar caso a porcentagem distribuída não esteja em 100% e o checkbox esteja marcado
+    - Não terá mais a lógica anterior que deixava a linha de total em verde ou vermelha, deixar ela em amarelo
+
+1. Implementar o botão `?`.
+    - Deverá ficar visível quando o checkbox `chkPermiteAddCentrosDeOutrasLojas` estiver visível.
+    - Ao clicar nele exibir a mensagem abaixo. Colocar o botão ao lado do checkbox
 
     ```    
     Opção: Permite adicionar Centro de ustos de outras lojas
 
-    Habilitando esta opção podemos distribuir 100% da despesa nos centros de custo da loja ou compartilhar esse custo com outra(s) loja(s). Está opção será utilizada nas despesas que são compartilhadas entre lojas.
+    Habilitando esta opção podemos distribuir a despesa com os centros de custo da(s) outra(s) loja(s). Está opção será utilizada nas despesas que são compartilhadas entre lojas.
 
     ```
 
 # Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 3)
 
-1. Adaptar o recurso atual de atualizar os lançamentos financeiros. Para inserir o código da loja na tabela LancamentosFinanceirosCentroCusto. Trocar o nome do botão de "Atualizar Lançamentos".
+![image](https://user-images.githubusercontent.com/80394522/174691186-17f5f0e5-aeb5-45b8-9564-aeff0f6d1180.png)
+>> Imagem Excel "Nova aba no Plano de Contas (parte 2)"
 
-1. Criar um botão com o mesmo recurso atual de atualizar os lançamentos financeiros mas apenas da conta posicionada. O nome do botão deverá ser "Atualizar Lançamentos Deste Plano de Contas".
-    - Deixar este botão visível apenas se o botão "Atualizar Lançamentos" estiver visível. 
+1. Recriar o recurso anterior que estava na tela "Cadastro de Centro de Custos" ("Atualizar os Lançamentos Financeiros")
+    - Criar botão `Atualizar Todos Lançamentos Financeiros`
+    - Deixar visível apenas para usuário Telecon
+    - Adptar o recurso antigo para inserir também as lojas do plano de contas nos lançamentos financeiros
+    - Não esquecer de avalidar o `chkPermiteAddCentrosDeOutrasLojas`
+
+1. Criar o botão `Atualizar Lançamentos Financeiros Desta Conta`
+    - Deixar visível apenas para usuário Telecon
+    - Utilizar mesma lógica do botão acima mas apenas para a conta atual
 
 1. Implementar o botão `Importar Percetuais de Outra Conta`
     - Exibir formulário de busca para selecionar a conta
@@ -118,37 +155,52 @@ Obs2: O recurso de atualiza os lançamentos financeiros será migrado para a tel
     - Exibir todas as contas de pagamento. ver `select * from Configuracoes where Descricao like '%EstruturaContas%'`
     - Exportar as configurações para todas as contas selecionadas
     - Exportar também o campo PlanoContas.PermiteCentroCustoLojas
-    - Após a exportação caso o botão "Atualizar Lançamentos" esteja visível perguntar também se deseja atualizar os lançamentos financeiros dos planos de contas selecionados. Atualizar somente os planos de contas exportados.
+    - Após a exportação caso o botão `Atualizar Todos Lançamentos Financeiros` esteja visível perguntar também se deseja atualizar os lançamentos financeiros dos planos de contas selecionados. Atualizar somente os planos de contas exportados.
  
 
 # Alteração da grade no contas a pagar (Parte 1)
 
 ![image](https://user-images.githubusercontent.com/80394522/174691224-e4bfeb32-365c-42ca-badc-1302d7125c5d.png)
+>> Imagem Excel "Grade No Contas a Pagar (Parte 1)"
 
 1. Diminuir a coluna de descrição do centro de custos, deixar semelhante a imagem, assim fica mais rápido a visualização da conta vs valores
 
-1. Alterar o label "Recarregar Percentuais dos Centros de Custos" para "Distribuir automaticamente"
+1. Alterar o label "Recarregar Percentuais dos Centros de Custos" para "Ratear Valor Automaticamente"
+    - Caso não tenha nenhum valor no lançamento financeiro mostrar mensagem alertando e colocar o foco no campo de valor.
 
-1. Carregar o grid de acordo com os centros de custos da loja configurada no plano de contas
-    - Alterar o carregamento do grid atual. Carregar apenas os centros de custos que tem valor (0 - 100%) cadastrado no plano de contas. Essa questão servirá para facilitar os lançamentos, pois teremos poucas opções para informar 
+1. Alterar carregamento atual do grid
+    - Carregar o grid de acordo com os centros de custos da loja configurada no plano de contas
+    - Carregar apenas os centros de custos que tem valor (0 - 100%) cadastrado no plano de contas.
 
-1. Adequar as regras atuais de digitação conforme a imagem abaixo
-    - Colocar o label "Valor: " semelhante a imagem. Caso o usuário digite o valor no lançamento financeiro o valor do label deverá receber o valor do lançamento financeiro.
-    - Caso o usuário não digite o valor no lançamento financeiro, o label deverá receber o valor total da coluna valor no grid. E o campo valor do lançamento financeiro também deverá receber esse valor.
-    - A coluna valor e porcentagem do grid deverão estar bloqueadas para digitação
-    - A linha de total deverá ser a soma das porcentagens ou valores    
-    - Caso o usuário tenha informado o valor do lançamento financeiro esse valor será utilizado para calcular a porcentagem de referência.
-    -  Caso o usuário não tenha informado o valor do lançamento financeiro. O valor para a porcentagem de referência será o label que está com a linha de total do grid.
-    - Permitir gravar somente se o percentual estiver em 100%
+1. Alterar funcionamento da linha de totais
+    - A linha de total deverá ser a soma das porcentagens ou valores 
+    - A linha de totais deverá estar bloqueada para edição
+     
+1. Inserir e Implementar o label "Valor" `lblValorTotalCentroCusto`
+    - Caso 1 > o usuário digitou primeiro o valor no lançamento financeiro 
+        - o `lblValorTotalCentroCusto` deverá receber o valor do lançamento financeiro.
 
-1. Remover label de alerta de valores diferentes (label vermelho)    
+    - Caso 2 > o usuário digitou primeiro o valor na grade de centro de custos
+        - o `lblValorTotalCentroCusto` deverá receber o total da coluna valor da grade.
+        - o campo valor do lançamento financeiro também deverá receber esse valor.
+
+1. Adequar as regras atuais sugestão de valor vs porcentagem
+
+    - Caso 1 > o usuário digitou primeiro o valor no lançamento financeiro 
+        - esse valor será utilizado para calcular a porcentagem de referência.
+
+    - Caso 2 > o usuário digitou primeiro o valor na grade de centro de custos
+        - o valor do `lblValorTotalCentroCusto` ou total do grid deverá utilizado para calcular a porcentagem de referência.
+
+1. Validação do Gravar
+    - Permitir gravar somente se a linha de total do percentual estiver em 100%
+
+1. Remover label de alerta de valores diferentes (label vermelho) e alterar a lógica.  
     - Caso a linha total não esteja batendo 100% deixar a célula em vermelho
     - Caso o usuário tenha inserido o valor do lançamento financeiro e a linha de total esteja diferente desse valor deixar a célula em vermelho.
 
-1. Criar um botão ou label link 
+1. Criar um label link abaixo do `Ratear Valor Automaticamente`
     - "Zerar Valores": Ao clicar nesse recurso limpar todas as linhas da coluna Valor
-
-
 
 ![image](https://user-images.githubusercontent.com/80394522/175376155-0ad1ad5b-b1b8-4748-b288-0f90d2c498d6.png)
 
@@ -156,6 +208,7 @@ Obs2: O recurso de atualiza os lançamentos financeiros será migrado para a tel
 # Alteração da grade no contas a pagar (Parte 2)
 
 ![image](https://user-images.githubusercontent.com/80394522/175431139-fc4cddf0-5278-4020-8514-c8c3d98d179f.png)
+>> Imagem Excel "Grade No Contas a Pagar (Parte 2)"
 
 1. Criar uma nova aba de Centros de Custos na tela de lançamentos financeiros
     - Caso PlanoContas.PermiteCentroCustoLojas esteja marcado mostrar a nova aba, do contrário deixar visível a antiga
@@ -166,9 +219,9 @@ Obs2: O recurso de atualiza os lançamentos financeiros será migrado para a tel
 1. Criar a linha de totais
     - A linha de totais deve ser a soma dos valores das colunas e não deve ser editável    
     - Criar a mesma regra para coloração de vermelho da outra aba
-    - Para unir as colunas da grade na linha de totais utilizar o formata grid e o recurso utilizado no relatório do pack virtual
+    - Para unir as colunas da grade na linha de totais utilizar o formata grid e o recurso utilizado no relatório do pack virtual para fazer merge nas colunas
 
-1. Criar o label de valor utilizando a mesma regra anterior
+1. Criar o label de valor utilizando a mesma regra anterior (Caso 1 e Caso 2)
 
 1. Criar os mesmos botões da outra aba do centro de custos para resetar os valores ou limpar a coluna de valor do grid
 
@@ -181,6 +234,41 @@ Obs2: O recurso de atualiza os lançamentos financeiros será migrado para a tel
 
 ![image](https://user-images.githubusercontent.com/80394522/174691282-faa96fbf-627a-4553-8bbd-1095e9e5fbf0.png)
 
+
+1. criado o um módulo para o formulário `FrmRelacionarCustosESecoes`    
+    - ele deverá vir habilitado caso o usuário esteja com o centro de custos e as seções habilitadas
+    - criar no mesmo padrão que foi criado o `FrmCadCentroCusto`
+
+1. Criar o formulário FrmRelacionarCustosESecoes    
+    - Fechar com esc
+    - Enter como tab
+    - Ícone do sistema S na janela
+    - Deve permitir resize na tela, o grid deve estar ancorado para ajudar o usuário a visualizar a coluna de totais caso tenha muitos centros de custos configurados     
+    - Em baixo colocar o botão Fechar/Salvar
+    - Deve abrir centralizado. 
+
+1. Criar combo de loja
+
+1. Carregar Grid
+    - Carregar os centros de custos nas linhas
+    - Carregar as seções nas colunas
+    - Carregar de acordo com a tabela CentroCustoCessoes
+    - Carregar de acordo com o combo de loja 
+    - Ao carregar deixar em vermelho as seções que ainda não tiveram percentual configurado
+
+1. Implementar o botão de salvar, para salvar as informações na tabela CentroCustoCessoes    
+
+1. Criar o botão `Replicar Configuração Para Todas as Lojas`    
+    - Exibir mensagem avisando com a ação não poderá ser desfeita (padrão não)
+    - Dar update em CentroCustoCessoes
+    - Exibir mensagem de ok
+
+
+# Ajustes Finais 
+tabindex 
+ampulheta do mouse
+
+# Criar algum campo na conta para dizer que essa conta tem centro de custos ou obrigar o preenchimento
 
 # Criar filtros de busca no financeiro para buscar lançamentos sem centro de custos ?
 
