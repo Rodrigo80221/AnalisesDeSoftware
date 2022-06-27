@@ -5,7 +5,8 @@
 
 ## Tarefa: Modificação do banco de dados para se adequar ao Centro de Custos por loja
 
-![image](https://user-images.githubusercontent.com/80394522/175109696-a1b91399-2c58-4942-a7fc-5dfe7206dae9.png)
+![image](https://user-images.githubusercontent.com/80394522/175949307-b7331086-31b7-4704-aa03-65a8c2925e5c.png)
+
 >> Imagem Nova Estrutura Centro de Custos
 
 obs: Podemos realizar as alterações desejadas pois ainda não temos nenhum cliente utilizando o centro de custos
