@@ -1,13 +1,13 @@
 # Modelagem Atual do Centro de Custos
 
 ![image](https://user-images.githubusercontent.com/80394522/174605425-2bd7b260-d9c2-4a87-a259-ca2543f67291.png)
->> Imagem Antiga Estrutura Centro de Custos
+> Imagem Antiga Estrutura Centro de Custos
 
 ## Tarefa: Modificação do banco de dados para se adequar ao Centro de Custos por loja
 
 ![image](https://user-images.githubusercontent.com/80394522/175949307-b7331086-31b7-4704-aa03-65a8c2925e5c.png)
 
->> Imagem Nova Estrutura Centro de Custos
+> Imagem Nova Estrutura Centro de Custos
 
 obs: Podemos realizar as alterações desejadas pois ainda não temos nenhum cliente utilizando o centro de custos
 
@@ -54,7 +54,7 @@ obs: Podemos realizar as alterações desejadas pois ainda não temos nenhum cli
 # Remover campo porcentagem padrão no centro de custos
 
 ![image](https://user-images.githubusercontent.com/80394522/174673749-689b26fb-30b0-4a4b-8f93-57fd1e132870.png)
->> Imagem print formulário "Cadastro de Centros de Custo"
+> Imagem print formulário "Cadastro de Centros de Custo"
 
 1. Remover o campo `% Padrão`
 1. Remover o botão e a funcionalidade `Atualizar Plano de Contas`
@@ -76,8 +76,9 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 # Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 1)
 
-![image](https://user-images.githubusercontent.com/80394522/174691639-a825bf55-2e33-4b02-b182-220e5116c54a.png)
->> Imagem Excel "Nova aba no Plano de Contas (parte 1)"
+![image](https://user-images.githubusercontent.com/80394522/175951327-b98b5ae1-4899-4154-8596-1d51e31d40b5.png)
+
+> Imagem Excel "Nova aba no Plano de Contas (parte 1)"
 
 1. No plano de contas criar uma nova aba chamada de "Centros de Custos" e migrar os recursos atuais relacionados para essa aba.
     - Criar o checkbox chkPermiteAddCentrosDeOutrasLojas
@@ -108,8 +109,9 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 # Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 2)
 
-![image](https://user-images.githubusercontent.com/80394522/174691186-17f5f0e5-aeb5-45b8-9564-aeff0f6d1180.png)
->> Imagem Excel "Nova aba no Plano de Contas (parte 2)"
+![image](https://user-images.githubusercontent.com/80394522/175951538-a2592f2b-b948-4c65-8cfa-aa9c70ab65db.png)
+
+> Imagem Excel "Nova aba no Plano de Contas (parte 2)"
 
 1. Implementar o checkbox `chkPermiteAddCentrosDeOutrasLojas`
     - Deixar ele visível apenas para clientes multilojas
@@ -138,8 +140,9 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 # Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 3)
 
-![image](https://user-images.githubusercontent.com/80394522/174691186-17f5f0e5-aeb5-45b8-9564-aeff0f6d1180.png)
->> Imagem Excel "Nova aba no Plano de Contas (parte 2)"
+![image](https://user-images.githubusercontent.com/80394522/175951674-4a92a7ce-5c4f-4f75-8cfa-3ef29efdd57e.png)
+
+> Imagem Excel "Nova aba no Plano de Contas (parte 2)"
 
 1. Recriar o recurso anterior que estava na tela "Cadastro de Centro de Custos" ("Atualizar os Lançamentos Financeiros")
     - Criar botão `Atualizar Todos Lançamentos Financeiros`
@@ -170,8 +173,9 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 # Alteração da grade no contas a pagar (Parte 1)
 
-![image](https://user-images.githubusercontent.com/80394522/174691224-e4bfeb32-365c-42ca-badc-1302d7125c5d.png)
->> Imagem Excel "Grade No Contas a Pagar (Parte 1)"
+![image](https://user-images.githubusercontent.com/80394522/175953440-8ec2a2ab-9ce1-48c0-866d-c65fa3792d28.png)
+
+> Imagem Excel "Grade No Contas a Pagar (Parte 1)"
 
 1. Diminuir a coluna de descrição do centro de custos, deixar semelhante a imagem, assim fica mais rápido a visualização da conta vs valores
 
@@ -215,13 +219,12 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 1. Verificar tabindex nos componentes da tela
 1. Verificar Ampulheta do mouse nos recursos criados        
 
-![image](https://user-images.githubusercontent.com/80394522/175376155-0ad1ad5b-b1b8-4748-b288-0f90d2c498d6.png)
-
 
 # Alteração da grade no contas a pagar (Parte 2)
 
-![image](https://user-images.githubusercontent.com/80394522/175431139-fc4cddf0-5278-4020-8514-c8c3d98d179f.png)
->> Imagem Excel "Grade No Contas a Pagar (Parte 2)"
+![image](https://user-images.githubusercontent.com/80394522/175953922-c219075f-8826-4b18-adeb-5a5bc5c21535.png)
+
+> Imagem Excel "Grade No Contas a Pagar (Parte 2)"
 
 1. Criar uma nova aba de Centros de Custos na tela de lançamentos financeiros
     - Caso PlanoContas.PermiteCentroCustoLojas esteja marcado mostrar a nova aba, do contrário deixar visível a antiga
@@ -248,8 +251,9 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 # Criação da tela para relacionar as seções e os centros de custos
 
-![image](https://user-images.githubusercontent.com/80394522/174691282-faa96fbf-627a-4553-8bbd-1095e9e5fbf0.png)
+![image](https://user-images.githubusercontent.com/80394522/175954074-a8bfc8ed-ee17-469d-8629-f56455605434.png)
 
+> Imagem Excel "Relação Seções vs Centro de Custos"
 
 1. criado o um módulo para o formulário `FrmRelacionarCustosESecoes`    
     - ele deverá vir habilitado caso o usuário esteja com o centro de custos e as seções habilitadas
