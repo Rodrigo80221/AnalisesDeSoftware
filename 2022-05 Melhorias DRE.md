@@ -22,11 +22,13 @@ Foi realizada análise para uma nova tela conforme o protótipo abaixo e deverá
 
 ![image](https://user-images.githubusercontent.com/80394522/171756235-e8adbe33-4845-4b6f-85f4-95090ad372c3.png)
 
+Diagrama de Classes
+![image](https://user-images.githubusercontent.com/80394522/176056615-7a3167a6-34e8-4eaa-bc21-266ce3b359eb.png)
+
 Abaixo uma imagem com as principais mudanças em relação ao DRE Gerencial
 ![Alterações DRE Gerencial](https://user-images.githubusercontent.com/80394522/173059149-3893c07d-e6eb-4fc6-8175-7b1be9d4f308.png)
 
-Diagrama de Classes
-![image](https://user-images.githubusercontent.com/80394522/176056615-7a3167a6-34e8-4eaa-bc21-266ce3b359eb.png)
+
 
 ------------------------------------------------------------------------------------------------------
 
