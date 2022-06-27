@@ -109,7 +109,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 # Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 2)
 
-![image](https://user-images.githubusercontent.com/80394522/175951538-a2592f2b-b948-4c65-8cfa-aa9c70ab65db.png)
+![image](https://user-images.githubusercontent.com/80394522/175956971-2d970cd5-cfd6-480d-b222-6bdd949aeea0.png)
 
 > Imagem Excel "Nova aba no Plano de Contas (parte 2)"
 
@@ -140,7 +140,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 # Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 3)
 
-![image](https://user-images.githubusercontent.com/80394522/175951674-4a92a7ce-5c4f-4f75-8cfa-3ef29efdd57e.png)
+![image](https://user-images.githubusercontent.com/80394522/175957075-690cb89e-dd10-4185-a5f3-a93e6768c2a1.png)
 
 > Imagem Excel "Nova aba no Plano de Contas (parte 2)"
 
