@@ -100,6 +100,9 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
     Para que sejam exibidos digite 0 (zero) na célula da grade.
     ```   
 
+1. Verificar tabindex nos componentes da tela
+1. Verificar Ampulheta do mouse nos recursos criados        
+
 [Link para a planilha com os protótipos](https://docs.google.com/spreadsheets/d/1Yn1sK54hgP0BfxfBuJbDr1zxpfpZKRfue5dw_2ZIQAE/edit?usp=sharing)    
 
 # Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 2)
@@ -129,6 +132,9 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
     ```
 
+1. Verificar tabindex nos componentes da tela
+1. Verificar Ampulheta do mouse nos recursos criados    
+
 # Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 3)
 
 ![image](https://user-images.githubusercontent.com/80394522/174691186-17f5f0e5-aeb5-45b8-9564-aeff0f6d1180.png)
@@ -152,11 +158,14 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 1. Implementar o botão `Exportar Percetuais para outras contas`
     - Exibir formulário de busca para seleção em massa
-    - Exibir todas as contas de pagamento. ver `select * from Configuracoes where Descricao like '%EstruturaContas%'`
+    - Exibir somente as as contas de pagamento. ver `select * from Configuracoes where Descricao like '%EstruturaContas%'`
+    - Ver possiblidade de colocar a coluna "Config. Centro Custos" com "Possui Config." ou "Não possui config." para o usuário saber que essa conta ja está configurada. Se não der discutir solução com a análise.
     - Exportar as configurações para todas as contas selecionadas
     - Exportar também o campo PlanoContas.PermiteCentroCustoLojas
     - Após a exportação caso o botão `Atualizar Todos Lançamentos Financeiros` esteja visível perguntar também se deseja atualizar os lançamentos financeiros dos planos de contas selecionados. Atualizar somente os planos de contas exportados.
  
+1. Verificar tabindex nos componentes da tela
+1. Verificar Ampulheta do mouse nos recursos criados    
 
 # Alteração da grade no contas a pagar (Parte 1)
 
@@ -202,6 +211,9 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 1. Criar um label link abaixo do `Ratear Valor Automaticamente`
     - "Zerar Valores": Ao clicar nesse recurso limpar todas as linhas da coluna Valor
 
+1. Verificar tabindex nos componentes da tela
+1. Verificar Ampulheta do mouse nos recursos criados        
+
 ![image](https://user-images.githubusercontent.com/80394522/175376155-0ad1ad5b-b1b8-4748-b288-0f90d2c498d6.png)
 
 
@@ -229,6 +241,9 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
     - A diferença é que ao editar o valor iremos distribuir a porcentagem também nas colunas proporcionalmente como o cadastrado no plano de contas
 
 1. Criar o frame para definir se irá preecher a grade com valor monetário ou percentual
+
+1. Verificar tabindex nos componentes da tela
+1. Verificar Ampulheta do mouse nos recursos criados    
 
 # Criação da tela para relacionar as seções e os centros de custos
 
@@ -263,10 +278,9 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
     - Dar update em CentroCustoCessoes
     - Exibir mensagem de ok
 
+1. Verificar tabindex nos componentes da tela
+1. Verificar Ampulheta do mouse nos recursos criados    
 
-# Ajustes Finais 
-tabindex 
-ampulheta do mouse
 
 # Criar algum campo na conta para dizer que essa conta tem centro de custos ou obrigar o preenchimento
 
