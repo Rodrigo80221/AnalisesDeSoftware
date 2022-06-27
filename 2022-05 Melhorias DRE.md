@@ -25,6 +25,10 @@ Foi realizada análise para uma nova tela conforme o protótipo abaixo e deverá
 Abaixo uma imagem com as principais mudanças em relação ao DRE Gerencial
 ![Alterações DRE Gerencial](https://user-images.githubusercontent.com/80394522/173059149-3893c07d-e6eb-4fc6-8175-7b1be9d4f308.png)
 
+Diagrama de Classes
+![image](https://user-images.githubusercontent.com/80394522/176055839-6b1400a8-9235-4ead-b1ea-ee19e40b7d84.png)
+
+
 ------------------------------------------------------------------------------------------------------
 
 ## Tarefa 1: Criar feature no git e ajustar ambiente
