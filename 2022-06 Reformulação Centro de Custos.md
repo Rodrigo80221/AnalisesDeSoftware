@@ -3,7 +3,7 @@
 ![image](https://user-images.githubusercontent.com/80394522/174605425-2bd7b260-d9c2-4a87-a259-ca2543f67291.png)
 > Imagem Antiga Estrutura Centro de Custos
 
-## Tarefa: Modificação do banco de dados para se adequar ao Centro de Custos por loja
+## Tarefa 1: Modificação do banco de dados para se adequar ao Centro de Custos por loja
 
 ![image](https://user-images.githubusercontent.com/80394522/175949307-b7331086-31b7-4704-aa03-65a8c2925e5c.png)
 
