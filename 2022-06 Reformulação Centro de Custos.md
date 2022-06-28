@@ -303,25 +303,10 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 1. Verificar tabindex nos componentes da tela
 1. Verificar Ampulheta do mouse nos recursos criados    
 
----
----
----
----
----
----
----
----
-
-
-## Criar check box no plano contas para informar se a conta possui ou não centro de custos
-
-## Criar check box no plano contas para origar o usuário a informar o centro de custos 
-
 ## Criar filtros de busca no financeiro para buscar lançamentos sem centro de custos
 ![image](https://user-images.githubusercontent.com/80394522/176004109-b34669fb-a4fb-457a-800c-036cfdfabb64.png)
 > Imagem Protótipo "Lançamentos financeiros + combo c\check do centro de custos"
 
-## criar logs nos botões de atualizar o centros de custos nos lançamentos financeiros
 
 
 
@@ -330,4 +315,4 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 # alterar query relatório de resultado da loja
 
-# vamos fazer algo para o  usuário ser obrigado a verificar o centro de custos?
+
