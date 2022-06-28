@@ -322,28 +322,45 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 
 
+# Tarefa: Alterar query's do Rrelatório de Resultado da Loja
 
-
-
-# alterar query relatório de resultado da loja
-
+1. Alterar a consulta do procedimento abaixo
 ``` csharp
 public static List<TotalizadorDespesasPorSecao> Consultar(IBanco banco,
                                                                   string dataInicioPeriodo,
                                                                   string dataFimPeriodo)
 ```
 
+1. No momento não tenho as tabelas criadas e nem dados na tabela, teremos que validar. Mas seguindo a modelagem será algo semelhante a consulta abaixo
 
 ``` sql
 
-LP.CodLojaLancamento por LFC.CodLojasCentroCustos
+SELECT CCS.CodSecao , CCS.CodLojaCentroCusto, SUM( (Tabela.Valor * CCS.Percentual) / 100 ) FROM CentroCustoSecoes CCS
+INNER JOIN
 
-
-INNER JOIN LancamentosFinanceirosCentrosCustos LFC 
-    ON LP.CodLancamentoFinanceiro = LFC.CodLancamentoFinanceiro
-    AND LP.CodLoja = LFC.CodLojasCentroCustos
-
-INNER JOIN CentroCustoSecoes CCS 
-    ON CCS.CodCentroCusto = LFC.CodCentroCusto
-    AND CCS.CodLojasCentroCustos = LFC.CodLojasCentroCustos
+		(
+				SELECT sum((LF.Valor * LFCC.Percentual) / 100) [Valor] FROM LancamentosFinanceirosCentrosCusto LFCC 
+				where  LFCC.CodLojaCentroCusto = CCS.CodLojaCentroCusto 
+				INNER JOIN LancamentosFinanceiros LF ON LF.CodLancamentoFinanceiro = LFCC.CodLancamentoFinanceiro
+				WHERE 1 = 1
+				AND CONVERT(DATETIME,DATEDIFF(DAY, 0,LF.DataHoraPagamento)) >= Convert(SmallDateTime, '20220102', 126)
+		        AND CONVERT(DATETIME,DATEDIFF(DAY, 0,LF.DataHoraPagamento)) <= Convert(SmallDateTime, '20220207', 126)
+		) AS Tabela
 ```
+
+
+1. Alterar a consulta do procedimento abaixo no join com a tabela `LancamentosFinanceirosCentrosCustos`
+
+``` csharp
+        public static List<VisaoTatica> Consultar(IBanco banco, string dataInicioPeriodo, string dataFimPeriodo, 
+                                                      string lojas, decimal margemLiquidaInicial, decimal margemLiquidaFinal, 
+                                                      string descricaoProduto, int codFornecedor, string codGrupo, 
+                                                      int codEncarte, int codLista, int ordenacao, int tipoCmv, 
+                                                      int tipoDescricaoProduto, int tipoCodProduto, 
+                                                      bool considerarTransferenciaCompras)
+
+```
+
+
+1. Teremos que utilizar o LancamentosFinanceirosCentrosCusto.CodLojaCentroCusto em vez do LancamentosFinanceiros.CodLoja
+    - Teremos que analisar melhor essa consulta com o banco de dados criado e dados nas tabelas.
