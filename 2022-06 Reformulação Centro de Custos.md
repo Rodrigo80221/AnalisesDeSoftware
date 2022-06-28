@@ -3,7 +3,7 @@
 ![image](https://user-images.githubusercontent.com/80394522/174605425-2bd7b260-d9c2-4a87-a259-ca2543f67291.png)
 > Imagem Antiga Estrutura Centro de Custos
 
-## Tarefa 1: Modificação do banco de dados para se adequar ao Centro de Custos por loja
+# Tarefa 1: Modificação do banco de dados para se adequar ao Centro de Custos por loja
 
 ![image](https://user-images.githubusercontent.com/80394522/176318487-87a52e27-d4da-44ad-8251-f8b5bccc02b3.png)
 
@@ -51,7 +51,7 @@ obs: Podemos realizar as alterações desejadas pois ainda não temos nenhum cli
     - Alterar classe do Telecode
 
 
-# Remover campo porcentagem padrão no centro de custos
+# Tarefa 2: Remover campo porcentagem padrão no centro de custos
 
 ![image](https://user-images.githubusercontent.com/80394522/174673749-689b26fb-30b0-4a4b-8f93-57fd1e132870.png)
 > Imagem print formulário "Cadastro de Centros de Custo"
@@ -65,7 +65,7 @@ Teremos um novo recurso no plano de contas para importar e exportar configuraç�
 Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a tela do plano de contas. O código pode ser mantido para utilizar na outra tela.
 
 
-# Testar Cadastro do Centro de Custos
+# Tarefa 3: Testar Cadastro do Centro de Custos
 
 1. Realizar testes na tabela CentroCustoLojas utilizando a tela "Cadastro de Centro de Custos"
     - Ao add um novo centro de custos deverá popular a CentroCustoLojas com todas as lojas
@@ -107,7 +107,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 [Link para a planilha com os protótipos](https://docs.google.com/spreadsheets/d/1Yn1sK54hgP0BfxfBuJbDr1zxpfpZKRfue5dw_2ZIQAE/edit?usp=sharing)    
 
-# Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 2)
+# Tarefa 4: Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 2)
 
 ![image](https://user-images.githubusercontent.com/80394522/175956971-2d970cd5-cfd6-480d-b222-6bdd949aeea0.png)
 
@@ -138,7 +138,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 1. Verificar tabindex nos componentes da tela
 1. Verificar Ampulheta do mouse nos recursos criados    
 
-# Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 3)
+# Tarefa 5: Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 3)
 
 ![image](https://user-images.githubusercontent.com/80394522/175957075-690cb89e-dd10-4185-a5f3-a93e6768c2a1.png)
 
@@ -171,7 +171,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 1. Verificar tabindex nos componentes da tela
 1. Verificar Ampulheta do mouse nos recursos criados    
 
-# Alteração da grade no contas a pagar (Parte 1)
+# Tarefa 6: Alteração da grade no contas a pagar (Parte 1)
 
 ![image](https://user-images.githubusercontent.com/80394522/175953440-8ec2a2ab-9ce1-48c0-866d-c65fa3792d28.png)
 
@@ -223,7 +223,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 1. Verificar Ampulheta do mouse nos recursos criados        
 
 
-# Alteração da grade no contas a pagar (Parte 2)
+# Tarefa 7: Alteração da grade no contas a pagar (Parte 2)
 
 ![image](https://user-images.githubusercontent.com/80394522/175953922-c219075f-8826-4b18-adeb-5a5bc5c21535.png)
 
@@ -266,7 +266,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
         - Se usuário alternar na configuração de valor ou percentual exibe a propriedade equivalente do objeto
     ```
 
-# Criação da tela para relacionar as seções e os centros de custos
+# Tarefa 8: Criação da tela para relacionar as seções e os centros de custos
 
 ![image](https://user-images.githubusercontent.com/80394522/175954074-a8bfc8ed-ee17-469d-8629-f56455605434.png)
 
@@ -303,7 +303,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 1. Verificar tabindex nos componentes da tela
 1. Verificar Ampulheta do mouse nos recursos criados    
 
-## Criar filtros de busca no financeiro para buscar lançamentos sem centro de custos
+# Tarefa 2:  Criar filtros de busca no financeiro para buscar lançamentos sem centro de custos
 
 1. Criar checkbox `Centro Custos Pendente`
     - Tratar tab index
@@ -322,7 +322,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 
 
-# Tarefa: Alterar query's do Rrelatório de Resultado da Loja
+# Tarefa 9: Alterar query's do Rrelatório de Resultado da Loja
 
 1. Alterar a consulta do procedimento abaixo
 ``` csharp
