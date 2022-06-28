@@ -74,7 +74,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 ![image](https://user-images.githubusercontent.com/80394522/174691133-ce0041e8-6d73-4bff-82bd-433574046278.png)
 >> Imagem Excel "Cadastro de Centros de Custo"
 
-# Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 1)
+# Tarefa 4: Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 1)
 
 ![image](https://user-images.githubusercontent.com/80394522/175951327-b98b5ae1-4899-4154-8596-1d51e31d40b5.png)
 
@@ -107,7 +107,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 [Link para a planilha com os protótipos](https://docs.google.com/spreadsheets/d/1Yn1sK54hgP0BfxfBuJbDr1zxpfpZKRfue5dw_2ZIQAE/edit?usp=sharing)    
 
-# Tarefa 4: Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 2)
+# Tarefa 5: Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 2)
 
 ![image](https://user-images.githubusercontent.com/80394522/175956971-2d970cd5-cfd6-480d-b222-6bdd949aeea0.png)
 
@@ -138,7 +138,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 1. Verificar tabindex nos componentes da tela
 1. Verificar Ampulheta do mouse nos recursos criados    
 
-# Tarefa 5: Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 3)
+# Tarefa 6: Criar nova aba "Centro de Custos" na tela do plano de contas (Parte 3)
 
 ![image](https://user-images.githubusercontent.com/80394522/175957075-690cb89e-dd10-4185-a5f3-a93e6768c2a1.png)
 
@@ -171,7 +171,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 1. Verificar tabindex nos componentes da tela
 1. Verificar Ampulheta do mouse nos recursos criados    
 
-# Tarefa 6: Alteração da grade no contas a pagar (Parte 1)
+# Tarefa 7: Alteração da grade no contas a pagar (Parte 1)
 
 ![image](https://user-images.githubusercontent.com/80394522/175953440-8ec2a2ab-9ce1-48c0-866d-c65fa3792d28.png)
 
@@ -223,7 +223,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 1. Verificar Ampulheta do mouse nos recursos criados        
 
 
-# Tarefa 7: Alteração da grade no contas a pagar (Parte 2)
+# Tarefa 8: Alteração da grade no contas a pagar (Parte 2)
 
 ![image](https://user-images.githubusercontent.com/80394522/175953922-c219075f-8826-4b18-adeb-5a5bc5c21535.png)
 
@@ -266,7 +266,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
         - Se usuário alternar na configuração de valor ou percentual exibe a propriedade equivalente do objeto
     ```
 
-# Tarefa 8: Criação da tela para relacionar as seções e os centros de custos
+# Tarefa 9: Criação da tela para relacionar as seções e os centros de custos
 
 ![image](https://user-images.githubusercontent.com/80394522/175954074-a8bfc8ed-ee17-469d-8629-f56455605434.png)
 
@@ -303,7 +303,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 1. Verificar tabindex nos componentes da tela
 1. Verificar Ampulheta do mouse nos recursos criados    
 
-# Tarefa 2:  Criar filtros de busca no financeiro para buscar lançamentos sem centro de custos
+# Tarefa 10:  Criar filtros de busca no financeiro para buscar lançamentos sem centro de custos
 
 1. Criar checkbox `Centro Custos Pendente`
     - Tratar tab index
