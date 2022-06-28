@@ -327,4 +327,23 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 # alterar query relatório de resultado da loja
 
+``` csharp
+public static List<TotalizadorDespesasPorSecao> Consultar(IBanco banco,
+                                                                  string dataInicioPeriodo,
+                                                                  string dataFimPeriodo)
+```
 
+
+``` sql
+
+LP.CodLojaLancamento por LFC.CodLojasCentroCustos
+
+
+INNER JOIN LancamentosFinanceirosCentrosCustos LFC 
+    ON LP.CodLancamentoFinanceiro = LFC.CodLancamentoFinanceiro
+    AND LP.CodLoja = LFC.CodLojasCentroCustos
+
+INNER JOIN CentroCustoSecoes CCS 
+    ON CCS.CodCentroCusto = LFC.CodCentroCusto
+    AND CCS.CodLojasCentroCustos = LFC.CodLojasCentroCustos
+```
