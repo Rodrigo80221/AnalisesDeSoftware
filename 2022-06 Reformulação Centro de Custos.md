@@ -177,19 +177,18 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 > Imagem Excel "Grade No Contas a Pagar (Parte 1)"
 
-1. Diminuir a coluna de descrição do centro de custos, deixar semelhante a imagem, assim fica mais rápido a visualização da conta vs valores
+1. Diminuir a coluna de descrição do centro de custos, deixar semelhante a imagem, assim fica mais rápido a visualização da conta vs valores quando temos muitos centros de custos cadastrados
 
 1. Alterar o label "Recarregar Percentuais dos Centros de Custos" para "Ratear Valor Automaticamente"
     - Caso não tenha nenhum valor no lançamento financeiro mostrar mensagem alertando e colocar o foco no campo de valor.
 
+1. Alterar regra da aba Centro de Custos
+    - Se o plano de contas não tiver nenhum centro de custos cadastrado, ocultar a aba de centro de custos
+
 1. Alterar carregamento atual do grid
     - Carregar o grid de acordo com os centros de custos da loja configurada no plano de contas
     - Carregar apenas os centros de custos que tem valor (0 - 100%) cadastrado no plano de contas.
-
-1. Alterar funcionamento da linha de totais
-    - A linha de total deverá ser a soma das porcentagens ou valores 
-    - A linha de totais deverá estar bloqueada para edição
-     
+   
 1. Inserir e Implementar o label "Valor" `lblValorTotalCentroCusto`
     - Caso 1 > o usuário digitou primeiro o valor no lançamento financeiro 
         - o `lblValorTotalCentroCusto` deverá receber o valor do lançamento financeiro.
@@ -197,6 +196,10 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
     - Caso 2 > o usuário digitou primeiro o valor na grade de centro de custos
         - o `lblValorTotalCentroCusto` deverá receber o total da coluna valor da grade.
         - o campo valor do lançamento financeiro também deverá receber esse valor.
+
+1. Alterar funcionamento da linha de totais
+    - A linha de total deverá ser a soma das porcentagens ou valores 
+    - A linha de totais deverá estar bloqueada para edição
 
 1. Adequar as regras atuais sugestão de valor vs porcentagem
 
@@ -207,7 +210,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
         - o valor do `lblValorTotalCentroCusto` ou total do grid deverá utilizado para calcular a porcentagem de referência.
 
 1. Validação do Gravar
-    - Permitir gravar somente se a linha de total do percentual estiver em 100%
+    - Permitir gravar somente se a linha de total do percentual estiver em 0% ou 100%
 
 1. Remover label de alerta de valores diferentes (label vermelho) e alterar a lógica.  
     - Caso a linha total não esteja batendo 100% deixar a célula em vermelho
@@ -227,7 +230,9 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 > Imagem Excel "Grade No Contas a Pagar (Parte 2)"
 
 1. Criar uma nova aba de Centros de Custos na tela de lançamentos financeiros
-    - Caso PlanoContas.PermiteCentroCustoLojas esteja marcado mostrar a nova aba, do contrário deixar visível a antiga
+    - Caso a conta tenha centro de custos configurados e a conta tenha PlanoContas.PermiteCentroCustoLojas = true 
+        - Exibir a nova aba
+        - Ocultar a aba antiga
     - Tratar para não carregar sempre o código das 2 abas, ou carregar uma ou outra
     - Carregar o grid com os centros de custos e lojas preenchidas no plano de contas
     - Carregar as colunas de totais
@@ -241,13 +246,25 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 1. Criar os mesmos botões da outra aba do centro de custos para resetar os valores ou limpar a coluna de valor do grid
 
-1. Criar a regra de editar os percentuais ou o valor do grid
-    - A diferença é que ao editar o valor iremos distribuir a porcentagem também nas colunas proporcionalmente como o cadastrado no plano de contas
+1. Criar a regra para a coluna de total
+    - A coluna de porcentagem total deverá ser a soma das colunas da esquerda
+
+1. Colunas `Total %` e `Total R$`
+    - Deverão ter a cor de fundo em amarelo padrão do sistema
+    - Deverão estar bloqueadas para edição
 
 1. Criar o frame para definir se irá preecher a grade com valor monetário ou percentual
 
 1. Verificar tabindex nos componentes da tela
-1. Verificar Ampulheta do mouse nos recursos criados    
+1. Verificar Ampulheta do mouse nos recursos criados  
+
+    ```
+        Sugestão para programação: 
+        - Podemos criar uma classe ou struct com 2 propriedades (valor e porcentagem).
+        - Carregamos o grid e na tag de cada célula colocamos o objeto criado com a respectiva porcentagem e valor
+        - Sempre manipulamos o valor e a porcentagem juntos 
+        - Se usuário alternar na configuração de valor ou percentual exibe a propriedade equivalente do objeto
+    ```
 
 # Criação da tela para relacionar as seções e os centros de custos
 
