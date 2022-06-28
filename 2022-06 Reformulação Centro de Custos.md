@@ -304,7 +304,19 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 1. Verificar Ampulheta do mouse nos recursos criados    
 
 ## Criar filtros de busca no financeiro para buscar lançamentos sem centro de custos
-![image](https://user-images.githubusercontent.com/80394522/176004109-b34669fb-a4fb-457a-800c-036cfdfabb64.png)
+
+1. Criar checkbox `Centro Custos Pendente`
+    - Tratar tab index
+    - Colocar tooltip "Exibe apenas os lançamentos fincanceiros que não estão com centro de custos preencido. (Possuem 0% na porcentagem rateada)
+    - Devará ser exibido apenas no contas a pagar
+    - Deverá ser exibido apenas se o cliente tem o módulo do centro de custos habilitado
+
+1. Implementar filtro
+    - Ao marcar a configuração filtrar os registros listados.
+        - Mostrar apenas registros que TENHAM o plano de contas com percentuais cadastrados
+        - Mostrar registros em que o sum(LancametosFinanceirosCentroCusto.Percentual) <> 100
+
+![image](https://user-images.githubusercontent.com/80394522/176172086-ea792746-bbfd-4f6d-b848-3dcf3fd47e5f.png)
 > Imagem Protótipo "Lançamentos financeiros + combo c\check do centro de custos"
 
 
