@@ -96,7 +96,7 @@ Teremos um novo recurso no plano de contas para importar e exportar configuraç�
 Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a tela do plano de contas. O código pode ser mantido para utilizar na outra tela.
 
 
-# Tarefa 3: Testar Cadastro do Centro de Custos
+# Tarefa 3: Alterar e testar o Cadastro do Centro de Custos
 
 1. Ao excluir um centro de custo
 	- Caso Possua registros na tabela CentroCustosSecoes com porcentagem > 0
