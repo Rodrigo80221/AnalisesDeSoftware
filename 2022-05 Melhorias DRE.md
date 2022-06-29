@@ -125,7 +125,7 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 - Na classe `DREGerencialRelatorio` criar o procedimento `ConsultarRelatorioDRE` que retorne um list de `DREGerencialLinhaRelatorio` e receba a classe de filtros por parâmetro. Se não der podemos transferir a classe de filtros para o diretório DREGerencial
 - Na classe `DREGerencialRelatorio` criar o procedimento `void MontarEstruturaDRE` passando a classe de filtros
 - Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarResultadoBruto` passando a classe de filtros
-- Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarDespesas`  passando a classe de filtros
+- Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarListaDespesas`  passando a classe de filtros
 
 3. No procedimento `processar` 
     - Criar a variável list `<List>DREGerencialLinhaRelatorio listaDRE`
