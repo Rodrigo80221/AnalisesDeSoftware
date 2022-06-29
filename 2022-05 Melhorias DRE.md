@@ -128,13 +128,12 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 - Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarDespesas`  passando a classe de filtros
 
 3. No procedimento `processar` 
-- Chamar o procedimento `ConsultarRelatorioDRE` passando a classe de filtros
-- Com o retorno do `ConsultarRelatorioDRE` iremos carregar o grid, deixar apenas um comentário pois iremos fer esta parte mais na frente.
-- Após consultar colocar o foco na grade
+    - Criar a variável list `<List>DREGerencialLinhaRelatorio listaDRE`
+    - Chamar o procedimento `ConsultarRelatorioDRE` passando a classe de filtros e a listaDRE por parâmentro
+    - Com o retorno do `ConsultarRelatorioDRE` iremos carregar o grid, deixar apenas um comentário pois iremos fer esta parte mais na frente.
+    - Após consultar colocar o foco na grade
 
 ## Tarefa 6: Implementar procedimento "ConsultarRelatorioDRE" e "MontarEstruturaDRE"
-
-1. Criar a variável list `<List>DREGerencialLinhaRelatorio listaDRE`
 
 2. No `ConsultarRelatorioDRE` chamar o procedimento `MontarEstruturaDRE` passando a `listaDRE` e por parâmetro de referência.
 
@@ -177,10 +176,9 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 - Adicionar na `listaDRE` todo o restante do plano de contas assim como foi feito no procedimento `PlanoConta.ConsultarAPartirEstrutura(banco, contaDRE);` 
 - Ao adicionar os registros na listas setar a propriedade `TipoDeRegistro = PlanoDeContas`
 
+5. Chamar o procedimento `CarregarResultadoBruto` passando a `listaDRE` por parâmetro de referência + a variável de filtros.
+
 5. Chamar o procedimento `CarregarListaDespesas` passando a `listaDRE` por parâmetro de referência + a variável de filtros.
-
-6. Retorar a função com a variável `listaDRE`
-
 
 ## Tarefa 7: Implementar procedimento "processar" no FrmRelatorioPack
 
