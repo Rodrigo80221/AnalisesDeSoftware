@@ -22,7 +22,7 @@
 ## Resultado Final
 
 - Alteração no Cadastro de Centro de Custos
-- Criação da aba "Centro de Custos" no Cadastro de Plano de Contas possibilitando realizar um cadastro diferente por loja, ou entre lojas.
+- Criação da aba "Centro de Custos" no Cadastro de Plano de Contas possibilitando configurar centros de custos diferentes por loja, ou entre lojas.
 - Alteração da aba "Centro de Custos" nos Lançamentos Financeiros
 - Criação da tela Relação Seções vs Centro de Custos
 - Alteração do Relatório de Análise do Resultado da Loja
