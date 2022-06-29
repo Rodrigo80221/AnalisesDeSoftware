@@ -6,7 +6,7 @@ Diferenças nas informações das vendas e custo das mercadorias vendidas entre 
 
 ## Impactos
 Não terá impacto pois será uma tela nova somente para exibição de dados.
-
+RetornarLinhasDespesasGerenciaisOperacionais
 ## Pré Requisitos
 Será necessário ter o ambiente do GestaoRelatorios funcionando.
 Necessita o Finish da feature do ABC 2.0
@@ -179,9 +179,7 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 
 5. Chamar o procedimento `CarregarListaDespesas` passando a `listaDRE` por parâmetro de referência + a variável de filtros.
 
-6. Chamar o procedimento `RetornarLinhasDespesasGerenciaisOperacionais` passando a `listaDRE` por parâmetro de referência + a variável de filtros.
-
-7. Retorar a função com a variável `listaDRE`
+6. Retorar a função com a variável `listaDRE`
 
 
 ## Tarefa 7: Implementar procedimento "processar" no FrmRelatorioPack
