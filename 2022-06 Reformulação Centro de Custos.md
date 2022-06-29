@@ -1,3 +1,34 @@
+# Épico: Reformulação Centro de Custos Por Loja
+
+## Problema a ser resolvido
+
+- Possibilitar centros de custos diferentes por loja
+- Possibilitar configurar um centro de custos de outra loja no plano de contas
+- Agilizar e melhorar o preenchimento dos centros de custos no contas a pagar
+- Criar o Cadastro de Seções vs Centro de Custos
+
+## Pontos chave da história
+
+- Alterar a modelagem do banco de dados e as telas envolvidas
+
+## Impactos
+
+- O impacto será em todo o centro de custos atual, mas até o momento este recurso não foi implantado em nenhum cliente.
+- Cadastro de Centro de Custos
+- Plano de Contas
+- Lançamentos Financeiros
+- Relatório de Análise do Resultado da Loja
+
+## Resultado Final
+
+- Alteração no Cadastro de Centro de Custos
+- Criação da aba "Centro de Custos" no Cadastro de Plano de Contas possibilitando realizar um cadastro diferente por loja, ou entre lojas.
+- Alteração da aba "Centro de Custos" nos Lançamentos Financeiros
+- Criação da tela Relação Seções vs Centro de Custos
+- Alteração do Relatório de Análise do Resultado da Loja
+---
+
+
 # Modelagem Atual do Centro de Custos
 
 ![image](https://user-images.githubusercontent.com/80394522/174605425-2bd7b260-d9c2-4a87-a259-ca2543f67291.png)
