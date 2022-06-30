@@ -306,11 +306,14 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 # Tarefa 9: Criação da tela para relacionar as seções e os centros de custos
 
-![image](https://user-images.githubusercontent.com/80394522/175954074-a8bfc8ed-ee17-469d-8629-f56455605434.png)
+![image](https://user-images.githubusercontent.com/80394522/176794495-0d6d80b9-80ef-4a51-ad70-2e9191f38eac.png)
 
 > Imagem Excel "Relação Seções vs Centro de Custos"
 
-1. criado o um módulo para o formulário `FrmRelacionarCustosESecoes`    
+1. Retirar centro de custos do cadastro de seções
+    - Retirar o grid e o código
+
+1. criar o um módulo para o formulário `FrmRelacionarCustosESecoes`    
     - ele deverá vir habilitado caso o usuário esteja com o centro de custos e as seções habilitadas
     - criar no mesmo padrão que foi criado o `FrmCadCentroCusto`
 
@@ -318,7 +321,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
     - Fechar com esc
     - Enter como tab
     - Ícone do sistema S na janela
-    - Deve permitir resize na tela, o grid deve estar ancorado para ajudar o usuário a visualizar a coluna de totais caso tenha muitos centros de custos configurados     
+    - Deve permitir resize na tela, o grid deve estar ancorado para ajudar o usuário a visualizar a coluna de totais caso tenha muitos centros de custos configurados   
     - Em baixo colocar o botão Fechar/Salvar
     - Deve abrir centralizado. 
 
@@ -330,8 +333,11 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
     - Carregar de acordo com a tabela CentroCustoCessoes
     - Carregar de acordo com o combo de loja 
     - Ao carregar deixar em vermelho as seções que ainda não tiveram percentual configurado
+    - Carregar linha de totais
+    - Na linha de totais deixar em verde quando 100%, vermelho quando > 100% 
 
 1. Implementar o botão de salvar, para salvar as informações na tabela CentroCustoCessoes    
+    - Não permitir gravar quando o total da coluna de centro de custos for > 100%
 
 1. Criar o botão `Replicar Configuração Para Todas as Lojas`    
     - Exibir mensagem avisando com a ação não poderá ser desfeita (padrão não)
