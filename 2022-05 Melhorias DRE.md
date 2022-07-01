@@ -427,3 +427,8 @@ os outros parametros são em branco , zero ou nulos
 ------------------------------------------------------------------------------------------------------
 
 Aqui ver para quando tiver a configuração pegar do objeto instanciado , ver configuração da estrutura
+
+
+
+![image](https://user-images.githubusercontent.com/80394522/176898230-9099623b-8f88-4ec8-b1fe-46ec139fb0cb.png)
+
