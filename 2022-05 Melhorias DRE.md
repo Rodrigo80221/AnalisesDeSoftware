@@ -20,15 +20,15 @@ Foi realizada análise para uma nova tela conforme o protótipo abaixo e deverá
 - Mostrar os dados de despesas de acordo com as informações que já tínhamos no DRE Gerencial. (Irá mudar alguns nomes de contas apenas.)
 - Nas informações de despesas devemos manter regras antigas como NF de entrada e saída de estorno + taxas, juros, descontos e multas nos registros do financeiro.
 
-![image](https://user-images.githubusercontent.com/80394522/171756235-e8adbe33-4845-4b6f-85f4-95090ad372c3.png)
-
-Diagrama de Classes
-![image](https://user-images.githubusercontent.com/80394522/176056615-7a3167a6-34e8-4eaa-bc21-266ce3b359eb.png)
-
 Abaixo uma imagem com as principais mudanças em relação ao DRE Gerencial
 ![Alterações DRE Gerencial](https://user-images.githubusercontent.com/80394522/173059149-3893c07d-e6eb-4fc6-8175-7b1be9d4f308.png)
 
+![image](https://user-images.githubusercontent.com/80394522/171756235-e8adbe33-4845-4b6f-85f4-95090ad372c3.png)
 
+![image](https://user-images.githubusercontent.com/80394522/177392333-e0841a88-f31f-4ded-a598-2479fc92c864.png)
+
+Diagrama de Classes
+![image](https://user-images.githubusercontent.com/80394522/177392481-9037bf47-21e3-4b18-ac5f-5a7317b540ba.png)
 
 ------------------------------------------------------------------------------------------------------
 
@@ -53,9 +53,12 @@ Abaixo uma imagem com as principais mudanças em relação ao DRE Gerencial
     - Não deve permitir o resize da tela com o mouse
     - Ao maximizar deveremos apenas ancorar os botões e o grid no botton, assim iremos apenas aumentar o grid para baixo.
     - Deve abrir centralizado. 
+    - Criar o checkbox de agrupamento por centro de cusos que está apenas na segunda imagem
 
 
 ![image](https://user-images.githubusercontent.com/80394522/171756235-e8adbe33-4845-4b6f-85f4-95090ad372c3.png)
+
+![image](https://user-images.githubusercontent.com/80394522/177392333-e0841a88-f31f-4ded-a598-2479fc92c864.png)
 
 ## Tarefa 3: Carregamento da tela (Form Load) 
  
