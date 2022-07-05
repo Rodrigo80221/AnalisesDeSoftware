@@ -105,11 +105,18 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 
 ``` c sharp
 
+    public class CentroCustosValores: CentrosCusto
+    {
+        public decimal Valor  { get; set; }
+    }
+
+
     public enum OrigemRegistro
     {
             InseridoManualmente = 0,
             PlanoDeContas,
             TabelaVendas,
+            CentroDeCustos
     }
 
     public string CodEstrutura { get; set; }
@@ -119,26 +126,28 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
     public decimal PorcentagemReceita { get; set; }
     public decimal PorcentagemDespesa { get; set; }
     public OrigemRegistro TipoDeRegistro { get; set; }
+    public List<CentroCustosValores> CentroDeCustos { get; set; }
 
 ```
 2. No diretório "DREGerencial" Criar a classe `DREGerencialRelatorio`
-- Na classe `DREGerencialRelatorio` criar o procedimento `ConsultarRelatorioDRE` que retorne um list de `DREGerencialLinhaRelatorio` e receba a classe de filtros por parâmetro. Se não der podemos transferir a classe de filtros para o diretório DREGerencial
-- Na classe `DREGerencialRelatorio` criar o procedimento `void MontarEstruturaDRE` passando a classe de filtros
-- Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarResultadoBruto` passando a classe de filtros
-- Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarListaDespesas`  passando a classe de filtros
+- Na classe `DREGerencialRelatorio` criar o procedimento `ConsultarRelatorioDRE` passando a classe de filtros e a lista por parâmetro
+- Na classe `DREGerencialRelatorio` criar o procedimento `void MontarEstruturaDRE` passando a classe de filtros e a lista por parâmetro
+- Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarResultadoBruto` passando a classe de filtros e a lista por parâmetro
+- Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarListaDespesas`  passando a classe de filtros e a lista por parâmetro
 
 3. No procedimento `processar` 
     - Criar a variável list `<List>DREGerencialLinhaRelatorio listaDRE`
-    - Chamar o procedimento `ConsultarRelatorioDRE` passando a classe de filtros e a listaDRE por parâmentro
-    - Com o retorno do `ConsultarRelatorioDRE` iremos carregar o grid, deixar apenas um comentário pois iremos fer esta parte mais na frente.
+    - Criar a variável list `<List>DREGerencialLinhaRelatorio listaDREPorCentroDeCusos`    
+    - Chamar o procedimento `ConsultarRelatorioDRE` passando a classe de filtros e as listas por parâmentro
+    - Após com a `listaDRE` iremos carregar o grid, deixar apenas um comentário pois iremos fer esta parte mais na frente.
     - Após consultar colocar o foco na grade
 
 ## Tarefa 6: Implementar procedimento "ConsultarRelatorioDRE" e "MontarEstruturaDRE"
 
-2. No `ConsultarRelatorioDRE` chamar o procedimento `MontarEstruturaDRE` passando a `listaDRE` e por parâmetro de referência.
+2. No `ConsultarRelatorioDRE` chamar o procedimento `MontarEstruturaDRE` 
 
 3. Implementar o procedimento `MontarEstruturaDRE`
-- Na lista `listaDRE` Adicionar manualmente os itens abaixo  
+- Na lista `listaDRE` adicionar manualmente os itens abaixo  
 
  ```
     CodEstrutura = 3
@@ -171,30 +180,33 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 "(-) Custo Médio das Mercadorias Vendidas"
 "(-) Custo Gerencial das Mercadorias Vendidas"
 
-4. Inserir na `listaDRE` todo o plano de contas a partir do "3.2" que está na configuração `Conta100PorCentoPagar`
+5. Chamar o procedimento `CarregarResultadoBruto` 
+
+6. Neste momento igualar as 2 listas `listaDREPorCentroDeCusos = listaDRE`
+
+7. Inserir na `listaDRE` todo o plano de contas a partir do "3.2" que está na configuração `Conta100PorCentoPagar`
 - Criar a variável `var contaDREDespesas = config.Conta100PorCentoPagar.CodEstrutural;`
 - Adicionar na `listaDRE` todo o restante do plano de contas assim como foi feito no procedimento `PlanoConta.ConsultarAPartirEstrutura(banco, contaDRE);` 
-- Ao adicionar os registros na listas setar a propriedade `TipoDeRegistro = PlanoDeContas`
+- Ao adicionar os registros na lista setar a propriedade `TipoDeRegistro = PlanoDeContas`
 
-5. Chamar o procedimento `CarregarResultadoBruto` passando a `listaDRE` por parâmetro de referência + a variável de filtros.
-
-5. Chamar o procedimento `CarregarListaDespesas` passando a `listaDRE` por parâmetro de referência + a variável de filtros.
-
+8. Chamar o procedimento `CarregarListaDespesas` 
 ## Tarefa 7: Implementar procedimento "processar" no FrmRelatorioPack
 
 obs: Realizar o procedimento de forma semelhante ao processar do FrmRelatorioPack
 
 1. Deixar visível o gif de aguarde durante a consulta, com o grid invisivel e o group box de viltros desabilitado
-2. Realizar tratamento caso a lista venha vazia (se utilizar o check box para remover contas zeradas a listaa poderá vir vazia)
+2. Realizar tratamento caso a lista venha vazia (se utilizar o check box para remover contas zeradas a lista poderá vir vazia)
 3. Formatar o grid
-4. Atualizar a linha de totais
-5. Carregar o Grid
-    - Colocar em vermelho quando a coluna valor for negativa (retirando o sinal de - (menos))
+4. Carregar o Grid
+    - Carregar as Colunas visíveis Descricao,Valor,PorcentagemReceita,PorcentagemDespesa
+    - Carregar as Colunas visíveis CodEstrutura,CodConta
+    - Carregar a propriedade TipoDeRegistro na tag da linha .row.tag
+    - Na coluna valor, colocar em vermelho quando a coluna valor for negativa (retirando o sinal de - (menos))
     - Por enquanto fazer só essa parte, mais a frente ajustaremos melhor o grid
 
 ## Tarefa 8: Implementar procedimento "CarregarResultadoBruto"
 
-1. Realizar uma consulta no banco GestaoRelatorios conforme os passos abaixo e atualizar a propriedade `Valor` na `listaDRE` que veio por parâmetro com as informações de Venda e custo.
+1. Realizar uma consulta no banco GestaoRelatorios conforme os passos abaixo e atualizar a propriedade `Valor` de cada conta na `listaDRE` que veio por parâmetro com as informações de Venda e custo.
 Requisitos para a consulta:
 - Buscar as vendas no banco GestaoRelatorios, para a variável IBanco utilizar `Utilitarios.ObterConexaoRelatorios();`. 
 - Consultar na tabela `VendasDia` utilizando os filtros (where) do mesmo formato que foi utilizado no procedimento `Telecon.GestaoComercial.Biblioteca.Relatorios.ResultadoLoja.VisaoGeral.Consultar`
@@ -203,6 +215,9 @@ Requisitos para a consulta:
 - Diferenciar Custo Médio ou Custo Gerencial dependendo do combo (filtro)
 
 2. Atualizar a propriedade `Valor` da `listaDRE` no item correspondente
+
+3. Caso a propriedade filtros.AgruparPorCentroDeCustos = true
+    - Neste momento a listaDREPorCentroDeCusos deverá ficar iguál a listaDRE (listaDREPorCentroDeCusos = listaDRE)
 
 ## Tarefa 9: Implementar procedimento "CarregarListaDespesas"  (Parte 1)
 
@@ -257,6 +272,9 @@ Filtro 3: Utilizar Filtros de data nesse modelo `sb.AppendLine(" AND " + new Cal
 ```
 5. Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE`
 
+6. Caso a propriedade filtros.AgruparPorCentroDeCustos = true
+    - Percorrer os dados da consulta acima populando um objeto `CentroCustosValores` com o valor total correspondente a cada centro de custos 
+
 
 ## Tarefa 10: Implementar procedimento "CarregarListaDespesas" (Parte 2)
 
@@ -277,32 +295,49 @@ obs 4: Não precisaremos dos filtros (where) de codestrutura, em vez disso iremo
 
 6. Percorrer os dados das consultas acima atualizando a propriedade `Valor` da `listaDRE` (quando débito deverá ser negativo)
 
-7.. Adicionar nas contas os valores de Juros, taxas, descontos e multas semelhante a como foi feito no procedimento `ConsultarLancamentos`
-- Criar consulta para buscar os valores de Juros, taxas, descontos e multas
-- Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE`
+7. Caso a propriedade filtros.AgruparPorCentroDeCustos = true
+    - Percorrer os dados da consulta acima populando um objeto `CentroCustosValores` com o valor total correspondente a cada centro de custos 
+    - Para sabermos a porcentagem teremos que ver como foi configurado o centro de custos da conta configurada no tipo de operação
+
+8. Adicionar nas contas os valores de Juros, taxas, descontos e multas semelhante a como foi feito no procedimento `ConsultarLancamentos`
+    - Criar consulta para buscar os valores de Juros, taxas, descontos e multas
+    - Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE`
+
+9. Caso a propriedade filtros.AgruparPorCentroDeCustos = true
+    - Percorrer os dados da consulta acima populando um objeto `CentroCustosValores` com o valor total correspondente a cada centro de custos 
+    - Para sabermos a porcentagem teremos que ver como foi configurado o centro de custos da conta configurada para Juros, taxas, descontos e multas
 
 - Alterar a descrição da conta `Despesas Fixas` para `(-) DESPESAS GERENCIAIS OPERACIONAIS` 
 
 
 ## Tarefa 11: Finalizar dados na lista
 
+1. Caso a propriedade filtros.AgruparPorCentroDeCustos = true
+    - Aqui vamos ter que adicionar todos os centros de custos na lista `listaDREPorCentroDeCusos`
+    - Vamos add o 1º centro de custo com o código estrutural `4.` e vamos adicionar todas as contas que estão na `listaDRE` e que possuem valor no respectivo centro de custos
+    - Ao adicionar a conta iremos mudar o primeiro número do codigo estrutural para `4`
+    - Utilizar a mesma lógica para os demais centros de custos
+    - A linha de centro de custos deverá ser do tipo OrigemRegistro.CentroDeCustos
 
-1. No `FrmRelDRE`criar procedimento para atualizar o valor das linhas de cabeçalho da lista `listaDRE`. Chamar esse procedimento antes de caregar o Grid.
-- Utilizar o procedimento abaixo como base
-`Telecon.GestaoComercial.Biblioteca.Financeiro.RelDRE.AtualizarContasPais(contas);`
+1. Caso a propriedade filtros.AgruparPorCentroDeCustos = true    
+    - neste momento a `listaDRE` deverá receber todo o conteúdo da  `listaDREPorCentroDeCusos` (listaDRE =  listaDREPorCentroDeCusos)
 
-2. Criar procedimento para atualizar os percentuais 
-- Utilizar o procedimento abaixo como base
-`Telecon.GestaoComercial.Biblioteca.Financeiro.RelDRE.AtualizarPercentuais`. Chamar esse procedimento após o de cima e antes de caregar o Grid.
-- Temos também um arquivo de apoio
-[Link Planilha](https://docs.google.com/spreadsheets/d/1cr54cDCsruG1pRD61DhnGFrpHO5xjzVNp-8DjKglcHg/edit?usp=sharing)
+1. No `FrmRelDRE`criar procedimento para atualizar o valor das linhas de cabeçalho da lista `listaDRE`. Chamar esse procedimento antes de carregar o Grid.
+    - Utilizar o procedimento abaixo como base
+    `Telecon.GestaoComercial.Biblioteca.Financeiro.RelDRE.AtualizarContasPais(contas);`
 
-3. Fazer if para exluir do list as contas sem saldo caso selecionado pelo usuário, algo semelhante ao código abaixo. Chamar esse procedimento antes de caregar o Grid.
+1. Criar procedimento para atualizar os percentuais 
+    - Utilizar o procedimento abaixo como base
+    `Telecon.GestaoComercial.Biblioteca.Financeiro.RelDRE.AtualizarPercentuais`. Chamar esse procedimento após o de cima e antes de caregar o Grid.
+    - Temos também um arquivo de apoio
+    [Link Planilha](https://docs.google.com/spreadsheets/d/1cr54cDCsruG1pRD61DhnGFrpHO5xjzVNp-8DjKglcHg/edit?usp=sharing)
 
-``` C sharp
-            if (!visualizarContasSemSaldo)
-                contas.RemoveAll(c => c.Valor.Equals(0));
-```
+1. Fazer if para exluir do list as contas sem saldo caso selecionado pelo usuário, algo semelhante ao código abaixo. Chamar esse procedimento antes de caregar o Grid.
+
+    ``` C sharp
+                if (!visualizarContasSemSaldo)
+                    contas.RemoveAll(c => c.Valor.Equals(0));
+    ```
 
 ## Tarefa 12: Implementar procedimento "processar" (Parte 2 - Carregamento do Grid)           
 
@@ -334,12 +369,16 @@ Essa será a tarefa mais difícil teremos que fazer uma auditoria nos dados
 ## Tarefa 15: Criar as chamadas para outras telas do c# ou vb
 
 1. Grid: linha de vendas ou custos das mercadorias
-- Alterar o cursor para mouse hand ao colocar o mouse sob esse tipo de linha (TipoDeRegistro.TabelaVendas)
-- Caso clique na linha de vendas ou custos das mercadorias abrir o Reltório do ABC 2.0 (Resultado da Loja) com mesma data, loja e combo de cmv 
+    - Alterar o cursor para mouse hand ao colocar o mouse sob esse tipo de linha (TipoDeRegistro.TabelaVendas)
+    - Caso clique na linha de vendas ou custos das mercadorias abrir o Reltório do ABC 2.0 (Resultado da Loja) com mesma data, loja e combo de cmv 
 
 2. Grid: linha de contas
-- Alterar o cursor para mouse hand ao colocar o mouse sob esse tipo de linha  (TipoDeRegistro.PlanoDeContas)
-- Caso clique na linha de contas abrir a tela Lançamentos Financeiros filtrando pela mesma conta e data na loja todas
+    - Alterar o cursor para mouse hand ao colocar o mouse sob esse tipo de linha  (TipoDeRegistro.PlanoDeContas)
+    - Caso clique na linha de contas abrir a tela Lançamentos Financeiros filtrando pela mesma conta e data na loja todas
+
+3. Grid: linha de Centro de Custos
+    - Alterar o cursor para mouse hand ao colocar o mouse sob esse tipo de linha  (TipoDeRegistro.CentrosDeCustos)
+    - Caso clique na linha de contas abrir a tela Lançamentos Financeiros filtrando pela data e pelas contas que possuem o centro de custos selecionado. Aqui teremos que passar algum parâmetro para colocar um filtro no select
 
 ## Tarefa 16: Implementar botão de imprimir
 1. Pergutar se a impressão será analítica ou sintética. 
