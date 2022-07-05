@@ -366,15 +366,42 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 
 
-# Tarefa 11: Alterar query's do Rrelatório de Resultado da Loja
+# Tarefa 11: Alterar query's do Relatório de Resultado da Loja
 
-1. Alterar a consulta do procedimento abaixo
+obs: Conversar com a análise antes de iniciar a tarefa para acertarmos os detalhes.
 
-	``` csharp
-	public static List<TotalizadorDespesasPorSecao> Consultar(IBanco banco,
-									  string dataInicioPeriodo,
-									  string dataFimPeriodo)
-	```
+1. Atualizar o banco de dados GestaoRelatorios
+	- Copiar o procedimento frmConfigGestaoRelatorios.fAtualizarEstruturaComParametroCarga para o mdlGestao, chamar ele no frmConfigGestaoRelatorios.
+	- Criar procedimento mdlGestao.CriarEstruturaDeViewsDoGestaoRelatorios
+	- Copiar trecho que código que cria as views no procedimento frmConfigGestaoRelatorios.fCriarEstruturaGestaoRelatorios para o mdlGestao.CriarEstruturaDeViewsDoGestaoRelatorios. 
+		- O trecho inicia na view `CREATE VIEW DW_BI_Lojas AS`
+		- O trecho finaliza na view `REATE VIEW DW_BI_PackVirtualGrupo2 AS`
+	- Tratar o progressbar `pbrEstruturaGR` passar ele como parâmetro opcional de referência e incrementar ele caso ele não seja null
+	- Antes de cada create view, dar um drop na view assim como acontece no procedimento `fCriarEstruturaGestaoRelatorios`
+
+1. Inserir os novos campos nas tabelas na criação das views 
+	- DW_BI_CentroCustoSecoes
+	- DW_BI_PlanoContas
+	- DW_BI_LancamentosFinanceirosCentrosCustos
+	- DW_BI_LancamentosFinanceirosPagar
+	- DW_BI_LancamentosFinanceirosReceber
+
+l. Criar verica banco
+	- Chamar o procedimento `mdlGestao.CriarEstruturaDeViewsDoGestaoRelatorios`
+	- dar um drop nas tabelas relacionadas no banco `GestaoRelatorios`
+		- CentroCustoSecoes
+		- PlanoContas
+		- LancamentosFinanceirosCentrosCustos
+		- LancamentosFinanceirosPagar
+		- LancamentosFinanceirosReceber
+
+1. Verificar se o timer do gestão com login automático irá criar corretante as novas tabelas no banco GestaoRelatorios
+
+1. Popular as tabelas envolvidas com dados para fazermos testes no relatório de resultado da loja
+
+
+
+1. No relatório "Resultado da Loja" alterar a consulta do procedimento `public static List<TotalizadorDespesasPorSecao> Consultar`
 
 	- No momento não tenho as tabelas criadas e nem dados na tabela, teremos que validar. Mas seguindo a modelagem será algo semelhante a consulta abaixo
 
@@ -393,20 +420,9 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 			) AS Tabela
 	```
 	
-1. Alterar a consulta do procedimento abaixo no join com a tabela `LancamentosFinanceirosCentrosCustos`
-
-
-	``` csharp
-		public static List<VisaoTatica> Consultar(IBanco banco, string dataInicioPeriodo, string dataFimPeriodo, 
-							      string lojas, decimal margemLiquidaInicial, decimal margemLiquidaFinal, 
-							      string descricaoProduto, int codFornecedor, string codGrupo, 
-							      int codEncarte, int codLista, int ordenacao, int tipoCmv, 
-							      int tipoDescricaoProduto, int tipoCodProduto, 
-							      bool considerarTransferenciaCompras)
-
-	```
-
-
-
-1. Teremos que utilizar o LancamentosFinanceirosCentrosCusto.CodLojaCentroCusto em vez do LancamentosFinanceiros.CodLoja
-    - Teremos que analisar melhor essa consulta com o banco de dados criado e dados nas tabelas.
+1. Alterar a consulta do procedimento `List<VisaoTatica> Consultar` no join com a tabela `LancamentosFinanceirosCentrosCustos`
+	- Teremos que utilizar o LancamentosFinanceirosCentrosCusto.CodLojaCentroCusto em vez do LancamentosFinanceiros.CodLoja
+        
+	
+1. Realizar testes com dados no gestão vs GestaoRelatorios vs Relatório Resultado da Loja	
+        
