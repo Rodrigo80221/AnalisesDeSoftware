@@ -30,6 +30,8 @@ Abaixo uma imagem com as principais mudanças em relação ao DRE Gerencial
 Diagrama de Classes
 ![image](https://user-images.githubusercontent.com/80394522/177392481-9037bf47-21e3-4b18-ac5f-5a7317b540ba.png)
 
+<img src="https://docs.google.com/drawings/d/e/2PACX-1vRRKZO93sqi9UwPqoHmfqKB3mk9kXWbItmuMkLexH4UOhxmMCd3B_-AHiR6f9bKLy1CWwDkhkBqKjKr/pub?w=2160&amp;h=4432">
+
 ------------------------------------------------------------------------------------------------------
 
 ## Tarefa 1: Criar feature no git e ajustar ambiente
