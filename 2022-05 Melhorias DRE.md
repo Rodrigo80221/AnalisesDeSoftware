@@ -100,49 +100,48 @@ Adicionar abaixo do DRE Gerencial, logo será substituído.
 obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack Virtual
 
 1. No clique do botão consultar (assim como no relatório Analise de venda conjunta)
-- Alterar o ponteiro do mouse para aguardando
-- Limpar a grade
-- Criar e Popular uma classe filtros contendo os filtros da tela.
-- Criar o procedimento `processar` e chamar ele por uma thread passando a classe filtro por parâmetro
-- Estartar a thread
+    - Alterar o ponteiro do mouse para aguardando
+    - Limpar a grade
+    - Criar e Popular uma classe filtros contendo os filtros da tela.
+    - Criar o procedimento `processar` e chamar ele por uma thread passando a classe filtro por parâmetro
+    - Estartar a thread
 
 1. Criar diretório "DREGerencial" no caminho Telecon.GestaoComercial.Biblioteca.Relatorios
 
 1. Criar a classe DREGerencialLinhaRelatorio com as propriedades abaixo
 
-``` c sharp
+    ``` csharp
+        public class CentroCustosValores: CentrosCusto
+        {
+            public decimal Valor  { get; set; }
+        }
 
-    public class CentroCustosValores: CentrosCusto
-    {
-        public decimal Valor  { get; set; }
-    }
 
-
-    public enum OrigemRegistro
-    {
+        public enum OrigemRegistro
+        {
             InseridoManualmente = 0,
             PlanoDeContas,
             TabelaVendas,
             CentroDeCustos
-    }
+        }
 
-    public string CodEstrutura { get; set; }
-    public double CodConta { get; set; }
-    public string Descricao { get; set; }
-    public decimal Valor { get; set; }
-    public decimal PorcentagemReceita { get; set; }
-    public decimal PorcentagemDespesa { get; set; }
-    public OrigemRegistro TipoDeRegistro { get; set; }
-    public List<CentroCustosValores> CentroDeCustos { get; set; }
+        public string CodEstrutura { get; set; }
+        public double CodConta { get; set; }
+        public string Descricao { get; set; }
+        public decimal Valor { get; set; }
+        public decimal PorcentagemReceita { get; set; }
+        public decimal PorcentagemDespesa { get; set; }
+        public OrigemRegistro TipoDeRegistro { get; set; }
+        public List<CentroCustosValores> CentroDeCustos { get; set; }
+    ``` 
 
-```
-2. No diretório "DREGerencial" Criar a classe `DREGerencialRelatorio`
-- Na classe `DREGerencialRelatorio` criar o procedimento `ConsultarRelatorioDRE` passando a classe de filtros e a lista por parâmetro
-- Na classe `DREGerencialRelatorio` criar o procedimento `void MontarEstruturaDRE` passando a classe de filtros e a lista por parâmetro
-- Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarResultadoBruto` passando a classe de filtros e a lista por parâmetro
-- Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarListaDespesas`  passando a classe de filtros e a lista por parâmetro
+1. No diretório "DREGerencial" Criar a classe `DREGerencialRelatorio`
+    - Na classe `DREGerencialRelatorio` criar o procedimento `ConsultarRelatorioDRE` passando a classe de filtros e a lista por parâmetro
+    - Na classe `DREGerencialRelatorio` criar o procedimento `void MontarEstruturaDRE` passando a classe de filtros e a lista por parâmetro
+    - Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarResultadoBruto` passando a classe de filtros e a lista por parâmetro
+    - Na classe `DREGerencialRelatorio` criar o procedimento `void CarregarListaDespesas`  passando a classe de filtros e a lista por parâmetro
 
-3. No procedimento `processar` 
+1. No procedimento `processar` 
     - Criar a variável list `<List>DREGerencialLinhaRelatorio listaDRE`
     - Criar a variável list `<List>DREGerencialLinhaRelatorio listaDREPorCentroDeCusos`    
     - Chamar o procedimento `ConsultarRelatorioDRE` passando a classe de filtros e as listas por parâmentro
@@ -151,52 +150,52 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
 
 ## Tarefa 6: Implementar procedimento "ConsultarRelatorioDRE" e "MontarEstruturaDRE"
 
-2. No `ConsultarRelatorioDRE` chamar o procedimento `MontarEstruturaDRE` 
+1. No `ConsultarRelatorioDRE` chamar o procedimento `MontarEstruturaDRE` 
 
-3. Implementar o procedimento `MontarEstruturaDRE`
-- Na lista `listaDRE` adicionar manualmente os itens abaixo  
+1. Implementar o procedimento `MontarEstruturaDRE`
+    - Na lista `listaDRE` adicionar manualmente os itens abaixo  
 
- ```
-    CodEstrutura = 3
-    Descricao = RESULTADO GERENCIAL
-    TipoDeRegistro = InseridoManualmente
+     ```
+        CodEstrutura = 3
+        Descricao = RESULTADO GERENCIAL
+        TipoDeRegistro = InseridoManualmente
 
-    CodEstrutura = 3.1
-    Descricao = RESULTADO BRUTO
-    TipoDeRegistro = InseridoManualmente
+        CodEstrutura = 3.1
+        Descricao = RESULTADO BRUTO
+        TipoDeRegistro = InseridoManualmente
 
-    CodEstrutura = 3.1.1
-    Descricao = Vendas
-    TipoDeRegistro = InseridoManualmente
+        CodEstrutura = 3.1.1
+        Descricao = Vendas
+        TipoDeRegistro = InseridoManualmente
 
-    CodEstrutura = 3.1.1.01
-    Descricao = Vendas NFCe
-    TipoDeRegistro = TabelaVendas
+        CodEstrutura = 3.1.1.01
+        Descricao = Vendas NFCe
+        TipoDeRegistro = TabelaVendas
 
-    CodEstrutura = 3.1.1.02
-    Descricao = Vendas NFe
-    TipoDeRegistro = TabelaVendas
+        CodEstrutura = 3.1.1.02
+        Descricao = Vendas NFe
+        TipoDeRegistro = TabelaVendas
 
-    CodEstrutura = 3.1.2
-    Descricao = (-) Custo das Mercadorias Vendidas ***
-    TipoDeRegistro = TabelaVendas
+        CodEstrutura = 3.1.2
+        Descricao = (-) Custo das Mercadorias Vendidas ***
+        TipoDeRegistro = TabelaVendas
 
-    * os outros campos recebem zero
-```
-*** A descrição o custo pode variar de acordo com o combro (Custo Médio / Custo Gerencial). Deverá ficar no formato abaixo 
-"(-) Custo Médio das Mercadorias Vendidas"
-"(-) Custo Gerencial das Mercadorias Vendidas"
+        * os outros campos recebem zero
+    ```
+    *** A descrição o custo pode variar de acordo com o combro (Custo Médio / Custo Gerencial). Deverá ficar no formato abaixo 
+    "(-) Custo Médio das Mercadorias Vendidas"
+    "(-) Custo Gerencial das Mercadorias Vendidas"
 
-5. Chamar o procedimento `CarregarResultadoBruto` 
+1. Chamar o procedimento `CarregarResultadoBruto` 
 
-6. Neste momento igualar as 2 listas `listaDREPorCentroDeCusos = listaDRE`
+1. Neste momento igualar as 2 listas `listaDREPorCentroDeCusos = listaDRE`
 
-7. Inserir na `listaDRE` todo o plano de contas a partir do "3.2" que está na configuração `Conta100PorCentoPagar`
-- Criar a variável `var contaDREDespesas = config.Conta100PorCentoPagar.CodEstrutural;`
-- Adicionar na `listaDRE` todo o restante do plano de contas assim como foi feito no procedimento `PlanoConta.ConsultarAPartirEstrutura(banco, contaDRE);` 
-- Ao adicionar os registros na lista setar a propriedade `TipoDeRegistro = PlanoDeContas`
+1. Inserir na `listaDRE` todo o plano de contas a partir do "3.2" que está na configuração `Conta100PorCentoPagar`
+    - Criar a variável `var contaDREDespesas = config.Conta100PorCentoPagar.CodEstrutural;`
+    - Adicionar na `listaDRE` todo o restante do plano de contas assim como foi feito no procedimento `PlanoConta.ConsultarAPartirEstrutura(banco, contaDRE);` 
+    - Ao adicionar os registros na lista setar a propriedade `TipoDeRegistro = PlanoDeContas`
 
-8. Chamar o procedimento `CarregarListaDespesas` 
+1. Chamar o procedimento `CarregarListaDespesas` 
 ## Tarefa 7: Implementar procedimento "processar" no FrmRelatorioPack
 
 obs: Realizar o procedimento de forma semelhante ao processar do FrmRelatorioPack
@@ -215,11 +214,11 @@ obs: Realizar o procedimento de forma semelhante ao processar do FrmRelatorioPac
 
 1. Realizar uma consulta no banco GestaoRelatorios conforme os passos abaixo e atualizar a propriedade `Valor` de cada conta na `listaDRE` que veio por parâmetro com as informações de Venda e custo.
 Requisitos para a consulta:
-- Buscar as vendas no banco GestaoRelatorios, para a variável IBanco utilizar `Utilitarios.ObterConexaoRelatorios();`. 
-- Consultar na tabela `VendasDia` utilizando os filtros (where) do mesmo formato que foi utilizado no procedimento `Telecon.GestaoComercial.Biblioteca.Relatorios.ResultadoLoja.VisaoGeral.Consultar`
-- Valor vendas pdv = sum(vendasDia) where TipoVenda = 'NFCe'
-- Valor vendas nfe = sum(vendasDia) where TipoVenda =  'NFe'
-- Diferenciar Custo Médio ou Custo Gerencial dependendo do combo (filtro)
+    - Buscar as vendas no banco GestaoRelatorios, para a variável IBanco utilizar `Utilitarios.ObterConexaoRelatorios();`. 
+    - Consultar na tabela `VendasDia` utilizando os filtros (where) do mesmo formato que foi utilizado no procedimento `Telecon.GestaoComercial.Biblioteca.Relatorios.ResultadoLoja.VisaoGeral.Consultar`
+    - Valor vendas pdv = sum(vendasDia) where TipoVenda = 'NFCe'
+    - Valor vendas nfe = sum(vendasDia) where TipoVenda =  'NFe'
+    - Diferenciar Custo Médio ou Custo Gerencial dependendo do combo (filtro)
 
 2. Atualizar a propriedade `Valor` da `listaDRE` no item correspondente
 
@@ -257,7 +256,7 @@ Para a consulta usar o filtro abaixo
 obs: seria interessante criar um procedimento para isso que pudesse ser utilizado também nas outras consultas
 
 4. Realizar consulta na tabela LancamentosFinanceirosRecebimentos semelhante a consulta abaixo utilizando os filtros corretos (where)
-- Para a consultas usar o filtro abaixo
+Para a consultas usar o filtro abaixo
 Filtro 1:  CodEstrutural LIKE `var contaDRE + %` (ficará algo semelhante a consulta logo abaixo)
 Filtro 2: `Cancelado = " + banco.ObterVerdadeiroFalso(false)`
 Filtro 3: Utilizar Filtros de data nesse modelo `sb.AppendLine(" AND " + new CalculosRelatoriosSQL().SoData("LP.DataHoraPagamento") + " >= " + banco.ObterData(Convert.ToDateTime(dataInicio)));`
@@ -277,6 +276,7 @@ Filtro 3: Utilizar Filtros de data nesse modelo `sb.AppendLine(" AND " + new Cal
     order by TAB.CodEstrutural 
 
 ```
+
 5. Percorrer os dados da consulta acima atualizando a propriedade `Valor` da `listaDRE`
 
 6. Caso a propriedade filtros.AgruparPorCentroDeCustos = true
@@ -314,7 +314,7 @@ obs 4: Não precisaremos dos filtros (where) de codestrutura, em vez disso iremo
     - Percorrer os dados da consulta acima populando um objeto `CentroCustosValores` com o valor total correspondente a cada centro de custos 
     - Para sabermos a porcentagem teremos que ver como foi configurado o centro de custos da conta configurada para Juros, taxas, descontos e multas
 
-- Alterar a descrição da conta `Despesas Fixas` para `(-) DESPESAS GERENCIAIS OPERACIONAIS` 
+10. Alterar a descrição da conta `Despesas Fixas` para `(-) DESPESAS GERENCIAIS OPERACIONAIS` 
 
 
 ## Tarefa 11: Finalizar dados na lista
