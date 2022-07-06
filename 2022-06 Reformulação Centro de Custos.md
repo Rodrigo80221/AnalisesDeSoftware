@@ -310,12 +310,9 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 > Imagem Excel "Relação Seções vs Centro de Custos"
 
-1. Retirar centro de custos do cadastro de seções
-    - Retirar o grid e o código
-
 1. criar o um módulo para o formulário `FrmRelacionarCustosESecoes`    
-    - ele deverá vir habilitado caso o usuário esteja com o centro de custos e as seções habilitadas
-    - criar no mesmo padrão que foi criado o `FrmCadCentroCusto`
+    - ele deverá vir habilitado caso o cliente esteja com o centro de custos e as seções habilitadas
+    - criar o verifica banco no mesmo padrão que foi criado o `FrmCadCentroCusto`
 
 1. Criar o formulário FrmRelacionarCustosESecoes    
     - Fechar com esc
@@ -325,21 +322,26 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
     - Em baixo colocar o botão Fechar/Salvar
     - Deve abrir centralizado. 
 
-1. Criar combo de loja
-
-1. Carregar Grid
-    - Carregar os centros de custos nas linhas
-    - Carregar as seções nas colunas
+1. Formatar e Carregar Grid
+    - Criar o label acima do grid para ajudar a identificação as seções vs centros de custos
+    - Carregar as seções nas linhas
+    - Carregar os centros de custos nas colunas
     - Carregar de acordo com a tabela CentroCustoCessoes
     - Carregar de acordo com o combo de loja 
-    - Ao carregar deixar em vermelho as seções que ainda não tiveram percentual configurado
     - Carregar linha de totais
-    - Na linha de totais deixar em verde quando 100%, vermelho quando > 100% 
 
-1. Implementar o botão de salvar, para salvar as informações na tabela CentroCustoCessoes    
+1. Criar combo de loja
+    - Ao alterar o combo de loja recarregar o grid com as informações da loja
+
+1. Tratar coloração na linha de totais    
+    - Na linha de totais deixar em verde quando 100%, vermelho quando > 100% e amarelo se maior que 0 e menor que 100
+
+1. Implementar o botão de salvar
+    - Salvar as informações na tabela CentroCustoCessoes de acordo com a loja
     - Não permitir gravar quando o total da coluna de centro de custos for > 100%
 
-1. Criar o botão `Replicar Configuração Para Todas as Lojas`    
+1. Criar o botão `Replicar Porcentagens Para Todas as Lojas` 
+    - Cuidar que o caption do botão está diferente da imagem   
     - Exibir mensagem avisando com a ação não poderá ser desfeita (padrão não)
     - Dar update em CentroCustoCessoes
     - Exibir mensagem de ok
