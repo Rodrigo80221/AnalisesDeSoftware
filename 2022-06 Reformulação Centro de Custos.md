@@ -306,7 +306,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 # Tarefa 9: Criação da tela para relacionar as seções e os centros de custos
 
-![image](https://user-images.githubusercontent.com/80394522/176794495-0d6d80b9-80ef-4a51-ad70-2e9191f38eac.png)
+![image](https://user-images.githubusercontent.com/80394522/177657781-2b0dcfe7-07cd-46fe-a5f4-396da558c295.png)
 
 > Imagem Excel "Relação Seções vs Centro de Custos"
 
