@@ -400,7 +400,7 @@ l. Criar verica banco
 
 
 
-# Tarefa 11: Alterar query's do Relatório de Resultado da Loja
+# Tarefa 11.1: Alterar query's do Relatório de Resultado da Loja
 
 1. Popular as tabelas envolvidas ao Centro de Custos com dados para fazermos testes no relatório de resultado da loja
 		- CentroCustoSecoes
@@ -432,7 +432,7 @@ l. Criar verica banco
 	
 1. Realizar testes com dados no gestão vs GestaoRelatorios vs Relatório Resultado da Loja
 
-1. Resultado Esperado
+Resultado Esperado
 
 ![image](https://user-images.githubusercontent.com/80394522/177659855-df5ec7c3-9693-4f82-8f74-8f6718f975c1.png)
 
