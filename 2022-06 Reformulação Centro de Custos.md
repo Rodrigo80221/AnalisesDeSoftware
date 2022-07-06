@@ -367,8 +367,7 @@ Obs2: O recurso de atualizar os lançamentos financeiros será migrado para a te
 
 
 
-
-# Tarefa 11: Alterar query's do Relatório de Resultado da Loja
+# Tarefa 11: Alterar banco Gestao Relatórios para contemplar os novos campos criados
 
 obs: Conversar com a análise antes de iniciar a tarefa para acertarmos os detalhes.
 
@@ -399,9 +398,14 @@ l. Criar verica banco
 
 1. Verificar se o timer do gestão com login automático irá criar corretante as novas tabelas no banco GestaoRelatorios
 
-1. Popular as tabelas envolvidas com dados para fazermos testes no relatório de resultado da loja
 
 
+# Tarefa 11: Alterar query's do Relatório de Resultado da Loja
+
+1. Popular as tabelas envolvidas ao Centro de Custos com dados para fazermos testes no relatório de resultado da loja
+		- CentroCustoSecoes
+		- PlanoContas
+		- LancamentosFinanceirosCentrosCustos
 
 1. No relatório "Resultado da Loja" alterar a consulta do procedimento `public static List<TotalizadorDespesasPorSecao> Consultar`
 
@@ -426,5 +430,13 @@ l. Criar verica banco
 	- Teremos que utilizar o LancamentosFinanceirosCentrosCusto.CodLojaCentroCusto em vez do LancamentosFinanceiros.CodLoja
         
 	
-1. Realizar testes com dados no gestão vs GestaoRelatorios vs Relatório Resultado da Loja	
+1. Realizar testes com dados no gestão vs GestaoRelatorios vs Relatório Resultado da Loja
+
+1. Resultado Esperado
+
+![image](https://user-images.githubusercontent.com/80394522/177659855-df5ec7c3-9693-4f82-8f74-8f6718f975c1.png)
+
+![image](https://user-images.githubusercontent.com/80394522/177660127-df6ca836-b977-4296-ba5c-e722b27e43ef.png)
+
+
         
