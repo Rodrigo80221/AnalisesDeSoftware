@@ -44,7 +44,7 @@ Diagrama de Classes
 
 ## Tarefa 2: Criar novo formulário
 
-1. Criar no C# o formulário FrmRelDRE no caminho  GestaoComercial > Formularios > Financeiro
+1. Criar no C# o formulário FrmResultadoDRE no caminho  GestaoComercial > Formularios > Financeiro
 2. Criar layout conforme protótipo no final da tarefa.
     - Adicionar o combo + checkbox de lojas com a opção de marcar e desmarcar todos
     - Adicionar o combo CMV com as Oções "Custo Médio" e "Custo Gerencial"
@@ -83,7 +83,7 @@ Diagrama de Classes
 ## Tarefa 4: Criar módulo para Gerenciar o recurso Relatório DRE Gerencial
 
 1. Criar verifica banco para inserir o código abaixo
-sInserirModulo 572, "FINANCEIRO", "Relatório DRE Gerencial", eStatusModulo.mOCULTO, 127, 10, "FrmRelDRE", True, True, True, True, 5
+sInserirModulo 572, "FINANCEIRO", "Relatório DRE Gerencial", eStatusModulo.mOCULTO, 127, 10, "FrmResultadoDRE", True, True, True, True, 5
 
 2. Validar se apareceu no módulo de indicadores e também no novo menu do lado esquerdo do novo sistema S
 Se não ficar ativo para todo usuários executar update em operadores_modulos para ativar o módulo
@@ -196,7 +196,7 @@ obs: Utilizar como base o Relatório Analise de Venda Conjunta e Relatório Pack
     - Ao adicionar os registros na lista setar a propriedade `TipoDeRegistro = PlanoDeContas`
 
 1. Chamar o procedimento `CarregarListaDespesas` 
-## Tarefa 7: Implementar procedimento "processar" no FrmRelatorioPack
+## Tarefa 7: Implementar procedimento "processar" no FrmResultadoDRE
 
 obs: Realizar o procedimento de forma semelhante ao processar do FrmRelatorioPack
 
@@ -329,7 +329,7 @@ obs 4: Não precisaremos dos filtros (where) de codestrutura, em vez disso iremo
 1. Caso a propriedade filtros.AgruparPorCentroDeCustos = true    
     - neste momento a `listaDRE` deverá receber todo o conteúdo da  `listaDREPorCentroDeCusos` (listaDRE =  listaDREPorCentroDeCusos)
 
-1. No `FrmRelDRE`criar procedimento para atualizar o valor das linhas de cabeçalho da lista `listaDRE`. Chamar esse procedimento antes de carregar o Grid.
+1. No `FrmResultadoDRE`criar procedimento para atualizar o valor das linhas de cabeçalho da lista `listaDRE`. Chamar esse procedimento antes de carregar o Grid.
     - Utilizar o procedimento abaixo como base
     `Telecon.GestaoComercial.Biblioteca.Financeiro.RelDRE.AtualizarContasPais(contas);`
 
