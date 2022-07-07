@@ -33,10 +33,17 @@ Alguns questionamentos:
 - Mostrar no nosso fluxo de caixa
 - Permitir filtrar por status (conciliado/não conciliado)
 
+
+---
+
 Cassio Rocha 5 de abr às 16:42
+
 Case inicial será com a conciliadora chamada C3, a qual a Telecon está formalizando uma parceria comercial.
 
+---
+
 Cassio Rocha 5 de abr às 16:41
+
 Precisamos que o PDV extraia da Clisistef o maior número possível de informações sobre a venda: Ex: NSU, BIN, Autorização, Etc...
 Armazenar em uma tabela separada no banco de dados para não carregar desnecessariamente a tabela de Vendas.
 Incluir na nova tabela: CodVenda, CodAdm, BIN, NSU, NroAutorizacao, DataPrevistaPgto, DataPagamento, ValorBruto, Taxa, ValorLiquido, DataConciliacao, CodUsuarioConciliacao
@@ -63,20 +70,28 @@ Demanda Copetti:
 ---
 
 Daniel Dorneles da Silva 3 de dez de 2018 às 06:50
+
 Problema: Financeiro do supermercado precisa gerenciar melhor a venda em cartões, ter mais opções de filtros, totais e de baixar os cartões já recebidos.
 
 ---
+
 Daniel Dorneles da Silva 3 de dez de 2018 às 07:39
+
 Ver antigo Gerenciador TEF
+
 ---
+
 Cassio Rocha 10 de dez de 2018 às 09:34
+
 @danieldornelesdasilva e @robsonpaines
 Estão surgindo demandas (ex: Tischler) de enxergar no financeiro o fluxo de caixa correto a receber dos cartões. Assim como a liquidação (pagamento) entrar também no saldo das contas.
 Peço a contribuição de vocês para alinhar essas demandas com o DIS desse card.
----
-Cassio Rocha 27 de dez de 2018 às 16:36
-@brunoquoos @robsonpaines @tiagolickoski
 
+---
+
+Cassio Rocha 27 de dez de 2018 às 16:36
+
+@brunoquoos @robsonpaines @tiagolickoski
 O Tischler não aprovou a integração com do arquivo com a conciliadora, porém precisamos tocar a nova tela para melhor gerenciamento dos cartões.
 
 O Lickoski está fazendo uma análise para a nova integração KW e alguns pontos interagem com esse DIS que o Bruno está prestes a fazer.
@@ -86,6 +101,8 @@ Eu criei um novo documento com uma pré-análise do que eu imagino ser a soluç�
 @robsonpaines peço que nos ajude na análise, principalmente no que diz respeito a exportação dessas informações para o controle financeiro e posterior envio à contabilidade.
 
 Assim que chegarmos a um consenso liberamos o bruno para tocar a nova tela em C#.
+
 ---
+
 [Ficha do Dis feito pelo Bruno[(https://docs.google.com/document/d/14R3w_Iglj4HwmJlqd-BvZtiZgYCSNd29q4wIy-XiGdo/edit)
 
