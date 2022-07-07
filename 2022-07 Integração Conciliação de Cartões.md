@@ -61,8 +61,10 @@ Demanda Copetti:
 
 ![image](https://user-images.githubusercontent.com/80394522/177851136-73298134-7737-4892-a0b5-ec645db770da.png)
 ---
+
 Daniel Dorneles da Silva 3 de dez de 2018 às 06:50
 Problema: Financeiro do supermercado precisa gerenciar melhor a venda em cartões, ter mais opções de filtros, totais e de baixar os cartões já recebidos.
+
 ---
 Daniel Dorneles da Silva 3 de dez de 2018 às 07:39
 Ver antigo Gerenciador TEF
