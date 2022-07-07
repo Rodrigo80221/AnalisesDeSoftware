@@ -48,6 +48,8 @@ API deve permitir receber outras despesas de cartões. Ex: Aluguel, etc... Grava
 
 ---
 
+# Card Controle de Cartões Débito/Crédito
+
 Sistema deve permitir a quitação manual, dos lançamentos (mudança de statuts)
 
 Demanda Copetti:
