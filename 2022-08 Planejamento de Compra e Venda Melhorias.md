@@ -34,4 +34,41 @@ Está com bug na diarização da Compra. Os percentuais não estão sendo replic
 
 ![image](https://user-images.githubusercontent.com/80394522/186961476-47d964a7-3589-4234-8f7c-929fa0c6143d.png)
 
+quando tem muitos compradores
+
+cmopram de mais 
+
+formatar valores
+
+hoje eles abrem o relatório de diferença de compra e venda 
+
+com 5 - diariazação
+mostrar coluna com valores do ano anterior ou mes anterior
+com um período de um mês ou mais meses dai faz o valor do mês ou uma média se for mais de um mês , não poderia ser um valor menor que 1 mês 
+
+
+
+ao importar ,teria que puxar pelos dias da semana e não pelo dia do mês 
+
+
+geralmente na ultima semana do mes é para o mes seguinte 
+
+podemos ter mais colunas, mas teríamos que modificar a tela , ou 2 telas ou 2 abas
+
+
+as margens de compra os grupos também não são iguais, podemos buscar da realidade tambem 
+
+se alterar a compra alterar a porcentagem com casas decimais 
+
+percentual de crescimento 
+
+AO selecionar várias lojas deixar somente leitura
+
+configuração para ignorar alguns grupos 
+
+mostrar pedidos de compra ta em aberto 
+
+visualizar o estoque seria uma boa 
+
+
 
