@@ -2,6 +2,10 @@
 ![image](https://user-images.githubusercontent.com/80394522/186961299-74196da4-2ed6-4566-8d1b-f1e3d3745ab1.png)
 
 
+![image](https://user-images.githubusercontent.com/80394522/186961870-8b5d185f-fec4-4c6c-9abe-50ec22c4f753.png)
+
+
+
 **Índio:**
 - Permitir visualizar planejamento de todas as lojas (Adicionar filtro "Todas" no relatório, + opção de escolher lojas alternadas) 
 - Na tela principal, permitir criar/editar planejamento de todas as lojas. (ver print/planilha anexo)
