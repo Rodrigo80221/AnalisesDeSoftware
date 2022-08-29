@@ -4,6 +4,8 @@ Data de início da análise: 23/05/2022
 ## Problema a ser resolvido
 Diferenças nas informações das vendas e custo das mercadorias vendidas entre o DRE Gerencial e o ABC de Mercadorias.
 
+![image](https://user-images.githubusercontent.com/80394522/187253814-c0df3c39-95a8-481a-a88d-494116a83241.png)
+
 ## Impactos
 Não terá impacto pois será uma tela nova somente para exibição de dados.
 ## Pré Requisitos
