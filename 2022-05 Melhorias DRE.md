@@ -7,7 +7,7 @@ Diferenças nas informações das vendas e custo das mercadorias vendidas entre 
 ![image](https://user-images.githubusercontent.com/80394522/187253814-c0df3c39-95a8-481a-a88d-494116a83241.png)
 
 ## Impactos
-Não terá impacto pois será uma tela nova somente para exibição de dados.
+Não terá impacto pois será uma nova tela. Inicialmente o relatório antigo continuará existindo.
 ## Pré Requisitos
 Será necessário ter o ambiente do GestaoRelatorios funcionando.
 Necessita o Finish da feature do ABC 2.0
