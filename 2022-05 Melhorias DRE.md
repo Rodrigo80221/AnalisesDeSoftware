@@ -33,6 +33,8 @@ Diagrama de Classes
 
 [Link Fluxogramas](https://docs.google.com/drawings/d/12wr67TnSP6oXCkZyqA80LOXHJevQMFtqLqdq-M3yI48/edit?usp=sharing)
 
+![image](https://user-images.githubusercontent.com/80394522/175949307-b7331086-31b7-4704-aa03-65a8c2925e5c.png)
+
 ------------------------------------------------------------------------------------------------------
 
 ## Tarefa 1: Criar feature no git e ajustar ambiente
