@@ -9,9 +9,9 @@ Diferenças nas informações das vendas e custo das mercadorias vendidas entre 
 ## Impactos
 Não terá impacto pois será uma nova tela. Inicialmente o relatório antigo continuará existindo.
 ## Pré Requisitos
-Será necessário ter o ambiente do GestaoRelatorios funcionando.
-Necessita o Finish da feature do ABC 2.0.
-Será necessário ter dados nas tabelas de centro de custos.
+- Será necessário ter o ambiente do GestaoRelatorios funcionando.
+- Necessita o Finish da feature do ABC 2.0.
+- Será necessário ter dados nas tabelas de centro de custos.
 
 ## Solução
 
