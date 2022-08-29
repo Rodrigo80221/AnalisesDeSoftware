@@ -20,7 +20,7 @@ Foi realizada análise para uma nova tela conforme o protótipo abaixo e deverá
 - Consultar no banco GestaoRelatorios (data warehouse criado pelo Samir: Tela Classica > Sistema > Configurações Gestão Relatórios)
 - Mostrar os dados de venda e custo das mercadorias não mais do financeiro e sim diretamente das vendas.
 - Mostrar os dados de despesas de acordo com as informações que já tínhamos no DRE Gerencial. (Irá mudar alguns nomes de contas apenas.)
-- Nas informações de despesas devemos manter regras antigas como NF de entrada e saída de estorno + taxas, juros, descontos e multas nos registros do financeiro.
+- Nas informações de despesas devemos manter as regras antigas como NF de entrada e saída de estorno + taxas, juros, descontos e multas nos registros do financeiro.
 
 Abaixo uma imagem com as principais mudanças em relação ao DRE Gerencial
 ![Alterações DRE Gerencial](https://user-images.githubusercontent.com/80394522/173059149-3893c07d-e6eb-4fc6-8175-7b1be9d4f308.png)
