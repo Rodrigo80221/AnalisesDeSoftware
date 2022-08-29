@@ -13,7 +13,7 @@ Necessita o Finish da feature do ABC 2.0
 
 ## Solução
 
-Foi realizada análise para uma nova tela conforme o protótipo abaixo e deverá atender as especificações abaixo:
+Foi realizada análise para uma nova tela conforme o protótipo abaixo e deverá atender as seguintes especificações:
 - Seguir os padrões da Telecon Sistemas.
 - Consultar no banco GestaoRelatorios (data warehouse criado pelo Samir: Tela Classica > Sistema > Configurações Gestão Relatórios)
 - Mostrar os dados de venda e custo das mercadorias não mais do financeiro e sim diretamente das vendas.
