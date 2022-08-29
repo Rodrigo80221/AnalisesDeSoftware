@@ -6,7 +6,6 @@ Diferenças nas informações das vendas e custo das mercadorias vendidas entre 
 
 ## Impactos
 Não terá impacto pois será uma tela nova somente para exibição de dados.
-RetornarLinhasDespesasGerenciaisOperacionais
 ## Pré Requisitos
 Será necessário ter o ambiente do GestaoRelatorios funcionando.
 Necessita o Finish da feature do ABC 2.0
