@@ -30,7 +30,7 @@ Abaixo uma imagem com as principais mudanças em relação ao DRE Gerencial
 ![image](https://user-images.githubusercontent.com/80394522/177392333-e0841a88-f31f-4ded-a598-2479fc92c864.png)
 
 Diagrama de Classes
-![image](https://user-images.githubusercontent.com/80394522/187252364-31d9c3c7-e25c-4e1c-8af6-c0372d362b35.png)
+![image](https://user-images.githubusercontent.com/80394522/187266169-4bda1fae-1cfa-4fe7-98a0-1978365d013a.png)
 
 <img src="https://docs.google.com/drawings/d/e/2PACX-1vRRKZO93sqi9UwPqoHmfqKB3mk9kXWbItmuMkLexH4UOhxmMCd3B_-AHiR6f9bKLy1CWwDkhkBqKjKr/pub?w=2160&amp;h=4432">
 
