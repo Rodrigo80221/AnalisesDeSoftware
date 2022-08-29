@@ -15,7 +15,7 @@ Não terá impacto pois será uma nova tela. Inicialmente o relatório antigo co
 
 ## Solução
 
-Foi realizada análise para uma nova tela conforme o protótipo abaixo e deverá atender as seguintes especificações:
+Foi realizada análise para uma nova tela conforme o protótipo e deverá atender as seguintes especificações:
 - Seguir padrões dos novos relatórios c# da Telecon Sistemas.
 - Consultar no banco GestaoRelatorios (data warehouse criado pelo Samir: Tela Classica > Sistema > Configurações Gestão Relatórios)
 - Mostrar os dados de venda e custo das mercadorias não mais do financeiro e sim diretamente das vendas.
