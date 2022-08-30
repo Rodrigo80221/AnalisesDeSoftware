@@ -1,3 +1,52 @@
+# Tela inicial
+![image](https://user-images.githubusercontent.com/80394522/187539084-3d6380bc-55b4-43aa-90be-4e8cd09172af.png)
+
+# Criar Planejamento - Configurações
+![image](https://user-images.githubusercontent.com/80394522/187539513-c88d61ae-9704-4109-9355-cb1c1eec1a16.png)
+
+# Criar Planejamento - Opção 1
+![image](https://user-images.githubusercontent.com/80394522/187539206-09207162-0461-4c45-afb0-793caa813ed6.png)
+
+# Criar Planejamento - Opção 2
+![image](https://user-images.githubusercontent.com/80394522/187539285-953a5703-da04-4410-9df2-00c4057d89d5.png)
+
+# Criar Planejamento - Opção 3
+![image](https://user-images.githubusercontent.com/80394522/187539367-e1e9bcb3-de90-47c8-94c6-178b62143322.png)
+
+# Tela inicial - Planejamento Criado
+![image](https://user-images.githubusercontent.com/80394522/187539634-e1a251cf-eb32-4561-9276-16b3565b265a.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ![image](https://user-images.githubusercontent.com/80394522/186961299-74196da4-2ed6-4566-8d1b-f1e3d3745ab1.png)
 
