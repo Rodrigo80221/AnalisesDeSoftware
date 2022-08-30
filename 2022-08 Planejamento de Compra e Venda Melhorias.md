@@ -1,4 +1,7 @@
 # Tela inicial
+- Alterado o componente de data
+- O combo de loja deverá permitir selecionar 1 ou mais lojas
+
 ![image](https://user-images.githubusercontent.com/80394522/187539084-3d6380bc-55b4-43aa-90be-4e8cd09172af.png)
 
 # Criar Planejamento - Configurações
@@ -14,6 +17,7 @@
 ![image](https://user-images.githubusercontent.com/80394522/187539367-e1e9bcb3-de90-47c8-94c6-178b62143322.png)
 
 # Tela inicial - Planejamento Criado
+- Colocado formatação nos campos
 ![image](https://user-images.githubusercontent.com/80394522/187539634-e1a251cf-eb32-4561-9276-16b3565b265a.png)
 
 
