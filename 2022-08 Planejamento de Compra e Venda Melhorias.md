@@ -4,7 +4,7 @@
 - Inserido botão de Configurações
 - Adicionada coluna de pedidos de compra
 
-![image](https://user-images.githubusercontent.com/80394522/187539084-3d6380bc-55b4-43aa-90be-4e8cd09172af.png)
+![image](https://user-images.githubusercontent.com/80394522/187738884-8567eacf-2acb-4238-9182-eed09a8db42a.png)
 
 # Botão Configurações
 - Migrada a configuração das transferências
@@ -15,17 +15,17 @@
 # Botão Criar Planejamento - Etapa 1
 - Etapa para selecionar a origem do planejamento
 
-![image](https://user-images.githubusercontent.com/80394522/187567994-68a3c847-f3ec-4d32-9c47-ece76f39aa63.png)
+![image](https://user-images.githubusercontent.com/80394522/187739025-05b54e2c-f546-4bdd-9cb5-6eefd24be18d.png)
 
 # Botão Criar Planejamento - Etapa 2
 - Etapa para selecionar as lojas
 
-![image](https://user-images.githubusercontent.com/80394522/187568018-6fe6c791-50fa-4d72-b99a-028743acc65d.png)
+![image](https://user-images.githubusercontent.com/80394522/187739070-ac0184a1-e4f1-45cf-98b1-4dc475502b40.png)
 
 # Botão Criar Planejamento - Etapa 3
 - Etapa para definir os valores de compra e venda para o planejamento
 
-![image](https://user-images.githubusercontent.com/80394522/187568044-78248a73-293e-4f73-9e1d-97ef23f2fea2.png)
+![image](https://user-images.githubusercontent.com/80394522/187739170-930ac0e1-1b6f-459c-a489-3d46fa8c1e9a.png)
 
 # Tela inicial - Planejamento Criado
 - Corrigida a formatação nos campos
