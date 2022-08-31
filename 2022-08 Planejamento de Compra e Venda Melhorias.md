@@ -31,7 +31,7 @@
 - Corrigida a formatação nos campos
 - Adicionados os subgrupos no relatório
 - Adicionado níveis de coloração nas linhas
-- 
+- Combo de Lojas terá o filtro "Todos" os componentes da tela ficarão somente leitura
 ![image](https://user-images.githubusercontent.com/80394522/187539634-e1a251cf-eb32-4561-9276-16b3565b265a.png)
 
 ---
