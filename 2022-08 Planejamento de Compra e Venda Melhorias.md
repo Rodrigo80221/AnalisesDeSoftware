@@ -1,26 +1,42 @@
 # Tela inicial
 - Alterado o componente de data
 - O combo de loja deverá permitir selecionar 1 ou mais lojas
+- Inserido botão de Configurações
+- Adicionada coluna de pedidos de compra
 
 ![image](https://user-images.githubusercontent.com/80394522/187539084-3d6380bc-55b4-43aa-90be-4e8cd09172af.png)
 
 # Botão Configurações
+- Migrada a configuração das transferências
+- Criada configuração de execeção para os grupos
+
 ![image](https://user-images.githubusercontent.com/80394522/187539513-c88d61ae-9704-4109-9355-cb1c1eec1a16.png)
 
 # Botão Criar Planejamento - Etapa 1
+- Etapa para selecionar a origem do planejamento
+
 ![image](https://user-images.githubusercontent.com/80394522/187567994-68a3c847-f3ec-4d32-9c47-ece76f39aa63.png)
 
 # Botão Criar Planejamento - Etapa 2
+- Etapa para selecionar as lojas
+
 ![image](https://user-images.githubusercontent.com/80394522/187568018-6fe6c791-50fa-4d72-b99a-028743acc65d.png)
 
 # Botão Criar Planejamento - Etapa 3
+- Etapa para definir os valores de compra e venda para o planejamento
+
 ![image](https://user-images.githubusercontent.com/80394522/187568044-78248a73-293e-4f73-9e1d-97ef23f2fea2.png)
 
 # Tela inicial - Planejamento Criado
-- Colocado formatação nos campos
+- Corrigida a formatação nos campos
+- Adicionados os subgrupos no relatório
+- Adicionado níveis de coloração nas linhas
+- 
 ![image](https://user-images.githubusercontent.com/80394522/187539634-e1a251cf-eb32-4561-9276-16b3565b265a.png)
 
-
+---
+---
+---
 
 
 
