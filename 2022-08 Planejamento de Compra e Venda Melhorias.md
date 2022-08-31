@@ -4,16 +4,16 @@
 
 ![image](https://user-images.githubusercontent.com/80394522/187539084-3d6380bc-55b4-43aa-90be-4e8cd09172af.png)
 
-# Criar Planejamento - Configurações
+# Botão Configurações
 ![image](https://user-images.githubusercontent.com/80394522/187539513-c88d61ae-9704-4109-9355-cb1c1eec1a16.png)
 
-# Criar Planejamento - Etapa 1
+# Botão Criar Planejamento - Etapa 1
 ![image](https://user-images.githubusercontent.com/80394522/187567994-68a3c847-f3ec-4d32-9c47-ece76f39aa63.png)
 
-# Criar Planejamento - Etapa 2
+# Botão Criar Planejamento - Etapa 2
 ![image](https://user-images.githubusercontent.com/80394522/187568018-6fe6c791-50fa-4d72-b99a-028743acc65d.png)
 
-# Criar Planejamento - Etapa 3
+# Botão Criar Planejamento - Etapa 3
 ![image](https://user-images.githubusercontent.com/80394522/187568044-78248a73-293e-4f73-9e1d-97ef23f2fea2.png)
 
 # Tela inicial - Planejamento Criado
