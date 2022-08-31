@@ -3,6 +3,7 @@
 - O combo de loja deverá permitir selecionar 1 ou mais lojas
 - Inserido botão de Configurações
 - Adicionada coluna de pedidos de compra
+- Adicionado botão fechar no rodapé do formulário
 
 ![image](https://user-images.githubusercontent.com/80394522/187738884-8567eacf-2acb-4238-9182-eed09a8db42a.png)
 
@@ -32,6 +33,8 @@
 - Adicionados os subgrupos no relatório
 - Adicionado níveis de coloração nas linhas
 - Combo de Lojas terá o filtro "Todos" os componentes da tela ficarão somente leitura
+- Botão de imprimir foi movido para o rodapé do formulário
+
 ![image](https://user-images.githubusercontent.com/80394522/187539634-e1a251cf-eb32-4561-9276-16b3565b265a.png)
 
 ---
