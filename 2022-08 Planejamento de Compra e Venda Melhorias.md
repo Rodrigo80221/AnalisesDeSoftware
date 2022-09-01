@@ -21,13 +21,13 @@
 # Botão Criar Planejamento - Etapa 2
 - Etapa para selecionar as lojas
 
-![image](https://user-images.githubusercontent.com/80394522/188020831-aea3c13a-659e-4ade-a88f-d085a37eecf7.png)
+![image](https://user-images.githubusercontent.com/80394522/188029517-0efa48b3-2520-472c-9ac1-bc6d0d0c04bd.png)
 
 # Botão Criar Planejamento - Etapa 3
 - Etapa para definir os valores de venda para o planejamento
 - É possível editar o valor de crescimento percentual
 
-![image](https://user-images.githubusercontent.com/80394522/188020892-cf6d8993-d929-45f6-8387-f350ee64bab3.png)
+![image](https://user-images.githubusercontent.com/80394522/188029551-0896d4cf-6181-4d24-a803-7cd23da72cd5.png)
 
 # Botão Criar Planejamento - Etapa 4
 - Etapa para definir os valores de compra para o planejamento
