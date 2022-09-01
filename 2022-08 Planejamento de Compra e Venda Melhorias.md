@@ -16,17 +16,25 @@
 # Botão Criar Planejamento - Etapa 1
 - Etapa para selecionar a origem do planejamento
 
-![image](https://user-images.githubusercontent.com/80394522/188017319-1df8ebad-a4c9-48c1-b09a-afc56577c51f.png)
+![image](https://user-images.githubusercontent.com/80394522/188020774-5fb9c8b9-a905-439e-805b-4664f85bb0ed.png)
 
 # Botão Criar Planejamento - Etapa 2
 - Etapa para selecionar as lojas
 
-![image](https://user-images.githubusercontent.com/80394522/187739070-ac0184a1-e4f1-45cf-98b1-4dc475502b40.png)
+![image](https://user-images.githubusercontent.com/80394522/188020831-aea3c13a-659e-4ade-a88f-d085a37eecf7.png)
 
 # Botão Criar Planejamento - Etapa 3
-- Etapa para definir os valores de compra e venda para o planejamento
+- Etapa para definir os valores de venda para o planejamento
+- É possível editar o valor de crescimento percentual
 
-![image](https://user-images.githubusercontent.com/80394522/187739170-930ac0e1-1b6f-459c-a489-3d46fa8c1e9a.png)
+![image](https://user-images.githubusercontent.com/80394522/188020892-cf6d8993-d929-45f6-8387-f350ee64bab3.png)
+
+# Botão Criar Planejamento - Etapa 4
+- Etapa para definir os valores de compra para o planejamento
+- Opção para não importar as informação de compra podendo definir um percentual padrão
+
+![image](https://user-images.githubusercontent.com/80394522/188020925-e98b26ef-9bee-4946-b776-7a6d5a334694.png)
+
 
 # Tela inicial - Planejamento Criado
 - Corrigida a formatação nos campos
