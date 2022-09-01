@@ -36,7 +36,8 @@
 - Combo de Lojas terá o filtro "Todos" os componentes da tela ficarão somente leitura
 - Botão de imprimir foi movido para o rodapé do formulário
 
-![image](https://user-images.githubusercontent.com/80394522/187539634-e1a251cf-eb32-4561-9276-16b3565b265a.png)
+![image](https://user-images.githubusercontent.com/80394522/188015285-60bc97f7-a681-4307-9264-4a2dc50808ac.png)
+
 
 ---
 ---
