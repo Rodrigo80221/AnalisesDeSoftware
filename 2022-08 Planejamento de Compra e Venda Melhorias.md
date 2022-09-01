@@ -16,7 +16,7 @@
 # Botão Criar Planejamento - Etapa 1
 - Etapa para selecionar a origem do planejamento
 
-![image](https://user-images.githubusercontent.com/80394522/188017224-659a44c8-9b48-44f3-aebd-7f104e15fd91.png)
+![image](https://user-images.githubusercontent.com/80394522/188017319-1df8ebad-a4c9-48c1-b09a-afc56577c51f.png)
 
 # Botão Criar Planejamento - Etapa 2
 - Etapa para selecionar as lojas
