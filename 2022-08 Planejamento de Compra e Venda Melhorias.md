@@ -4,6 +4,7 @@
 - Inserido botão de Configurações
 - Adicionada coluna de pedidos de compra
 - Adicionado botão fechar no rodapé do formulário
+- Ao alterar o valor de compra devemos atualizar a porcentagem
 
 ![image](https://user-images.githubusercontent.com/80394522/187738884-8567eacf-2acb-4238-9182-eed09a8db42a.png)
 
