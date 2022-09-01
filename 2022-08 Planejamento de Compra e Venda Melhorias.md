@@ -31,6 +31,7 @@
 # Tela inicial - Planejamento Criado
 - Corrigida a formatação nos campos
 - Adicionados os subgrupos no relatório
+- Adicionado + níveis de subgrupos
 - Adicionado níveis de coloração nas linhas
 - Combo de Lojas terá o filtro "Todos" os componentes da tela ficarão somente leitura
 - Botão de imprimir foi movido para o rodapé do formulário
