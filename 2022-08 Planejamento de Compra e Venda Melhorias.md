@@ -49,6 +49,8 @@
 - Ao alterarmos a porcentagem de venda ou compa de um subgrupo, deve atualizar o percentual do pai 
 - Devemos adicionar o valor de pedidos de compra na grade e somarmos na coluna diferença
 - Melhorar a ordenação, o ideal é ordenarmos pelo código do grupo
+- Ao alterar a porcentagem de um subgrupo atualizar os pais 
+- o total deve somar somente a porcentagem dos pais 
 
 ![image](https://user-images.githubusercontent.com/80394522/188015285-60bc97f7-a681-4307-9264-4a2dc50808ac.png)
 
