@@ -16,6 +16,7 @@
 
 # Botão Criar Planejamento - Etapa 1
 - Etapa para selecionar a origem do planejamento
+- Se selecionarmos um planejamento anterior e ele tiver no formato antigo, devemos avisar o usuário que ficará no formato antigo
 
 ![image](https://user-images.githubusercontent.com/80394522/188020774-5fb9c8b9-a905-439e-805b-4664f85bb0ed.png)
 
@@ -45,6 +46,8 @@
 - Adicionado níveis de coloração nas linhas
 - Combo de Lojas terá o filtro "Todos" os componentes da tela ficarão somente leitura
 - Botão de imprimir foi movido para o rodapé do formulário
+- Ao alterarmos a porcentagem de venda ou compa de um subgrupo, deve atualizar o percentual do pai 
+- Devemos adicionar o valor de pedidos de compra na grade e somarmos na coluna diferença
 
 ![image](https://user-images.githubusercontent.com/80394522/188015285-60bc97f7-a681-4307-9264-4a2dc50808ac.png)
 
