@@ -21,6 +21,7 @@
 
 # Botão Criar Planejamento - Etapa 2
 - Etapa para selecionar as lojas
+- Caso já exista um planejamento criado para a loja ela deverá vir desmarcada com a linha desabilitada (cor cinza claro) impossibilitando marcar novamente
 
 ![image](https://user-images.githubusercontent.com/80394522/188029517-0efa48b3-2520-472c-9ac1-bc6d0d0c04bd.png)
 
