@@ -53,6 +53,10 @@
 ![image](https://user-images.githubusercontent.com/80394522/188015285-60bc97f7-a681-4307-9264-4a2dc50808ac.png)
 
 
+# Tela vendas dia
+- ajustar layout
+- carregar combo com base nos grupos da tabela
+
 ---
 ---
 ---
