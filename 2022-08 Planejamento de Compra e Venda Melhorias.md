@@ -58,6 +58,7 @@
 # Tela vendas dia
 - ajustar layout
 - carregar combo com base nos grupos da tabela
+- alterar a query das vendasdia real para agrupar por grupo `public static List<PlanejamentoCompraVendaDia> ConsultarPorPlanejamentoGrupo`
 
 ---
 ---
