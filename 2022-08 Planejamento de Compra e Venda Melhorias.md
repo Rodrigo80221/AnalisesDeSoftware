@@ -48,7 +48,7 @@
 - Botão de imprimir foi movido para o rodapé do formulário
 - Ao alterarmos a porcentagem de venda ou compa de um subgrupo, deve atualizar o percentual do pai 
 - Devemos adicionar o valor de pedidos de compra na grade e somarmos na coluna diferença
-- Melhorar a ordenação, está ordenando também a linha de totais, o ideal é ordenarmos pelo código do grupo
+- Melhorar a ordenação, o ideal é ordenarmos pelo código do grupo
 
 ![image](https://user-images.githubusercontent.com/80394522/188015285-60bc97f7-a681-4307-9264-4a2dc50808ac.png)
 
