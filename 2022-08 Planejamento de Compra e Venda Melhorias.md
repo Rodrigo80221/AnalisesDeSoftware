@@ -11,6 +11,7 @@
 # Botão Configurações
 - Migrada a configuração das transferências
 - Criada configuração de execeção para os grupos
+- Adiconar configuração ocultar grupos/ subgrupos sem movimentação
 
 ![image](https://user-images.githubusercontent.com/80394522/187539513-c88d61ae-9704-4109-9355-cb1c1eec1a16.png)
 
