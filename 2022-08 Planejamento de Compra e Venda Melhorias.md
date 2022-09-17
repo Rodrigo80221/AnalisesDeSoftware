@@ -10,6 +10,7 @@
 - fixar totalizador na ordenação
 - resolver problemas de arredondamento, pois sempre fica em vermelho
 - bater com o relatório de diferença de compra e venda
+- range de tolerância para o alerta de diferença nos labels
 
 ![image](https://user-images.githubusercontent.com/80394522/187738884-8567eacf-2acb-4238-9182-eed09a8db42a.png)
 
