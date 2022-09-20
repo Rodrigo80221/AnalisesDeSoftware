@@ -1,24 +1,24 @@
 # Tela inicial
-- Alterado o componente de data
-- O combo de loja deverá permitir selecionar 1 ou mais lojas
-- Inserido botão de Configurações
+- Alterado o componente de data -- OK --
+- O combo de loja deverá permitir selecionar 1 ou mais lojas -- OK --
+- Inserido botão de Configurações -- OK --
 - Adicionada coluna de pedidos de compra
-- Adicionado botão fechar no rodapé do formulário
-- Ao alterar o valor de compra devemos atualizar a porcentagem
-- melhorar a questão da digitação da diferença, atualizar ou ao pressionar enter ou a retirar o foco do campo, ao alterarmos da erro, ou somente corrigir o erro
-- deixar os campos de planejamento somente para visualizar em amarelo
-- fixar totalizador na ordenação
-- resolver problemas de arredondamento, pois sempre fica em vermelho
+- Adicionado botão fechar no rodapé do formulário -- OK --
+- Ao alterar o valor de compra devemos atualizar a porcentagem -- OK --
+- melhorar a questão da digitação da diferença, atualizar ou ao pressionar enter ou a retirar o foco do campo, ao alterarmos da erro, ou somente corrigir o erro -- OK --
+- deixar os campos de planejamento somente para visualizar em amarelo -- OK --
+- fixar totalizador na ordenação -- OK --
+- resolver problemas de arredondamento, pois sempre fica em vermelho -- OK --
 - bater com o relatório de diferença de compra e venda
-- range de tolerância para o alerta de diferença nos labels
-- verificar bug , no mês de setembro está mostrando 30 dias mesmo tendo 31 dias no banco
-- Verificar módulos, deixar em amarelo caso não seja possível editar
+- range de tolerância para o alerta de diferença nos labels -- OK --
+- verificar bug , no mês de setembro está mostrando 30 dias mesmo tendo 31 dias no banco -- OK --
+- Verificar módulos, deixar em amarelo caso não seja possível editar -- OK --
 
 ![image](https://user-images.githubusercontent.com/80394522/187738884-8567eacf-2acb-4238-9182-eed09a8db42a.png)
 
 # Botão Configurações
-- Migrada a configuração das transferências
-- Criada configuração de execeção para os grupos
+- Migrada a configuração das transferências -- OK --
+- Criada configuração de execeção para os grupos -- OK --
 - Adiconar configuração ocultar grupos/ subgrupos sem movimentação
 
 ![image](https://user-images.githubusercontent.com/80394522/187539513-c88d61ae-9704-4109-9355-cb1c1eec1a16.png)
@@ -49,12 +49,12 @@
 
 
 # Tela inicial - Planejamento Criado
-- Corrigida a formatação nos campos
+- Corrigida a formatação nos campos -- OK --
 - Adicionados os subgrupos no relatório
 - Adicionado + níveis de subgrupos
 - Adicionado níveis de coloração nas linhas
 - Combo de Lojas terá o filtro "Todos" os componentes da tela ficarão somente leitura
-- Botão de imprimir foi movido para o rodapé do formulário
+- Botão de imprimir foi movido para o rodapé do formulário -- OK --
 - Ao alterarmos a porcentagem de venda ou compa de um subgrupo, deve atualizar o percentual do pai 
 - Devemos adicionar o valor de pedidos de compra na grade e somarmos na coluna diferença
 - Melhorar a ordenação, o ideal é ordenarmos pelo código do grupo
@@ -69,6 +69,8 @@
 - carregar combo com base nos grupos da tabela
 - alterar a query das vendasdia real para agrupar por grupo `public static List<PlanejamentoCompraVendaDia> ConsultarPorPlanejamentoGrupo`
 
+![image](https://user-images.githubusercontent.com/80394522/191285379-f59d0f1e-541f-44d5-8e21-72b2a2198c45.png)
+
 ---
 ---
 ---
@@ -78,11 +80,152 @@
 
 
 
+## Tarefa 1: Correção Bug 30 dias
+1. Correção de bug , no mês de setembro está mostrando 30 dias mesmo tendo 31 dias no banco 
+
+
+## Tarefa 1: Ajustes nas formatações dos campos
+1. Ajustar formatação dos totalizadores Venda Planejada e Compra Planejada para "#0.00" no formulário FrmPlanejamentoCompraVenda" (ao digitar formatar o campo)
+1. Ajustar formatação dos totalizadores Venda Planejada e Compra Planejada para "#0.00" no formulário FrmPlanejamentoCompraVendaDia" (ao digitar formatar o campo)
+1. Ajustar campos da grade do formulário "FrmPlanejamentoCompraVenda", todos os campos moeda deverão receber a formatação "#0.00"
+1. Ajustar campos da grade do formulário "FrmPlanejamentoCompraVendaDia", todos os campos moeda deverão receber a formatação "#0.00"
+1. Não esquecer de ajustar também as linhas de totalizadores das grades
+
+
+## Tarefa 1: Melhorias de usabilidade no campo Diferença Planejada
+> Realizar as alterações abaixo no FrmPlanejamentoCompraVenda
+
+1. Ao clicar no campo selecionar todo o texto
+1. Permitir inserir um número fracionado ex "50,60". Alterar os locais que consomem esse campo para não gerar erros
+1. Ao limparmos o campo e aguardarmos uns segundos gera o erro abaixo, corrigir o erro 
+    ```
+    ---------------------------
+    Atenção
+    ---------------------------
+    A cadeia de caracteres de entrada não estava em um formato correto.
+    ---------------------------
+    OK   
+    ---------------------------
+    ```
+
+1. Atualmente ao alterarmos a porcentagem é calculada a compra planejada, realizar a mesma programação deste campo na compra planejada.
+    - Ao alterar o campo "Compra Planejada" calcular a porcentagem com no máximo 2 casas decimais
+    - Ao clicar no campo "Compra Planejada" selecionar todo o campo
+    - Ao alterar após alguns segundos realizar o cálculo assim como no campo de diferença
+    - ao digitar formatar o campo "#0.00"
+
+## Tarefa 1: Remover reordenação das colunas
+1. No FrmPlanejamentoCompraVenda remover reordenação ao clicar no cabeçalho da coluna 
+1. No FrmPlanejamentoCompraVendaDia remover reordenação ao clicar no cabeçalho da coluna 
+
+
+## Tarefa 1: Criar tolerância para os alertas em vermelho
+1. Criar verifica banco, inserir na tabela de configurações a configuração PlanejamentoCompraVendaTolerancia com o valor 5
+1. Consumir essa configuração nos formulários "FrmPlanejamentoCompraVenda" e "FrmPlanejamentoCompraVendaDia"
+    - Deixar os alertas em vermelho apenas se for > que a porcentagem de tolerância 
+
+
+# Tarefa 1: Ajustar configurações de módulos
+
+![image](https://user-images.githubusercontent.com/80394522/191273621-abc01015-9dca-47a9-af38-761571574657.png)
+
+1. Alterar o módulo `Planejamenco de Compra e Venda` para ter as opções "Incluir/ Alterar/ Excluir"
+1. Excluir o módulo `Planejamenco de Compra e Venda (edição)` 
+1. Se o módulo de edição estiver habilitado marcar as opções "Incluir/ Alterar/ Excluir" para o operador
+1. Inserir um botão de Configurações apenas para já realizar essa programação
+1. Alterar a tela para implementar o "Incluir/ Alterar/ Excluir"
+    - Não esquecer de retirar o código referente ao módulo excluído
+    - Desabilitar os botões
+    - Programar os campos com fundo em amarelo 
+> Tratar conforme a imagem abaixo.
+
+![image](https://user-images.githubusercontent.com/80394522/191276484-5d577a73-f0b3-4cdc-b423-7c7ec59cce7a.png)
+
+
+# Tarefa 1: Implementar Botão Configurações
+1. Criar formulário FrmPlanejamentoCompraVendaConfig
+    - Implementar o layout conforme a imagem anexa
+    - O caption do formulário será "Planejamento de Compra e Venda - Configurações"
+1. Implentar padrões Telecon Abaixo
+- Fechar com esc
+- Enter como tab
+- Ícone na janela
+- Abrir como modal
+- Não deve ter os botão de maximizar
+- Não deve permitir resize na tela
+- Deve abrir centralizado. 
+- Deve estar correto quanto ao tab index ao finalizar a tela
+- F4 no campo de código abre a busca de grupos
+- Implementar tratamentos da ampulheta do mouse no click dos botões de lupa e gravar
+1. Migrar a configuração das transferências para esse formulário
+    - Retirar dos formulários "FrmPlanejamentoCompraVenda" e "FrmPlanejamentoCompraVendaDia"
+    - Ajustar programação
+1. Implementar grade de grupos, os ícones serão os mesmos da tela do pack virtual 
+    - Ao salvar, salvar os grupos que estão na grade em uma configuração na tabela de configurações concatenadas. ex. "17,17.04"
+
+![image](https://user-images.githubusercontent.com/80394522/187539513-c88d61ae-9704-4109-9355-cb1c1eec1a16.png)
+
+
+# Tarefa 1: Ajustar layout no FrmPlanejamentoCompraVenda
+> Utilizar resolução 1024x768
+1. Alterar o componente de data
+    - inserir componente padrão de outros relatórios
+    - ajustar o código para utilizar o novo componente
+1. Inserir combo de loja com opção de uma ou mais lojas
+    - ver exemplo no relatório pack virtual
+    - ainda não programar as querys, somente layout
+1. Adicionar e implementar botão de fechar
+1. Tratar tab index
+> As alterações na grade não serão realizadas nesta tarefa
+
+![image](https://user-images.githubusercontent.com/80394522/191282474-536fc8da-447a-406d-890a-a9b43e07038c.png)
+
+
+# Tarefa 1: Ajustar layout no FrmPlanejamentoCompraVendaDia
+> Utilizar resolução 1024x768
+1. Alterar o componente de data
+    - inserir componente padrão de outros relatórios
+    - ajustar o código para utilizar o novo componente
+1. Inserir combo de loja com opção de uma ou mais lojas
+    - ver exemplo no relatório pack virtual
+    - ainda não programar as querys, somente layout
+1. Adicionar e implementar botão de fechar
+1. Tratar tab index
+> As alterações na grade não serão realizadas nesta tarefa
+
+![image](https://user-images.githubusercontent.com/80394522/191282474-536fc8da-447a-406d-890a-a9b43e07038c.png)
 
 
 
+# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 1)
+1. Criar formulário FrmPlanejamentoCompraVendaInserir
+    - Implementar o layout conforme a imagem anexa
+    - Deverá ter um componete tabControl assim como no sped
+        - Quando estiver compilado subir o componente escondendo as abas
+    - O caption do formulário será "Planejamento de Compra e Venda - Criar Planejamento"
+1. Implentar padrões Telecon Abaixo
+- Fechar com esc
+- Enter como tab
+- Ícone na janela
+- Abrir como modal
+- Não deve ter os botão de maximizar
+- Não deve permitir resize na tela
+- Deve abrir centralizado. 
+- Deve estar correto quanto ao tab index ao finalizar a tela
+- Implementar tratamentos da ampulheta do mouse no click dos botões avançar e retornar
+
+# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 2)
+> Implementar aba 1 "Defina a origem do Planejamento"
+1. Adicionar Radio Buttons
+    - Ao selecionar cada um exibir o campo de data relacionado
+1. Ao clicar em avançar mudar para a próxima aba
+1. Tratar tab index
+
+# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 3)
+> Implementar o avançar da aba 2
 
 
+# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 3)
 
 
 

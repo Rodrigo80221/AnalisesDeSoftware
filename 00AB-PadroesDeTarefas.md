@@ -118,6 +118,21 @@ No novo form implementar as configurações padrões da Telecon
 
 
 
+
+1. Implentar padrões Telecon Abaixo
+- Fechar com esc
+- Enter como tab
+- Ícone na janela
+- Abrir como modal
+- Não deve ter os botão de maximizar
+- Não deve permitir resize na tela
+- Deve abrir centralizado. 
+- Deve estar correto quanto ao tab index ao finalizar a tela
+- F4 no campo de código abre a busca de grupos
+- Implementar tratamentos da ampulheta do mouse no click dos botões de lupa e gravar
+
+
+
 # Finalização/ Testes de Integração
 1. Verificar tratamentos da ampulheta do mouse, deve ficar em espera em consultas e procedimentos demorados, deverá retornar para a seta após o procedimento. Em caso de erro deverá retornar também para o padrão no trataerro ou try catch
 
