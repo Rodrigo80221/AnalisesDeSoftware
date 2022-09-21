@@ -214,15 +214,27 @@
 - Deve estar correto quanto ao tab index ao finalizar a tela
 - Implementar tratamentos da ampulheta do mouse no click dos botões avançar e retornar
 
+![image](https://user-images.githubusercontent.com/80394522/188020774-5fb9c8b9-a905-439e-805b-4664f85bb0ed.png)
+
 # Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 2)
 > Implementar aba 1 "Defina a origem do Planejamento"
 1. Adicionar Radio Buttons
-    - Ao selecionar cada um exibir o campo de data relacionado
+    - Ao selecionar cada um, exibir o campo de data relacionado
 1. Ao clicar em avançar mudar para a próxima aba
 1. Tratar tab index
 
+![image](https://user-images.githubusercontent.com/80394522/188020774-5fb9c8b9-a905-439e-805b-4664f85bb0ed.png)
+
 # Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 3)
-> Implementar o avançar da aba 2
+> Implementar o avançar da aba 2 "Defina para quais lojas o planejamento será criado"
+1. Criar tela conforme template
+    - Carregar grade conforme a tabela de lojas
+    - Criar opção marcar e desmarcar todas 
+1. Ao clicar em avançar mudar para a próxima aba
+1. Ao clicar em retornar voltar para a aba anterior
+1. Tratar tab index
+
+![image](https://user-images.githubusercontent.com/80394522/188029517-0efa48b3-2520-472c-9ac1-bc6d0d0c04bd.png)
 
 
 # Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 3)
