@@ -82,7 +82,7 @@
 
 ## Tarefa 1: Correção Bug 30 dias
 1. Correção de bug , no mês de setembro está mostrando 30 dias mesmo tendo 31 dias no banco 
-
+    - Ao corrigir o bug verificar o funcionamento de todas as colunas , algumas são calculadas
 
 ## Tarefa 1: Ajustes nas formatações dos campos
 1. Ajustar formatação dos totalizadores Venda Planejada e Compra Planejada para "#0.00" no formulário FrmPlanejamentoCompraVenda" (ao digitar formatar o campo)
@@ -137,6 +137,7 @@
     - Não esquecer de retirar o código referente ao módulo excluído
     - Desabilitar os botões
     - Programar os campos com fundo em amarelo 
+    - verificar a utilização da propriedadde `_permissaoParaEdicao`
 > Tratar conforme a imagem abaixo.
 
 ![image](https://user-images.githubusercontent.com/80394522/191276484-5d577a73-f0b3-4cdc-b423-7c7ec59cce7a.png)
@@ -179,6 +180,73 @@
 > As alterações na grade não serão realizadas nesta tarefa
 
 ![image](https://user-images.githubusercontent.com/80394522/191282474-536fc8da-447a-406d-890a-a9b43e07038c.png)
+
+# Tarefa 1: Validar banco Gestão Relatórios
+
+1. Ao abrir o formulário "FrmPlanejamentoCompraVenda" realizar um teste para ver se existe o banco de dados do gestão relatórios, caso não exista exibir uma mensagem assim como no formulário FrmResultadoDRE
+
+1. Colocar no rodapé (embaixo a esquerda) dos formulários "FrmPlanejamentoCompraVenda" e "FrmPlanejamentoCompraVendaDia" um label exibindo a data de início e fim da base de dados disponível no gestão relatórios
+    - Fazer no mesmo formato que foi feito no formulário FrmResultadoDRE
+
+![image](https://user-images.githubusercontent.com/80394522/191598775-5d405564-b9b8-4799-9a74-c08aa672d544.png)
+
+# Tarefa 1: Alterar a origem dos dados de compra e venda atual (gestão relatórios)
+
+1. Criar um conexão com o banco Gestão Relatórios assim como no FrmResultadoDRE
+
+1. Alterar o procedimento `FrmPlanejamentoCompraVendaDia.ConsultarPorPlanejamentoGrupo`, passando para ele a conexão com o gestão relatórios. 
+    - Adaptar a consulta para buscar nas tabelas VendasDia, NotasSaidas, NotasEntradas
+    - Podemos usar como base as consultas da classe `Telecon.GestaoComercial.Biblioteca.Relatorios.ResultadoLoja.VisaoGeral`
+
+1. Criar um conexão com o banco Gestão Relatórios assim como no FrmResultadoDRE
+
+1. Alterar o procedimento `FrmPlanejamentoCompraVenda.ConsultarPorPlanejamento`, passando para ele a conexão com o gestão relatórios. 
+    - Adaptar a consulta para buscar nas tabelas VendasDia, NotasSaidas, NotasEntradas
+    - Podemos usar como base as consultas da classe `Telecon.GestaoComercial.Biblioteca.Relatorios.ResultadoLoja.VisaoGeral`    
+
+1. Validar determinado período para que esteja retornando os mesmo dados gestão vs gestão relatórios.   
+    - Utilizar transferências e notas de estorno
+    - O Victor tem um banco com algumas notas de estorno
+
+
+# Tarefa 1: Incluir nas compras a coluna de pedidos
+
+1. Adicionar tabela PedidoCompra e PedidoCompraProdutos no banco gestão relatórios
+    - Utilizar os campos das consultas abaixo
+    - Chamar o procedimento `mdlGestao.CriarEstruturaDeViewsDoGestaoRelatorios` no verifica banco assim como foi feito no procedimento `mdlAtualizaBanco3.fRecriarTabelasGestaoRelatorios`
+    - Criar view no procedimento `mdlGestao.CriarEstruturaDeViewsDoGestaoRelatorios`
+    - Adicionar store procedure `SP_RELATORIOS_BI_DIMENSOES` no procedimento `frmConfigGestaoRelatorios.fCriarEstruturaGestaoRelatorios`
+    - Incluir chamada no procedimento `frmConfigGestaoRelatorios.fCarregarDadosGestaoRelatorios`
+
+    ``` sql
+    SELECT Codigo, DataPedido, CodLoja FROM [dbo].[PedidoCompra] 
+
+    SELECT CodPedidoCompra, CodProduto, QtdProduto  FROM [dbo].[PedidoCompraProdutos] 
+    ```
+    - Testar funcionamento e Validar tarefa com o Samir
+
+1. Adicionar  na classe PlanejamentoCompraVendaGrupo a propriedade PedidoRealRS
+    - Alterar o get da propriedade CompraDiferencaRS = (CompraRealRS + PedidoRealRS) - CompraPrevistaAcum
+    - Alterar o get da propriedade CompraDiferencaPerc = CompraDiferencaRS / (CompraRealRS + PedidoRealRS) * 100
+    - Adicionar no procedimento `ObterPlanejamentoCompraVendaGrupoTotal`
+
+1. Alterar o procedimento `FrmPlanejamentoCompraVenda.ConsultarPorPlanejamento` para retornar os pedidos em aberto por grupo
+
+1. Criar coluna na grade do `FrmPlanejamentoCompraVenda` conforme o template, tratar para carregar a coluna 
+    - Realizar testes para ver se a funcionalidade irá funcionar corretamente
+
+1. Alterar a impressão para imprimir a nova coluna `FrmPlanejamentoCompraVenda.btnImprimir_Click`
+
+1. Adicionar  na classe PlanejamentoCompraVendaDiaTotal a propriedade PedidoRealRS
+    - Alterar o get da propriedade CompraDiferencaRS = (CompraRealRS + PedidoRealRS) - CompraPrevistaAcum
+
+1. Alterar o procedimento `FrmPlanejamentoCompraVendaDia.ConsultarPorPlanejamentoGrupo`, para retornar os pedidos em aberto por grupo e dia
+
+1. Criar coluna na grade do `FrmPlanejamentoCompraVendaDia` conforme o template, tratar para carregar a coluna 
+    - Realizar testes para ver se a funcionalidade irá funcionar corretamente
+
+1. Alterar a impressão para imprimir a nova coluna `FrmPlanejamentoCompraVendaDia.btnImprimir_Click`
+
 
 
 # Tarefa 1: Ajustar layout no FrmPlanejamentoCompraVendaDia
@@ -226,7 +294,7 @@
 ![image](https://user-images.githubusercontent.com/80394522/188020774-5fb9c8b9-a905-439e-805b-4664f85bb0ed.png)
 
 # Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 3)
-> Implementar o avançar da aba 2 "Defina para quais lojas o planejamento será criado"
+> Implementar a aba 2 "Defina para quais lojas o planejamento será criado"
 1. Criar tela conforme template
     - Carregar grade conforme a tabela de lojas
     - Criar opção marcar e desmarcar todas 
@@ -237,8 +305,8 @@
 ![image](https://user-images.githubusercontent.com/80394522/188029517-0efa48b3-2520-472c-9ac1-bc6d0d0c04bd.png)
 
 
-# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 3)
-
+# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 4)
+> Implementar o avançar da aba 2 "Defina para quais lojas o planejamento será criado"
 
 
 
