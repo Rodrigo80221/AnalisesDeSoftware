@@ -255,7 +255,7 @@
 1. Tratar tab index
 > As alterações na grade não serão realizadas nesta tarefa
 
-![image](https://user-images.githubusercontent.com/80394522/191282474-536fc8da-447a-406d-890a-a9b43e07038c.png)
+![image](https://user-images.githubusercontent.com/80394522/191285379-f59d0f1e-541f-44d5-8e21-72b2a2198c45.png)
 
 
 # Tarefa 1: Implementar combo de lojas
@@ -306,54 +306,102 @@
         - Quando estiver compilado subir o componente escondendo as abas
     - O caption do formulário será "Planejamento de Compra e Venda - Criar Planejamento"
 1. Implentar padrões Telecon Abaixo
-- Fechar com esc
-- Enter como tab
-- Ícone na janela
-- Abrir como modal
-- Não deve ter os botão de maximizar
-- Não deve permitir resize na tela
-- Deve abrir centralizado. 
-- Deve estar correto quanto ao tab index ao finalizar a tela
-- Implementar tratamentos da ampulheta do mouse no click dos botões avançar e retornar
-
-![image](https://user-images.githubusercontent.com/80394522/188020774-5fb9c8b9-a905-439e-805b-4664f85bb0ed.png)
-
-# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 2)
-> Implementar aba 1 "Defina a origem do Planejamento"
-1. Adicionar Radio Buttons
-    - Ao selecionar cada um, exibir o campo de data relacionado
+    - Fechar com esc
+    - Enter como tab
+    - Ícone na janela
+    - Abrir como modal
+    - Não deve ter os botão de maximizar
+    - Não deve permitir resize na tela
+    - Deve abrir centralizado. 
+    - Deve estar correto quanto ao tab index ao finalizar a tela
+    - Implementar tratamentos da ampulheta do mouse no click dos botões avançar e retornar
+1. Na opção importar planejamento anterior trazer posicionado no mês anterior
+1. Na opção (Mensal) trazer posicionado no mesmo mês mas no ano passado
+1. Na opção (Período) trazer posicionado nos últimos 3 meses
+1. Ao abrir a tela abrir como padrão a opção (Mensal)
 1. Ao clicar em avançar mudar para a próxima aba
 1. Tratar tab index
 
-![image](https://user-images.githubusercontent.com/80394522/188020774-5fb9c8b9-a905-439e-805b-4664f85bb0ed.png)
+![image](https://user-images.githubusercontent.com/80394522/192026543-54989ebe-3585-4c85-9e6c-cbea9ece174f.png)
+
+# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 2)
+> Implementar aba 2 "Origem dos dados de compra"
+1. Ao selecionar a opção percentual padrão exibir o text
+1. Ao selecionar a opção custo das mercadorias exibir os radio buttons , deixar o custo gerencial como padrão
+1. Se na aba anterior foi selecionada a opção "Criar novo planejamento" desabilitar a 2ª e a 3ª opção, deixar apenas a opção percentual padrão habilitada e mercada 
+1. Se na aba anterior foi selecionada a opção "Importar planejamento anterior" marcar a opção "Importar valores de compra do período selecionado" e já passar para a próxima aba
+1. Trazer como padrão a opção custo das mercadorias vendidas e custo gerencial
+1. Ao clicar em avançar mudar para a próxima aba
+1. Tratar tab index
+
+![image](https://user-images.githubusercontent.com/80394522/192031164-9a22e085-9d90-4f0c-850d-ad548c245be7.png)
+
 
 # Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 3)
-> Implementar a aba 2 "Defina para quais lojas o planejamento será criado"
+> Implementar a aba 3 "Defina para quais lojas o planejamento será criado"
 1. Criar tela conforme template
     - Carregar grade conforme a tabela de lojas
     - Criar opção marcar e desmarcar todas 
 1. Ao clicar em avançar mudar para a próxima aba
+    - Verificar se já existe um planejamento criado para alguma das lojas, se existir alertar o usuário que já existe um planejamento e que será excluído, e se deseja continuar
 1. Ao clicar em retornar voltar para a aba anterior
 1. Tratar tab index
 
-![image](https://user-images.githubusercontent.com/80394522/188029517-0efa48b3-2520-472c-9ac1-bc6d0d0c04bd.png)
+![image](https://user-images.githubusercontent.com/80394522/192031544-caab729a-b90b-46d7-87ea-a5109d2d6c4e.png)
 
 
 # Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 4)
-> Implementar o avançar da aba 2 "Defina para quais lojas o planejamento será criado"
+> Implementar o avançar da aba 3 "Defina para quais lojas o planejamento será criado"
+
+1. Criar um objeto PlanejamentoCompraVenda, PlanejamentoCompraVendaGrupo e PlanejamentoCompraVendaDia para cada loja com todos os dados necessários de acordo com a consulta anexa
+    - Fazer tudo em tread e deixar um gif de carregando, assim como nos outos relatórios do c#
+    - Se na aba inicial foi selecionada a opção "Criar novo planejamento" os objetos deverão ser criados em branco ou nulos 
+    - Se na aba inicial foi selecionada a opção "Importar planejamento anterior" carregar os objetos de acordo com as tabelas do banco no período selecionado
+
+> Abaixo o link da consulta sql para inserir com base em dados anteriores
+``` HTML
+https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/SQL/Consulta%20principal%20Planejamento%20de%20Compra%20e%20Venda%20Melhorias.md
+```
+
+# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 5)
+> Implementar a aba 4 "Definição dos planejamento das vendas"
+
+1. Listar os objetos PlanejamentoCompraVenda na grade (campo de venda)
+1. Criar uma coluna editável para ser digitado um percentual
+1. Na coluna venda planejada adicionar o percentual na venda importada e exibir na coluna (não atualizar ainda nos objetos, só no final para evitar erro caso o usuário retorne nas abas seguintes)
+1. Se na aba anterior foi selecionada a opção "Criar novo planejamento" deverá ser exibida apenas a coluna Venda Planejada, ele deverá permitir edição, e será iniciada com default zero
+1. Ao clicar em avançar mudar para a próxima aba
+1. Ao clicar em retornar voltar para a aba anterior
+1. Tratar tab index
+
+![image](https://user-images.githubusercontent.com/80394522/192055262-585256b6-09ec-481c-a79a-96f6c26157ae.png)
 
 
+# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 6)
+> Implementar a aba 5 "Definição dos planejamento das compras"
+1. Listar os objetos PlanejamentoCompraVenda na grade (campo de compra)
+1. Criar uma coluna editável para ser alterado o percentual de diferença
+1. Na coluna compra planejada adicionar o percentual exibir a porcentagem de compra relativa a venda planejada da aba anterior (compraPlanejada * 100) / (vendaPlanejada * %DiferençaCompraEVenda)
+1. Ao clicar em Inserir Planejamento    
+    - Atualizar o valor de venda planejada e compra planejada no objeto PlanejamentoCompraVenda de todas as lojas
+    - inserir os dados no banco de dados de acordo com o link abaixo
+    - fazer em thread e exibir o gif de carregamento
+    - atualizar a tela PlanejamentoCompraVenda 
+1. Se na aba inicial foi selecionada a opção "Criar novo planejamento" não deverá ser exibida a coluna compra importada
+    - Na coluna de diferença deverá vir o valor default selecionado na aba 2
+    - A coluna diferença poderá ter edição e ao editar dever ser recalculada a compra planejada
+1. Tratar tab index
 
+> Abaixo o link da consulta sql para inserir com base em dados anteriores
+``` HTML
+https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/SQL/Consulta%20principal%20Planejamento%20de%20Compra%20e%20Venda%20Melhorias.md
+```
 
+``` HTML
+https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/SQL/Consulta%202%20Planejamento%20de%20Compra%20e%20Venda%20Melhorias.md
+```
 
-
-
-
-
-
-
-
-
+![image](https://user-images.githubusercontent.com/80394522/192057000-0bf04695-a586-460d-a722-0832087f8454.png)
 
 
 
