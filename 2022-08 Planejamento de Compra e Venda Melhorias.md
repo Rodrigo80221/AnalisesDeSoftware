@@ -2,7 +2,7 @@
 - Alterado o componente de data -- OK --
 - O combo de loja deverá permitir selecionar 1 ou mais lojas -- OK --
 - Inserido botão de Configurações -- OK --
-- Adicionada coluna de pedidos de compra
+- Adicionada coluna de pedidos de compra -- OK --
 - Adicionado botão fechar no rodapé do formulário -- OK --
 - Ao alterar o valor de compra devemos atualizar a porcentagem -- OK --
 - melhorar a questão da digitação da diferença, atualizar ou ao pressionar enter ou a retirar o foco do campo, ao alterarmos da erro, ou somente corrigir o erro -- OK --
@@ -172,9 +172,6 @@
 1. Alterar o componente de data
     - inserir componente padrão de outros relatórios
     - ajustar o código para utilizar o novo componente
-1. Inserir combo de loja com opção de uma ou mais lojas
-    - ver exemplo no relatório pack virtual
-    - ainda não programar as querys, somente layout
 1. Adicionar e implementar botão de fechar
 1. Tratar tab index
 > As alterações na grade não serão realizadas nesta tarefa
@@ -254,9 +251,6 @@
 1. Alterar o componente de data
     - inserir componente padrão de outros relatórios
     - ajustar o código para utilizar o novo componente
-1. Inserir combo de loja com opção de uma ou mais lojas
-    - ver exemplo no relatório pack virtual
-    - ainda não programar as querys, somente layout
 1. Adicionar e implementar botão de fechar
 1. Tratar tab index
 > As alterações na grade não serão realizadas nesta tarefa
@@ -264,6 +258,46 @@
 ![image](https://user-images.githubusercontent.com/80394522/191282474-536fc8da-447a-406d-890a-a9b43e07038c.png)
 
 
+# Tarefa 1: Implementar combo de lojas
+> Programar no FrmPlanejamentoCompraVenda e FrmPlanejamentoCompraEVendaDia
+
+1. Inserir combo de loja com opção de uma ou mais lojas nos 2 formulários
+    - possui exemplo no relatório pack virtual
+    - ajustar todos os lugares que utilizam esse combo para quando estiver selecionada apenas 1 loja funcionar da mesma forma
+
+1. Ao selecionar 2 ou mais lojas mostrar a tela somente como consulta
+    - Bloquear os campos de edição da grade
+    - Bloquear os texts para não permitir edição 
+    - Caso tenha selecionado 1 ou mais lojas ao clicar nos campos acima mostrar uma mensagem `Para editar selecione apenas 1 loja!`
+    - Alterar FrmPlanejamentoCompraVenda.ListarDados() para carregar o objeto `_planejamento` com os dados de todas as lojas
+    - Alterar FrmPlanejamentoCompraVenda.ListarDados() para carregar o objeto `_grupos` com os dados de todas as lojas
+    - Alterar FrmPlanejamentoCompraVendaDia.ListarDados() para carregar o objeto `_planejamento` com os dados de todas as lojas
+    - Alterar FrmPlanejamentoCompraVendaDia.ListarDados() para carregar o objeto `_grupos` com os dados de todas as lojas   
+    - Ajustar FrmPlanejamentoCompraVendaDia quanto a questão do combo de grupos "Todos" ou apenas 1
+    - Ajustar formulários para ficarem compatíveis com as novas alterações 
+    - Verificar a impressão
+
+``` C sharp
+
+    // alteração para o procedimento PlanejamentoCompraVendaGrupo.ConsultarPorPlanejamento
+
+                sql += " DECLARE @ValorVendaPlanejada AS FLOAT = (SELECT SUM(PCV.ValorVendaPlanejada) FROM PlanejamentoCompraVenda PCV WHERE PCV.Ano = 2022 and PCV.mes = 9 and PCV.codloja in (1, 2, 3)) \n";
+
+                sql += " INSERT INTO @RESULTADO (CodPlanejamento, CodGrupo, PercentualVendaPlanejada, PercentualMargemPlanejada, VendaRealRS, CompraRealRS) \n";
+                sql += " SELECT 1, CodGrupo, (T.VendaPlanejada * 100) / @ValorVendaPlanejada PercentualVendaPlanejada , (T.CompraPlanejada * 100) / T.VendaPlanejada PercentualMargemPlanejada ,0 ,0 from \n";
+                sql += " ( \n";
+                sql += " SELECT CodGrupo, SUM((PercentualVendaPlanejada* PCV.ValorVendaPlanejada) / 100) VendaPlanejada, SUM(((PercentualMargemPlanejada * ((PercentualVendaPlanejada * PCV.ValorVendaPlanejada) / 100)) / 100)) CompraPlanejada \n";
+                sql += " FROM PLANEJAMENTOCOMPRAVENDAGRUPOS PCVG \n";
+                sql += " INNER JOIN PlanejamentoCompraVenda PCV ON PCVG.CodPlanejamento = PCV.CodPlanejamento AND PCV.Ano = 2022 and PCV.mes = 9 and PCV.codloja in (1, 2, 3) \n";
+                sql += " GROUP BY CodGrupo \n";
+                sql += " ) as T \n";
+```
+
+``` C sharp
+// ideia da consulta para carregar o _planejamento
+            var sql = "select 14 CodPlanejamento , 1 CodLoja , 2022 Ano, 9 Mes, sum(ValorVendaPlanejada) ValorVendaPlanejada, sum(ValorCompraPlanejada) ValorCompraPlanejada  " +
+                "from PlanejamentoCompraVenda where Ano = 2022 and mes = 9 and codloja in (1,2,3)";
+```                
 
 # Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 1)
 1. Criar formulário FrmPlanejamentoCompraVendaInserir
