@@ -304,7 +304,7 @@
 
 ![image](https://user-images.githubusercontent.com/80394522/192026543-54989ebe-3585-4c85-9e6c-cbea9ece174f.png)
 
-![image](https://user-images.githubusercontent.com/80394522/192064456-73e81a66-69eb-4709-ac1b-0cff2e4d4ab8.png)
+![image](https://user-images.githubusercontent.com/80394522/192360830-4b704a24-28e7-4cd0-b6b0-cc3405cd39c3.png)
 
 ![image](https://user-images.githubusercontent.com/80394522/192031544-caab729a-b90b-46d7-87ea-a5109d2d6c4e.png)
 
@@ -329,6 +329,7 @@
     - Deve abrir centralizado. 
     - Deve estar correto quanto ao tab index ao finalizar a tela
     - Implementar tratamentos da ampulheta do mouse no click dos botões avançar e retornar
+1. A selecionar uma opção exibir o campo de data da direita relacionada a opção    
 1. Na opção importar planejamento anterior trazer posicionado no mês anterior
 1. Na opção (Mensal) trazer posicionado no mesmo mês mas no ano passado
 1. Na opção (Período) trazer posicionado nos últimos 3 meses
@@ -336,11 +337,9 @@
 1. Ao clicar em avançar mudar para a próxima aba
 1. Tratar tab index
 
-![image](https://user-images.githubusercontent.com/80394522/192026543-54989ebe-3585-4c85-9e6c-cbea9ece174f.png)
-
 # Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 2)
 > Implementar aba 2 "Origem dos dados de compra"
-1. Ao selecionar a opção percentual padrão exibir o text de percentual com o default 70
+1. Ao selecionar a opção percentual padrão exibir o text de percentual com o default 75
 1. Ao selecionar a opção custo das mercadorias exibir os radio buttons , deixar o custo gerencial como padrão
 1. Se na aba anterior foi selecionada a opção "Criar novo planejamento" desabilitar a 2ª e a 3ª opção, deixar apenas a opção percentual padrão habilitada e marcada 
 1. Se na aba anterior foi selecionada a opção "Importar planejamento anterior" marcar a opção "Importar valores de compra do período selecionado" e já passar para a próxima aba
