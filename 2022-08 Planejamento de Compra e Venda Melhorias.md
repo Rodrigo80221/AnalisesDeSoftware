@@ -467,9 +467,10 @@ https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/SQL/Consulta%20prin
 
 ![image](https://user-images.githubusercontent.com/80394522/191282474-536fc8da-447a-406d-890a-a9b43e07038c.png)
 
+## Tarefa 27: Verificar erro relatado pelo fábio
+obs: Não identifiquei o erro, enviei para o Fábio e estou aguardando a resposta, verificar com  análise
 
-
-## Tarefa 27: **Fábio diz:** 
+Fábio diz: 
 Está com bug na diarização da Compra. Os percentuais não estão sendo replicados corretamente no campo "Compra P. Acm" quando a diarização está personalizada. 
 
 ## Tarefa 28: Teste no link na linha de totais
