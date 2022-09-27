@@ -1,86 +1,86 @@
-# Tela inicial
-- Alterado o componente de data -- OK --
-- O combo de loja deverá permitir selecionar 1 ou mais lojas -- OK --
-- Inserido botão de Configurações -- OK --
-- Adicionada coluna de pedidos de compra -- OK --
-- Adicionado botão fechar no rodapé do formulário -- OK --
-- Ao alterar o valor de compra devemos atualizar a porcentagem -- OK --
-- melhorar a questão da digitação da diferença, atualizar ou ao pressionar enter ou a retirar o foco do campo, ao alterarmos da erro, ou somente corrigir o erro -- OK --
-- deixar os campos de planejamento somente para visualizar em amarelo -- OK --
-- fixar totalizador na ordenação -- OK --
-- resolver problemas de arredondamento, pois sempre fica em vermelho -- OK --
-- bater com o relatório de diferença de compra e venda -- OK --
-- range de tolerância para o alerta de diferença nos labels -- OK --
-- verificar bug , no mês de setembro está mostrando 30 dias mesmo tendo 31 dias no banco -- OK --
-- Verificar módulos, deixar em amarelo caso não seja possível editar -- OK --
+# Épico: Melhorias no Relatório Planejamento de Compra e Venda
 
-![image](https://user-images.githubusercontent.com/80394522/187738884-8567eacf-2acb-4238-9182-eed09a8db42a.png)
+## Problema a ser resolvido
 
-# Botão Configurações
-- Migrada a configuração das transferências -- OK --
-- Criada configuração de execeção para os grupos -- OK --
+![image](https://user-images.githubusercontent.com/80394522/192616890-8c5824c2-fe8f-4e20-a4ac-90429589c8c5.png)
+
+![image](https://user-images.githubusercontent.com/80394522/192617014-87290dd0-922b-4fb6-9d74-abcfda73a306.png)
+
+- Melhorar a formatação dos valores monetários
+- Possibitar importar um planejamento anterior de outros meses
+- Criar opção para importar venda e compras de um período 
+- Visualizar os subgrupos no relatório
+- Adicionar informações dos pedidos de compra no relatório
+- Correções de bugs e melhorias
+- Possibilitar a visualização de várias lojas
+
+## Impactos
+
+- Relatório Planejamento de Compra e Venda 
+- Banco Gestão Relatórios
+
+## Pré Requisitos
+
+- Ambiente do Gestão Relatórios
+## Solução
+
+#### 1. Alterações nos formulários 
+
+    - Alteração do layout
+    - Corrigida a formatação nos campos 
+    - Alterado o componente de data 
+    - Alteração do combo de lojas com recurso para selecionar mais de uma loja (apenas visualizar)
+    - Inserido botão de Configurações 
+    - Adicionada coluna de pedidos de compra 
+    - Adicionado botão fechar no rodapé do formulário 
+    - Ao alterar o valor de compra devemos atualizar a porcentagem 
+    - Melhorias e correções no campo da diferença
+    - Melhoria no tratamento dos módulos, bloquear edição e exclusão
+    - Range de tolerância para o alerta de diferença nos labels 
+    - Adicionados os subgrupos no relatório  
+        - Alterada regra: ao alterar a porcentagem de venda ou compa de um subgrupo, deve atualizar o percentual do pai 
+        - Os totalizadores totalizam apenas os valores dos pais
+        - Removido os recursos de ordenação para mantermos a estrutura dos grupos pais e filhos  
+        - Adicionado níveis de coloração nas linhas 
+    - As vendas e compras reais irão buscar os dados do gestão relatórios
+    - Inserida mensagem com período de data do gestão relatórios + validações 
+
+![image](https://user-images.githubusercontent.com/80394522/192643237-dcb87116-0b10-4805-a67f-10d01bb31973.png)
+
+#### 2. Criação da Tela de Configurações
+    - Migrada a configuração das transferências 
+    - Criada configuração de execeção para os grupos 
 
 ![image](https://user-images.githubusercontent.com/80394522/187539513-c88d61ae-9704-4109-9355-cb1c1eec1a16.png)
 
-# Botão Criar Planejamento - Etapa 1
-- Etapa para selecionar a origem do planejamento  -- OK --
-- Se selecionarmos um planejamento anterior e ele tiver no formato antigo, devemos avisar o usuário que ficará no formato antigo  -- OK --
 
-![image](https://user-images.githubusercontent.com/80394522/188020774-5fb9c8b9-a905-439e-805b-4664f85bb0ed.png)
+#### 3. Criação do wizard (Passo a Passo) para criar planejamento 
 
-# Botão Criar Planejamento - Etapa 2
-- Etapa para selecionar as lojas  -- OK --
-- Caso já exista um planejamento criado para a loja ela deverá vir desmarcada com a linha desabilitada (cor cinza claro) impossibilitando marcar novamente -- OK --
+![image](https://user-images.githubusercontent.com/80394522/192026543-54989ebe-3585-4c85-9e6c-cbea9ece174f.png)
 
-![image](https://user-images.githubusercontent.com/80394522/188029517-0efa48b3-2520-472c-9ac1-bc6d0d0c04bd.png)
+![image](https://user-images.githubusercontent.com/80394522/192029815-c385f9ec-8bd7-4ae0-93c3-b0858896249d.png)
 
-# Botão Criar Planejamento - Etapa 3
-- Etapa para definir os valores de venda para o planejamento -- OK --
-- É possível editar o valor de crescimento percentual -- OK --
+![image](https://user-images.githubusercontent.com/80394522/192031544-caab729a-b90b-46d7-87ea-a5109d2d6c4e.png)
 
-![image](https://user-images.githubusercontent.com/80394522/188029551-0896d4cf-6181-4d24-a803-7cd23da72cd5.png)
+![image](https://user-images.githubusercontent.com/80394522/192055262-585256b6-09ec-481c-a79a-96f6c26157ae.png)
 
-# Botão Criar Planejamento - Etapa 4
-- Etapa para definir os valores de compra para o planejamento -- OK --
-- Opção para não importar as informação de compra podendo definir um percentual padrão -- OK --
-
-![image](https://user-images.githubusercontent.com/80394522/188020925-e98b26ef-9bee-4946-b776-7a6d5a334694.png)
+![image](https://user-images.githubusercontent.com/80394522/192057000-0bf04695-a586-460d-a722-0832087f8454.png)
 
 
-# Tela inicial - Planejamento Criado
-- Corrigida a formatação nos campos -- OK --
-- Adicionados os subgrupos no relatório  -- OK --
-- Adicionado + níveis de subgrupos  -- OK --
-- Adicionado níveis de coloração nas linhas -- OK --
-- Combo de Lojas terá o filtro "Todos" os componentes da tela ficarão somente leitura -- OK --
-- Botão de imprimir foi movido para o rodapé do formulário -- OK --
-- Ao alterarmos a porcentagem de venda ou compa de um subgrupo, deve atualizar o percentual do pai  -- OK --
-- Devemos adicionar o valor de pedidos de compra na grade e somarmos na coluna diferença -- OK --
-- Remover a ordenação para mantermos a estrutura dos grupos pais e filhos  -- OK --
-- o total deve somar somente a porcentagem dos pais  -- OK --
+#### 4. Templates finais 
 
-![image](https://user-images.githubusercontent.com/80394522/188015285-60bc97f7-a681-4307-9264-4a2dc50808ac.png)
-
-
-# Tela vendas dia
-- ajustar layout  -- OK --
-- carregar combo com base nos grupos da tabela  -- OK --
-- alterar a query das vendasdia real para agrupar por grupo `public static List<PlanejamentoCompraVendaDia> ConsultarPorPlanejamentoGrupo`
+![image](https://user-images.githubusercontent.com/80394522/191282474-536fc8da-447a-406d-890a-a9b43e07038c.png)
 
 ![image](https://user-images.githubusercontent.com/80394522/191285379-f59d0f1e-541f-44d5-8e21-72b2a2198c45.png)
 
----
----
----
 
+## Tarefa 1: Passos iniciais
 
+1. Ciar branch PlanejamentoCompraVendaMelhorias
+1. Montar ambiente gestão relatórios
+1. Restaurar banco de um cliente que já tenha planejamentos de compra e venda criados
 
-
-
-
-
-
-## Tarefa 1: Ajustes nas formatações dos campos
+## Tarefa 2: Ajustes nas formatações dos campos
 1. Ajustar formatação dos totalizadores Venda Planejada e Compra Planejada para "#0.00" no formulário FrmPlanejamentoCompraVenda" (ao digitar formatar o campo)
 1. Ajustar formatação dos totalizadores Venda Planejada e Compra Planejada para "#0.00" no formulário FrmPlanejamentoCompraVendaDia" (ao digitar formatar o campo)
 1. Ajustar campos da grade do formulário "FrmPlanejamentoCompraVenda", todos os campos moeda deverão receber a formatação "#0.00"
@@ -88,7 +88,7 @@
 1. Não esquecer de ajustar também as linhas de totalizadores das grades
 
 
-## Tarefa 1: Melhorias de usabilidade no campo Diferença Planejada
+## Tarefa 3: Melhorias de usabilidade no campo Diferença Planejada
 > Realizar as alterações abaixo no FrmPlanejamentoCompraVenda
 
 1. Ao clicar no campo selecionar todo o texto
@@ -110,18 +110,18 @@
     - Ao alterar após alguns segundos realizar o cálculo assim como no campo de diferença
     - ao digitar formatar o campo "#0.00"
 
-## Tarefa 1: Remover reordenação das colunas
+## Tarefa 4: Remover reordenação das colunas
 1. No FrmPlanejamentoCompraVenda remover reordenação ao clicar no cabeçalho da coluna 
 1. No FrmPlanejamentoCompraVendaDia remover reordenação ao clicar no cabeçalho da coluna 
 
 
-## Tarefa 1: Criar tolerância para os alertas em vermelho
+## Tarefa 5: Criar tolerância para os alertas em vermelho
 1. Criar verifica banco, inserir na tabela de configurações a configuração PlanejamentoCompraVendaTolerancia com o valor 5
 1. Consumir essa configuração nos formulários "FrmPlanejamentoCompraVenda" e "FrmPlanejamentoCompraVendaDia"
     - Deixar os alertas em vermelho apenas se for > que a porcentagem de tolerância 
 
 
-# Tarefa 1: Ajustar configurações de módulos
+## Tarefa 6: Ajustar configurações de módulos
 
 ![image](https://user-images.githubusercontent.com/80394522/191273621-abc01015-9dca-47a9-af38-761571574657.png)
 
@@ -139,7 +139,7 @@
 ![image](https://user-images.githubusercontent.com/80394522/191276484-5d577a73-f0b3-4cdc-b423-7c7ec59cce7a.png)
 
 
-# Tarefa 1: Implementar Botão Configurações
+## Tarefa 7: Implementar Botão Configurações
 1. Criar formulário FrmPlanejamentoCompraVendaConfig
     - Implementar o layout conforme a imagem anexa
     - O caption do formulário será "Planejamento de Compra e Venda - Configurações"
@@ -163,7 +163,7 @@
 ![image](https://user-images.githubusercontent.com/80394522/187539513-c88d61ae-9704-4109-9355-cb1c1eec1a16.png)
 
 
-# Tarefa 1: Ajustar layout no FrmPlanejamentoCompraVenda
+## Tarefa 8: Ajustar layout no FrmPlanejamentoCompraVenda
 > Utilizar resolução 1024x768
 1. Alterar o componente de data
     - inserir componente padrão de outros relatórios
@@ -174,7 +174,7 @@
 
 ![image](https://user-images.githubusercontent.com/80394522/191282474-536fc8da-447a-406d-890a-a9b43e07038c.png)
 
-# Tarefa 1: Validar banco Gestão Relatórios
+## Tarefa 9: Validar banco Gestão Relatórios
 
 1. Ao abrir o formulário "FrmPlanejamentoCompraVenda" realizar um teste para ver se existe o banco de dados do gestão relatórios, caso não exista exibir uma mensagem assim como no formulário FrmResultadoDRE
 
@@ -183,7 +183,7 @@
 
 ![image](https://user-images.githubusercontent.com/80394522/191598775-5d405564-b9b8-4799-9a74-c08aa672d544.png)
 
-# Tarefa 1: Alterar a origem dos dados de compra e venda atual (gestão relatórios)
+## Tarefa 10: Alterar a origem dos dados de compra e venda atual (gestão relatórios)
 
 1. Criar um conexão com o banco Gestão Relatórios assim como no FrmResultadoDRE
 
@@ -202,7 +202,7 @@
     - O Victor tem um banco com algumas notas de estorno
 
 
-# Tarefa 1: Incluir nas compras a coluna de pedidos
+## Tarefa 11: Incluir nas compras a coluna de pedidos
 
 1. Adicionar tabela PedidoCompra e PedidoCompraProdutos no banco gestão relatórios
     - Utilizar os campos das consultas abaixo
@@ -244,7 +244,7 @@
 
 
 
-# Tarefa 1: Ajustar layout no FrmPlanejamentoCompraVendaDia
+## Tarefa 12: Ajustar layout no FrmPlanejamentoCompraVendaDia
 > Utilizar resolução 1024x768
 1. Alterar o componente de data
     - inserir componente padrão de outros relatórios
@@ -256,8 +256,10 @@
 ![image](https://user-images.githubusercontent.com/80394522/191285379-f59d0f1e-541f-44d5-8e21-72b2a2198c45.png)
 
 
-# Tarefa 1: Implementar combo de lojas
+## Tarefa 13: Implementar combo de lojas
 > Programar no FrmPlanejamentoCompraVenda e FrmPlanejamentoCompraEVendaDia
+
+[Vídeo tarefa](https://drive.google.com/file/d/1ESlFTeSMzPGHfJBcxiZdoH9uG4IR47nh/view?usp=sharing)
 
 1. Inserir combo de loja com opção de uma ou mais lojas nos 2 formulários
     - possui exemplo no relatório pack virtual
@@ -296,25 +298,11 @@
             var sql = "select 14 CodPlanejamento , 1 CodLoja , 2022 Ano, 9 Mes, sum(ValorVendaPlanejada) ValorVendaPlanejada, sum(ValorCompraPlanejada) ValorCompraPlanejada  " +
                 "from PlanejamentoCompraVenda where Ano = 2022 and mes = 9 and codloja in (1,2,3)";
 ```                
-
-
-
-
+## Tarefa 14: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 1)
 
 ![image](https://user-images.githubusercontent.com/80394522/192026543-54989ebe-3585-4c85-9e6c-cbea9ece174f.png)
 
-![image](https://user-images.githubusercontent.com/80394522/192360830-4b704a24-28e7-4cd0-b6b0-cc3405cd39c3.png)
-
-![image](https://user-images.githubusercontent.com/80394522/192031544-caab729a-b90b-46d7-87ea-a5109d2d6c4e.png)
-
-![image](https://user-images.githubusercontent.com/80394522/192055262-585256b6-09ec-481c-a79a-96f6c26157ae.png)
-
-![image](https://user-images.githubusercontent.com/80394522/192057000-0bf04695-a586-460d-a722-0832087f8454.png)
-
-
-# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 1)
-
-![image](https://user-images.githubusercontent.com/80394522/192026543-54989ebe-3585-4c85-9e6c-cbea9ece174f.png)
+[Link Vídeo Visão Geral](https://drive.google.com/file/d/1e_xCX9d0778BsEDL8CJYWma28DwsM5v2/view?usp=sharing)
 
 1. Criar formulário FrmPlanejamentoCompraVendaInserir
     - Implementar o layout conforme a imagem anexa
@@ -336,9 +324,29 @@
 1. Na opção importar planejamento anterior trazer posicionado no mês anterior
 1. Na opção (Mensal) trazer posicionado no mesmo mês mas no ano passado
 1. Na opção (Período) trazer posicionado nos últimos 3 meses
+    - não permitir avançar se o usuário selecionou um período menor que 28 dias
 1. Ao abrir a tela abrir como padrão a opção (Mensal)
 1. Tratar tab index
-# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 1)
+
+1. Adicionar o botão "?" padrão em outros relatórios no lado direito do formulário na parte de cima, ao clicar exibir a mensagem abaixo 
+
+```
+
+Opções "Criar planejamento com base em vendas e compras passadas. (Mensal) e (Período)"
+
+Ao selecionar uma destas opções o sistema irá buscar as compras e vendas do período selecionado para montar o planejamento. 
+
+Será feita uma média por grupo e por dia da semana. 
+
+Exemplo: O sistema fará uma média das vendas do grupo Açougue de todos os domingos do período selecionado assim utilizaremos essa média para realizar o planejamento deste grupo em todos os domingos do mês.
+
+Obs: Essa regra será utilizada tanto para as vendas quanto para as compras.
+
+```
+
+
+
+## Tarefa 15: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 2)
 
 ![image](https://user-images.githubusercontent.com/80394522/192026543-54989ebe-3585-4c85-9e6c-cbea9ece174f.png)
 
@@ -346,9 +354,12 @@
     - alterar o caption do botão avançar para "Inserir Planejamento" 
         - ao clicar em "Inserir Planejamento" fechar o formulário e criar o planejamento da mesma forma que anteriormente
         - alterar para adicionar os subgrupos no relatório, tanto na tabela PlanejamentoCompraVendaGrupo quanto na PlanejamentoCompraVendaDia
+        - o percentual definido para cada grupo será o mesmo que anteriormente
+        - os subgrupos terão o percentual do pai dividido pela quatidade de sugrupos 
+        `PercentualVendaPlanejadaFILHOS = PercentualVendaPlanejadaPai / QTDFilhos`
     - Fazer tratamento para respeitar as configurações de grupos (não importar os grupos configurados nas exceções)
 
-# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 2)
+## Tarefa 16: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 3)
 
 ![image](https://user-images.githubusercontent.com/80394522/192026543-54989ebe-3585-4c85-9e6c-cbea9ece174f.png)
 
@@ -359,19 +370,19 @@
 1. Nas demais opções ao clicar em avançar mudar para a próxima aba
 
 
-# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 3)
+## Tarefa 17: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 4)
 > Implementar aba 2 "Origem dos dados de compra"
-1. Ao selecionar a opção percentual padrão exibir o text de percentual com o default 75
+1. Ao selecionar a opção percentual padrão exibir o text de percentual com o default 70,00
     - o text pode ter uma máscara ou ter o "%" fora do campo...
 1. Ao selecionar a opção custo das mercadorias exibir os radio buttons , deixar o custo gerencial como padrão
 1. Trazer como padrão a opção custo das mercadorias vendidas + custo gerencial
 1. Ao clicar em avançar mudar para a próxima aba
 1. Tratar tab index
 
-![image](https://user-images.githubusercontent.com/80394522/192360830-4b704a24-28e7-4cd0-b6b0-cc3405cd39c3.png)
+![image](https://user-images.githubusercontent.com/80394522/192029815-c385f9ec-8bd7-4ae0-93c3-b0858896249d.png)
 
 
-# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 4)
+## Tarefa 18: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 5)
 
 ![image](https://user-images.githubusercontent.com/80394522/192031544-caab729a-b90b-46d7-87ea-a5109d2d6c4e.png)
 
@@ -386,7 +397,7 @@
 1. Tratar tab index
 
 
-# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 5)
+## Tarefa 19: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 6)
 > Implementar o avançar da aba 3 "Defina para quais lojas o planejamento será criado"
 
 1. Criar um objeto PlanejamentoCompraVenda, PlanejamentoCompraVendaGrupo e PlanejamentoCompraVendaDia para cada loja com todos os dados necessários de acordo com a consulta anexa
@@ -398,7 +409,7 @@
 https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/SQL/Consulta%20principal%20Planejamento%20de%20Compra%20e%20Venda%20Melhorias.md
 ```
 
-# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 6)
+## Tarefa 20: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 7)
 > Implementar a aba 4 "Definição dos planejamento das vendas"
 
 1. Listar os objetos PlanejamentoCompraVenda na grade (campo de venda)
@@ -411,7 +422,7 @@ https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/SQL/Consulta%20prin
 ![image](https://user-images.githubusercontent.com/80394522/192055262-585256b6-09ec-481c-a79a-96f6c26157ae.png)
 
 
-# Tarefa 1: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 7)
+## Tarefa 21: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 8)
 
 ![image](https://user-images.githubusercontent.com/80394522/192057000-0bf04695-a586-460d-a722-0832087f8454.png)
 
@@ -426,130 +437,73 @@ https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/SQL/Consulta%20prin
     - atualizar a tela PlanejamentoCompraVenda 
 1. Tratar tab index
 
-# Tarefa 1: Alterar lógica do combro de grupos no formulário FrmPlanejamentoCompraVendaDia
+## Tarefa 22: Alterar lógica do combro de grupos no formulário FrmPlanejamentoCompraVendaDia
 1. Listar todos grupos e subgrupos no combo
     - Ao abrir a tela através de um link de subgrupo no FrmPlanejamentoCompraVendaGrupo corrigir para não dar erro    
 
-# Tarefa 1: Alterar lógica de grupos > subgrupos do formulário FrmPlanejamentoCompraVendaGrupo (parte 1)
+## Tarefa 23: Alterar lógica de grupos > subgrupos do formulário FrmPlanejamentoCompraVendaGrupo (parte 1)
 1. Alterar a lógicas dos totalizadores para somar apenas os registros relacionados aos grupos pais 
     - Atualmente está somando todas as linhas 
 
-# Tarefa 1: Alterar lógica de grupos > subgrupos do formulário FrmPlanejamentoCompraVendaGrupo (parte 2)
+## Tarefa 24: Alterar lógica de grupos > subgrupos do formulário FrmPlanejamentoCompraVendaGrupo (parte 2)
 > Realizar tratamentos nas edições das colunas 
 
 1. Ao alterar a porcentagem de venda de um subgrupo, atualizar o valor do grupo pai com a soma de todos os filhos
     - Verificar que o valor do grupo pai também salvou automaticamente
-
 1. Ao alterar o valor de venda planejada do subgrupo, atualizar o valor do grupo pai com a soma de todos os filhos
     - Verificar que o valor do grupo pai também salvou automaticamente
-
 1. Ao alterar a diferença de compra de um subgrupo, atualizar o valor do grupo pai com a soma de todos os filhos
 
-
-
-
-
-## Tarefa 1: Adicionar recurso de retrair e expandir linhas 
+## Tarefa 25: Adicionar recurso de retrair e expandir linhas 
 1. Adicionar mais 2 colunas a esquerda, uma para o sinal "+/-" outra para colocar o codigo do grupo
     - Ao carregar a grande, quando for um grupo pai (ver pelo código) colocar o sinal de "+" na nova coluna 
         - Após carregar toda a grade dar um hide em todos os filhos 
     - Ao clicar mudar o sinal para "-" e dar um show nas linhas dos grupos filhos 
 
-
-## Tarefa 1: Adicionar níveis de coloração nas linhas dos grupos pais no formulário FrmPlanejamentoCompraVendaGrupo
+## Tarefa 26: Adicionar níveis de coloração nas linhas dos grupos pais no formulário FrmPlanejamentoCompraVendaGrupo
 1. Os grupos pais deverão ter coloração mais escura de acordo com o layout abaixo
     - Utiliza a coluna código do grupo 
     - Utilizar o mesmo padrão dos outros relatórios c# (utilizar classe cores do genérico)
 
 ![image](https://user-images.githubusercontent.com/80394522/191282474-536fc8da-447a-406d-890a-a9b43e07038c.png)
 
-## Tarefa 1: Teste botão "Repetir percentuais para todos os grupos" no FrmPlanejamentoCompraVendaDia
+
+
+## Tarefa 27: **Fábio diz:** 
+Está com bug na diarização da Compra. Os percentuais não estão sendo replicados corretamente no campo "Compra P. Acm" quando a diarização está personalizada. 
+
+## Tarefa 28: Teste no link na linha de totais
+1. Testar link da linha de totais tem que se manter puxando a diarização geral de todos os grupos
+
+![image](https://user-images.githubusercontent.com/80394522/192636818-06dc22f6-e573-4d9d-be2d-03a303993d92.png)
+
+## Tarefa 29: Teste botão "Repetir percentuais para todos os grupos" no FrmPlanejamentoCompraVendaDia
 1. Verificar se se manteve a funcionalidade após as alterações
     - Testar com os subgrupos
 
-## Tarefa 1: Testes, testar Bug 30 dias
+## Tarefa 30: Testes, testar Bug 30 dias
 1. Foi relatado pelo comercial que temos bugs ao importar planejamentos de meses com menos dias para meses com 31 dias 
     - Realizar testes e realizar os ajustes necessários
 
-## Tarefa 1: Testes verificar os dados de venda importada    
+## Tarefa 31: Testes verificar os dados de venda importada    
     - Bater os dados de venda importada (Inserir Planejamento) com o relatório de diferença de compra e venda (os clientes atualmente buscam os valores desse relatório)
 
+## Tarefa 32: Testes Gerais 
+1. Realizar o planejamento de um período
+1. Realizar vendas para grupos e subgrupos e validar o funcionamento
+1. Realizar notas de compra para grupos e subgrupos e validar o funcionamento
+1. Realizar pedidos de compra e validar o funcionamento
+1. Fazer os passos acima para outra loja e validar a visualização com mais de uma loja 
 
 
 
-![image](https://user-images.githubusercontent.com/80394522/192057000-0bf04695-a586-460d-a722-0832087f8454.png)
-
-
-![image](https://user-images.githubusercontent.com/80394522/186961299-74196da4-2ed6-4566-8d1b-f1e3d3745ab1.png)
-
-
-![image](https://user-images.githubusercontent.com/80394522/186961870-8b5d185f-fec4-4c6c-9abe-50ec22c4f753.png)
 
 
 
-**Índio:**
-- Permitir visualizar planejamento de todas as lojas (Adicionar filtro "Todas" no relatório, + opção de escolher lojas alternadas) 
-- Na tela principal, permitir criar/editar planejamento de todas as lojas. (ver print/planilha anexo)
-
-**Copetti/Mago:**
-- Mais opções de importação de planejamento: Ex: Pegar também do ano anterior ou média da venda real (Diferença de compra e venda) OBS: Atualmente com bug em meses com 30/31dias.
-Cliente Copetti(Lottar): Sugestão Jacinto Mago: Fazer uma média de quanto venda cada dia da semana em meses anteriores e sugerir automaticamente.
-
-**Fábio diz:** Buscar venda do ano anterior mesmo período, permitir informar % de crescimento, ou o valor total (calcular o outro). 
-Está com bug na diarização da Compra. Os percentuais não estão sendo replicados corretamente no campo "Compra P. Acm" quando a diarização está personalizada. 
-- Adicionar sinal de "+" ao lado de cada grupo, permitir abrir os grupos em "Subgrupos". (compra e venda)
-
-**David Indio diz: ** Criar coluna "Pedido Real." antes da coluna "Compra Real." Somar apenas pedidos que estão em Aberto. (porque depois que chegam viram NF de Compra).
-
-**Outros:**
-- Formatar casa decimal valores com ponto no milhar 
-
-- Permitir excluir/incluir grupos
- 
-- Ao importar planejamento anterior excluir grupos zerados (Ex: Taxas, Geral, etc..)
-
-**OBS:** Ver demais cards relacionados a melhoria dessa tela. Falar com Fábio consultor.
-
-
-![image](https://user-images.githubusercontent.com/80394522/186961411-a3d5bdb7-53f4-4c6b-bd9f-0fe1bad047f1.png)
-
-![image](https://user-images.githubusercontent.com/80394522/186961476-47d964a7-3589-4234-8f7c-929fa0c6143d.png)
-
-quando tem muitos compradores
-
-cmopram de mais 
-
-formatar valores
-
-hoje eles abrem o relatório de diferença de compra e venda 
-
-com 5 - diariazação
-mostrar coluna com valores do ano anterior ou mes anterior
-com um período de um mês ou mais meses dai faz o valor do mês ou uma média se for mais de um mês , não poderia ser um valor menor que 1 mês 
 
 
 
-ao importar ,teria que puxar pelos dias da semana e não pelo dia do mês 
 
-
-geralmente na ultima semana do mes é para o mes seguinte 
-
-podemos ter mais colunas, mas teríamos que modificar a tela , ou 2 telas ou 2 abas
-
-
-as margens de compra os grupos também não são iguais, podemos buscar da realidade tambem 
-
-se alterar a compra alterar a porcentagem com casas decimais 
-
-percentual de crescimento 
-
-AO selecionar várias lojas deixar somente leitura
-
-configuração para ignorar alguns grupos 
-
-mostrar pedidos de compra ta em aberto 
-
-visualizar o estoque seria uma boa 
 
 
 
