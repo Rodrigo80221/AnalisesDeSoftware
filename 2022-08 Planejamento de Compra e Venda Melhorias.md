@@ -413,7 +413,13 @@ https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/SQL/Consulta%20prin
 > Explicação da consulta nos vídeos abaixo
 
 [Link vídeo 1](https://drive.google.com/file/d/1QeiImwJOeFi9K2cAKeLS9M4zTk5TNR7u/view?usp=sharing)
+
+--
+
 [Link vídeo 2](https://drive.google.com/file/d/1ZB2FK95Sxhfo3gL4XtroUOeD1KvnkF_Y/view?usp=sharing)
+
+--
+
 [Link vídeo 3](https://drive.google.com/file/d/1te8gE5rwx9cJ3OMiIrFpOjQmM_4oXV2T/view?usp=sharing)
 
 ## Tarefa 20: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 7)
