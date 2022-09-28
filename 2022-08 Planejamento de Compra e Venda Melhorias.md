@@ -8,7 +8,7 @@
 
 - Melhorar a formatação dos valores monetários
 - Possibitar importar um planejamento anterior de outros meses
-- Criar opção para importar venda e compras de um período 
+- Possibilitar importar venda e compras de um período 
 - Visualizar os subgrupos no relatório
 - Adicionar informações dos pedidos de compra no relatório
 - Correções de bugs e melhorias
@@ -32,18 +32,28 @@
     - Alteração do combo de lojas com recurso para selecionar mais de uma loja (apenas visualizar)
     - Inserido botão de Configurações 
     - Adicionada coluna de pedidos de compra 
-    - Adicionado botão fechar no rodapé do formulário 
-    - Ao alterar o valor de compra devemos atualizar a porcentagem 
-    - Melhorias e correções no campo da diferença
+    - Ao editar o campo "Compra Planejada" atualiza o campo "% Diferença Planejada"
+    - Melhorias e correções no campo "% Diferença Planejada"
     - Melhoria no tratamento dos módulos, bloquear edição e exclusão
-    - Range de tolerância para o alerta de diferença nos labels 
+    - Range de tolerância para o alertas de diferença em vermelho
+    - Correção de 2 bugs relatados pelo Fábio
     - Adicionados os subgrupos no relatório  
         - Alterada regra: ao alterar a porcentagem de venda ou compa de um subgrupo, deve atualizar o percentual do pai 
         - Os totalizadores totalizam apenas os valores dos pais
-        - Removido os recursos de ordenação para mantermos a estrutura dos grupos pais e filhos  
+        - Removido os recursos de ordenação das colunas para mantermos a estrutura dos grupos pais e filhos  
         - Adicionado níveis de coloração nas linhas 
+        - Adicionado recurso para explandir e retrair as linhas
     - As vendas e compras reais irão buscar os dados do gestão relatórios
     - Inserida mensagem com período de data do gestão relatórios + validações 
+    - Alterada a opção "Importar planejamento" para buscar de outros meses anteriores
+    - Criado o recurso para importar vendas e compras de um determinado período
+        - Criado campo para adicionar percentual de crescimento 
+        - Consulta realizada no banco gestão relatórios
+        - Criado recursos para o planejamento das compras
+            - Utilizar percentual de compra padrão
+            - Buscar das notas de compra
+            - Criar planejamento com base no custo das mercadorias vendidas (médio ou gerencial)
+
 
 ![image](https://user-images.githubusercontent.com/80394522/192643237-dcb87116-0b10-4805-a67f-10d01bb31973.png)
 
