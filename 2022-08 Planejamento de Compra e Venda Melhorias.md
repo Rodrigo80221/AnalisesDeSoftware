@@ -403,11 +403,18 @@ Obs: Essa regra será utilizada tanto para as vendas quanto para as compras.
 1. Criar um objeto PlanejamentoCompraVenda, PlanejamentoCompraVendaGrupo e PlanejamentoCompraVendaDia para cada loja com todos os dados necessários de acordo com a consulta anexa
     - Fazer tudo em tread e deixar um gif de carregando na grade de lojas, assim como nos outos relatórios do c#
 
+
 > Abaixo o link da consulta sql para inserir com base em dados anteriores
 
 ``` HTML
 https://github.com/Rodrigo80221/AnalisesDeSoftware/blob/main/SQL/Consulta%20principal%20Planejamento%20de%20Compra%20e%20Venda%20Melhorias.md
 ```
+
+> Explicação da consulta nos vídeos abaixo
+
+[Link vídeo 1](https://drive.google.com/file/d/1QeiImwJOeFi9K2cAKeLS9M4zTk5TNR7u/view?usp=sharing)
+[Link vídeo 2](https://drive.google.com/file/d/1ZB2FK95Sxhfo3gL4XtroUOeD1KvnkF_Y/view?usp=sharing)
+[Link vídeo 3](https://drive.google.com/file/d/1te8gE5rwx9cJ3OMiIrFpOjQmM_4oXV2T/view?usp=sharing)
 
 ## Tarefa 20: Criar formulário FrmPlanejamentoCompraVendaInserir (Parte 7)
 > Implementar a aba 4 "Definição dos planejamento das vendas"
