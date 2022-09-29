@@ -39,9 +39,22 @@ Resumo após conversa reunião com a C3
 
 ![image](https://user-images.githubusercontent.com/80394522/193141047-2e944fa4-d91d-4103-938d-65256a21d971.png)
 
+A idéia conversada na imagem acima seria:
+1 - Venda : a venda é realizada no pdv 
+
+2 - Gravar transação : gravar mais dados da venda, gravar o NSU, para podermos fazer a chave primária NSU+Data+Valor , devemos aproveitar já e gravar a bin da bandeira, pois talvez vamos precisar desta bim para as promoções scanntech, devemos gravar tudo em tabela separada assim como era o programa atigo da telecon para integração 
+no fluxo de caixa em vez de mostrarmos os dados das vendas iremos mostrar os dados que estão nesta tabela , nesta tabela teremos também a taxa da administradora que já esta cadastrada no nosso cadastro das administradoras de cartão 
+
+3 - Ajustar transação (quitar, mudar data pagamento/ previsão , mudar taxa)
+aqui iremos disponibilizar uma API para a empresa de conciliação, ela fara o trabalho de atualizar os status , editar alguma alteração na data previsata de pagamento e alterar a taxa da administradora
+     - podemos já ajustar essa taxa se estiver configurado para alterar automáticamente , podemos até ter uma vigências destas taxas caso necessário, a vigência será a nossa própria tabela , e o top será a coluna do nosso cadastro 
+     
+     
+
+
 ![image](https://user-images.githubusercontent.com/80394522/193141083-97e44ab0-514f-444b-8645-fd8b88a6428e.png)
 
-
+aqui falamos também sobre os atalhos no fluxo de caixa para verificar o analitico das vendas por cartões , neste caso apontaria para o site da c3
 
 
 
