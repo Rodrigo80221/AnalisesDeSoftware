@@ -33,6 +33,19 @@ Alguns questionamentos:
 - Mostrar no nosso fluxo de caixa
 - Permitir filtrar por status (conciliado/não conciliado)
 
+-----
+
+Resumo após conversa reunião com a C3
+
+![image](https://user-images.githubusercontent.com/80394522/193141047-2e944fa4-d91d-4103-938d-65256a21d971.png)
+
+![image](https://user-images.githubusercontent.com/80394522/193141083-97e44ab0-514f-444b-8645-fd8b88a6428e.png)
+
+
+
+
+
+
 
 ---
 
