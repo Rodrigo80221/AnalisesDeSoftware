@@ -1,121 +1,134 @@
-URL FOTO
-
-![image](https://user-images.githubusercontent.com/80394522/193161284-e8939ab9-24e9-428c-a537-60b6382e3e73.png)
+## Épico Pack Valor 2 + Gerenciador de Imagens
 
 
-
-Na tabela configurações do gestão criar a configuração ClubeDescontos
-![image](https://user-images.githubusercontent.com/80394522/193161493-57496476-852f-469c-99a0-fcdb8a05f222.png)
-
-
-Na tela de configuração dos pdvs criar a configuração clube de descontos
-
-![image](https://user-images.githubusercontent.com/80394522/193161705-05bbb8b1-ee1a-4c0f-85ad-d25c24e7e9ad.png)
-
-
-no cadastro do cliente criar a configuração clube de descontos
-
-![image](https://user-images.githubusercontent.com/80394522/193161779-2987a522-c6fb-4a49-9d0c-985907948197.png)
-
-
-No menu da tela clássica criar o menu clube de descontos 
-
-
-Criar campos para os dados do qqcusta 
-![image](https://user-images.githubusercontent.com/80394522/193162499-1309f2e0-e327-467b-9206-0b5dae18b387.png)
-
-
-criar formulário clube de descontos
-
-![image](https://user-images.githubusercontent.com/80394522/193162155-b495598a-fd91-462c-9432-e054d5a8070e.png)
-![image](https://user-images.githubusercontent.com/80394522/193162370-3944c5a4-762d-4ee3-abd6-0618db63b517.png)
-
-ao salvar o pack enviar os dados da campanha para a api do qqcusta
-
-
-ao realizar uma venda enviar os dados da venda para o qqcusta
-- talvez enviar já o xml 
-
-tratar o novo modelo de packvirtual no pdv
-
-vamos ter que de alguma forma gravar as vendas por cpf para ver os limites
-demora para subir os atus 
-
-
-------
-
-Modulos 
-    - criar módulo club de descontos
-    - criar menu tela clássica
-
-URL Foto Produto
-    - criar cadastro de imagens 
-    - criar tabela no verifica banco 
-    - criar classe telecode 
-    - exibir apenas se o módulo estiver habilitado
-    - link no cadastro de produtos 
-    - no qqcusta tem uma telinha de gestão de imagens 
-    - ser mais parecido com uma tela de pesquisa
-    - com filtros , descrição , grupos de produtos .. 
-
-Configurações PDV 
-    - criar configuração clube de descontos (não sei se precisa)
-    - criar configuração qq custa
-    - exibir configurações apenas se o módulo estiver habilitado
-    - criar novos campos no banco NovoPDV.mdb
-    - adicionar exportação dessas campos
-
-Pack Virtual 
-    - Exibir pack preço 2 se o novo módulo estiver habilitado
-    - Alterar nomenclatura do PackPreço 2 
-    - Criar nova coluna "Limite" na tabela preço 2 
-    - Alterar classe telecode    
-    - Adicionar recursos para manipular a coluna "Limite"
-    - Ao salvar pack acessar API e salvar campanha (qual imagem enviamos?? é obrigatória a imagem??)
-        - Salvar no banco de dados apenas se consegui enviar a camanha para o qq custa 
-    (podemos aqui já resolver o problema de muitos produto na tela pack virtual)
-    - resolver problema mutios produtos
+# Pack Virtual 
+1. Criar novo Pack Virtual (Valor 2)
+    - Possibilitar inserir um valor de promoção para o produto
+    - A promoção deve ser validada por forma de pagamento
+    - A promoção deve ser validada por grupo de clientes 
+    - Colocar preço por lojas na grade
+    - Validar produtos associados ao inserir na grade 
+    - Devemos ter a validação por limite de cpf
+        - O limite de cpf deverá ser por produto
+        - O limite de cpf deverá ser controlado na vigência da campanha, ou seja, deverá levar vendas passadas em consideração
+        - Promoções com limite por cpf deverá valer apenas para vendas com cliente ou cpf atribuído
+        - Promoções sem limite por cpf valerão para todos clientes
+2. Realizar correção na tela do pack virtual para inserir de forma performárica na tabela comandosPDV
+    - Apenas dos itens que realmente foram alterados, atualmente são alterados todos os itens sempre
+3. Realizar correções no duplicar, tinha quebrado compatibilidade com a coluna de lojas criada anteriormente  
+4. Realizar correções no duplicar referentes a packs com % ou R$  
+5. Realizar correções no duplo clique da grade referentes a packs com % ou R$, as vezes não abria  
+6. Realizar correções no maximizar e restaurar + botão expandir/recolher, estava se perdendo o layout 
+7. Realizar correção no pack do atacado, não estava aparecendo o preço de atacado
+8. Adicionar valor por loja no modelo do Clube de Descontos 
     
-PDV
-    - Criar nova regra de pack preço 2 no PDV     
-    - tela de chamar o clube , tem uma oficial já 
-
-Gerenciador 
-    - ler o arquivo .atu da venda 
-    - acessar API e salvar dados da venda 
-    - acessar API e salvar XML da venda 
-    - ver problema do atu do delfino , resolver o problema do atus não 
-
-API (Possibilidade 1)
-    - Na hora da venda consultar a API e ver se o cpf está no clube 
-        - Abrir thread no C# após inserir o cpf na nota 
-    
-
-API (Possibilidade 2)
-    - ao cadastrar no app atualiar o gestão do cliente + comandos para os pdvs 
-        - criar API no cliente 
-    - recurso para forçar uma busca da API no momento da venda , após atualizar o gestão e o banco do pdv 
+# URL Foto Produto
+1. Criar tela para gerenciar imagens dos produtos
+2. Criar módulo Gerenciar Imagens
+3. Possibilitar selecionar uma imagem para o produto
+4. Possibilitar inserir um url de uma imagem para o produto
+5. Fazer similar a tela de imagens do qqCusta
 
 
-Clientes
-    - criar configuração clube de descontos , talvez só um label , pq o cliente nã poder marcar 
-    - exibir configurações apenas se o módulo estiver habilitado
-    - criar nova configuração no NovoPDV.mdb
-    - exportar configuração
-    - ao salvar enviar comando para o commandos pdv 
+# PDV / Gerenciador
+1. Criar nova regra de pack preço 2 
+2. Validar limite por CPF 
+    - Mesmo caso o atu da venda não suba para o servidor todos pdv deverão controlar o limite por cpf, desde que estejam conectados no servidor
+    - Se for atribuído o cliente no pdv sem cpf na NFG deverá funcionar também
 
 
-Fazer tratamento limite de vendas por cpf no pdv 
-    - Criar nova tabela no banco de dados 
-    - No final da venda largar uma thread para tentar enviar para o servidor, ou fazer por arquivo          
-         - inserir também nos comandos pdvs 
-         - criar tabela totalizadora no pdv.mdb 
-         - atualizar tabela na exportação 
-         - limpar tabela 
-- no controle de campanhas promocionais tem um controle pelo saldo 
-- temos uma lista de produtos que podem ter limites por cpf 
-- ao digitar o cpf buscar uma lista online
-- novo atu somente para produtos que tem limite 
-- avisar o operador de caixa que o produto não tera desconto pois está no limite 
+
+## Observação: Funcionamento do Controle do Limite por CPF 
+
+- Ao enviar exportação é enviado na tabela (`PackVirtualPreco2ClientesComLimiteExcedido`) para os pdvs uma lista bem restrita com o cliente, o produto que esgotou o limite por cpf e o pack, apenas de packs que estão ativos e produtos que possuem limites por CPF (essa é uma lista enxuta sem as informações de quantidade, apenas uma lista negra)
+
+- De vez 5 em 5 minutos essa lista é atualizada pelo gerenciador de forma otimizada com recordset desconectados. Esse procedimento só irá rodar caso haja um pack com essas características 
+
+- Ao realizar a venda, no momento em que é atribuído um cliente ou um CPF o PDV irá realizar uma consulta online no servidor por meio de uma thread para verificar a quantidade já comprada pelo cliente dos produtos que possuem limite por CPF, caso a thread não retorne ou não retorne a tempo... o PDV irá se basear apenas na lista negra e no limite do produto na venda atual
+    - Para otimizar o processo seria melhor que o mercado utilizasse a opção para inserir cpf no início da venda
+    - A thread só irá fazer a pesquisa no servidor caso exista um pack com essas características
+    - A thread irá inserir o resultado da busca no servidor na tabela `PackVirtualPreco2VendasPorCPF` ao validar o pack esse tabela irá fazer parte da consulta
+
+- No pdv ao vender um produto e esgotar o limite do produto para determinado cliente o pdv avisa por thread todos os pdvs (insere um registro na tabela ComandosPDV (`PackVirtualPreco2ClientesComLimiteExcedido`: cliente + produto que estourou o limite na compra)
 
 
+
+
+
+
+
+
+
+
+
+
+
+``` sql 
+
+
+
+DROP TABLE dbo.PackVirtualPreco2                                                  
+                                                  
+CREATE TABLE dbo.PackVirtualPreco2(
+	CodPack Int Not Null,
+	CodProduto Float Not Null,
+	VlrPreco2 Money Not Null,
+	LimitePorCPF Int Null)	                                          
+                                                  
+ALTER TABLE PackVirtualPreco2 Add Primary Key (CodPack,CodProduto)
+                                                  
+ALTER TABLE dbo.PackVirtualPreco2 Add CONSTRAINT FK_PackVirtualPreco2_PackVirtual Foreign Key(CodPack)
+REFERENCES dbo.PackVirtual (Codigo)                                                  
+                                    
+ALTER TABLE CLIENTES ADD ClubeDeDescontos bit null
+
+
+CREATE TABLE PackVirtualPreco2ClientesComLimiteExcedido(
+CodPack Int Not Null,
+CodProduto Float Not Null,
+CodCliente Money Not Null,
+CodLoja Int Null)        
+	
+ALTER TABLE PackVirtualPreco2ClientesComLimiteExcedido Add Primary Key  (CodPack,CodProduto,CodCliente)       
+
+
+
+CREATE TABLE PackVirtualPreco2VendasPorCPF (
+CodPack Int Not Null,
+CodProduto Float Not Null,
+CodCliente Money Not Null,
+CodLoja Int Not Null,
+QtdVendida Money Not Null,
+LimitePorCPF Money Not Null)
+
+INSERT INTO PackVirtualPreco2VendasPorCPF (CodPack, CodProduto, CodCliente, CodLoja, QtdVendida, LimitePorCPF) 
+VALUES ()
+
+
+
+SELECT * FROM Municipios WHERE DESCRICAO LIKE '%CANOAS%'
+
+INSERT INTO CLIENTES (codigo, nome, cpf, estado, EMAIL, ClubeDeDescontos, DiaPagamento, GRUPO, CIDADE)
+SELECT (SELECT MAX(CODIGO) + 1 FROM CLIENTES) , 'RODRIGO GOULART DA ROSA', '013.614.61047', 'RS' , 'rodrigo80221@gmail.com', 0, 5, 1, 'CANOAS'
+
+
+
+
+CREATE TABLE PackVirtualPreco2ClientesComLimiteExcedido(
+CodPack Int Not Null,
+CodProduto Float Not Null,
+Cliente nVarChar(28) Not Null,
+CodLoja Int Not Null)                    
+
+CREATE TABLE PackVirtualPreco2VendasPorCPF (
+CodPack Int Not Null,
+CodProduto Float Not Null,
+Cliente nVarChar(28) Not Null,
+CodLoja Int Not Null,
+QtdVendida Money Not Null,
+LimitePorCPF Money Not Null)
+
+
+
+
+```
