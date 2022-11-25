@@ -108,3 +108,69 @@ Por gentileza, incluir o desenvolvimento do lado de vocês  para iniciarmos o pr
 
 
 
+``` sql
+CREATE TABLE PackVirtualFormasPgtoTEF 
+( 
+CodPack bigint, 
+CodTipoPagamento bigint, 
+Descricao nvarchar(512) not null, 
+PRIMARY KEY (CodPack,CodTipoPagamento) 
+) 
+
+ALTER TABLE PackVirtualFormasPgtoTEF  WITH CHECK ADD  CONSTRAINT [FK__PackVirtualFormasPgtoTEF] FOREIGN KEY([CodPack]) 
+REFERENCES [dbo].[PackVirtual] ([Codigo]) 
+ON UPDATE CASCADE 
+ON DELETE CASCADE
+
+CREATE TABLE PackVirtualFormasPgtoTEFBins 
+( 
+CodPack bigint, 
+CodTipoPagamento bigint, 
+BIN nvarchar(6) not null, 
+PRIMARY KEY (CodPack,CodTipoPagamento,BIN) 
+) 
+
+ALTER TABLE PackVirtualFormasPgtoTEFBins  WITH CHECK ADD  CONSTRAINT [FK__PackVirtualFormasPgtoTEFBins] FOREIGN KEY([CodPack],[CodTipoPagamento]) 
+REFERENCES [dbo].[PackVirtualFormasPgtoTEF] (CodPack,CodTipoPagamento) 
+ON UPDATE CASCADE 
+ON DELETE CASCADE 
+
+
+
+
+
+```
+
+
+
+``` sql access
+
+CREATE TABLE PackVirtualFormasPgtoTEF 
+( 
+CodPack Int, 
+CodTipoPagamento Float, 
+Descricao Char(255) Not Null
+) 
+
+ALTER TABLE PackVirtualFormasPgtoTEF Add  CONSTRAINT PK_PackVirtualFormasPgtoTEF Primary Key (CodPack,CodTipoPagamento)
+
+ALTER TABLE PackVirtualFormasPgtoTEF Add  CONSTRAINT FK_PackVirtualFormasPgtoTEF Foreign Key(CodPack) 
+REFERENCES PackVirtual (Codigo) 
+On UPDATE CASCADE 
+On DELETE CASCADE
+                                                                                          
+CREATE TABLE PackVirtualFormasPgtoTEFBins 
+( 
+CodPack Int, 
+CodTipoPagamento Float, 
+BIN Char(6) Not Null 
+) 
+ 
+ALTER TABLE PackVirtualFormasPgtoTEFBins Add  CONSTRAINT PK_PackVirtualFormasPgtoTEFBins Primary Key (CodPack,CodTipoPagamento,BIN) 
+
+ALTER TABLE PackVirtualFormasPgtoTEFBins Add  CONSTRAINT FK_PackVirtualFormasPgtoTEFBins Foreign Key(CodPack,CodTipoPagamento) 
+REFERENCES PackVirtualFormasPgtoTEF (CodPack,CodTipoPagamento) 
+On UPDATE CASCADE 
+On DELETE CASCADE 
+
+```

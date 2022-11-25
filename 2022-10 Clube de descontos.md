@@ -73,12 +73,12 @@ CREATE TABLE dbo.PackVirtualPreco2(
 	CodPack Int Not Null,
 	CodProduto Float Not Null,
 	VlrPreco2 Money Not Null,
-	LimitePorCPF Int Null)	                                          
-                                                  
+	LimitePorCPF Int Null)	       
+                                                                                        
 ALTER TABLE PackVirtualPreco2 Add Primary Key (CodPack,CodProduto)
                                                   
 ALTER TABLE dbo.PackVirtualPreco2 Add CONSTRAINT FK_PackVirtualPreco2_PackVirtual Foreign Key(CodPack)
-REFERENCES dbo.PackVirtual (Codigo)                                                  
+REFERENCES dbo.PackVirtual (Codigo) On DELETE CASCADE On UPDATE CASCADE                                                 
                                     
 ALTER TABLE CLIENTES ADD ClubeDeDescontos bit null
 
