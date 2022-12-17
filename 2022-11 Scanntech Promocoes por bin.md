@@ -173,4 +173,19 @@ REFERENCES PackVirtualFormasPgtoTEF (CodPack,CodTipoPagamento)
 On UPDATE CASCADE 
 On DELETE CASCADE 
 
+
+
+
+CREATE TABLE PackVirtualFormasPgto (
+   CodPack Int Not Null,
+   CodFormaPgto TinyInt Null
+   )
+          
+ALTER TABLE PackVirtualFormasPgto Add  CONSTRAINT PK_PackVirtualFormasPgto Primary Key (CodPack,CodFormaPgto)
+
+ALTER TABLE PackVirtualFormasPgto Add  CONSTRAINT FK_PackVirtualFormasPgto Foreign Key(CodPack) 
+REFERENCES PackVirtual (Codigo) 
+On UPDATE CASCADE 
+On DELETE CASCADE        
+
 ```
