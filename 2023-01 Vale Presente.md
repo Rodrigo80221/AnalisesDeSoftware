@@ -7,7 +7,7 @@ Criar modulo Vale Presente
 
 ## Tarefa 2: Criar verifica banco para inserir a nova tecla de comando
 
-> Insere a tecla no menu principal do pdv
+1. Insere a tecla no menu principal do pdv
 
 ``` vb
 insert into Teclas_Comandos 
@@ -15,9 +15,12 @@ select (select max(codigo) + 1 from Teclas_Comandos), 0 , 'VALE PRESENTE',90,56,
 ```
 
 > Insere a tecla no menu da tela do contravale , estamos populando igual ao da sangria 
+
+``` sql
 declare @Codigo as bigint = (select max(codigo) + 1 from Teclas_Comandos)
 insert into Teclas_Comandos 
 select  @Codigo + Row_Number() Over (Order By Codigo) As RowNum, 9 , funcao,ASCII,Enum,Tecla from Teclas_Comandos where status = 6
+```
 
 adicionar uma tecla livre para o recurso
 
@@ -38,19 +41,23 @@ ________________________________________________________________________________
 
 clsVenda - Declarations
 
+``` vb
 Enum Teclas    
     tValePresente = 56
 End Enum
+```
 
 __________________________________________________________________________________
 
 > Tratar para exibir o novo menu
 
+``` vb
 FrmPrincipal.fFormKeyDown
 
   Case loVenda.iTeclas(tValePresente)
       loVenda.btStatus = 9
       frmNaoVinculados.Show vbModal
+```       
 
 > Adicionar log de supervisor 
 
@@ -58,8 +65,10 @@ ________________________________________________________________________________
 > Tratar load da tela de não vinculados
 "frmNaoVinculados", Err, "Form_Load",
 
+``` vb
     ElseIf frmPrincipal.loVenda.btStatus = 9 Then
         lblTitulo.Caption = "VALE PRESENTE"
+```         
 
 __________________________________________________________________________________
 
@@ -80,8 +89,10 @@ ________________________________________________________________________________
 
 Emitir comprovante com texto correto 
 
+``` vb
                                 sGerarCodigoBarrasContraVale
                                 loECF.fNaoVinculado gtIF.sContraVale, "CONTRA - VALE", Format(cContraVale, "#,##0.00"), Left(.TextMatrix(btLinha, 2), 2), True, .TextMatrix(btLinha, 1), False, lsCodigosContraVale
+```                                
 
 __________
 
@@ -96,6 +107,7 @@ ____________
 
 "frmNaoVinculados", Err, "Form_KeyDown"
 
+``` vb
                 ElseIf .btStatus = 9 Then
 
                     ' aqui percorrer para ver se tem alguma forma tef
@@ -134,6 +146,7 @@ ____________
                     End If
 
                     .sInsereContraValePdvMdb sCodigoContraVale, Format(lblValorTotal.Caption, "#,##0.00")
+ ``` 
  
  > Antes de finalizar mostrar uma mensagem de validação assim como na sangria e suprimento, deseja emitir um vale presente? 
  
@@ -143,7 +156,9 @@ ________________________________________________________________________________
 
 > após emitir o não vinculado com sucesso enviar o atu, fazer algo semelhante ao código abaixo
 
+``` vb
 .sGeraArqItensNaoVinculado 0, 5, Format(lblValorTotal.Caption, "#,##0.00"), True
+``` 
 
 __________________________________________________________________________________
 
@@ -151,8 +166,10 @@ ________________________________________________________________________________
 
 "clsECF", Err, "fNaoVinculado",
 
+``` vb
 145     ElseIf sDescricao = "VALE PRESENTE" Then
 146         gtIF.iRetorno = goNaoVinculadoImpressora.EmitirContraVale(6, CDbl(sValor), gtIF.sOperador, sCodigoBarrasContraVale, "Troco em contra-vale", False, bEmitirBarras)
+``` 
 
 
 
@@ -177,6 +194,7 @@ tratar para imprimir o cupom
 > Deve ter um if também para caso a linha esteja bloqueada, não deverá passar pelo tef mais de uma vez 
 
 
+``` vb
     If grdFormas.Row = 1 Then
 
         If IsNumeric(grdFormas.Text) Then
@@ -195,7 +213,7 @@ tratar para imprimir o cupom
         End If
 
     End If
-
+```
 
 
 
