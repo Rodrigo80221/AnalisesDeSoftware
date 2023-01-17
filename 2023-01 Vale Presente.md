@@ -1,16 +1,18 @@
 
-GESTÃO
+# GESTÃO
 
-__________________________________________________________________________________
+## Tarefa 1: Criar módulo
 
-> Criar módulo
-__________________________________________________________________________________
+Criar modulo Vale Presente
 
-> Criar verifica banco para inserir a nova tecla de comando
+## Tarefa 2: Criar verifica banco para inserir a nova tecla de comando
 
 > Insere a tecla no menu principal do pdv
+
+``` vb
 insert into Teclas_Comandos 
 select (select max(codigo) + 1 from Teclas_Comandos), 0 , 'VALE PRESENTE',90,56,''
+```
 
 > Insere a tecla no menu da tela do contravale , estamos populando igual ao da sangria 
 declare @Codigo as bigint = (select max(codigo) + 1 from Teclas_Comandos)
