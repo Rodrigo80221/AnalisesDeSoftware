@@ -6,6 +6,8 @@ Passo 2: Caso habilitada, utilizar o método RetornarCodigoComandaBanco para nor
 
 Passo 3: Consultar a tabela Pedidos utilizando o campo CodPedidoVendedor, comparando os 5 primeiros dígitos da comanda através de StartsWith(comandaNormalizada).
 
+Abaixo o método RetornarCodigoComandaBanco e o exemplo de consulta. 
+
 
 ``` C#
 using System;
