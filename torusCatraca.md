@@ -4,7 +4,7 @@ Passo 1: Validar a configuração UTILIZA_SISTEMA_CATRACA_MORPHEUS.
 
 Passo 2: Caso habilitada, utilizar o método RetornarCodigoComandaBanco para normalizar o código da comanda informado.
 
-Passo 3: Consultar a tabela Pedidos utilizando o campo CodPedidoVendedor, comparando os 5 primeiros dígitos da comanda através de StartsWith(comandaNormalizada).
+Passo 3: Consultar a tabela Pedidos utilizando o campo CodPedidoVendedor
 
 Abaixo o método RetornarCodigoComandaBanco e o exemplo de consulta. 
 
@@ -100,10 +100,6 @@ public static class ComandaHelper
     /// <summary>
     /// Busca um pedido utilizando o código informado pelo usuário.
     ///
-    /// Regras:
-    /// • Se possuir 6 dígitos → consulta exata (comanda + DV)
-    /// • Se possuir 5 dígitos → consulta usando StartsWith
-    ///
     /// O banco armazena:
     /// CodPedidoVendedor = comanda(5) + DV
     /// </summary>
@@ -115,20 +111,9 @@ public static class ComandaHelper
 
         Pedido? pedido;
 
-        if (codigoNormalizado.Length == 6)
-        {
-            // Consulta exata quando possui DV
-            pedido = await context.Pedidos
-                .FirstOrDefaultAsync(p => p.CodPedidoVendedor == codigoNormalizado);
-        }
-        else
-        {
-            // Consulta pela comanda (ignora DV)
-            pedido = await context.Pedidos
-                .Where(p => p.CodPedidoVendedor.StartsWith(codigoNormalizado))
-                .OrderByDescending(p => p.IdPedido)
-                .FirstOrDefaultAsync();
-        }
+       // Consulta exata quando possui DV
+       pedido = await context.Pedidos
+            .FirstOrDefaultAsync(p => p.CodPedidoVendedor == codigoNormalizado);
 
         return pedido;
     }
