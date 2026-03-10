@@ -1,3 +1,11 @@
+## Torus
+
+Validar a configuração UTILIZA_SISTEMA_CATRACA_MORPHEUS.
+
+Caso habilitada, utilizar o método RetornarCodigoComandaBanco para normalizar o código da comanda informado.
+
+Consultar a tabela Pedidos utilizando o campo CodPedidoVendedor, comparando os 5 primeiros dígitos da comanda através de StartsWith(comandaNormalizada).
+
 ``` C#
 using System;
 using System.Linq;
