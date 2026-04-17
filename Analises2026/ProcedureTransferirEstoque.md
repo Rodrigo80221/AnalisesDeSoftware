@@ -5,8 +5,8 @@ CREATE PROCEDURE [dbo].[sp_TransferirEstoque_Rebaixa]
     @QuantidadeTransferida MONEY, -- Parâmetro unificado
     @CodLojaSaida INT,
     @CodLojaEntrada INT,
-    @TipoAjusteSaida INT = 2,   -- Padrão 2 conforme seu print de Saída
-    @TipoAjusteEntrada INT = 1  -- Padrão 1 conforme seu print de Entrada
+    @TipoAjusteSaida INT = 2,   -- Padrão 2 
+    @TipoAjusteEntrada INT = 1  -- Padrão 1 
 AS
 BEGIN
     SET NOCOUNT ON;
