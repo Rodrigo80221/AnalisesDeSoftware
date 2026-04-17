@@ -1,5 +1,7 @@
 ```sql
-========================================================
+
+
+-- ==============================================================================
 -- DECLARAÇÃO DE VARIÁVEIS PARA O PROCESSO
 -- ==============================================================================
 DECLARE @CodOriginal FLOAT = 8182370;   -- Código do produto que está vencendo
@@ -22,8 +24,8 @@ EXEC sp_DuplicarProduto_ParaRebaixa
 
 PRINT '---------------------------------------------------'
 PRINT 'PRODUTO DUPLICADO COM SUCESSO.'
-PRINT 'CÓDIGO ORIGINAL: ' + CAST(@CodOriginal AS VARCHAR)
-PRINT 'NOVO CÓDIGO (REBAIXA): ' + CAST(@CodigoGeradoRebaixa AS VARCHAR)
+PRINT 'CÓDIGO ORIGINAL: ' + CAST(CAST(@CodOriginal AS BIGINT) AS VARCHAR)
+PRINT 'NOVO CÓDIGO (REBAIXA): ' + CAST(CAST(@CodigoGeradoRebaixa AS BIGINT) AS VARCHAR)
 PRINT '---------------------------------------------------'
 
 
@@ -36,8 +38,7 @@ BEGIN
     EXEC sp_TransferirEstoque_Rebaixa 
         @CodProduto = @CodOriginal, 
         @CodProdutoRebaixa = @CodigoGeradoRebaixa, 
-        @QtdSaida = @QuantidadeRebaixa, 
-        @QtdEntrada = @QuantidadeRebaixa, 
+        @QuantidadeTransferida = @QuantidadeRebaixa, -- Parâmetro único ajustado
         @CodLojaSaida = @LojaOrigem, 
         @CodLojaEntrada = @LojaDestino,
         @TipoAjusteSaida = 2,  -- Ajuste para o código correto de saída do seu ERP
@@ -49,5 +50,4 @@ ELSE
 BEGIN
     PRINT 'ERRO: O código de rebaixa não foi gerado. A transferência de estoque foi cancelada.'
 END
-
 ```

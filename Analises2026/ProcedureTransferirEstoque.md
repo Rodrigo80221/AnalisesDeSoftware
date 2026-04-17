@@ -1,10 +1,8 @@
 ```sql
-
 CREATE PROCEDURE [dbo].[sp_TransferirEstoque_Rebaixa]
     @CodProduto FLOAT,
     @CodProdutoRebaixa FLOAT,
-    @QtdSaida MONEY,
-    @QtdEntrada MONEY,
+    @QuantidadeTransferida MONEY, -- Parâmetro unificado
     @CodLojaSaida INT,
     @CodLojaEntrada INT,
     @TipoAjusteSaida INT = 2,   -- Padrão 2 conforme seu print de Saída
@@ -36,7 +34,7 @@ BEGIN
         DECLARE @CodObs FLOAT;
         SELECT @CodObs = ISNULL(MAX(CODIGO), 0) + 1 FROM OBS;
 
-        -- CORREÇÃO APLICADA AQUI: Convertendo FLOAT para BIGINT antes do VARCHAR
+        -- Convertendo FLOAT para BIGINT antes do VARCHAR
         INSERT INTO OBS (CODIGO, DESCRICAO) 
         VALUES (
             @CodObs, 
@@ -63,7 +61,7 @@ BEGIN
             CD_AJUSTE, CD_PRODUTO, QUANTIDADE, QT_ESTOQUE, CUSTO, Custo_Gerencial, sequencia
         )
         VALUES (
-            @CodAjusteSaida, @CodProduto, 0, (@QtdSaida * -1), @CustoSaida, @CustoSaida, NULL
+            @CodAjusteSaida, @CodProduto, 0, (@QuantidadeTransferida * -1), @CustoSaida, @CustoSaida, NULL
         );
 
         -- ==============================================================================
@@ -85,7 +83,7 @@ BEGIN
             CD_AJUSTE, CD_PRODUTO, QUANTIDADE, QT_ESTOQUE, CUSTO, Custo_Gerencial, sequencia
         )
         VALUES (
-            @CodAjusteEntrada, @CodProdutoRebaixa, 0, @QtdEntrada, @CustoEntrada, @CustoEntrada, NULL
+            @CodAjusteEntrada, @CodProdutoRebaixa, 0, @QuantidadeTransferida, @CustoEntrada, @CustoEntrada, NULL
         );
 
         COMMIT TRANSACTION;
@@ -98,4 +96,5 @@ BEGIN
         THROW; 
     END CATCH
 END
+GO
 ```
