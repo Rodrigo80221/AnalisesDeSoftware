@@ -1,4 +1,5 @@
 sql ```
+
 DECLARE @CodProduto INT = 48021; -- Código do Produto
 DECLARE @CodLoja INT = 1; -- Código da Loja
 
@@ -41,4 +42,5 @@ CROSS APPLY dbo.fn_retornar_margem(
 ) m
 WHERE c.CODPRODUTO = @CodProduto
   AND pl.CODLOJA = @CodLoja;
+  
 ```
